@@ -8,7 +8,7 @@ export default function TokensPage({ dict }: TokensPageProps) {
   const { tokens } = dict
 
   return (
-    <article className="tokensPage presentationPage">
+    <article className="tokensPage presentationPage presentationPage--dark">
       <p className="presentationPage__lead">{tokens.intro}</p>
 
       <div className="tokensPage__grid">

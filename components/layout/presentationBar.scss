@@ -89,3 +89,16 @@ $bar-height: 36px;
   padding: 0;
   margin: 0;
 }
+
+.presentationPage--dark {
+  min-height: calc(100vh - 36px);
+  max-width: none;
+  margin: 0;
+  padding: clamp(2rem, 6vw, 4rem) clamp(1.5rem, 5vw, 3rem);
+  background: $color-black;
+  color: $color-white;
+
+  .presentationPage__lead {
+    color: rgba($color-white, 0.55);
+  }
+}

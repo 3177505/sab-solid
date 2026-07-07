@@ -25,7 +25,9 @@ export default function CopyPage({
   presentation?: boolean
 }) {
   return (
-    <article className={`copyPage${presentation ? ' presentationPage' : ''}`}>
+    <article
+      className={`copyPage${presentation ? ' presentationPage presentationPage--dark' : ''}`}
+    >
       {!presentation && (
         <header className="copyPage__header">
           <h1 className="copyPage__title">{data.title}</h1>

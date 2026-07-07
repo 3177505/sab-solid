@@ -8,7 +8,7 @@ export default function AnalysisPage({ dict }: AnalysisPageProps) {
   const { analysis: a } = dict
 
   return (
-    <article className="analysisPage presentationPage">
+    <article className="analysisPage presentationPage presentationPage--dark">
       <p className="presentationPage__lead">{a.intro}</p>
 
       <section className="analysisBlock">

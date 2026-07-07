@@ -1,0 +1,83 @@
+@import '../_setup/vars.scss';
+
+.presentationPage--dark {
+  .analysisBlock {
+    border-bottom-color: rgba($color-white, 0.12);
+
+    &--highlight {
+      background: rgba($color-accent-light, 0.08);
+      border-color: rgba($color-accent-light, 0.2);
+      border-bottom-color: rgba($color-accent-light, 0.2);
+    }
+  }
+
+  .analysisCard {
+    border-color: rgba($color-white, 0.12);
+    background: rgba($color-white, 0.03);
+
+    p {
+      color: rgba($color-white, 0.6);
+    }
+  }
+
+  .analysisInsight {
+    background: rgba($color-white, 0.04);
+    color: rgba($color-white, 0.65);
+    border-left-color: $color-accent-light;
+  }
+
+  .analysisHeadline {
+    color: $color-accent-light;
+  }
+
+  .analysisProblems span {
+    color: rgba($color-white, 0.65);
+  }
+
+  .copyPage__princip {
+    color: rgba($color-white, 0.65);
+    background: rgba($color-accent-light, 0.08);
+    border-left-color: $color-accent-light;
+  }
+
+  .copyPage__block,
+  .copyPage__section {
+    border-bottom-color: rgba($color-white, 0.12);
+  }
+
+  .copyPage__card {
+    border-color: rgba($color-white, 0.12);
+    background: rgba($color-white, 0.03);
+
+    p {
+      color: rgba($color-white, 0.6);
+    }
+  }
+
+  .copyPage__col--old pre {
+    background: rgba($color-warning, 0.12);
+    border-color: rgba($color-warning, 0.3);
+    color: rgba($color-white, 0.85);
+  }
+
+  .copyPage__col--new pre {
+    background: rgba($color-accent-light, 0.12);
+    border-color: rgba($color-accent-light, 0.3);
+    color: rgba($color-white, 0.85);
+  }
+
+  .copyPage__why {
+    color: rgba($color-white, 0.55);
+  }
+
+  .tokensPage__placeholder {
+    border-color: rgba($color-white, 0.15);
+    background: rgba($color-white, 0.04);
+    color: rgba($color-white, 0.35);
+  }
+
+  .tokensPage__code {
+    background: rgba($color-white, 0.06);
+    border: $border-width solid rgba($color-white, 0.1);
+  }
+}
