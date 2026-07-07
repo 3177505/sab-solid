@@ -1,0 +1,198 @@
+@import '../../_setup/vars.scss';
+
+.analysisPage {
+  @include container;
+  padding-block: $section-padding;
+}
+
+.analysisPage__header {
+  max-width: 800px;
+  margin-bottom: $spacing-xl;
+}
+
+.analysisPage__title {
+  @include font-h1;
+  margin-bottom: $spacing-md;
+}
+
+.analysisPage__intro {
+  @include font-body;
+  color: $color-mid;
+}
+
+.analysisBlock {
+  margin-bottom: $spacing-xl;
+  padding-bottom: $spacing-xl;
+  border-bottom: $border-width solid $border-color;
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  h2 {
+    @include font-h2;
+    margin-bottom: $spacing-md;
+  }
+
+  &--highlight {
+    padding: $spacing-lg;
+    border-radius: $radius-lg;
+    background: rgba($color-accent, 0.04);
+    border: $border-width solid rgba($color-accent, 0.15);
+    border-bottom: $border-width solid rgba($color-accent, 0.15);
+  }
+}
+
+.analysisSub {
+  @include font-h3;
+  margin: $spacing-md 0 $spacing-sm;
+
+  &--bad {
+    color: $color-warning;
+  }
+
+  &--good {
+    color: $color-accent;
+  }
+}
+
+.analysisList {
+  display: grid;
+  gap: $spacing-sm;
+
+  li {
+    @include font-body;
+    padding-left: $spacing-md;
+    position: relative;
+
+    &::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: $color-accent;
+    }
+  }
+}
+
+.analysisOrdered {
+  display: grid;
+  gap: $spacing-sm;
+  counter-reset: step;
+
+  li {
+    @include font-body;
+    padding-left: $spacing-lg;
+    position: relative;
+    counter-increment: step;
+
+    &::before {
+      content: counter(step);
+      position: absolute;
+      left: 0;
+      @include font-mono-label;
+      color: $color-accent;
+    }
+  }
+}
+
+.analysisInsight {
+  @include font-body;
+  margin-top: $spacing-md;
+  padding: $spacing-md;
+  border-left: 3px solid $color-accent;
+  background: rgba($color-black, 0.02);
+  color: $color-mid;
+}
+
+.analysisHeadline {
+  @include font-h2;
+  color: $color-accent;
+  margin-bottom: $spacing-lg;
+}
+
+.analysisCards {
+  display: grid;
+  gap: $spacing-md;
+
+  @include lg {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.analysisCard {
+  padding: $spacing-md;
+  border: $border-width solid $border-color;
+  border-radius: $radius-md;
+
+  h3 {
+    @include font-h3;
+    margin-bottom: $spacing-xs;
+  }
+
+  p {
+    @include font-caption;
+    color: $color-mid;
+  }
+}
+
+.analysisProblems {
+  display: grid;
+  gap: $spacing-md;
+
+  li {
+    display: grid;
+    gap: $spacing-xxs;
+
+    strong {
+      @include font-h3;
+      color: $color-warning;
+    }
+
+    span {
+      @include font-body;
+      color: $color-mid;
+    }
+  }
+}
+
+.analysisCtaCompare {
+  display: grid;
+  gap: $spacing-lg;
+  margin-top: $spacing-lg;
+
+  @include lg {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.analysisTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $spacing-xs;
+
+  li {
+    @include font-caption;
+    padding: $spacing-xxs $spacing-sm;
+    border-radius: $radius-full;
+
+    .analysisTags--bad & {
+      background: rgba($color-warning, 0.1);
+      color: $color-warning;
+    }
+
+    .analysisTags--good & {
+      background: rgba($color-accent, 0.1);
+      color: $color-accent;
+    }
+  }
+}
+
+.analysisTags--bad li {
+  background: rgba($color-warning, 0.1);
+  color: $color-warning;
+}
+
+.analysisTags--good li {
+  background: rgba($color-accent, 0.1);
+  color: $color-accent;
+}

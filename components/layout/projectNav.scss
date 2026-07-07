@@ -1,0 +1,75 @@
+@import '../_setup/vars.scss';
+
+.projectNav {
+  position: sticky;
+  top: 0;
+  z-index: $z-index-nav;
+  height: $header-height;
+  border-bottom: $border-width solid $border-color;
+  background: rgba($color-white, 0.92);
+  backdrop-filter: blur(8px);
+}
+
+.projectNav__inner {
+  @include container;
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+  height: 100%;
+}
+
+.projectNav__brand {
+  @include font-mono-label;
+  font-size: 0.75rem;
+  white-space: nowrap;
+  color: $color-black;
+
+  span {
+    color: $color-accent;
+  }
+}
+
+.projectNav__links {
+  display: flex;
+  flex: 1;
+  flex-wrap: wrap;
+  gap: $spacing-xs $spacing-sm;
+  align-items: center;
+  min-width: 0;
+}
+
+.projectNav__link {
+  @include font-caption;
+  padding: $spacing-xxs $spacing-xs;
+  border-radius: $radius-sm;
+  white-space: nowrap;
+  transition: color $transition-fast, background $transition-fast;
+
+  &.active {
+    color: $color-accent;
+    background: rgba($color-accent, 0.08);
+  }
+
+  &:hover:not(.active) {
+    color: $color-black;
+    background: rgba($color-black, 0.04);
+  }
+
+  &--external {
+    color: $color-gray;
+  }
+}
+
+@include md {
+  .projectNav__inner {
+    flex-wrap: wrap;
+    height: auto;
+    min-height: $header-height;
+    padding-block: $spacing-xs;
+  }
+
+  .projectNav__links {
+    order: 3;
+    width: 100%;
+  }
+}

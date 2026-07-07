@@ -1,0 +1,20 @@
+// Setup
+@import '../components/_setup/reset.scss';
+@import '../components/_setup/breakpoints.scss';
+@import '../components/_setup/vars.scss';
+@import '../components/_setup/setup.scss';
+
+// Layout
+@import '../components/layout/projectNav.scss';
+@import '../components/languageSwitcher/languageSwitcher.scss';
+
+// Utils
+@import '../components/utils/infoHint/infoHint.scss';
+
+// Pages
+@import '../components/pages/hub/hubPage.scss';
+@import '../components/pages/analysis/analysisPage.scss';
+@import '../components/pages/ux/uxPage.scss';
+@import '../components/pages/ui/uiShell.scss';
+@import '../components/pages/tokens/tokensPage.scss';
+@import '../components/pages/copy/copyPage.scss';

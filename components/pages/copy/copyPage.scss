@@ -1,0 +1,145 @@
+@import '../../_setup/vars.scss';
+
+.copyPage {
+  @include container;
+  padding-block: $section-padding;
+}
+
+.copyPage__header {
+  max-width: 800px;
+  margin-bottom: $spacing-xl;
+}
+
+.copyPage__title {
+  @include font-h1;
+  margin-bottom: $spacing-md;
+}
+
+.copyPage__princip {
+  @include font-body;
+  color: $color-mid;
+  padding: $spacing-md;
+  border-left: 3px solid $color-accent;
+  background: rgba($color-accent, 0.04);
+}
+
+.copyPage__block,
+.copyPage__section {
+  margin-bottom: $spacing-xl;
+  padding-bottom: $spacing-xl;
+  border-bottom: $border-width solid $border-color;
+
+  h2 {
+    @include font-h2;
+    margin-bottom: $spacing-md;
+  }
+}
+
+.copyPage__cards {
+  display: grid;
+  gap: $spacing-md;
+
+  @include lg {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.copyPage__card {
+  padding: $spacing-md;
+  border: $border-width solid $border-color;
+  border-radius: $radius-md;
+
+  h3 {
+    @include font-h3;
+    margin-bottom: $spacing-xs;
+  }
+
+  p {
+    @include font-caption;
+    color: $color-mid;
+  }
+}
+
+.copyPage__list {
+  display: grid;
+  gap: $spacing-sm;
+
+  li {
+    @include font-body;
+    padding-left: $spacing-md;
+    position: relative;
+
+    &::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: $color-accent;
+    }
+  }
+}
+
+.copyPage__compare {
+  display: grid;
+  gap: $spacing-md;
+
+  @include lg {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.copyPage__col {
+  h3 {
+    @include font-h3;
+    margin-bottom: $spacing-sm;
+  }
+
+  pre {
+    margin: 0;
+    padding: $spacing-md;
+    border-radius: $radius-md;
+    font-family: $font-mono;
+    font-size: 0.8125rem;
+    line-height: 1.5;
+    white-space: pre-wrap;
+    word-break: break-word;
+  }
+
+  &--old pre {
+    background: rgba($color-warning, 0.06);
+    border: $border-width solid rgba($color-warning, 0.2);
+  }
+
+  &--new pre {
+    background: rgba($color-accent, 0.06);
+    border: $border-width solid rgba($color-accent, 0.2);
+  }
+}
+
+.copyPage__why {
+  @include font-caption;
+  margin-top: $spacing-md;
+  color: $color-mid;
+  font-style: italic;
+}
+
+.copyPage__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $spacing-xs;
+
+  li {
+    @include font-caption;
+    padding: $spacing-xxs $spacing-sm;
+    border-radius: $radius-full;
+  }
+
+  &--bad li {
+    background: rgba($color-warning, 0.1);
+    color: $color-warning;
+  }
+
+  &--good li {
+    background: rgba($color-accent, 0.1);
+    color: $color-accent;
+  }
+}

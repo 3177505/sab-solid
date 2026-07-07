@@ -1,0 +1,33 @@
+@import '../_setup/vars.scss';
+
+.languageSwitcher {
+  display: inline-flex;
+  gap: 2px;
+  border: $border-width solid $border-color;
+  border-radius: $radius-md;
+  overflow: hidden;
+}
+
+.languageSwitcher__btn {
+  padding: $spacing-xxs $spacing-sm;
+  @include font-mono-label;
+  color: $color-gray;
+  background: transparent;
+  transition: background $transition-fast, color $transition-fast;
+
+  &.active {
+    background: rgba($color-accent, 0.12);
+    color: $color-accent;
+  }
+
+  &:hover:not(.active) {
+    background: rgba($color-black, 0.04);
+    color: $color-black;
+  }
+
+  &--disabled {
+    opacity: 0.35;
+    cursor: default;
+    pointer-events: none;
+  }
+}

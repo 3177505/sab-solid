@@ -1,0 +1,58 @@
+@import '../../_setup/vars.scss';
+
+.infoHint {
+  position: relative;
+  display: inline-flex;
+  vertical-align: middle;
+  margin-left: $spacing-xs;
+}
+
+.infoHint__trigger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  border-radius: $radius-full;
+  border: $border-width solid rgba($color-black, 0.35);
+  font-family: $font-mono;
+  font-size: 0.625rem;
+  font-weight: $font-weight-bold;
+  font-style: italic;
+  line-height: 1;
+  color: $color-gray;
+  background: $color-white;
+  transition: border-color $transition-fast, color $transition-fast;
+
+  &:hover,
+  &:focus-visible {
+    border-color: $color-accent;
+    color: $color-accent;
+    outline: none;
+  }
+}
+
+.infoHint__popup {
+  position: absolute;
+  top: 50%;
+  z-index: $z-index-popup;
+  width: min(280px, 70vw);
+  padding: $spacing-sm;
+  border-radius: $radius-md;
+  border: $border-width solid $border-color;
+  background: $color-white;
+  box-shadow: 0 8px 24px rgba($color-black, 0.12);
+  @include font-caption;
+  color: $color-black;
+  pointer-events: none;
+
+  &--right {
+    left: calc(100% + #{$spacing-sm});
+    transform: translateY(-50%);
+  }
+
+  &--left {
+    right: calc(100% + #{$spacing-sm});
+    transform: translateY(-50%);
+  }
+}

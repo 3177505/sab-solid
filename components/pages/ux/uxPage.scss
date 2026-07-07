@@ -1,0 +1,134 @@
+@import '../../_setup/vars.scss';
+
+.uxPage {
+  @include container;
+  padding-block: $section-padding;
+}
+
+.uxPage__header {
+  max-width: 800px;
+  margin-bottom: $spacing-xl;
+}
+
+.uxPage__title {
+  @include font-h1;
+  margin-bottom: $spacing-md;
+}
+
+.uxPage__intro {
+  @include font-body;
+  color: $color-mid;
+}
+
+.uxPage__wireframe {
+  display: grid;
+  gap: $spacing-lg;
+  padding: $spacing-lg;
+  border: 2px solid rgba($color-black, 0.08);
+  border-radius: $radius-lg;
+  background: #fafafa;
+}
+
+.uxSection {
+  display: grid;
+  gap: $spacing-sm;
+}
+
+.uxSection__label {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: $spacing-xs;
+}
+
+.uxSection__num {
+  @include font-mono-label;
+  color: $color-accent;
+}
+
+.uxSection__name {
+  @include font-h3;
+}
+
+.uxSection__content {
+  &--split {
+    display: grid;
+    gap: $spacing-md;
+
+    @include lg {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  &--cards {
+    display: grid;
+    gap: $spacing-md;
+
+    @include lg {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  &--form {
+    display: grid;
+    gap: $spacing-md;
+
+    @include lg {
+      grid-template-columns: 2fr 1fr;
+    }
+  }
+}
+
+.uxBox {
+  @include wireframe-box;
+
+  &--tall {
+    min-height: 160px;
+  }
+
+  &--wide {
+    min-height: 72px;
+  }
+
+  &--card {
+    min-height: 120px;
+  }
+
+  &--featured {
+    border-style: solid;
+    border-color: $color-accent;
+    background: rgba($color-accent, 0.04);
+
+    @include lg {
+      grid-column: span 1;
+    }
+  }
+
+  &--formFields {
+    min-height: 200px;
+  }
+
+  &--formAside {
+    min-height: 200px;
+  }
+}
+
+.uxSection--cards .uxSection__content--cards {
+  @include lg {
+    .uxBox--featured {
+      min-height: 160px;
+    }
+  }
+}
+
+.uxSection[data-section='process'] .uxSection__content--cards {
+  @include lg {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.uxSection[data-section='services'] .uxSection__content--cards {
+  @include lg {
+    grid-template-columns: 1fr 1fr 1.4fr 1fr;
+  }
+}

@@ -1,0 +1,326 @@
+{
+  "title": "Návrh copy pro redesign sab.cz",
+  "version": "1.0",
+  "updatedAt": "2026-07-07",
+  "audience": {
+    "primary": [
+      {
+        "id": "cfo",
+        "label": "CFO / finanční manažer",
+        "motivace": "Kontrola nad kurzovým rizikem, rychlý obchod, transparentní podmínky, méně administrativy než u banky"
+      },
+      {
+        "id": "owner-import-export",
+        "label": "Majitel import/export firmy",
+        "motivace": "Ví, že platí v EUR/USD, nechce prodělat — potřebuje scénář „co se stane\", ne finanční žargon"
+      },
+      {
+        "id": "office",
+        "label": "Účetní / office manager",
+        "motivace": "Zadává platby, hledá jednoduchý postup a jasný kontakt — často první návštěvník webu"
+      }
+    ],
+    "princip": "Mluvíme na firmu, která obchoduje se zahraničím — ne na „investora\" ani „člověka u moře\". Každý text musí odpovědět: Co z toho má moje firma?"
+  },
+  "principles": [
+    "Výsledek místo metafory — ne „moře obchodů\", ale „víte dopředu, kolik zaplatíte\"",
+    "Scénář místo definice — faktura, splatnost, kurz dnes vs za 90 dní",
+    "CTA = konkrétní akce — ne „napište nám\", ale „chci fixní kurz\" / „zjistit kurz\"",
+    "Důvěra přes čísla a licenci — ne přes stock fotku",
+    "Dva jazyky na stránce: laický (majitel) + odborný (CFO) — stejná sekce, dvě úrovně detailu"
+  ],
+  "sections": [
+    {
+      "id": "meta",
+      "label": "Meta title & description",
+      "current": {
+        "title": "Garance NEJ kurzů pro firmy | SAB Finance a.s.",
+        "description": "Směňte nejvýhodněji cizí měny. Jsme jedničkou na trhu devizových obchodů."
+      },
+      "proposed": {
+        "title": "Devizové služby pro firmy | SAB Finance — jistota kurzu, platby, forward",
+        "description": "Směna měn, zahraniční platby a zajištění kurzu pro firmy. Fixní kurz na fakturu, výhodné sazby, licencovaná platební instituce. 20 000 firemních klientů."
+      },
+      "why": "SEO + první dojem: říkáme co děláme a pro koho. „NEJ kurzů\" je neověřitelné; „jistota kurzu\" je konkrétní benefit."
+    },
+    {
+      "id": "hero",
+      "label": "Hero — hlavní headline",
+      "current": "Jsme jedničkou v moři devizových obchodů!",
+      "proposed": {
+        "headline": "Víte dopředu, kolik zaplatíte — nebo dostanete — v cizí měně.",
+        "subheadline": "Devizové služby pro firmy, které importují, exportují nebo pravidelně platí do zahraničí. Směna, platby a fixní kurz na budoucí fakturu.",
+        "supporting": "Licencovaná platební instituce · 20 let · 20 000 firemních klientů"
+      },
+      "why": "Majitel firmy se pozná v problému (platba/inkaso v EUR). CFO slyší „fixní kurz\". Metafora moře neprodává jistotu."
+    },
+    {
+      "id": "hero-cta",
+      "label": "Hero — tlačítka",
+      "current": [
+        { "text": "Chci se zajistit", "context": "box Vsaďte na jistotu" },
+        { "text": "Volejte +420 267 220 202", "context": "box Směňte hned" }
+      ],
+      "proposed": [
+        { "text": "Nezávazná konzultace", "role": "primární", "note": "Lead do formuláře / callback" },
+        { "text": "Zjistit aktuální kurz", "role": "sekundární", "note": "Okamžitá hodnota bez registrace — widget EUR/CZK atd." }
+      ],
+      "why": "Telefon jako jediná akce odfiltrovává část publika. Dva jasné vstupy: řeším riziko vs potřebuji kurz teď."
+    },
+    {
+      "id": "hero-boxes",
+      "label": "Hero — dva boxy pod headline",
+      "current": [
+        { "title": "Vsaďte na jistotu", "body": "Zajistěte se proti kolísání devizových kurzů s měnovým forwardem" },
+        { "title": "Směňte hned", "body": "Zavolejte nám o aktuálně nejvýhodnější kurz na trhu" }
+      ],
+      "proposed": [
+        {
+          "title": "Máte fakturu v cizí měně?",
+          "body": "Sjednejte fixní kurz dnes — ať víte, kolik za 30, 60 nebo 90 dní zaplatíte nebo inkasujete.",
+          "cta": "Chci fixní kurz na fakturu"
+        },
+        {
+          "title": "Potřebujete směnit teď?",
+          "body": "Aktuální kurz bez skrytých poplatků. Obchod po telefonu, vypořádání během hodin.",
+          "cta": "Zjistit kurz"
+        }
+      ],
+      "why": "Scénáře místo abstraktních sloganů. Importér/exportér se okamžitě zařadí."
+    },
+    {
+      "id": "trust",
+      "label": "Trust strip (pod hero)",
+      "current": "Statistiky — Počet klientů 20 000 / obchodů 1,74 mil. / objem 3 318 mld.",
+      "proposed": {
+        "items": [
+          "Licence platební instituce (ČNB)",
+          "20 000 firemních klientů",
+          "1,74 mil. vypořádaných obchodů",
+          "Obchod po telefonu do minut"
+        ],
+        "format": "Horizontální pás — 4 položky, skenovatelné za 2 sekundy"
+      },
+      "why": "CFO hledá licenci a objem. Majitel hledá „nejsou to podvodníci\". Statistiky ano, ale s kontextem důvěry."
+    },
+    {
+      "id": "problem",
+      "label": "Nová sekce — problém (dnes chybí)",
+      "current": null,
+      "proposed": {
+        "headline": "Platíte nebo inkasujete v cizí měně?",
+        "scenarios": [
+          {
+            "for": "Importér",
+            "text": "Za 60 dní platíte dodavateli 50 000 EUR. Kurz se mezitím může změnit — a s ním i vaše marže.",
+            "cta": "Jak se zajistit fixním kurzem"
+          },
+          {
+            "for": "Exportér",
+            "text": "Faktura v EUR, splatnost za 90 dní. Dnes nevíte, kolik korun na účet skutečně přijde.",
+            "cta": "Spočítat dopad kurzu"
+          }
+        ]
+      },
+      "why": "Laická audience potřebuje nejdřív problém, pak produkt. Bez toho forward zní jako cizí termín."
+    },
+    {
+      "id": "forward",
+      "label": "Zajištění kurzového rizika",
+      "current": {
+        "headline": "Zajistěte se proti kurzovému riziku",
+        "body": "s měnovým forwardem pro případ, kdy víte, že budete mít v budoucnu potřebu směny, a chcete si ji zajistit za předem dohodnutý kurz.",
+        "bullets": [
+          "Víte o inkasu faktury a chcete přesně vědět, kolik za ni dostanete?",
+          "Čekají vás platby za zboží nebo služby a chcete mít jistotu, že neproděláte?"
+        ]
+      },
+      "proposed": {
+        "headline": "Fixní kurz na fakturu — měnový forward jednoduše",
+        "lead": "Dohodnete kurz dnes. Směna proběhne v den, kdy vás to skutečně zajímá — třeba za 3 měsíce.",
+        "example": {
+          "title": "Příklad: importér",
+          "steps": [
+            "Objednávka u dodavatele: 50 000 EUR, splatnost 90 dní",
+            "Dnes s SAB sjednáte forward — kurz např. 25,20 CZK/EUR",
+            "Za 90 dní zaplatíte přesně 1 260 000 Kč — bez ohledu na trh"
+          ],
+          "contrast": "Bez forwardu: při posunu kurzu o 1 Kč zaplatíte o 50 000 Kč víc."
+        },
+        "cta": "Chci fixní kurz — nezávazně"
+      },
+      "why": "„Kurzové riziko\" a „forward\" necháme, ale až pod scénářem. CFO dostane termín, majitel dostane příklad v korunách."
+    },
+    {
+      "id": "proc-sab",
+      "label": "Proč SAB — dlaždice",
+      "current": [
+        "Dlouhodově výhodné devizové kurzy",
+        "Zbavíme Vás absurdních poplatků",
+        "Bleskové vypořádání Vaších plateb",
+        "Transparentnost",
+        "Držitel licence Platební instituce",
+        "20 let zkušeností"
+      ],
+      "proposed": [
+        {
+          "title": "Kurz, který dává smysl",
+          "body": "Srovnatelné nebo lepší sazby než u banky — bez poplatků, které nikdo nečeká."
+        },
+        {
+          "title": "Obchod do minut",
+          "body": "Zavoláte, specialisté dealingu potvrdí kurz emailem, vypořádání bez zbytečného čekání."
+        },
+        {
+          "title": "Licence ČNB",
+          "body": "Jsme platební instituce — vaše peníze a obchody pod dohledem, ne v šedé zóně."
+        },
+        {
+          "title": "Osobní dealer, ne chatbot",
+          "body": "20 let na trhu, 20 000 firem — známe vaše měnové páry a reagujeme, když se kurz hne."
+        }
+      ],
+      "why": "Méně marketingových frází („absurdní poplatky\"), víc srovnání s reálnou alternativou (banka) a lidského servisu."
+    },
+    {
+      "id": "services",
+      "label": "Co pro vás můžeme udělat",
+      "current": [
+        "Zajištění kurzového rizika (měnový forward)",
+        "Směna mezi účty",
+        "Platba Vašich faktur",
+        "Inkaso od obchodních partnerů",
+        "Evropské i světové měnové páry",
+        "Hlídání kurzů",
+        "Informace z trhu"
+      ],
+      "proposed": [
+        {
+          "title": "Fixní kurz na fakturu",
+          "for": "Víte o budoucí platbě nebo inkasu",
+          "cta": "Více o forwardu"
+        },
+        {
+          "title": "Směna měn",
+          "for": "Potřebujete EUR, USD, GBP… dnes",
+          "cta": "Zjistit kurz"
+        },
+        {
+          "title": "Zahraniční platby",
+          "for": "Pošlete fakturu dodavateli nebo přijměte inkaso",
+          "cta": "Jak platíme do zahraničí"
+        },
+        {
+          "title": "Hlídání kurzů",
+          "for": "Upozornění, když je kurz pro vás výhodný",
+          "cta": "Nastavit alert"
+        }
+      ],
+      "why": "7 položek je moc. Seskupíme na 4 vstupy s „pro koho\" a vlastním CTA. Forward zůstane zvýrazněný."
+    },
+    {
+      "id": "process",
+      "label": "Jak s námi obchodovat",
+      "current": [
+        "Příprava a podpis Rámcové smlouvy",
+        "Uzavření obchodu — telefonicky",
+        "Vypořádání obchodu"
+      ],
+      "proposed": [
+        {
+          "step": 1,
+          "title": "Krátký úvodní hovor",
+          "body": "Projdeme vaše měny, objemy a zda dává smysl forward nebo spot."
+        },
+        {
+          "step": 2,
+          "title": "Rámcová smlouva",
+          "body": "Připraví ji regionální ředitel — jednorázově, pak už jen obchody."
+        },
+        {
+          "step": 3,
+          "title": "Obchod a vypořádání",
+          "body": "Telefonicky s dealingem, potvrzení emailem, peníze na cestě."
+        }
+      ],
+      "why": "„Rámcová smlouva\" jako krok 1 děsí. Nejdřív ukážeme, že stačí hovor — snížíme bariéru vstupu."
+    },
+    {
+      "id": "testimonials",
+      "label": "Reference",
+      "current": "Citace beze změny — jsou dobré (Becherovka, LASSELSBERGER, APM)",
+      "proposed": {
+        "headline": "Firmy, které s námi řeší devizy denně",
+        "note": "Texty citací ponechat. Přidat loga výrazněji nad fold na mobilu.",
+        "optional_add": "Krátký tag u každé reference: „export\" / „import\" / „pravidelné platby\""
+      },
+      "why": "Social proof funguje — jen ho propojit s typem firmy, aby se návštěvník viděl."
+    },
+    {
+      "id": "contact",
+      "label": "Kontakt / lead sekce",
+      "current": {
+        "headline": "Zajímají Vás bližší informace nebo se chcete stát naším klientem?",
+        "cta": "Napište nám nebo +420 267 220 202"
+      },
+      "proposed": {
+        "headline": "Nezávazně probereme vaši situaci",
+        "sub": "Napište nám měnový pár, směr plateb a orientační objem — ozve se vám specialista, ne call centrum.",
+        "form_fields": [
+          "Firma",
+          "Jméno",
+          "E-mail / telefon",
+          "Import / export / obojí",
+          "Měnový pár (např. EUR/CZK)",
+          "Co řešíte (směna / forward / platba)"
+        ],
+        "cta_primary": "Odeslat poptávku",
+        "cta_secondary": "+420 267 220 202 — dealing"
+      },
+      "why": "Formulář před-kvalifikuje lead. Telefon zůstane, ale není jediná cesta."
+    },
+    {
+      "id": "newsletter",
+      "label": "Newsletter",
+      "current": "Přihlaste se k odběru novinek emailem",
+      "proposed": {
+        "headline": "Kurzový přehled do mailu",
+        "body": "Krátké shrnutí trhu a tipy pro firmy — bez spamu, odhlášení jedním klikem.",
+        "cta": "Chci přehled"
+      },
+      "why": "„Novinky emailem\" je generické. CFO ocení tržní info — sekundární konverze, ne konkurence hlavnímu CTA."
+    },
+    {
+      "id": "nav",
+      "label": "Navigace — pojmenování",
+      "current": ["Pro klienty", "O nás", "Pro investory", "Stát se klientem"],
+      "proposed": {
+        "main": [
+          "Služby (dropdown)",
+          "Pro koho (Exportéři · Importéři · Pravidelné platby)",
+          "Jak to funguje",
+          "O nás"
+        ],
+        "cta": "Nezávazná poptávka",
+        "investors": "Investoři — odděleně v patičce nebo pravém horním rohu, ne v hlavní cestě"
+      },
+      "why": "Nový návštěvník nehledá „pro klienty\" — hledá řešení svého problému."
+    }
+  ],
+  "tone": {
+    "avoid": [
+      "moře, vlny, jednička v moři",
+      "garance NEJ (bez důkazu)",
+      "napište nám / kontaktujte nás (bez kontextu)",
+      "devizové obchody jako první slovo v hero",
+      "investorský obsah vedle klientského"
+    ],
+    "prefer": [
+      "fixní kurz, jistota, dopředu víte",
+      "faktura, splatnost, EUR, koruny",
+      "firma, dodavatel, partner",
+      "licence, 20 000 klientů (důkaz)",
+      "nezávazně, zjistit kurz, spočítat"
+    ]
+  }
+}

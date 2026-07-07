@@ -1,0 +1,92 @@
+@import '../../_setup/vars.scss';
+
+.uiVariantSwitch {
+  display: inline-flex;
+  align-items: center;
+  gap: $spacing-xs;
+  margin-bottom: $spacing-md;
+  padding: $spacing-xxs;
+  border: $border-width solid $border-color;
+  border-radius: $radius-md;
+}
+
+.uiVariantSwitch__label {
+  @include font-mono-label;
+  padding-inline: $spacing-xs;
+  color: $color-gray;
+}
+
+.uiVariantSwitch__btn {
+  @include font-caption;
+  padding: $spacing-xxs $spacing-sm;
+  border-radius: $radius-sm;
+  transition: background $transition-fast, color $transition-fast;
+
+  &.active {
+    background: $color-accent;
+    color: $color-white;
+  }
+
+  &:hover:not(.active) {
+    background: rgba($color-black, 0.05);
+  }
+}
+
+.uiShell {
+  @include container;
+  padding-block: $section-padding;
+  min-height: 60vh;
+
+  &--classic {
+    --ui-bg: #{$color-white};
+    --ui-text: #{$color-black};
+    background: var(--ui-bg);
+    color: var(--ui-text);
+  }
+
+  &--premium {
+    --ui-bg: #{$color-dark};
+    --ui-text: #{$color-white};
+    background: var(--ui-bg);
+    color: var(--ui-text);
+
+    .uiShell__desc,
+    .uiShell__note {
+      color: $color-light-gray;
+    }
+
+    .uiShell__placeholder {
+      border-color: rgba($color-white, 0.15);
+      background: rgba($color-white, 0.04);
+    }
+  }
+}
+
+.uiShell__title {
+  @include font-h1;
+  margin-bottom: $spacing-sm;
+}
+
+.uiShell__desc {
+  @include font-body;
+  color: $color-mid;
+  max-width: 640px;
+}
+
+.uiShell__placeholder {
+  margin-top: $spacing-xl;
+  padding: $spacing-xl;
+  border: 2px dashed $border-color;
+  border-radius: $radius-lg;
+  text-align: center;
+
+  p {
+    @include font-body;
+    margin-bottom: $spacing-sm;
+  }
+}
+
+.uiShell__note {
+  @include font-caption;
+  font-style: italic;
+}

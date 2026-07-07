@@ -1,0 +1,61 @@
+@import '../../_setup/vars.scss';
+
+.hubPage {
+  @include container;
+  padding-block: $section-padding;
+}
+
+.hubPage__hero {
+  max-width: 720px;
+  margin-bottom: $spacing-xl;
+}
+
+.hubPage__eyebrow {
+  @include font-mono-label;
+  color: $color-accent;
+  margin-bottom: $spacing-sm;
+}
+
+.hubPage__title {
+  @include font-h1;
+  margin-bottom: $spacing-md;
+}
+
+.hubPage__subtitle {
+  @include font-body;
+  color: $color-mid;
+  margin-bottom: $spacing-sm;
+}
+
+.hubPage__note {
+  @include font-caption;
+  font-style: italic;
+}
+
+.hubPage__phases {
+  display: grid;
+  gap: $spacing-sm;
+}
+
+.hubPage__phaseLink {
+  display: grid;
+  gap: $spacing-xs;
+  padding: $spacing-md;
+  border: $border-width solid $border-color;
+  border-radius: $radius-lg;
+  transition: border-color $transition-base, box-shadow $transition-base;
+
+  &:hover {
+    border-color: $color-accent;
+    box-shadow: 0 4px 16px rgba($color-accent, 0.08);
+  }
+}
+
+.hubPage__phaseLabel {
+  @include font-h3;
+}
+
+.hubPage__phaseDesc {
+  @include font-caption;
+  color: $color-mid;
+}

@@ -1,0 +1,63 @@
+@import '../../_setup/vars.scss';
+
+.tokensPage {
+  @include container;
+  padding-block: $section-padding;
+}
+
+.tokensPage__header {
+  max-width: 720px;
+  margin-bottom: $spacing-xl;
+}
+
+.tokensPage__title {
+  @include font-h1;
+  margin-bottom: $spacing-md;
+}
+
+.tokensPage__intro {
+  @include font-body;
+  color: $color-mid;
+}
+
+.tokensPage__grid {
+  display: grid;
+  gap: $spacing-md;
+  margin-bottom: $spacing-xl;
+
+  @include lg {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.tokensPage__group {
+  h2 {
+    @include font-h3;
+    margin-bottom: $spacing-sm;
+  }
+}
+
+.tokensPage__placeholder {
+  @include wireframe-box;
+  min-height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $color-gray;
+}
+
+.tokensPage__css h2 {
+  @include font-h2;
+  margin-bottom: $spacing-md;
+}
+
+.tokensPage__code {
+  padding: $spacing-md;
+  border-radius: $radius-md;
+  background: $color-dark;
+  color: #a8d4d4;
+  font-family: $font-mono;
+  font-size: 0.8125rem;
+  line-height: 1.6;
+  overflow-x: auto;
+}
