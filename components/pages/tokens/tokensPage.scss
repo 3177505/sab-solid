@@ -1,7 +1,8 @@
 @import '../../_setup/vars.scss';
 
 .tokensPage {
-  max-width: $content-max-width;
+  width: 100%;
+  max-width: none;
 }
 
 .tokensPage__grid {

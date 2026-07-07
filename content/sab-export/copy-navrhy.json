@@ -12,7 +12,7 @@
       {
         "id": "owner-import-export",
         "label": "Majitel import/export firmy",
-        "motivace": "Ví, že platí v EUR/USD, nechce prodělat — potřebuje scénář „co se stane\", ne finanční žargon"
+        "motivace": "Ví, že platí v EUR/USD, nechce prodělat — potřebuje srozumitelný scénář „co se stane\""
       },
       {
         "id": "office",
@@ -20,15 +20,38 @@
         "motivace": "Zadává platby, hledá jednoduchý postup a jasný kontakt — často první návštěvník webu"
       }
     ],
-    "princip": "Mluvíme na firmu, která obchoduje se zahraničím — ne na „investora\" ani „člověka u moře\". Každý text musí odpovědět: Co z toho má moje firma?"
+    "princip": "Oslovujeme firmy, které platí nebo inkasují v cizí měně. Texty vycházejí ze stávajícího obsahu sab.cz → služby, čísla i reference zůstávají, formulace nově vedou k poptávce."
   },
   "principles": [
-    "Výsledek místo metafory — ne „moře obchodů\", ale „víte dopředu, kolik zaplatíte\"",
-    "Scénář místo definice — faktura, splatnost, kurz dnes vs za 90 dní",
-    "CTA = konkrétní akce — ne „napište nám\", ale „chci fixní kurz\" / „zjistit kurz\"",
-    "Důvěra přes čísla a licenci — ne přes stock fotku",
-    "Dva jazyky na stránce: laický (majitel) + odborný (CFO) — stejná sekce, dvě úrovně detailu"
+    "Každý text odpovídá na otázku klienta — co z toho má moje firma?",
+    "Výsledek místo metafory — z „moře devizových obchodů\" se stane „víte dopředu, kolik zaplatíte\"",
+    "Scénář místo definice — konkrétní faktura, splatnost a kurz dnes vs. za 90 dní",
+    "CTA s konkrétním účelem — „nezávazná konzultace\", „chci fixní kurz na fakturu\", „zjistit kurz\"",
+    "Důvěra přes fakta — licence ČNB, 20 let na trhu a 20 000 klientů přímo v hlavní cestě stránkou",
+    "Dvě úrovně jazyka — srozumitelný scénář pro majitele, přesné termíny pro CFO ve stejné sekci"
   ],
+  "metaphor": {
+    "headline": "Metaphora moře zůstává",
+    "intro": "Moře, pohyb na hladině i plachetnice jsou součást značky SAB a nesou jasné sdělení: s dobrým partnerem je plavba jednoduchá. V redesignu tento motiv dostane abstraktní podobu: pohyb barev, plynulé přechody a elementy, které se doplňují.",
+    "ideas": [
+      {
+        "title": "Gradient jako směna",
+        "body": "Plynulý přechod z jedné barvy do druhé, beze ztráty. Stejně jako převod měn u SAB: přesně to, co do něj vložíte, dorazí na druhou stranu — žádné poplatky, žádné zbytečné ztráty."
+      },
+      {
+        "title": "Barva v pohybu",
+        "body": "Přelévání barvy v pozadí sekcí — jemný, klidný pohyb hladiny přeložený do abstraktní plochy. Stránka žije, obsah zůstává čitelný."
+      },
+      {
+        "title": "Elementy, které dorůstají",
+        "body": "Čísla, grafy a bloky se při skrolování skládají do celku. Vizuální řeč jistoty: hodnota roste a kompletuje se před očima klienta."
+      },
+      {
+        "title": "Kotva pro fixní kurz",
+        "body": "„Ukotvíme váš kurz\" — jediné místo, kde metafora vstupuje do textu. Fixace kurzu srozumitelná laikovi i přesná pro CFO."
+      }
+    ]
+  },
   "sections": [
     {
       "id": "meta",
@@ -41,7 +64,7 @@
         "title": "Devizové služby pro firmy | SAB Finance — jistota kurzu, platby, forward",
         "description": "Směna měn, zahraniční platby a zajištění kurzu pro firmy. Fixní kurz na fakturu, výhodné sazby, licencovaná platební instituce. 20 000 firemních klientů."
       },
-      "why": "SEO + první dojem: říkáme co děláme a pro koho. „NEJ kurzů\" je neověřitelné; „jistota kurzu\" je konkrétní benefit."
+      "why": "SEO a první dojem: říkáme, co děláme a pro koho. „Jistota kurzu\" je konkrétní a ověřitelný benefit, na kterém stránka dál staví."
     },
     {
       "id": "hero",
@@ -52,7 +75,7 @@
         "subheadline": "Devizové služby pro firmy, které importují, exportují nebo pravidelně platí do zahraničí. Směna, platby a fixní kurz na budoucí fakturu.",
         "supporting": "Licencovaná platební instituce · 20 let · 20 000 firemních klientů"
       },
-      "why": "Majitel firmy se pozná v problému (platba/inkaso v EUR). CFO slyší „fixní kurz\". Metafora moře neprodává jistotu."
+      "why": "Majitel firmy se pozná ve své situaci — platba nebo inkaso v EUR. CFO slyší „fixní kurz\". Headline říká přínos, kterým se web dál řídí."
     },
     {
       "id": "hero-cta",
@@ -65,7 +88,7 @@
         { "text": "Nezávazná konzultace", "role": "primární", "note": "Lead do formuláře / callback" },
         { "text": "Zjistit aktuální kurz", "role": "sekundární", "note": "Okamžitá hodnota bez registrace — widget EUR/CZK atd." }
       ],
-      "why": "Telefon jako jediná akce odfiltrovává část publika. Dva jasné vstupy: řeším riziko vs potřebuji kurz teď."
+      "why": "Telefon zůstává, ale doplní ho dva jasné vstupy podle situace klienta: řeším riziko vs. potřebuji kurz teď."
     },
     {
       "id": "hero-boxes",
@@ -101,7 +124,7 @@
         ],
         "format": "Horizontální pás — 4 položky, skenovatelné za 2 sekundy"
       },
-      "why": "CFO hledá licenci a objem. Majitel hledá „nejsou to podvodníci\". Statistiky ano, ale s kontextem důvěry."
+      "why": "CFO hledá licenci a objem, majitel jistotu důvěryhodné instituce. Stávající statistiky zůstávají — dostanou kontext důvěry."
     },
     {
       "id": "problem",
@@ -149,7 +172,7 @@
         },
         "cta": "Chci fixní kurz — nezávazně"
       },
-      "why": "„Kurzové riziko\" a „forward\" necháme, ale až pod scénářem. CFO dostane termín, majitel dostane příklad v korunách."
+      "why": "Pojmy „kurzové riziko\" i „forward\" zůstávají — přicházejí ale až pod scénářem. CFO dostane termín, majitel příklad v korunách."
     },
     {
       "id": "proc-sab",
@@ -173,14 +196,14 @@
         },
         {
           "title": "Licence ČNB",
-          "body": "Jsme platební instituce — vaše peníze a obchody pod dohledem, ne v šedé zóně."
+          "body": "Jsme platební instituce — vaše peníze a obchody pod dohledem regulátora."
         },
         {
-          "title": "Osobní dealer, ne chatbot",
+          "title": "Osobní dealer na telefonu",
           "body": "20 let na trhu, 20 000 firem — známe vaše měnové páry a reagujeme, když se kurz hne."
         }
       ],
-      "why": "Méně marketingových frází („absurdní poplatky\"), víc srovnání s reálnou alternativou (banka) a lidského servisu."
+      "why": "Stávající výhody zůstávají — dostanou konkrétnější formulace: srovnání s bankou a lidský servis místo obecných frází."
     },
     {
       "id": "services",
@@ -216,7 +239,7 @@
           "cta": "Nastavit alert"
         }
       ],
-      "why": "7 položek je moc. Seskupíme na 4 vstupy s „pro koho\" a vlastním CTA. Forward zůstane zvýrazněný."
+      "why": "Sedm stávajících položek seskupíme do čtyř vstupů — každý s určením „pro koho\" a vlastním CTA. Forward zůstává zvýrazněný."
     },
     {
       "id": "process",
@@ -243,7 +266,7 @@
           "body": "Telefonicky s dealingem, potvrzení emailem, peníze na cestě."
         }
       ],
-      "why": "„Rámcová smlouva\" jako krok 1 děsí. Nejdřív ukážeme, že stačí hovor — snížíme bariéru vstupu."
+      "why": "Kroky procesu zůstávají — mění se pořadí komunikace. Úvodní hovor jako první krok snižuje bariéru vstupu, smlouva přichází po domluvě."
     },
     {
       "id": "testimonials",
@@ -265,7 +288,7 @@
       },
       "proposed": {
         "headline": "Nezávazně probereme vaši situaci",
-        "sub": "Napište nám měnový pár, směr plateb a orientační objem — ozve se vám specialista, ne call centrum.",
+        "sub": "Napište nám měnový pár, směr plateb a orientační objem — ozve se vám přímo specialista dealingu.",
         "form_fields": [
           "Firma",
           "Jméno",
@@ -277,7 +300,7 @@
         "cta_primary": "Odeslat poptávku",
         "cta_secondary": "+420 267 220 202 — dealing"
       },
-      "why": "Formulář před-kvalifikuje lead. Telefon zůstane, ale není jediná cesta."
+      "why": "Formulář před-kvalifikuje poptávku — obchodník dostane kontext ještě před prvním hovorem. Telefon na dealing zůstává vedle formuláře."
     },
     {
       "id": "newsletter",
@@ -288,7 +311,7 @@
         "body": "Krátké shrnutí trhu a tipy pro firmy — bez spamu, odhlášení jedním klikem.",
         "cta": "Chci přehled"
       },
-      "why": "„Novinky emailem\" je generické. CFO ocení tržní info — sekundární konverze, ne konkurence hlavnímu CTA."
+      "why": "Z generických „novinek\" se stane tržní přehled, který CFO reálně ocení — sekundární konverze vedle hlavního CTA."
     },
     {
       "id": "nav",
@@ -302,25 +325,30 @@
           "O nás"
         ],
         "cta": "Nezávazná poptávka",
-        "investors": "Investoři — odděleně v patičce nebo pravém horním rohu, ne v hlavní cestě"
+        "investors": "Investoři — odděleně v patičce nebo pravém horním rohu, mimo hlavní klientskou cestu"
       },
-      "why": "Nový návštěvník nehledá „pro klienty\" — hledá řešení svého problému."
+      "why": "Navigace se přejmenuje podle toho, co návštěvník hledá — řešení svého problému. Stávající obsah se jen přeskupí."
     }
   ],
   "tone": {
+    "title": "Tón komunikace",
+    "intro": "Slovník, kterým web mluví na firemního klienta. Vlevo formulace, které v textech omezujeme — vpravo jazyk, na kterém stavíme.",
+    "avoidLabel": "Omezujeme",
+    "preferLabel": "Stavíme na",
     "avoid": [
-      "moře, vlny, jednička v moři",
-      "garance NEJ (bez důkazu)",
-      "napište nám / kontaktujte nás (bez kontextu)",
-      "devizové obchody jako první slovo v hero",
-      "investorský obsah vedle klientského"
+      "superlativy bez důkazu („garance NEJ\")",
+      "výzvy bez účelu („napište nám\")",
+      "žargon jako první kontakt",
+      "investorský obsah v klientské cestě",
+      "metafora jako argument"
     ],
     "prefer": [
       "fixní kurz, jistota, dopředu víte",
       "faktura, splatnost, EUR, koruny",
       "firma, dodavatel, partner",
-      "licence, 20 000 klientů (důkaz)",
-      "nezávazně, zjistit kurz, spočítat"
+      "licence ČNB, 20 000 klientů — důkazy",
+      "nezávazně, zjistit kurz, spočítat",
+      "moře v pohybu barev — gradienty, přechody beze ztráty"
     ]
   }
 }

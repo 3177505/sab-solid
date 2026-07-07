@@ -1,83 +1,107 @@
 @import '../_setup/vars.scss';
 
+@mixin dark-surface {
+  background: rgba($color-white, 0.04);
+  border: 1px solid rgba($color-white, 0.14);
+  border-radius: $radius-md;
+}
+
 .presentationPage--dark {
-  .analysisBlock {
-    border-bottom-color: rgba($color-white, 0.12);
-
-    &--highlight {
-      background: rgba($color-accent-light, 0.08);
-      border-color: rgba($color-accent-light, 0.2);
-      border-bottom-color: rgba($color-accent-light, 0.2);
-    }
-  }
-
-  .analysisCard {
-    border-color: rgba($color-white, 0.12);
-    background: rgba($color-white, 0.03);
-
-    p {
-      color: rgba($color-white, 0.6);
-    }
-  }
-
-  .analysisInsight {
-    background: rgba($color-white, 0.04);
-    color: rgba($color-white, 0.65);
-    border-left-color: $color-accent-light;
-  }
-
-  .analysisHeadline {
-    color: $color-accent-light;
-  }
-
-  .analysisProblems span {
-    color: rgba($color-white, 0.65);
-  }
-
-  .copyPage__princip {
-    color: rgba($color-white, 0.65);
-    background: rgba($color-accent-light, 0.08);
-    border-left-color: $color-accent-light;
+  .presentationPage__lead {
+    color: rgba($color-white, 0.55);
   }
 
   .copyPage__block,
   .copyPage__section {
     border-bottom-color: rgba($color-white, 0.12);
+
+    h2 {
+      color: $color-white;
+    }
   }
 
   .copyPage__card {
-    border-color: rgba($color-white, 0.12);
-    background: rgba($color-white, 0.03);
+    @include dark-surface;
+    padding: $spacing-md;
+
+    h3 {
+      color: $color-white;
+    }
 
     p {
       color: rgba($color-white, 0.6);
     }
   }
 
-  .copyPage__col--old pre {
-    background: rgba($color-warning, 0.12);
-    border-color: rgba($color-warning, 0.3);
-    color: rgba($color-white, 0.85);
+  .copyPage__list li {
+    color: rgba($color-white, 0.75);
+
+    &::before {
+      color: rgba($color-copy, 0.8);
+    }
   }
 
-  .copyPage__col--new pre {
-    background: rgba($color-accent-light, 0.12);
-    border-color: rgba($color-accent-light, 0.3);
-    color: rgba($color-white, 0.85);
+  .copyPage__col {
+    h3 {
+      color: rgba($color-white, 0.9);
+    }
+
+    pre {
+      @include dark-surface;
+      color: rgba($color-white, 0.8);
+    }
+
+    &--new h3 {
+      color: rgba($color-copy, 0.95);
+    }
+
+    &--new pre {
+      background: rgba($color-copy, 0.05);
+      border-color: rgba($color-copy, 0.25);
+    }
   }
 
   .copyPage__why {
-    color: rgba($color-white, 0.55);
+    color: rgba($color-copy, 0.75);
+  }
+
+  .copyPage__tags li {
+    @include dark-surface;
+    border-radius: $radius-full;
+    color: rgba($color-white, 0.5);
+  }
+
+  .copyPage__tags--good li {
+    background: rgba($color-copy, 0.08);
+    border-color: rgba($color-copy, 0.3);
+    color: rgba($color-copy, 0.9);
+  }
+
+  .copyPage__toneCol h3 {
+    color: rgba($color-white, 0.45);
+  }
+
+  .copyPage__toneCol:last-child h3 {
+    color: rgba($color-copy, 0.95);
+  }
+
+  .copyPage__metaphor .copyPage__card h3 {
+    color: rgba($color-copy, 0.95);
   }
 
   .tokensPage__placeholder {
-    border-color: rgba($color-white, 0.15);
-    background: rgba($color-white, 0.04);
+    @include dark-surface;
     color: rgba($color-white, 0.35);
+    border-style: dashed;
+  }
+
+  .tokensPage__group h2,
+  .tokensPage__css h2 {
+    color: $color-white;
   }
 
   .tokensPage__code {
-    background: rgba($color-white, 0.06);
-    border: $border-width solid rgba($color-white, 0.1);
+    @include dark-surface;
+    color: rgba($color-white, 0.75);
   }
 }

@@ -5,7 +5,7 @@ export type PresentationStep = {
 
 export const PRESENTATION_STEPS: PresentationStep[] = [
   { path: '/', title: 'Přehled' },
-  { path: '/analysis', title: 'Audit & strategie' },
+  { path: '/analysis', title: 'Audit webu' },
   { path: '/copy', title: 'UX Copywriting' },
   { path: '/ux', title: 'UX Návrh' },
   { path: '/tokens', title: 'Style guide' },

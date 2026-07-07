@@ -30,39 +30,16 @@ export type Dictionary = {
   analysis: {
     title: string
     intro: string
-    sections: {
-      who: { title: string; items: string[] }
-      core: { title: string; items: string[]; insight: string }
-      audiences: {
-        title: string
-        groups: Array<{ name: string; need: string }>
-        tension: string
-      }
-      current: {
-        title: string
-        problems: Array<{ title: string; desc: string }>
-      }
-      goals: {
-        title: string
-        primaryLabel: string
-        secondaryLabel: string
-        primary: string[]
-        secondary: string[]
-      }
-      positioning: {
-        title: string
-        headline: string
-        pillars: Array<{ title: string; desc: string }>
-        cta: { bad: string[]; good: string[] }
-      }
-      ia: {
-        title: string
-        main: string[]
-        separated: string
-        cta: string
-      }
-      principles: { title: string; items: string[] }
-    }
+    sections: Array<{
+      title: string
+      summary?: string
+      layout?: 'full' | 'half' | 'row'
+      itemsLayout?: 'stack' | 'grid-2' | 'cols-2'
+      tone?: 'default' | 'note' | 'muted'
+      aside?: string
+      dividerBefore?: 'arrow' | 'line'
+      items: Array<{ text: string; emphasis?: boolean }>
+    }>
   }
   ux: {
     title: string

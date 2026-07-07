@@ -26,7 +26,7 @@ export const dict: Dictionary = {
   },
   hub: {
     title: 'Redesign homepage sab.cz',
-    meta: 'Tereza Nováková · 8.7.2026 · Výběrové řízení · UX Workshop',
+    meta: 'Tereza Nováková · 8.7.2026 · Výběrové řízení · UX Workshop · Solidpixels',
     phases: [
       '01 · Audit',
       '02 · UX Copywriting',
@@ -39,137 +39,176 @@ export const dict: Dictionary = {
     ],
   },
   analysis: {
-    title: 'Audit & strategie',
+    title: 'Audit webu',
     intro:
-      'SAB Finance není retailová banka. Je to licencovaná platební instituce pro B2B devizové obchody. Web musí generovat kvalifikované leady a srozumitelně vysvětlit produkty — zejména zajištění kurzového rizika.',
-    sections: {
-      who: {
-        title: 'Kdo je SAB Finance',
+      'Výchozí bod redesignu: audit současné homepage sab.cz z pohledu firemního klienta: současný stav webu, kde stránka ztrácí lead → návrh postupu redesignu.',
+    sections: [
+      {
+        title: 'SAB Finance v kostce',
+        summary: 'Společnost která pomáhá firmám řídit kurzové riziko v zahraničním obchodu',
+        layout: 'full',
+        itemsLayout: 'grid-2',
         items: [
-          'Licencovaná platební instituce (ČNB) — devizové obchody, zahraniční platby, zajištění kurzového rizika.',
-          '20+ let na trhu, 20 000 firemních klientů, 1,74 mil. vypořádaných obchodů.',
-          'Osobní dealing po telefonu + online platforma — hybridní model, ne self-service neobank.',
-          'Sídlo Praha, provozovna Zlín. Klienti po celé ČR — převážně SME a střední firmy.',
+          {
+            text: 'Licencovaná platební instituce — devizové obchody, zahraniční platby a zajištění kurzového rizika pro firmy v mezinárodním obchodu.',
+          },
+          {
+            text: 'Kompletní FX servis — směna, platby, forward, hlídání kurzů a poradenství pod jednou střechou.',
+          },
+          {
+            text: 'Jistota kurzu — fixní kurz na známou fakturu, osobní dealing doplněný online platformou.',
+          },
+          {
+            text: '20 let praxe, 20 000 firemních klientů — důvěryhodný partner pro SME a střední firmy v celé ČR.',
+          },
         ],
       },
-      core: {
-        title: 'Co je jádro byznysu (ne „banka pro všechny")',
+      {
+        title: 'Čím se liší',
+        layout: 'row',
         items: [
-          'Jistota kurzu v době, kdy firma ví o budoucí platbě nebo inkasu — měnový forward.',
-          'Výhodný kurz při okamžité směně — konkurence vůči bankám bez absurdních poplatků.',
-          'Rychlé vypořádání plateb do/z zahraničí — operativní FX, ne investiční produkty.',
-          'Hlídání kurzů a poradenství — dlouhodobý vztah, ne jednorázová transakce.',
-        ],
-        insight:
-          'Hlavní emoce klienta: jistota a kontrola nad kurzovým rizikem. Ne „moře obchodů", ne lifestyle banking.',
-      },
-      audiences: {
-        title: 'Komu mluvíme',
-        groups: [
           {
-            name: 'Finanční manažer / CFO',
-            need: 'Rozumí forwardům, chce rychlý kurz, transparentní podmínky, méně administrativy než u banky.',
+            text: 'Kurz na míru — individuální sazby podle objemu obchodů a dlouhodobého vztahu s klientem.',
+            emphasis: true,
           },
           {
-            name: 'Majitel exportní / importní firmy',
-            need: 'Ví, že platí v EUR, nechce prodělat na kurzu — nepotřebuje žargon, potřebuje scénář „co se stane".',
+            text: 'Forward jako standard — klíčový produkt pro firmy s pravidelným exportem a importem.',
+            emphasis: true,
           },
           {
-            name: 'Účetní / office manager',
-            need: 'Zadává platby, potřebuje jednoduchý proces a jasný kontakt — často první touchpoint na webu.',
-          },
-        ],
-        tension:
-          'Klíčová tenze: část publika finančním produktům rozumí, část ne. Web musí fungovat pro oba — bez bankovního žargonu, ale odborně správně.',
-      },
-      current: {
-        title: 'Co dnes nefunguje (sab.cz)',
-        problems: [
-          {
-            title: 'Slabá lead-generation',
-            desc: 'Hlavní akce = „zavolejte nám". Chybí řízený vstup do obchodního procesu a před-kvalifikace.',
-          },
-          {
-            title: 'Produkty schované v kotvách',
-            desc: 'Vše pod „Pro klienty" — forward, směna, platby nejsou samostatné vstupy.',
-          },
-          {
-            title: 'Mix obchodního a investorského obsahu',
-            desc: 'Valné hromady a úpis akcií v hlavní navigaci vedle služeb pro firmy — matoucí pro nového klienta.',
-          },
-          {
-            title: 'Metafory místo jasnosti',
-            desc: '„Jednička v moři devizových obchodů" — neříká, co firma získá. Fotka moře neprodává jistotu kurzu.',
-          },
-          {
-            title: 'Forward nevysvětlený',
-            desc: 'Laik nepochopí, kdy forward dává smysl, jaký je rozdíl oproti „počkám na kurz".',
+            text: 'Jeden kontakt, celý proces — od konzultace po vypořádání platby u obchodníka.',
+            emphasis: true,
           },
         ],
       },
-      goals: {
-        title: 'Cíle redesignu',
-        primaryLabel: 'Primární',
-        secondaryLabel: 'Sekundární',
-        primary: [
-          'Generování kvalitních B2B leadů',
-          'Před-kvalifikace klienta (objem, měny, import/export)',
-          'Srozumitelné vysvětlení služeb pro méně zkušené',
-        ],
-        secondary: [
-          'Důvěryhodná značka — licence, čísla, reference',
-          'Designový systém pro další materiály',
-          'SEO na devizové služby a FX zajištění',
-        ],
-      },
-      positioning: {
-        title: 'Navrhované positioning & messaging',
-        headline: 'Jistota kurzu pro firmy, které obchodují se zahraničím.',
-        pillars: [
-          {
-            title: 'Jistota',
-            desc: 'Fixní kurz na známou fakturu — víte dopředu, kolik zaplatíte nebo dostanete.',
-          },
-          {
-            title: 'Výhodný kurz',
-            desc: 'Konkurenceschopné sazby bez skrytých poplatků — srovnání s bankou jako důkaz.',
-          },
-          {
-            title: 'Rychlost & osobní servis',
-            desc: 'Obchod telefonicky během minut, vypořádání bleskově — lidský dealing, ne chatbot.',
-          },
-        ],
-        cta: {
-          bad: ['Napište nám', 'Zavolejte nám', 'Kontakt'],
-          good: [
-            'Nezávazná konzultace',
-            'Zjistit aktuální kurz',
-            'Chci fixní kurz na fakturu',
-            'Spočítat úsporu oproti bance',
-          ],
-        },
-      },
-      ia: {
-        title: 'Navrhovaná informační architektura',
-        main: [
-          'Služby (Směna · Platby · Zajištění kurzu · Hlídání kurzů · Poradenství)',
-          'Pro koho (Exportéři · Importéři · Pravidelné platby)',
-          'Jak to funguje',
-          'O nás',
-        ],
-        separated: 'Investoři — odděleně (horní pravý roh / patička), ne v hlavní klientské cestě.',
-        cta: 'Stát se klientem / Nezávazná poptávka — vždy viditelné.',
-      },
-      principles: {
-        title: 'Design principy (z auditu)',
+      {
+        title: 'Co to není',
+        layout: 'row',
+        tone: 'muted',
         items: [
-          'Od shora dolů: hero → důvěra → problém → produkty → forward vysvětlení → proces → reference → lead formulář.',
-          'Čísla jako důkaz (20 000 klientů) — animované counters až v UI, ne jako dekorace.',
-          'Scénáře místo definic: „Máte fakturu 50 000 EUR za 60 dní…"',
-          'Dvě UI varianty se stejnou UX kostrou — Classic pro konzervativní B2B, Premium pro wow pitch.',
+          { text: 'Retailové bankovnictví — služby pro fyzické osoby a rodinné finance.' },
+          { text: 'Hypotéky a spotřebitelské úvěry — mimo rozsah služeb.' },
+          { text: 'Investiční produkty — zaměření na operativní FX a platební služby.' },
         ],
       },
-    },
+      {
+        title: 'Kdo na web přichází',
+        layout: 'full',
+        items: [
+          { text: 'CFO — rozumí produktům, chce rychlý kurz a jasné podmínky.' },
+          { text: 'Majitel firmy — nechce prodělat na kurzu, potřebuje srozumitelný scénář.' },
+          { text: 'Účetní — často první kontakt, hledá jednoduchý postup a jasný kontakt.' },
+        ],
+        aside:
+          'Na web přicházejí zejména experti, ale i laici. Forward, měnové páry a vypořádání musí být srozumitelné i bez finančního žargonu. Musí být hned jasné, jaké služby spolecnost nabízí a pro koho jsou vhodné.',
+      },
+      {
+        title: 'Co se na sab.cz dnes děje',
+        layout: 'full',
+        dividerBefore: 'arrow',
+        items: [
+          {
+            text: 'Hero stojí na metafoře — „moře devizových obchodů" neříká, jaký problém web návštěvníkovi vyřeší.',
+          },
+          {
+            text: 'Jediná výzva k akci je telefonát — chybí mezikrok pro klienta, který ještě není připraven volat.',
+            emphasis: true,
+          },
+          {
+            text: 'Služby jsou ukryté v navigaci — forward, směna i platby žijí pod jednou položkou „Pro klienty".',
+          },
+          {
+            text: 'Dvě publika na jedné cestě — investorský obsah se v navigaci míchá se službami pro firmy.',
+          },
+          {
+            text: 'Forward zůstává nevysvětlený — návštěvník bez finančního zázemí nepozná, kdy ho potřebuje.',
+            emphasis: true,
+          },
+        ],
+      },
+      {
+        title: 'Jak současná prezentace ovlivňuje komunikaci se zájemcem',
+        layout: 'row',
+        items: [
+          {
+            text: 'Zájemce přichází nepřipravený — obchodník věnuje první hovor základům místo konkrétní potřeby.',
+          },
+          {
+            text: 'Kontakt nenese kontext — chybí objem, měnový pár i směr obchodu.',
+            emphasis: true,
+          },
+          {
+            text: 'Poptávky nelze prioritizovat — firma nepozná připraveného klienta od zvědavého návštěvníka.',
+          },
+          {
+            text: 'Konkurenční výhoda se ztrácí — forward splývá s ostatním obsahem webu.',
+          },
+          {
+            text: 'Chybí důvod preferovat SAB — zájemce nevidí rozdíl oproti nabídce banky.',
+            emphasis: true,
+          },
+          {
+            text: 'Důvěra se buduje pomalu — licence, čísla a reference stojí mimo hlavní cestu návštěvníka.',
+          },
+        ],
+      },
+      {
+        title: 'Co na webu změnit',
+        layout: 'full',
+        dividerBefore: 'arrow',
+        itemsLayout: 'cols-2',
+        items: [
+          {
+            text: 'Hero říká přínos — místo „Jsme jedničkou v moři devizových obchodů!" např. „Víte dopředu, kolik zaplatíte v cizí měně."',
+            emphasis: true,
+          },
+          {
+            text: 'Dvě jasné akce — „Nezávazná konzultace" a „Zjistit aktuální kurz" nahradí telefon jako jediný vstup.',
+            emphasis: true,
+          },
+          {
+            text: 'Nová sekce s problémem — importér a exportér se poznají ve svém scénáři dřív, než padne slovo forward.',
+          },
+          {
+            text: 'Forward s příkladem — faktura 50 000 EUR, splatnost 90 dní: kurz dnes vs. kurz za tři měsíce.',
+          },
+          {
+            text: 'Služby ze 7 položek na 4 vstupy — každý s určením „pro koho" a vlastním CTA, forward zvýrazněný.',
+          },
+          {
+            text: 'Proces bez bariéry — prvním krokem je hovor se specialistou, rámcová smlouva až po domluvě.',
+          },
+          {
+            text: 'Formulář s před-kvalifikací — firma, měnový pár, měsíční objem, import nebo export.',
+          },
+          {
+            text: 'Navigace podle řešení — položka „Pro klienty" se rozpadne na služby, investoři mimo hlavní menu.',
+          },
+        ],
+      },
+      {
+        title: 'Co je cílem redesignu',
+        layout: 'full',
+        tone: 'note',
+        items: [
+          {
+            text: 'Generovat kvalifikované poptávky — návštěvník projde od problému k formuláři, který obchodníkovi předá objem, měnu i směr obchodu.',
+          },
+          {
+            text: 'Vysvětlit forward srozumitelně — konkrétní scénář s fakturou a splatností dá i laikovi důvod o zajištění uvažovat.',
+          },
+          {
+            text: 'Postavit důvěru na faktech — licence ČNB, 20 let na trhu a 20 000 klientů viditelné přímo v hlavní cestě stránkou.',
+          },
+          {
+            text: 'Oddělit publika — firemní klient a investor dostanou každý svou cestu, homepage slouží obchodu.',
+          },
+          {
+            text: 'Založit designový systém — style guide, ze kterého vychází obě UI varianty i další materiály firmy.',
+          },
+        ],
+      },
+    ],
   },
   ux: {
     title: 'UX kostra homepage',
@@ -178,11 +217,11 @@ export const dict: Dictionary = {
     sections: {
       nav: {
         label: 'Navigace + primární CTA',
-        hint: 'Oddělení klientského obsahu od investorského. Služby seskupené v dropdownu. CTA „Nezávazná poptávka" vždy viditelné — ne schované v patičce.',
+        hint: 'Oddělení klientského obsahu od investorského. Služby seskupené v dropdownu. CTA „Nezávazná poptávka" trvale viditelné v hlavní liště.',
       },
       hero: {
         label: 'Hero — hodnota + 2 cesty',
-        hint: 'Headline = jistota kurzu, ne metafora moře. Primární CTA: poptávka / konzultace. Sekundární: živý kurz nebo kalkulačka — okamžitá hodnota bez registrace.',
+        hint: 'Headline = jistota kurzu, konkrétní přínos pro firmu. Primární CTA: poptávka / konzultace. Sekundární: živý kurz nebo kalkulačka — okamžitá hodnota bez registrace.',
       },
       trust: {
         label: 'Trust strip — licence, roky, čísla',
@@ -206,7 +245,7 @@ export const dict: Dictionary = {
       },
       proof: {
         label: 'Reference + loga klientů',
-        hint: 'Becherovka, LASSELSBERGER atd. — B2B social proof. Citát finančního manažera, ne marketingové fráze.',
+        hint: 'Becherovka, LASSELSBERGER atd. — B2B social proof. Citát finančního manažera s konkrétní zkušeností.',
       },
       lead: {
         label: 'Lead formulář — před-kvalifikace',
@@ -245,7 +284,7 @@ export const dict: Dictionary = {
       'Hero: headline, podtext, primární CTA, sekundární CTA — vše pod sebou',
       'Služby jako vertikální karty — forward první / zvýrazněný',
       'Formulář na plnou šířku — minimum polí nad foldem',
-      'Telefon jako sticky FAB nebo v patičce, ne jako jediná akce v hero',
+      'Telefon jako sticky FAB nebo v patičce — jedna z více cest ke kontaktu',
     ],
   },
   mobileUi: {

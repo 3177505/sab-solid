@@ -64,6 +64,12 @@ $bar-height: 36px;
 
 .presentationMain {
   min-height: calc(100vh - #{$bar-height});
+
+  &:has(.presentationPage--dark),
+  &:has(.hubPage) {
+    background: $color-black;
+    color: $color-white;
+  }
 }
 
 .presentationMain--canvas {
@@ -92,6 +98,7 @@ $bar-height: 36px;
 
 .presentationPage--dark {
   min-height: calc(100vh - 36px);
+  width: 100%;
   max-width: none;
   margin: 0;
   padding: clamp(2rem, 6vw, 4rem) clamp(1.5rem, 5vw, 3rem);
