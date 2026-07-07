@@ -1,0 +1,91 @@
+@import '../_setup/vars.scss';
+
+$bar-bg: #1c2430;
+$bar-height: 36px;
+
+.presentationBar {
+  position: sticky;
+  top: 0;
+  z-index: $z-index-nav;
+  height: $bar-height;
+  border-bottom: 1px solid rgba($color-white, 0.08);
+  background: $bar-bg;
+}
+
+.presentationBar__inner {
+  display: grid;
+  grid-template-columns: 36px 1fr 36px;
+  align-items: center;
+  height: 100%;
+  max-width: 100%;
+  padding-inline: clamp(0.25rem, 2vw, 0.75rem);
+}
+
+.presentationBar__arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: $radius-sm;
+  font-size: 0.875rem;
+  color: rgba($color-white, 0.85);
+  transition: background $transition-fast, color $transition-fast;
+
+  &:hover {
+    color: $color-accent-light;
+  }
+
+  &--disabled {
+    opacity: 0.25;
+    pointer-events: none;
+  }
+}
+
+.presentationBar__title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: $spacing-sm;
+  min-width: 0;
+}
+
+.presentationBar__name,
+.presentationBar__step {
+  @include font-mono-label;
+  font-size: 0.6875rem;
+  color: rgba($color-white, 0.9);
+  white-space: nowrap;
+}
+
+.presentationBar__step {
+  color: rgba($color-white, 0.55);
+}
+
+.presentationMain {
+  min-height: calc(100vh - #{$bar-height});
+}
+
+.presentationMain--canvas {
+  min-height: calc(100vh - #{$bar-height});
+  padding: 0;
+}
+
+.presentationPage {
+  @include container;
+  padding-block: clamp(1.5rem, 4vw, 2.5rem);
+}
+
+.presentationPage__lead {
+  @include font-body;
+  color: $color-mid;
+  margin-bottom: $spacing-xl;
+  max-width: 800px;
+}
+
+.presentationPage--full {
+  max-width: none;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}

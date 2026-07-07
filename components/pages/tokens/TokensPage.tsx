@@ -8,11 +8,8 @@ export default function TokensPage({ dict }: TokensPageProps) {
   const { tokens } = dict
 
   return (
-    <article className="tokensPage">
-      <header className="tokensPage__header">
-        <h1 className="tokensPage__title">{tokens.title}</h1>
-        <p className="tokensPage__intro">{tokens.intro}</p>
-      </header>
+    <article className="tokensPage presentationPage">
+      <p className="presentationPage__lead">{tokens.intro}</p>
 
       <div className="tokensPage__grid">
         {tokens.groups.map((group) => (
@@ -26,7 +23,7 @@ export default function TokensPage({ dict }: TokensPageProps) {
       </div>
 
       <section className="tokensPage__css">
-        <h2>CSS custom properties</h2>
+        <h2>Proměnné</h2>
         <pre className="tokensPage__code">{`:root {
   /* Classic */
   --color-primary: #0d6e6e;

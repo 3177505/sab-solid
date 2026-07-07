@@ -12,6 +12,8 @@ export type Dictionary = {
     uiPremium: string
     tokens: string
     copy: string
+    mobileUx: string
+    mobileUi: string
     external: string
     ariaLabel: string
   }
@@ -21,11 +23,9 @@ export type Dictionary = {
     switchAria: string
   }
   hub: {
-    eyebrow: string
     title: string
-    subtitle: string
-    phases: Array<{ href: string; label: string; desc: string }>
-    note: string
+    meta: string
+    phases: string[]
   }
   analysis: {
     title: string
@@ -89,5 +89,17 @@ export type Dictionary = {
     title: string
     intro: string
     groups: string[]
+  }
+  mobileUx: {
+    title: string
+    intro: string
+    viewport: string
+    notesTitle: string
+    notes: string[]
+  }
+  mobileUi: {
+    title: string
+    intro: string
+    viewport: string
   }
 }

@@ -1,4 +1,5 @@
 import UiVariantSwitch from '@/components/ui/UiVariantSwitch'
+import LanguageSwitcher from '@/components/languageSwitcher/LanguageSwitcher'
 import type { Dictionary } from '@/content/copy'
 
 type UiShellProps = {
@@ -7,19 +8,14 @@ type UiShellProps = {
 }
 
 export default function UiShell({ dict, variant }: UiShellProps) {
-  const copy = variant === 'classic' ? dict.ui.classic : dict.ui.premium
-
   return (
-    <article className={`uiShell uiShell--${variant}`}>
-      <header className="uiShell__header">
+    <article className={`uiShell uiShell--${variant} presentationPage--full`}>
+      <div className="uiShell__toolbar">
         <UiVariantSwitch dict={dict.ui} />
-        <h1 className="uiShell__title">{copy.title}</h1>
-        <p className="uiShell__desc">{copy.desc}</p>
-      </header>
-
-      <div className="uiShell__placeholder">
-        <p>Homepage UI — stejná UX kostra jako na /ux</p>
-        <p className="uiShell__note">Vizuální design doplníme v dalším kroku.</p>
+        <LanguageSwitcher labels={dict.lang} />
+      </div>
+      <div className="uiShell__canvas">
+        <p className="uiShell__placeholder">Homepage UI — vizuální design doplníme v dalším kroku.</p>
       </div>
     </article>
   )

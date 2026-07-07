@@ -1,8 +1,7 @@
 @import '../../_setup/vars.scss';
 
 .copyPage {
-  @include container;
-  padding-block: $section-padding;
+  max-width: $content-max-width;
 }
 
 .copyPage__header {

@@ -1,32 +1,19 @@
 @import '../../_setup/vars.scss';
 
 .uxPage {
-  @include container;
-  padding-block: $section-padding;
+  width: 100%;
 }
 
-.uxPage__header {
-  max-width: 800px;
-  margin-bottom: $spacing-xl;
-}
-
-.uxPage__title {
-  @include font-h1;
-  margin-bottom: $spacing-md;
-}
-
-.uxPage__intro {
-  @include font-body;
-  color: $color-mid;
-}
-
-.uxPage__wireframe {
+.uxPage__wireframe,
+.uxWireframe {
   display: grid;
-  gap: $spacing-lg;
-  padding: $spacing-lg;
-  border: 2px solid rgba($color-black, 0.08);
-  border-radius: $radius-lg;
-  background: #fafafa;
+  gap: $spacing-md;
+  width: 100%;
+}
+
+.uxWireframe--mobile {
+  gap: $spacing-sm;
+  padding: $spacing-sm;
 }
 
 .uxSection {
@@ -98,10 +85,6 @@
     border-style: solid;
     border-color: $color-accent;
     background: rgba($color-accent, 0.04);
-
-    @include lg {
-      grid-column: span 1;
-    }
   }
 
   &--formFields {
@@ -131,4 +114,50 @@
   @include lg {
     grid-template-columns: 1fr 1fr 1.4fr 1fr;
   }
+}
+
+.uxSection__content--mobileNav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: $spacing-xs;
+}
+
+.uxBox--logo {
+  flex: 0 0 48px;
+  min-height: 28px;
+}
+
+.uxBox--burger {
+  flex: 0 0 32px;
+  min-height: 28px;
+}
+
+.uxBox--ctaMobile {
+  flex: 0 0 72px;
+  min-height: 28px;
+}
+
+.uxSection__content--stack {
+  display: grid;
+  gap: $spacing-xs;
+}
+
+.uxBox--stack {
+  min-height: 56px;
+
+  &--short {
+    min-height: 36px;
+  }
+
+  &--featured {
+    border-style: solid;
+    border-color: $color-accent;
+    background: rgba($color-accent, 0.04);
+    min-height: 72px;
+  }
+}
+
+.presentationPage--full .uxWireframe {
+  padding: clamp(1rem, 3vw, 2rem);
 }

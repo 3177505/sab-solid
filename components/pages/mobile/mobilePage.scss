@@ -1,0 +1,26 @@
+@import '../../_setup/vars.scss';
+
+.mobilePage {
+  width: 100%;
+  min-height: calc(100vh - #{$header-height});
+  display: flex;
+  justify-content: center;
+  background: #f0f0f0;
+}
+
+.mobilePage__viewport {
+  width: 100%;
+  max-width: 390px;
+  min-height: calc(100vh - #{$header-height});
+  background: #fafafa;
+  box-shadow: 0 0 0 1px rgba($color-black, 0.06);
+}
+
+.mobilePage--ui .mobilePage__viewport {
+  overflow: hidden;
+}
+
+.mobilePage__uiCanvas {
+  min-height: calc(100vh - #{$header-height});
+  border-radius: 0;
+}

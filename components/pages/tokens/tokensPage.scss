@@ -1,23 +1,7 @@
 @import '../../_setup/vars.scss';
 
 .tokensPage {
-  @include container;
-  padding-block: $section-padding;
-}
-
-.tokensPage__header {
-  max-width: 720px;
-  margin-bottom: $spacing-xl;
-}
-
-.tokensPage__title {
-  @include font-h1;
-  margin-bottom: $spacing-md;
-}
-
-.tokensPage__intro {
-  @include font-body;
-  color: $color-mid;
+  max-width: $content-max-width;
 }
 
 .tokensPage__grid {

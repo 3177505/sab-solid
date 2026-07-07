@@ -8,11 +8,8 @@ export default function AnalysisPage({ dict }: AnalysisPageProps) {
   const { analysis: a } = dict
 
   return (
-    <article className="analysisPage">
-      <header className="analysisPage__header">
-        <h1 className="analysisPage__title">{a.title}</h1>
-        <p className="analysisPage__intro">{a.intro}</p>
-      </header>
+    <article className="analysisPage presentationPage">
+      <p className="presentationPage__lead">{a.intro}</p>
 
       <section className="analysisBlock">
         <h2>{a.sections.who.title}</h2>

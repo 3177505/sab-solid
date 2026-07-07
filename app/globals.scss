@@ -5,8 +5,7 @@
 @import '../components/_setup/setup.scss';
 
 // Layout
-@import '../components/layout/projectNav.scss';
-@import '../components/languageSwitcher/languageSwitcher.scss';
+@import '../components/layout/presentationBar.scss';
 
 // Utils
 @import '../components/utils/infoHint/infoHint.scss';
@@ -18,3 +17,4 @@
 @import '../components/pages/ui/uiShell.scss';
 @import '../components/pages/tokens/tokensPage.scss';
 @import '../components/pages/copy/copyPage.scss';
+@import '../components/pages/mobile/mobilePage.scss';

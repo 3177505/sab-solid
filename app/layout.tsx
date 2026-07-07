@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
-import ProjectNav from '@/components/layout/ProjectNav'
+import Image from 'next/image'
+import PresentationBar from '@/components/layout/PresentationBar'
 import { getCopy } from '@/content/copy'
 import './globals.scss'
 
@@ -8,6 +9,10 @@ const copy = getCopy()
 export const metadata: Metadata = {
   title: copy.meta.siteName,
   description: copy.meta.siteDescription,
+  icons: {
+    icon: '/pictogram.png',
+    apple: '/pictogram.png',
+  },
 }
 
 export default function RootLayout({
@@ -15,13 +20,11 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
-  const dict = getCopy()
-
   return (
     <html lang="cs">
       <body>
-        <ProjectNav nav={dict.nav} lang={dict.lang} />
-        <main>{children}</main>
+        <PresentationBar />
+        <main className="presentationMain">{children}</main>
       </body>
     </html>
   )

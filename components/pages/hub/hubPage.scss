@@ -1,61 +1,49 @@
 @import '../../_setup/vars.scss';
 
 .hubPage {
-  @include container;
-  padding-block: $section-padding;
+  min-height: calc(100vh - 36px);
+  padding: clamp(2rem, 6vw, 4rem) clamp(1.5rem, 5vw, 3rem);
+  background: $color-black;
+  color: $color-white;
 }
 
-.hubPage__hero {
-  max-width: 720px;
+.hubPage__header {
   margin-bottom: $spacing-xl;
 }
 
-.hubPage__eyebrow {
-  @include font-mono-label;
-  color: $color-accent;
-  margin-bottom: $spacing-sm;
+.hubPage__pictogram {
+  display: block;
+  width: 48px;
+  height: 48px;
+  margin-bottom: $spacing-md;
 }
 
 .hubPage__title {
   @include font-h1;
-  margin-bottom: $spacing-md;
-}
-
-.hubPage__subtitle {
-  @include font-body;
-  color: $color-mid;
+  color: $color-white;
   margin-bottom: $spacing-sm;
 }
 
-.hubPage__note {
-  @include font-caption;
-  font-style: italic;
+.hubPage__meta {
+  @include font-mono-label;
+  font-size: 0.75rem;
+  color: rgba($color-white, 0.55);
+  letter-spacing: 0.04em;
 }
 
 .hubPage__phases {
   display: grid;
-  gap: $spacing-sm;
-}
-
-.hubPage__phaseLink {
-  display: grid;
   gap: $spacing-xs;
-  padding: $spacing-md;
-  border: $border-width solid $border-color;
-  border-radius: $radius-lg;
-  transition: border-color $transition-base, box-shadow $transition-base;
-
-  &:hover {
-    border-color: $color-accent;
-    box-shadow: 0 4px 16px rgba($color-accent, 0.08);
-  }
 }
 
-.hubPage__phaseLabel {
+.hubPage__phase {
   @include font-h3;
-}
+  font-weight: $font-weight-regular;
+  padding: $spacing-sm 0;
+  border-bottom: 1px solid rgba($color-white, 0.12);
+  color: $color-white;
 
-.hubPage__phaseDesc {
-  @include font-caption;
-  color: $color-mid;
+  &:last-child {
+    border-bottom: none;
+  }
 }

@@ -1,0 +1,385 @@
+{
+  "source": "https://www.sab.cz/",
+  "exportedAt": "2026-07-07T14:25:25.939Z",
+  "count": 47,
+  "downloaded": 47,
+  "failed": 0,
+  "images": [
+    {
+      "url": "https://www.sab.cz/assets/front/images/logo-sab.svg?v=1761722705",
+      "source": "img",
+      "alt": "sab",
+      "local": "/sab-export/homepage/logo-sab.svg",
+      "filename": "logo-sab.svg",
+      "bytes": 5072
+    },
+    {
+      "url": "https://www.sab.cz/assets/front/images/logo-prostream.svg?v=1761722705",
+      "source": "img",
+      "alt": null,
+      "local": "/sab-export/homepage/logo-prostream.svg",
+      "filename": "logo-prostream.svg",
+      "bytes": 8128
+    },
+    {
+      "url": "https://www.sab.cz/cache/files/_respo1920/primary-hero.webp",
+      "source": "img",
+      "alt": null,
+      "local": "/sab-export/homepage/primary-hero.webp",
+      "filename": "primary-hero.webp",
+      "bytes": 157740
+    },
+    {
+      "url": "https://www.sab.cz/cache/files/_process/secure-1.webp",
+      "source": "img",
+      "alt": null,
+      "local": "/sab-export/homepage/secure-1.webp",
+      "filename": "secure-1.webp",
+      "bytes": 4510
+    },
+    {
+      "url": "https://www.sab.cz/cache/files/_process/secure-2.webp",
+      "source": "img",
+      "alt": null,
+      "local": "/sab-export/homepage/secure-2.webp",
+      "filename": "secure-2.webp",
+      "bytes": 4602
+    },
+    {
+      "url": "https://www.sab.cz/cache/files/_process/vyporadani-obchodu.webp",
+      "source": "img",
+      "alt": null,
+      "local": "/sab-export/homepage/vyporadani-obchodu.webp",
+      "filename": "vyporadani-obchodu.webp",
+      "bytes": 6150
+    },
+    {
+      "url": "https://www.sab.cz/media/files/dlouhodobe-nejvyhodnejsi-menove-kurzy-na-trhu-ad.webp",
+      "source": "img",
+      "alt": null,
+      "local": "/sab-export/homepage/dlouhodobe-nejvyhodnejsi-menove-kurzy-na-trhu-ad.webp",
+      "filename": "dlouhodobe-nejvyhodnejsi-menove-kurzy-na-trhu-ad.webp",
+      "bytes": 3206
+    },
+    {
+      "url": "https://www.sab.cz/media/files/zbavime-vas-absurdnich-poplatku-ad.webp",
+      "source": "img",
+      "alt": null,
+      "local": "/sab-export/homepage/zbavime-vas-absurdnich-poplatku-ad.webp",
+      "filename": "zbavime-vas-absurdnich-poplatku-ad.webp",
+      "bytes": 1668
+    },
+    {
+      "url": "https://www.sab.cz/media/files/bleskove-vyporadani-vasich-plateb-ad.webp",
+      "source": "img",
+      "alt": null,
+      "local": "/sab-export/homepage/bleskove-vyporadani-vasich-plateb-ad.webp",
+      "filename": "bleskove-vyporadani-vasich-plateb-ad.webp",
+      "bytes": 3926
+    },
+    {
+      "url": "https://www.sab.cz/media/files/transparentnost-ad.webp",
+      "source": "img",
+      "alt": null,
+      "local": "/sab-export/homepage/transparentnost-ad.webp",
+      "filename": "transparentnost-ad.webp",
+      "bytes": 2924
+    },
+    {
+      "url": "https://www.sab.cz/media/files/100-jistota-a-bezpecnost-ad.webp",
+      "source": "img",
+      "alt": null,
+      "local": "/sab-export/homepage/100-jistota-a-bezpecnost-ad.webp",
+      "filename": "100-jistota-a-bezpecnost-ad.webp",
+      "bytes": 1722
+    },
+    {
+      "url": "https://www.sab.cz/media/files/12-let-zkusenosti-ad.webp",
+      "source": "img",
+      "alt": null,
+      "local": "/sab-export/homepage/12-let-zkusenosti-ad.webp",
+      "filename": "12-let-zkusenosti-ad.webp",
+      "bytes": 2892
+    },
+    {
+      "url": "https://www.sab.cz/media/files/zajisteni-kurzoveho-rizika-menovy-forward-ad.webp",
+      "source": "img",
+      "alt": null,
+      "local": "/sab-export/homepage/zajisteni-kurzoveho-rizika-menovy-forward-ad.webp",
+      "filename": "zajisteni-kurzoveho-rizika-menovy-forward-ad.webp",
+      "bytes": 2230
+    },
+    {
+      "url": "https://www.sab.cz/media/files/smena-na-vas-ucet-ad.webp",
+      "source": "img",
+      "alt": null,
+      "local": "/sab-export/homepage/smena-na-vas-ucet-ad.webp",
+      "filename": "smena-na-vas-ucet-ad.webp",
+      "bytes": 2428
+    },
+    {
+      "url": "https://www.sab.cz/media/files/platba-faktur-vasim-partnerum-ad.webp",
+      "source": "img",
+      "alt": null,
+      "local": "/sab-export/homepage/platba-faktur-vasim-partnerum-ad.webp",
+      "filename": "platba-faktur-vasim-partnerum-ad.webp",
+      "bytes": 1962
+    },
+    {
+      "url": "https://www.sab.cz/media/files/inkaso-od-vasich-obchodnich-partneru-ad.webp",
+      "source": "img",
+      "alt": null,
+      "local": "/sab-export/homepage/inkaso-od-vasich-obchodnich-partneru-ad.webp",
+      "filename": "inkaso-od-vasich-obchodnich-partneru-ad.webp",
+      "bytes": 2038
+    },
+    {
+      "url": "https://www.sab.cz/media/files/menove-pary-na-vase-prani-ad.webp",
+      "source": "img",
+      "alt": null,
+      "local": "/sab-export/homepage/menove-pary-na-vase-prani-ad.webp",
+      "filename": "menove-pary-na-vase-prani-ad.webp",
+      "bytes": 1882
+    },
+    {
+      "url": "https://www.sab.cz/media/files/hlidani-kurzu-ad.webp",
+      "source": "img",
+      "alt": null,
+      "local": "/sab-export/homepage/hlidani-kurzu-ad.webp",
+      "filename": "hlidani-kurzu-ad.webp",
+      "bytes": 2060
+    },
+    {
+      "url": "https://www.sab.cz/media/files/devizove-poradenstvi-ad.webp",
+      "source": "img",
+      "alt": null,
+      "local": "/sab-export/homepage/devizove-poradenstvi-ad.webp",
+      "filename": "devizove-poradenstvi-ad.webp",
+      "bytes": 2178
+    },
+    {
+      "url": "https://www.sab.cz/media/files/pencil-line.svg",
+      "source": "img",
+      "alt": null,
+      "local": "/sab-export/homepage/pencil-line.svg",
+      "filename": "pencil-line.svg",
+      "bytes": 430
+    },
+    {
+      "url": "https://www.sab.cz/media/files/handshake.svg",
+      "source": "img",
+      "alt": null,
+      "local": "/sab-export/homepage/handshake.svg",
+      "filename": "handshake.svg",
+      "bytes": 922
+    },
+    {
+      "url": "https://www.sab.cz/media/files/clock-countdown.svg",
+      "source": "img",
+      "alt": null,
+      "local": "/sab-export/homepage/clock-countdown.svg",
+      "filename": "clock-countdown.svg",
+      "bytes": 434
+    },
+    {
+      "url": "https://www.sab.cz/media/files/rako.webp",
+      "source": "img",
+      "alt": null,
+      "local": "/sab-export/homepage/rako.webp",
+      "filename": "rako.webp",
+      "bytes": 13424
+    },
+    {
+      "url": "https://www.sab.cz/media/files/jan-becher-karlovarska-becherovka-as-ad.webp",
+      "source": "img",
+      "alt": null,
+      "local": "/sab-export/homepage/jan-becher-karlovarska-becherovka-as-ad.webp",
+      "filename": "jan-becher-karlovarska-becherovka-as-ad.webp",
+      "bytes": 5884
+    },
+    {
+      "url": "https://www.sab.cz/media/files/apm-automotive-sro-ad.webp",
+      "source": "img",
+      "alt": null,
+      "local": "/sab-export/homepage/apm-automotive-sro-ad.webp",
+      "filename": "apm-automotive-sro-ad.webp",
+      "bytes": 7702
+    },
+    {
+      "url": "https://www.sab.cz/assets/front/icons/linkedin-logo.svg?v=1761722705",
+      "source": "img",
+      "alt": "Linked link",
+      "local": "/sab-export/homepage/linkedin-logo.svg",
+      "filename": "linkedin-logo.svg",
+      "bytes": 446
+    },
+    {
+      "url": "https://www.sab.cz/assets/front/icons/facebook-logo.svg?v=1761722705",
+      "source": "img",
+      "alt": "Facebook link",
+      "local": "/sab-export/homepage/facebook-logo.svg",
+      "filename": "facebook-logo.svg",
+      "bytes": 333
+    },
+    {
+      "url": "https://www.sab.cz/assets/front/favicons/apple-icon-57x57.png",
+      "source": "link",
+      "alt": null,
+      "local": "/sab-export/homepage/apple-icon-57x57.png",
+      "filename": "apple-icon-57x57.png",
+      "bytes": 1744
+    },
+    {
+      "url": "https://www.sab.cz/assets/front/favicons/apple-icon-60x60.png",
+      "source": "link",
+      "alt": null,
+      "local": "/sab-export/homepage/apple-icon-60x60.png",
+      "filename": "apple-icon-60x60.png",
+      "bytes": 1822
+    },
+    {
+      "url": "https://www.sab.cz/assets/front/favicons/apple-icon-72x72.png",
+      "source": "link",
+      "alt": null,
+      "local": "/sab-export/homepage/apple-icon-72x72.png",
+      "filename": "apple-icon-72x72.png",
+      "bytes": 2106
+    },
+    {
+      "url": "https://www.sab.cz/assets/front/favicons/apple-icon-76x76.png",
+      "source": "link",
+      "alt": null,
+      "local": "/sab-export/homepage/apple-icon-76x76.png",
+      "filename": "apple-icon-76x76.png",
+      "bytes": 2090
+    },
+    {
+      "url": "https://www.sab.cz/assets/front/favicons/apple-icon-114x114.png",
+      "source": "link",
+      "alt": null,
+      "local": "/sab-export/homepage/apple-icon-114x114.png",
+      "filename": "apple-icon-114x114.png",
+      "bytes": 2526
+    },
+    {
+      "url": "https://www.sab.cz/assets/front/favicons/apple-icon-120x120.png",
+      "source": "link",
+      "alt": null,
+      "local": "/sab-export/homepage/apple-icon-120x120.png",
+      "filename": "apple-icon-120x120.png",
+      "bytes": 2731
+    },
+    {
+      "url": "https://www.sab.cz/assets/front/favicons/apple-icon-144x144.png",
+      "source": "link",
+      "alt": null,
+      "local": "/sab-export/homepage/apple-icon-144x144.png",
+      "filename": "apple-icon-144x144.png",
+      "bytes": 3172
+    },
+    {
+      "url": "https://www.sab.cz/assets/front/favicons/apple-icon-152x152.png",
+      "source": "link",
+      "alt": null,
+      "local": "/sab-export/homepage/apple-icon-152x152.png",
+      "filename": "apple-icon-152x152.png",
+      "bytes": 3198
+    },
+    {
+      "url": "https://www.sab.cz/assets/front/favicons/apple-icon-180x180.png",
+      "source": "link",
+      "alt": null,
+      "local": "/sab-export/homepage/apple-icon-180x180.png",
+      "filename": "apple-icon-180x180.png",
+      "bytes": 4025
+    },
+    {
+      "url": "https://www.sab.cz/assets/front/favicons/android-icon-192x192.png",
+      "source": "link",
+      "alt": null,
+      "local": "/sab-export/homepage/android-icon-192x192.png",
+      "filename": "android-icon-192x192.png",
+      "bytes": 3096
+    },
+    {
+      "url": "https://www.sab.cz/assets/front/favicons/favicon-32x32.png",
+      "source": "link",
+      "alt": null,
+      "local": "/sab-export/homepage/favicon-32x32.png",
+      "filename": "favicon-32x32.png",
+      "bytes": 1267
+    },
+    {
+      "url": "https://www.sab.cz/assets/front/favicons/favicon-96x96.png",
+      "source": "link",
+      "alt": null,
+      "local": "/sab-export/homepage/favicon-96x96.png",
+      "filename": "favicon-96x96.png",
+      "bytes": 2177
+    },
+    {
+      "url": "https://www.sab.cz/assets/front/favicons/favicon-16x16.png",
+      "source": "link",
+      "alt": null,
+      "local": "/sab-export/homepage/favicon-16x16.png",
+      "filename": "favicon-16x16.png",
+      "bytes": 1034
+    },
+    {
+      "url": "https://www.sab.cz/cache/files/_respo640/primary-hero.webp",
+      "source": "srcset",
+      "alt": null,
+      "local": "/sab-export/homepage/primary-hero.webp",
+      "filename": "primary-hero.webp",
+      "bytes": 49972
+    },
+    {
+      "url": "https://www.sab.cz/cache/files/_respo1280/primary-hero.webp",
+      "source": "srcset",
+      "alt": null,
+      "local": "/sab-export/homepage/primary-hero.webp",
+      "filename": "primary-hero.webp",
+      "bytes": 88758
+    },
+    {
+      "url": "https://www.sab.cz/cache/files/_respo2560/primary-hero.webp",
+      "source": "srcset",
+      "alt": null,
+      "local": "/sab-export/homepage/primary-hero.webp",
+      "filename": "primary-hero.webp",
+      "bytes": 236480
+    },
+    {
+      "url": "https://www.sab.cz/assets/front/icons/user-plus.svg?v=1761722705",
+      "source": "inline-style",
+      "alt": null,
+      "local": "/sab-export/homepage/user-plus.svg",
+      "filename": "user-plus.svg",
+      "bytes": 497
+    },
+    {
+      "url": "https://www.sab.cz/assets/front/icons/lock-simple.svg?v=1761722705",
+      "source": "inline-style",
+      "alt": null,
+      "local": "/sab-export/homepage/lock-simple.svg",
+      "filename": "lock-simple.svg",
+      "bytes": 299
+    },
+    {
+      "url": "https://www.sab.cz/assets/front/icons/globe.svg?v=1761722705",
+      "source": "inline-style",
+      "alt": null,
+      "local": "/sab-export/homepage/globe.svg",
+      "filename": "globe.svg",
+      "bytes": 922
+    },
+    {
+      "url": "https://www.sab.cz/assets/front/icons/caret-left.svg?v=1765876034",
+      "source": "inline-style",
+      "alt": null,
+      "local": "/sab-export/homepage/caret-left.svg",
+      "filename": "caret-left.svg",
+      "bytes": 224
+    }
+  ]
+}

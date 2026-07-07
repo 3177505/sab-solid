@@ -17,13 +17,21 @@ type CopyData = {
   tone: { avoid: string[]; prefer: string[] }
 }
 
-export default function CopyPage({ data }: { data: CopyData }) {
+export default function CopyPage({
+  data,
+  presentation = false,
+}: {
+  data: CopyData
+  presentation?: boolean
+}) {
   return (
-    <article className="copyPage">
-      <header className="copyPage__header">
-        <h1 className="copyPage__title">{data.title}</h1>
-        <p className="copyPage__princip">{data.audience.princip}</p>
-      </header>
+    <article className={`copyPage${presentation ? ' presentationPage' : ''}`}>
+      {!presentation && (
+        <header className="copyPage__header">
+          <h1 className="copyPage__title">{data.title}</h1>
+        </header>
+      )}
+      <p className="copyPage__princip">{data.audience.princip}</p>
 
       <section className="copyPage__block">
         <h2>Cílové skupiny</h2>

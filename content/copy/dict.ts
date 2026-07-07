@@ -6,16 +6,18 @@ export const dict: Dictionary = {
     siteDescription: 'Redesign homepage sab.cz — UX workshop',
   },
   nav: {
-    hub: 'Přehled',
+    hub: 'Obsah',
     analysis: 'Audit',
-    ux: 'UX kostra',
+    ux: 'UX',
     ui: 'UI',
-    uiClassic: 'UI — Classic',
-    uiPremium: 'UI — Premium',
-    tokens: 'Tokeny',
-    copy: 'Copy návrhy',
+    uiClassic: 'UI Jednoduchá verze',
+    uiPremium: 'UI Rozšířená verze',
+    tokens: 'Style guide',
+    copy: 'UX Copywriting',
+    mobileUx: 'Mobile UX',
+    mobileUi: 'UI Mobile',
     external: 'sab.cz',
-    ariaLabel: 'Hlavní navigace projektu',
+    ariaLabel: 'Navigace',
   },
   lang: {
     cz: 'CZ',
@@ -23,43 +25,18 @@ export const dict: Dictionary = {
     switchAria: 'Přepnout jazyk',
   },
   hub: {
-    eyebrow: 'SAB Finance · Výběrové řízení',
     title: 'Redesign homepage sab.cz',
-    subtitle:
-      'Pracovní dokumentace procesu — od auditu přes UX kostru po finální UI ve dvou variantách.',
+    meta: 'Tereza Nováková · 8.7.2026 · Výběrové řízení · UX Workshop',
     phases: [
-      {
-        href: 'analysis',
-        label: '01 · Audit',
-        desc: 'Kdo je SAB, co dnes nefunguje, komu mluvíme a proč.',
-      },
-      {
-        href: 'ux',
-        label: '02 · UX kostra',
-        desc: 'Struktura homepage bez vizuálu — sekce, CTA, konverze, (i) poznámky.',
-      },
-      {
-        href: 'ui/classic',
-        label: '03a · UI Classic',
-        desc: 'Čistší, klidnější varianta — důvěra, přehlednost, minimum animací.',
-      },
-      {
-        href: 'ui/premium',
-        label: '03b · UI Premium',
-        desc: 'Výraznější varianta — animace, gradienty, „wow" efekt pro klienta.',
-      },
-      {
-        href: 'tokens',
-        label: '04 · Design tokeny',
-        desc: 'Sdílený systém barev, typografie a spacingu pro obě UI varianty.',
-      },
-      {
-        href: 'copy',
-        label: '05 · Copy návrhy',
-        desc: 'Přeformulování textů pro cílovou B2B audience — dnes vs návrh.',
-      },
+      '01 · Audit',
+      '02 · UX Copywriting',
+      '03 · UX Návrh',
+      '04 · UI Style guide',
+      '05 · UI Jednoduchá verze',
+      '06 · UI Rozšířená verze',
+      '07 · UX Mobile rozšíření',
+      '08 · UI Mobile rozšíření jednoduchá verze',
     ],
-    note: 'Stejná UX struktura · dvě vizuální varianty · přepínatelné',
   },
   analysis: {
     title: 'Audit & strategie',
@@ -253,8 +230,27 @@ export const dict: Dictionary = {
     switchLabel: 'Varianta',
   },
   tokens: {
-    title: 'Design tokeny',
-    intro: 'Sdílený systém pro obě UI varianty. Hodnoty se doplní spolu s finálním vizuálem.',
+    title: 'Style guide',
+    intro:
+      'Souhrn všech designových proměnných — barvy, typografie, spacing a komponenty. Jeden přehled, ze kterého vycházejí obě UI varianty.',
     groups: ['Barvy', 'Typografie', 'Spacing', 'Komponenty'],
+  },
+  mobileUx: {
+    title: 'Mobile UX',
+    intro: 'Stejná UX struktura jako desktop — sekce pod sebou, hamburger navigace, CTA vždy dostupné.',
+    viewport: '390 × 844 px · iPhone 14 Pro',
+    notesTitle: 'Mobilní principy',
+    notes: [
+      'Hamburger + logo + CTA v jedné řádce — žádný dropdown v hlavní liště',
+      'Hero: headline, podtext, primární CTA, sekundární CTA — vše pod sebou',
+      'Služby jako vertikální karty — forward první / zvýrazněný',
+      'Formulář na plnou šířku — minimum polí nad foldem',
+      'Telefon jako sticky FAB nebo v patičce, ne jako jediná akce v hero',
+    ],
+  },
+  mobileUi: {
+    title: 'UI Mobile',
+    intro: 'Jednoduchá UI varianta v mobilním viewportu — stejná struktura jako desktop Classic.',
+    viewport: '390 × 844 px · iPhone 14 Pro',
   },
 }
