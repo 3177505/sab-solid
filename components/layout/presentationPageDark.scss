@@ -89,12 +89,6 @@
     color: rgba($color-copy, 0.95);
   }
 
-  .tokensPage__placeholder {
-    @include dark-surface;
-    color: rgba($color-white, 0.35);
-    border-style: dashed;
-  }
-
   .tokensPage__group h2,
   .tokensPage__css h2 {
     color: $color-white;

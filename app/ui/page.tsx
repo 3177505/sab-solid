@@ -1,5 +1,5 @@
-import UiShell from '@/components/pages/ui/UiShell'
+import { redirect } from 'next/navigation'
 
-export default function Page() {
-  return <UiShell />
+export default function UiIndex() {
+  redirect('/ui/classic')
 }

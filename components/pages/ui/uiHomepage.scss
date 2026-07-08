@@ -27,6 +27,12 @@
   line-height: 1.5;
 }
 
+.uiHp--premium {
+  --ui-accent: #14a3a3;
+  --ui-accent-dark: #0d6e6e;
+  font-family: $font-ui-premium;
+}
+
 // Classic — scroll tones, glass, vzdušné sekce
 @mixin ui-glass($bg: #ffffff80, $border: rgba(255, 255, 255, 0.65)) {
   -webkit-backdrop-filter: blur(20px);

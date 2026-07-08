@@ -22,13 +22,344 @@
   }
 }
 
-.tokensPage__placeholder {
-  @include wireframe-box;
-  min-height: 120px;
+.tokensPage__panel {
+  padding: $spacing-md;
+  border-radius: $radius-md;
+  background: $color-white;
+  color: $color-identity-grey-dark-blue;
+  border: 1px solid rgba($color-identity-grey-light, 0.8);
+}
+
+.tokensPage__subheading {
+  margin: $spacing-md 0 $spacing-sm;
+  font-size: 0.75rem;
+  font-weight: $font-weight-medium;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: $color-identity-grey-mid;
+
+  &:first-child {
+    margin-top: 0;
+  }
+}
+
+.tokensPage__swatchGroup + .tokensPage__swatchGroup {
+  margin-top: $spacing-md;
+  padding-top: $spacing-md;
+  border-top: 1px solid $color-identity-grey-lighter;
+}
+
+.tokensPage__swatches {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: $spacing-xs;
+}
+
+.tokensPage__swatch {
   display: flex;
   align-items: center;
+  gap: $spacing-sm;
+}
+
+.tokensPage__swatchColor {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: $radius-sm;
+  border: 1px solid rgba($color-identity-grey-dark-blue, 0.08);
+}
+
+.tokensPage__swatchMeta {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+  font-size: 0.8125rem;
+  line-height: 1.35;
+
+  strong {
+    font-weight: $font-weight-medium;
+  }
+
+  code {
+    font-family: $font-mono;
+    font-size: 0.75rem;
+    color: $color-identity-grey-mid;
+  }
+
+  span:last-child {
+    color: $color-identity-grey-mid;
+    font-size: 0.75rem;
+  }
+}
+
+.tokensPage__fontNote {
+  margin: 0 0 $spacing-md;
+  font-size: 0.875rem;
+  color: $color-identity-grey-mid;
+
+  strong {
+    color: $color-identity-grey-dark-blue;
+  }
+}
+
+.tokensPage__typeList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: $spacing-md;
+}
+
+.tokensPage__typeRow {
+  display: grid;
+  gap: $spacing-xs;
+
+  @include md {
+    grid-template-columns: 72px 1fr;
+    align-items: start;
+  }
+}
+
+.tokensPage__typeLabel {
+  font-family: $font-mono;
+  font-size: 0.6875rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: $color-identity-grey-mid;
+}
+
+.tokensPage__typeSample {
+  min-width: 0;
+}
+
+.tokensPage__typeText {
+  margin: 0 0 4px;
+  font-family: $font-ui;
+  color: $color-identity-grey-dark-blue;
+
+  &--h1 {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 700;
+    letter-spacing: -0.035em;
+    line-height: 1.1;
+  }
+
+  &--h2 {
+    font-size: clamp(1.25rem, 2.5vw, 1.5rem);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1.2;
+  }
+
+  &--h3 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    line-height: 1.3;
+  }
+
+  &--lead {
+    font-size: 1rem;
+    line-height: 1.55;
+  }
+
+  &--body {
+    font-size: 0.9375rem;
+    line-height: 1.65;
+  }
+
+  &--button {
+    display: inline-block;
+    font-size: 0.875rem;
+    font-weight: 600;
+    line-height: 1.2;
+  }
+
+  &--caption {
+    font-size: 0.8125rem;
+    color: $color-identity-grey-mid;
+  }
+}
+
+.tokensPage__typeMeta {
+  display: block;
+  font-family: $font-mono;
+  font-size: 0.6875rem;
+  color: $color-identity-grey-mid;
+}
+
+.tokensPage__spaceList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: $spacing-sm;
+}
+
+.tokensPage__spaceRow {
+  display: grid;
+  grid-template-columns: 36px 1fr auto;
+  align-items: center;
+  gap: $spacing-sm;
+
+  code {
+    font-family: $font-mono;
+    font-size: 0.75rem;
+    color: $color-identity-grey-mid;
+  }
+}
+
+.tokensPage__spaceLabel {
+  font-family: $font-mono;
+  font-size: 0.6875rem;
+  text-transform: uppercase;
+  color: $color-identity-grey-mid;
+}
+
+.tokensPage__spaceBar {
+  display: block;
+  height: 12px;
+  max-width: 100%;
+  border-radius: $radius-sm;
+  background: linear-gradient(to right, $color-identity-primary, $color-identity-tertiary);
+}
+
+.tokensPage__layoutList {
+  margin: 0;
+  display: grid;
+  gap: $spacing-xs;
+}
+
+.tokensPage__layoutRow {
+  display: grid;
+  gap: 2px;
+
+  dt {
+    font-size: 0.8125rem;
+    font-weight: $font-weight-medium;
+  }
+
+  dd {
+    margin: 0;
+
+    code {
+      font-family: $font-mono;
+      font-size: 0.75rem;
+      color: $color-identity-grey-mid;
+    }
+  }
+}
+
+.tokensPage__buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $spacing-sm;
+}
+
+@mixin tokens-btn-base {
+  display: inline-flex;
+  align-items: center;
   justify-content: center;
-  color: $color-gray;
+  padding: 10px 20px;
+  font-family: $font-ui;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.2;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  cursor: default;
+}
+
+.tokensPage__btn {
+  @include tokens-btn-base;
+
+  &--ghost {
+    background: transparent;
+    border-color: rgba($color-identity-grey-light, 0.9);
+    color: $color-identity-grey-dark-blue;
+  }
+
+  &--primary {
+    background: $color-identity-tertiary;
+    color: $color-white;
+  }
+
+  &--soft {
+    background: rgba($color-white, 0.58);
+    border-color: rgba($color-identity-grey-light, 0.8);
+    color: $color-identity-tertiary;
+    backdrop-filter: blur(12px);
+  }
+}
+
+.tokensPage__card {
+  padding: $spacing-md;
+  border-radius: 4px;
+  background: $color-identity-grey-lighter;
+  border: 1px solid rgba($color-identity-grey-light, 0.8);
+  box-shadow: 0 4px 24px rgba(26, 31, 38, 0.06);
+
+  h4 {
+    margin: 0 0 $spacing-xs;
+    font-family: $font-ui;
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: $color-identity-grey-dark-blue;
+  }
+
+  p {
+    margin: 0 0 $spacing-sm;
+    font-family: $font-ui;
+    font-size: 0.9375rem;
+    line-height: 1.65;
+    color: $color-identity-grey-dark;
+  }
+}
+
+.tokensPage__link {
+  font-family: $font-ui;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: $color-identity-tertiary;
+  text-decoration: none;
+}
+
+.tokensPage__badges {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: $spacing-sm;
+}
+
+.tokensPage__tag {
+  display: inline-block;
+  font-family: $font-ui;
+  font-size: 13px;
+  font-weight: 500;
+  color: $color-identity-tertiary;
+}
+
+.tokensPage__label {
+  display: inline-block;
+  font-family: $font-ui;
+  font-size: 11px;
+  font-weight: 500;
+  color: $color-identity-tertiary;
+}
+
+.tokensPage__badge {
+  display: inline-block;
+  font-family: $font-ui;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  background: #e30613;
+  color: $color-white;
+  padding: 3px 8px;
+  border-radius: 4px;
 }
 
 .tokensPage__css h2 {
