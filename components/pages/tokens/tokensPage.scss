@@ -260,130 +260,62 @@
   }
 }
 
-@mixin tokens-btn-base {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 10px 20px;
-  font-family: $font-ui;
-  font-size: 14px;
-  font-weight: 600;
-  line-height: 1.2;
-  border-radius: $ui-radius-btn;
-  border: 1px solid transparent;
-  cursor: default;
-}
-
-.tokensPage__btn {
-  @include tokens-btn-base;
-
-  &--ghost {
+.tokensPage__uiScope {
+  &.uiHp {
     background: transparent;
-    border-color: rgba($color-identity-grey-light, 0.9);
-    color: $color-identity-grey-dark-blue;
+    overflow: visible;
+    font-size: 16px;
   }
 
-  &--primary {
-    background: $ui-premium-accent-black;
-    color: $color-white;
+  &.uiHp--classic {
+    position: static;
+    overflow: visible;
+    font-size: 16px;
   }
 
-  &--soft {
-    background: rgba($color-white, 0.58);
-    border-color: rgba($color-identity-grey-light, 0.8);
-    color: $color-identity-tertiary;
-    -webkit-backdrop-filter: blur(20px);
-    backdrop-filter: blur(20px);
-  }
-
-  &--onAccent {
-    background: rgba($color-white, 0.14);
-    border-color: rgba($color-white, 0.22);
-    color: $color-white;
-    -webkit-backdrop-filter: blur(20px);
-    backdrop-filter: blur(20px);
+  .uiHp__btnRow {
+    margin-bottom: 0;
   }
 }
 
-.tokensPage__buttons {
-  display: flex;
-  flex-wrap: wrap;
-  gap: $spacing-sm;
+.tokensPage__btnRow {
   margin-bottom: $spacing-md;
-
-  .tokensPage__btn--onAccent {
-    background: $color-identity-tertiary;
-  }
 }
 
-.tokensPage__card {
-  padding: $ui-card-pad;
-  border-radius: $ui-radius;
-  background: rgba($color-white, 0.72);
-  border: 1px solid rgba($color-white, 0.58);
-  -webkit-backdrop-filter: blur(20px);
-  backdrop-filter: blur(20px);
-  box-shadow: 0 8px 32px rgba(30, 57, 65, 0.08);
+.tokensPage__accentDemo {
+  margin-bottom: $spacing-md;
+  padding: $spacing-md;
+  border-radius: $radius-sm;
+  background: $ui-tone-accent-bg;
 
-  h4 {
-    margin: 0 0 $spacing-xs;
-    font-family: $font-ui;
-    font-size: 1.125rem;
+  .uiHp__btn--onAccent {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 20px;
+    font-size: 14px;
     font-weight: 600;
-    color: $color-identity-grey-dark-blue;
-  }
-
-  p {
-    margin: 0 0 $spacing-sm;
     font-family: $font-ui;
-    font-size: 0.9375rem;
-    line-height: 1.65;
-    color: $color-identity-grey-dark;
+    line-height: 1.2;
+    border-radius: $ui-radius-btn;
+    border: 1px solid rgba($color-white, 0.38);
+    cursor: default;
+    background-color: rgba($color-white, 0.22);
+    color: $color-white;
+    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px);
   }
 }
 
-.tokensPage__link {
-  font-family: $font-ui;
-  font-size: 0.875rem;
-  font-weight: 500;
-  color: $color-identity-tertiary;
-  text-decoration: none;
+.tokensPage__cardSample {
+  margin-bottom: $spacing-md;
 }
 
-.tokensPage__badges {
+.tokensPage__tagRow {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   gap: $spacing-sm;
-}
-
-.tokensPage__tag {
-  display: inline-block;
-  font-family: $font-ui;
-  font-size: 13px;
-  font-weight: 500;
-  color: $color-identity-tertiary;
-}
-
-.tokensPage__label {
-  display: inline-block;
-  font-family: $font-ui;
-  font-size: 11px;
-  font-weight: 500;
-  color: $color-identity-tertiary;
-}
-
-.tokensPage__badge {
-  display: inline-block;
-  font-family: $font-ui;
-  font-size: 10px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  background: #e30613;
-  color: $color-white;
-  padding: 3px 8px;
-  border-radius: $ui-radius-sm;
 }
 
 .tokensPage__css h2 {
