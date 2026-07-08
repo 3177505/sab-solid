@@ -39,8 +39,8 @@
   width: min(280px, 70vw);
   padding: $spacing-sm;
   border-radius: $radius-md;
-  border: $border-width solid $border-color;
-  background: $color-white;
+  border: $border-width solid rgba($color-black, 0.12);
+  background: $color-note;
   box-shadow: 0 8px 24px rgba($color-black, 0.12);
   @include font-caption;
   color: $color-black;

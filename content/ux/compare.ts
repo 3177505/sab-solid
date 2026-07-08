@@ -1,0 +1,62 @@
+export const UX_COMPARE = {
+  content: {
+    title: 'Změny obsahu',
+    stays: 'Zůstává ze sab.cz: služby, čísla, reference, proces, kontakt, licence.',
+    changes: [
+      'Headline z „jednička v moři" → „Víte dopředu, kolik zaplatíte — nebo dostanete"',
+      'Nová sekce problém (dnes chybí)',
+      'Boxy pod hero → konkrétní scénáře (faktura / směna teď)',
+      'Forward → příklad v korunách, ne definice produktu',
+      '7 služeb → 4 vstupy s „pro koho" a vlastním CTA',
+      'Kontakt → formulář s před-kvalifikací, ne jen „napište nám"',
+      'Navigace podle řešení klienta, ne „Pro klienty"',
+      'Widget kurzů v hero (zadání: prvek s kurzy / kalkulací)',
+      'Patička jako mapa celého webu (inspirace bankovní UX)',
+    ],
+  },
+  navigation: {
+    title: 'Navigace',
+    rows: [
+      { today: 'Pro klienty (mega-menu)', proposed: 'Služby (dropdown: forward, směna, platby, hlídání)' },
+      { today: '—', proposed: 'Pro koho (exportéři · importéři · pravidelné platby)' },
+      { today: '—', proposed: 'Jak to funguje (kotva na proces)' },
+      { today: 'O nás', proposed: 'O nás' },
+      { today: 'Stát se klientem', proposed: 'Nezávazná poptávka (trvale viditelné CTA)' },
+      { today: 'Pro investory v menu', proposed: 'Investoři — patička / malý odkaz, mimo hlavní cestu' },
+    ],
+  },
+  clarity: {
+    title: 'Co musí být jasné vs. co vyniká',
+    clear: [
+      'Headline + trust strip + widget kurzů',
+      'Dva boxy pod hero',
+      '4 služby',
+      'Proces 3 kroky',
+    ],
+    standout: [
+      'Forward — celá sekce, příklad 50 000 EUR',
+      'Primární CTA — Nezávazná konzultace / poptávka',
+      'Formulář — hlavní konverze stránky',
+      'Kontrast: „o 50 000 Kč víc bez forwardu"',
+    ],
+  },
+  journey: {
+    title: 'Posloupnost — cesta klienta',
+    steps: [
+      'Nav + CTA',
+      'Hero: přínos + kurzy + 2 vstupy',
+      'Důvěra: fakta',
+      'Problém: poznám se?',
+      'Dvě cesty: rychlý výběr',
+      'Forward: hlubší vysvětlení',
+      'Služby: přehled',
+      'Proč SAB',
+      'Jak to funguje',
+      'Reference',
+      'Formulář',
+      'Newsletter',
+      'Patička — mapa webu',
+    ],
+    note: 'Přínos → důvěra → rozpoznání problému → rychlý výběr → produkt → důkaz → akce.',
+  },
+} as const

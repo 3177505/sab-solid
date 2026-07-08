@@ -211,50 +211,23 @@ export const dict: Dictionary = {
     ],
   },
   ux: {
-    title: 'UX kostra homepage',
+    title: 'UX návrh homepage',
     intro:
-      'Wireframe bez vizuálního designu. Každá sekce má (i) s vysvětlením proč je zde a co má uživatel udělat.',
+      'Wireframe celé stránky sab.cz — obsah, pořadí sekcí a cesta klienta. Reálné texty z copy návrhů. Vizuální design doplníme v další fázi.',
     sections: {
-      nav: {
-        label: 'Navigace + primární CTA',
-        hint: 'Oddělení klientského obsahu od investorského. Služby seskupené v dropdownu. CTA „Nezávazná poptávka" trvale viditelné v hlavní liště.',
-      },
-      hero: {
-        label: 'Hero — hodnota + 2 cesty',
-        hint: 'Headline = jistota kurzu, konkrétní přínos pro firmu. Primární CTA: poptávka / konzultace. Sekundární: živý kurz nebo kalkulačka — okamžitá hodnota bez registrace.',
-      },
-      trust: {
-        label: 'Trust strip — licence, roky, čísla',
-        hint: 'Okamžitá důvěra pod hero: Platební instituce · 20 let · 20 000 klientů. Krátké, skenovatelné — CFO to čte za 2 sekundy.',
-      },
-      problem: {
-        label: 'Problém — „Platíte v cizí měně?"',
-        hint: 'Dva scénáře: importér (platím dodavateli) vs exportér (čekám na inkaso). Uživatel se pozná — teprve pak produkt.',
-      },
-      services: {
-        label: 'Služby — 4 karty, forward zvýrazněn',
-        hint: 'Směna, Platby, Zajištění kurzu (větší), Hlídání kurzů. Každá karta: pro koho · kdy · CTA. Forward dostane nejvíc prostoru — klíčový diferenciátor.',
-      },
-      forward: {
-        label: 'Forward vysvětlení — scénář krok za krokem',
-        hint: 'Konkrétní příklad: faktura 50 000 EUR, splatnost 90 dní. Co se stane bez forwardu vs s forwardem. Žádný žargon — „fixní kurz dnes".',
-      },
-      process: {
-        label: 'Jak to funguje — 3 kroky',
-        hint: 'Rámcová smlouva → Obchod po telefonu → Vypořádání. Snižuje strach z „složitého finančního produktu".',
-      },
-      proof: {
-        label: 'Reference + loga klientů',
-        hint: 'Becherovka, LASSELSBERGER atd. — B2B social proof. Citát finančního manažera s konkrétní zkušeností.',
-      },
-      lead: {
-        label: 'Lead formulář — před-kvalifikace',
-        hint: 'Ne generický kontakt. Pole: firma, měnový pár, měsíční objem, import/export, co řeší. Obchodník dostane warm lead.',
-      },
-      footer: {
-        label: 'Patička — kontakt, investoři, legal',
-        hint: 'Investoři a whistleblowing dole. Telefon zůstává, ale není jediná konverze.',
-      },
+      nav: { label: 'Navigace', hint: '' },
+      hero: { label: 'Hero', hint: '' },
+      trust: { label: 'Důvěra', hint: '' },
+      problem: { label: 'Problém', hint: '' },
+      paths: { label: 'Dvě cesty', hint: '' },
+      forward: { label: 'Forward', hint: '' },
+      services: { label: 'Služby', hint: '' },
+      why: { label: 'Proč SAB', hint: '' },
+      process: { label: 'Proces', hint: '' },
+      proof: { label: 'Reference', hint: '' },
+      lead: { label: 'Formulář', hint: '' },
+      newsletter: { label: 'Newsletter', hint: '' },
+      footer: { label: 'Patička', hint: '' },
     },
   },
   ui: {

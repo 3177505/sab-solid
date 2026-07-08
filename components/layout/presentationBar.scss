@@ -48,6 +48,29 @@ $bar-height: 36px;
   justify-content: center;
   gap: $spacing-sm;
   min-width: 0;
+  flex-wrap: wrap;
+}
+
+.presentationBar__compare {
+  font-family: ui-monospace, monospace;
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #fff;
+  background: transparent;
+  border: none;
+  padding: 2px 8px;
+  cursor: pointer;
+  white-space: nowrap;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+
+  &--active {
+    font-weight: 700;
+    &:hover {
+      text-decoration: none;
+    }
+  }
 }
 
 .presentationBar__name,
@@ -109,3 +132,5 @@ $bar-height: 36px;
     color: rgba($color-white, 0.55);
   }
 }
+
+@import '../pages/ux/uxComparePanel.scss';

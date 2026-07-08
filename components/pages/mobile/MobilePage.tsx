@@ -1,16 +1,11 @@
-import UxWireframe from '@/components/pages/ux/UxWireframe'
-import type { Dictionary } from '@/content/copy'
+import UxWireframePage from '@/components/pages/ux/UxWireframePage'
 
-type MobilePageProps = {
-  dict: Dictionary
-}
-
-export default function MobilePage({ dict }: MobilePageProps) {
+export default function MobilePage() {
   return (
-    <article className="mobilePage presentationPage--full">
+    <div className="mobilePage presentationPage--full">
       <div className="mobilePage__viewport">
-        <UxWireframe dict={dict} mobile showLabels={false} />
+        <UxWireframePage mobile />
       </div>
-    </article>
+    </div>
   )
 }

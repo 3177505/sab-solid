@@ -49,11 +49,14 @@ export type Dictionary = {
       hero: { label: string; hint: string }
       trust: { label: string; hint: string }
       problem: { label: string; hint: string }
-      services: { label: string; hint: string }
+      paths: { label: string; hint: string }
       forward: { label: string; hint: string }
+      services: { label: string; hint: string }
+      why: { label: string; hint: string }
       process: { label: string; hint: string }
       proof: { label: string; hint: string }
       lead: { label: string; hint: string }
+      newsletter: { label: string; hint: string }
       footer: { label: string; hint: string }
     }
   }

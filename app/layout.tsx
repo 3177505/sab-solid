@@ -1,5 +1,4 @@
 import type { Metadata } from 'next'
-import Image from 'next/image'
 import PresentationBar from '@/components/layout/PresentationBar'
 import { getCopy } from '@/content/copy'
 import './globals.scss'

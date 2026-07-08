@@ -1,0 +1,144 @@
+$bar-height: 36px;
+
+.uxComparePanel {
+  position: fixed;
+  top: $bar-height;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 899;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  color: #000;
+  border-top: 1px solid #000;
+
+  *,
+  *::before,
+  *::after {
+    border-radius: 0 !important;
+  }
+}
+
+.uxComparePanel__toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 10px 24px;
+  border-bottom: 1px solid #000;
+  flex-shrink: 0;
+}
+
+.uxComparePanel__toolbarTitle {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.uxComparePanel__close {
+  font-size: 12px;
+  text-decoration: underline;
+  background: none;
+  border: none;
+  padding: 4px 0;
+  cursor: pointer;
+  color: #000;
+}
+
+.uxComparePanel__inner {
+  flex: 1;
+  overflow-y: auto;
+  display: grid;
+  gap: 32px;
+  width: 100%;
+  padding: 32px 24px 48px;
+}
+
+.uxComparePanel__block {
+  display: grid;
+  gap: 8px;
+}
+
+.uxComparePanel__title {
+  font-size: 15px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.uxComparePanel__label {
+  font-family: ui-monospace, monospace;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin: 8px 0 0;
+}
+
+.uxComparePanel__stays,
+.uxComparePanel__note {
+  font-size: 14px;
+  margin: 0;
+  line-height: 1.45;
+}
+
+.uxComparePanel__list {
+  margin: 0;
+  padding-left: 20px;
+  font-size: 14px;
+  line-height: 1.45;
+  list-style: disc;
+
+  li {
+    margin-bottom: 4px;
+  }
+}
+
+.uxComparePanel__table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+
+  th,
+  td {
+    padding: 8px 10px;
+    text-align: left;
+    vertical-align: top;
+    border: 1px solid #000;
+  }
+
+  th {
+    font-family: ui-monospace, monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+}
+
+.uxComparePanel__cols {
+  display: grid;
+  gap: 20px;
+
+  @media screen and (min-width: 1025px) {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.uxComparePanel__steps {
+  margin: 0;
+  padding-left: 20px;
+  font-size: 14px;
+  display: block;
+  gap: 2px;
+  list-style: decimal;
+
+  li {
+    margin-bottom: 2px;
+  }
+}
+
+.presentationBar__compare {
+  position: relative;
+  z-index: 2;
+  min-height: 24px;
+}
