@@ -100,6 +100,21 @@ export const UX_HOMEPAGE_SECTIONS: UxHomeSection[] = [
   },
 ]
 
+export const LANG_LABELS: Record<string, string> = {
+  CZ: 'Čeština',
+  EN: 'English',
+  DE: 'Deutsch',
+}
+
+export type NavDropdownItem = {
+  label: string
+  href: string
+}
+
+export type NavMenuItem =
+  | { type: 'link'; label: string; href: string }
+  | { type: 'dropdown'; label: string; items: NavDropdownItem[] }
+
 export const UX_HOMEPAGE_CONTENT = {
   nav: {
     logo: 'SAB Finance',
@@ -108,6 +123,36 @@ export const UX_HOMEPAGE_CONTENT = {
       badge: 'Novinka',
       href: 'https://sabtarf.sab.cz/',
     },
+    menus: [
+      {
+        type: 'dropdown',
+        label: 'Služby',
+        items: [
+          { label: 'Fixní kurz na fakturu', href: '#' },
+          { label: 'Směna měn', href: '#' },
+          { label: 'Zahraniční platby', href: '#' },
+          { label: 'Hlídání kurzů', href: '#' },
+        ],
+      },
+      {
+        type: 'dropdown',
+        label: 'Pro koho',
+        items: [
+          { label: 'Exportéři', href: '#' },
+          { label: 'Importéři', href: '#' },
+          { label: 'Pravidelné platby', href: '#' },
+        ],
+      },
+      {
+        type: 'dropdown',
+        label: 'Jak to funguje',
+        items: [
+          { label: 'Jak s námi obchodovat', href: '#' },
+          { label: 'Forward — jak to funguje', href: '#' },
+        ],
+      },
+      { type: 'link', label: 'O nás', href: '#' },
+    ] satisfies NavMenuItem[],
     links: ['Služby', 'Pro koho', 'Jak to funguje', 'O nás'],
     cta: 'Nezávazná poptávka',
     prostream: {

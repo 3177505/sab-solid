@@ -13,7 +13,6 @@ export type Dictionary = {
     tokens: string
     copy: string
     mobileUx: string
-    mobileUi: string
     external: string
     ariaLabel: string
   }
@@ -77,10 +76,5 @@ export type Dictionary = {
     viewport: string
     notesTitle: string
     notes: string[]
-  }
-  mobileUi: {
-    title: string
-    intro: string
-    viewport: string
   }
 }

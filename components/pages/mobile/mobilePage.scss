@@ -15,12 +15,3 @@
   background: #fafafa;
   box-shadow: 0 0 0 1px rgba($color-black, 0.06);
 }
-
-.mobilePage--ui .mobilePage__viewport {
-  overflow: hidden;
-}
-
-.mobilePage__uiCanvas {
-  min-height: calc(100vh - #{$header-height});
-  border-radius: 0;
-}

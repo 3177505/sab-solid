@@ -11,8 +11,7 @@ export const PRESENTATION_STEPS: PresentationStep[] = [
   { path: '/tokens', title: 'Style guide' },
   { path: '/ui/classic', title: 'UI Jednoduchá verze' },
   { path: '/ui/premium', title: 'UI Rozšířená verze' },
-  { path: '/mobile/ux', title: 'Mobile UX' },
-  { path: '/mobile/ui', title: 'UI Mobile' },
+  { path: '/mobile/ux', title: 'UX Mobil' },
 ]
 
 export function getPresentationStep(pathname: string) {

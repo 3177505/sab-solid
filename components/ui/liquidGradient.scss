@@ -1,0 +1,135 @@
+@import '../_setup/vars.scss';
+
+.liquidGradient {
+  --liquid-blending: hard-light;
+
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.liquidGradient__svg {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
+
+.liquidGradient__container {
+  width: 100%;
+  height: 100%;
+}
+
+.liquidGradient__blob {
+  position: absolute;
+  mix-blend-mode: var(--liquid-blending);
+  transform-origin: center center;
+  will-change: transform;
+  animation: liquidGradient-drift ease-in-out infinite;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+.liquidGradient__blob--primary {
+  background-image: radial-gradient(
+    ellipse 88% 72% at 50% 50%,
+    rgba($color-identity-primary, 0.52) 0%,
+    rgba($color-identity-primary, 0.18) 42%,
+    rgba($color-identity-primary, 0) 72%
+  );
+}
+
+.liquidGradient__blob--secondary {
+  background-image: radial-gradient(
+    ellipse 82% 68% at 48% 52%,
+    rgba($color-identity-secondary, 0.58) 0%,
+    rgba($color-identity-secondary, 0.2) 44%,
+    rgba($color-identity-secondary, 0) 74%
+  );
+}
+
+.liquidGradient__blob--tertiary {
+  background-image: radial-gradient(
+    ellipse 90% 74% at 52% 48%,
+    rgba($color-identity-tertiary, 0.38) 0%,
+    rgba($color-identity-tertiary, 0.14) 40%,
+    rgba($color-identity-tertiary, 0) 70%
+  );
+}
+
+.liquidGradient__blob--grey-mid {
+  background-image: radial-gradient(
+    ellipse 86% 70% at 50% 50%,
+    rgba($color-identity-grey-mid, 0.32) 0%,
+    rgba($color-identity-grey-mid, 0.12) 42%,
+    rgba($color-identity-grey-mid, 0) 72%
+  );
+}
+
+.liquidGradient__blob--grey-light {
+  background-image: radial-gradient(
+    ellipse 84% 76% at 49% 51%,
+    rgba($color-identity-grey-light, 0.45) 0%,
+    rgba($color-identity-grey-light, 0.16) 44%,
+    rgba($color-identity-grey-light, 0) 74%
+  );
+}
+
+.liquidGradient__blob--grey-lighter {
+  background-image: radial-gradient(
+    ellipse 80% 66% at 51% 49%,
+    rgba($color-identity-grey-lighter, 0.55) 0%,
+    rgba($color-identity-grey-lighter, 0.18) 46%,
+    rgba($color-identity-grey-lighter, 0) 76%
+  );
+}
+
+.liquidGradient__blob--interactive {
+  width: 125%;
+  height: 118%;
+  top: -59%;
+  left: -62%;
+  opacity: 0;
+  animation: none !important;
+  will-change: transform, opacity;
+  transition: opacity 0.8s ease;
+  background-image: radial-gradient(
+    ellipse 90% 74% at 50% 50%,
+    rgba($color-identity-primary, 0.62) 0%,
+    rgba($color-identity-primary, 0.24) 40%,
+    rgba($color-identity-primary, 0) 72%
+  );
+
+  &.is-active {
+    opacity: 0.6;
+  }
+}
+
+@keyframes liquidGradient-drift {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(0deg) scale(1);
+  }
+
+  20% {
+    transform: translate3d(var(--drift-x), calc(var(--drift-y) * 0.45), 0)
+      rotate(calc(var(--drift-rotate) * 0.6)) scale(1.06);
+  }
+
+  45% {
+    transform: translate3d(calc(var(--drift-x) * -0.55), var(--drift-y), 0)
+      rotate(calc(var(--drift-rotate) * -0.85)) scale(0.96);
+  }
+
+  70% {
+    transform: translate3d(calc(var(--drift-x) * 0.75), calc(var(--drift-y) * -0.7), 0)
+      rotate(calc(var(--drift-rotate) * 0.45)) scale(1.04);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .liquidGradient__blob:not(.liquidGradient__blob--interactive) {
+    animation: none !important;
+  }
+}

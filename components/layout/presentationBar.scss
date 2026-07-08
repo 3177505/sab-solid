@@ -1,13 +1,12 @@
 @import '../_setup/vars.scss';
 
 $bar-bg: #1c2430;
-$bar-height: 36px;
 
 .presentationBar {
   position: sticky;
   top: 0;
   z-index: $z-index-nav;
-  height: $bar-height;
+  height: $presentation-bar-height;
   border-bottom: 1px solid rgba($color-white, 0.08);
   background: $bar-bg;
 }
@@ -86,7 +85,7 @@ $bar-height: 36px;
 }
 
 .presentationMain {
-  min-height: calc(100vh - #{$bar-height});
+  min-height: calc(100vh - #{$presentation-bar-height});
 
   &:has(.presentationPage--dark),
   &:has(.hubPage) {
@@ -96,7 +95,7 @@ $bar-height: 36px;
 }
 
 .presentationMain--canvas {
-  min-height: calc(100vh - #{$bar-height});
+  min-height: calc(100vh - #{$presentation-bar-height});
   padding: 0;
 }
 

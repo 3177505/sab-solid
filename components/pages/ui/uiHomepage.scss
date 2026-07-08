@@ -11,6 +11,7 @@
   --ui-accent: #0d6e6e;
   --ui-accent-dark: #0a5555;
   --ui-accent-soft: #e6f3f3;
+  --ui-accent-bright: #14a3a3;
   --ui-border: #e2e8e8;
   --ui-radius: 16px;
   --ui-radius-sm: 10px;
@@ -28,6 +29,565 @@
 .uiHp--premium {
   --ui-accent: #14a3a3;
   --ui-accent-dark: #0d6e6e;
+  font-family: $font-ui-premium;
+}
+
+// Classic — scroll tones, glass, vzdušné sekce
+@mixin ui-glass($bg: #ffffff80, $border: rgba(255, 255, 255, 0.65)) {
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+  background-color: $bg;
+  border: 1px solid $border;
+  border-radius: max(12px, 0.625vw);
+  box-shadow: 0 8px 32px rgba(30, 57, 65, 0.08);
+}
+
+@mixin ui-btn-base {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: inherit;
+  line-height: 1.2;
+  border-radius: max(12px, 0.625vw);
+  border: 1px solid transparent;
+  text-decoration: none;
+  cursor: pointer;
+  white-space: nowrap;
+  box-shadow: none;
+  transition: background-color $transition-fast, border-color $transition-fast, color $transition-fast;
+}
+
+@mixin ui-btn-light-bg {
+  background-color: rgba(255, 255, 255, 0.45);
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+}
+
+// Type 1 — light outline, transparent; hover light glass
+@mixin ui-btn-outline {
+  @include ui-btn-base;
+  background-color: transparent;
+  border-color: rgba($color-identity-grey-light, 0.95);
+  color: var(--ui-text);
+
+  &:hover {
+    @include ui-btn-light-bg;
+    border-color: rgba(255, 255, 255, 0.55);
+    color: var(--ui-text);
+  }
+}
+
+// Type 2 — filled identity color; hover light glass
+@mixin ui-btn-fill {
+  @include ui-btn-base;
+  background-color: $color-identity-tertiary;
+  border-color: transparent;
+  color: #fff;
+
+  &:hover {
+    @include ui-btn-light-bg;
+    border-color: rgba(255, 255, 255, 0.55);
+    color: var(--ui-accent);
+  }
+}
+
+// Type 3 — light glass; hover filled color
+@mixin ui-btn-soft {
+  @include ui-btn-base;
+  @include ui-btn-light-bg;
+  border-color: rgba(255, 255, 255, 0.45);
+  color: var(--ui-accent);
+
+  &:hover {
+    background-color: $color-identity-tertiary;
+    border-color: transparent;
+    color: #fff;
+  }
+}
+
+@mixin ui-grid-zigzag {
+  @include lg {
+    > *:nth-child(odd) {
+      grid-column: 1;
+    }
+
+    > *:nth-child(even) {
+      grid-column: 2;
+    }
+
+    @for $i from 1 through 12 {
+      > *:nth-child(#{$i}) {
+        grid-row: #{$i};
+      }
+    }
+  }
+}
+
+.uiHp--classic {
+  --ui-bg: #{$color-white};
+  --ui-surface: #{$color-identity-grey-lighter};
+  --ui-text: #{$color-identity-grey-dark-blue};
+  --ui-muted: #{$color-identity-grey-mid};
+  --ui-accent: #{$color-identity-tertiary};
+  --ui-accent-dark: #{$color-identity-grey-dark-blue};
+  --ui-accent-soft: #{$color-identity-secondary};
+  --ui-accent-bright: #{$color-identity-primary};
+  --ui-border: #{$color-identity-grey-light};
+  --ui-radius: 20px;
+  --ui-radius-sm: 12px;
+  --ui-radius-lg: 24px;
+  --ui-max: 1080px;
+  --ui-section-py: clamp(96px, 14vh, 160px);
+  --ui-dock-h: 80px;
+
+  position: relative;
+  background-color: transparent;
+  color: var(--ui-text);
+  font-size: 18px;
+  padding-bottom: var(--ui-dock-h);
+  transition: background-color 0.55s ease-in-out;
+  will-change: background-color;
+
+  &::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    background-color: $color-white;
+    transition: background-color 0.55s ease-in-out;
+    pointer-events: none;
+  }
+
+  .uiHp__liquidBg {
+    position: fixed;
+    inset: 0;
+    z-index: 1;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  &.uiHp--tone-0::before {
+    background-color: $color-white;
+  }
+
+  &.uiHp--tone-1::before {
+    background-color: $color-identity-secondary;
+  }
+
+  &.uiHp--tone-2::before {
+    background-color: $color-identity-grey-lighter;
+  }
+
+  &.uiHp--tone-3::before {
+    background-color: $color-identity-grey-light;
+  }
+
+  &.uiHp--tone-4::before {
+    background-color: mix($color-identity-grey-mid, $color-identity-grey-light, 40%);
+  }
+
+  &.uiHp--tone-accent::before {
+    background-color: $color-identity-tertiary;
+  }
+
+  .uiHp__container {
+    padding-inline: clamp(24px, 4vw, 40px);
+  }
+
+  // Nav — sticky, same width as content container
+  .uiHp__nav {
+    position: sticky;
+    top: $presentation-bar-height;
+    z-index: 60;
+    padding: 12px clamp(24px, 4vw, 40px) 0;
+    background: transparent;
+    backdrop-filter: none;
+    border-bottom: none;
+    box-shadow: none;
+  }
+
+  .uiHp__navShell {
+    width: 100%;
+    max-width: var(--ui-max);
+  }
+
+  .uiHp__h1 {
+    font-size: clamp(36px, 5.5vw, 58px);
+    letter-spacing: -0.035em;
+    line-height: 1.1;
+    margin-bottom: 24px;
+  }
+
+  .uiHp__h2 {
+    font-size: clamp(28px, 3.5vw, 40px);
+    letter-spacing: -0.03em;
+    margin-bottom: 36px;
+  }
+
+  .uiHp__h3 {
+    font-size: 22px;
+    font-weight: 600;
+  }
+
+  .uiHp__lead {
+    font-size: 21px;
+    line-height: 1.55;
+    margin-bottom: 32px;
+    max-width: 44ch;
+  }
+
+  .uiHp__body {
+    font-size: 17px;
+    line-height: 1.65;
+  }
+
+  .uiHp__eyebrow {
+    font-size: 13px;
+  }
+
+  // Tlačítka — 3 unified types
+  .uiHp__btn {
+    @include ui-btn-base;
+  }
+
+  .uiHp__btn--sm {
+    padding: 8px 16px;
+    font-size: 13px;
+  }
+
+  .uiHp__btn--ghost {
+    @include ui-btn-outline;
+  }
+
+  .uiHp__btn--primary {
+    @include ui-btn-fill;
+  }
+
+  .uiHp__btn--onAccent,
+  .uiHp__btn--soft {
+    @include ui-btn-soft;
+  }
+
+  .uiHp__btnRow {
+    gap: 14px;
+  }
+
+  // Sekce — plná výška, průhledné (barvu řídí scroll na .uiHp)
+  .uiHp__section {
+    position: relative;
+    z-index: 2;
+    min-height: 100svh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-block: var(--ui-section-py);
+    background: transparent !important;
+
+    > .uiHp__container {
+      width: 100%;
+    }
+
+    &--compact {
+      min-height: 100svh;
+    }
+
+    &--accent {
+      color: #fff;
+
+      .uiHp__h2,
+      .uiHp__body,
+      .uiHp__body--emphasis,
+      .uiHp__muted {
+        color: #fff;
+      }
+
+      .uiHp__flowStep {
+        @include ui-glass(rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0.22));
+      }
+
+      .uiHp__flowNum {
+        background: #fff;
+        color: var(--ui-accent);
+      }
+    }
+  }
+
+  .uiHp__grid--2.uiHp__grid--zigzag,
+  .uiHp__forwardGrid.uiHp__grid--zigzag {
+    @include ui-grid-zigzag;
+  }
+
+  .uiHp__nav {
+    position: sticky;
+    top: $presentation-bar-height;
+    z-index: 60;
+  }
+
+  .uiHp__footer {
+    position: relative;
+    z-index: 3;
+  }
+
+  // Hero — liquid gradient + scroll tones
+  .uiHp__heroGrid {
+    gap: 48px;
+    align-items: center;
+  }
+
+  .uiHp__rates {
+    @include ui-glass(rgba(255, 255, 255, 0.72), rgba(255, 255, 255, 0.55));
+    padding: 28px;
+    box-shadow: none;
+
+    .uiHp__h3 {
+      margin-bottom: 12px;
+      font-size: 13px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--ui-muted);
+    }
+  }
+
+  .uiHp__rateRow {
+    padding: 10px 0;
+    font-size: 15px;
+    border-bottom-color: var(--ui-border);
+  }
+
+  // Trust — jednoduchý pás
+  .uiHp__trustRow {
+    gap: 20px 40px;
+    justify-content: center;
+  }
+
+  .uiHp__trustItem {
+    font-size: 13px;
+    color: var(--ui-muted);
+  }
+
+  // Karty — ploché, zaoblené, bez stínů
+  .uiHp__grid {
+    gap: 20px;
+  }
+
+  .uiHp__card {
+    @include ui-glass(rgba(255, 255, 255, 0.58), rgba(255, 255, 255, 0.5));
+    padding: 32px;
+    border-radius: 0;
+    box-shadow: none;
+
+    &--featured {
+      border-color: rgba($color-identity-primary, 0.55);
+      background-color: rgba(255, 255, 255, 0.72);
+    }
+
+    &--flat,
+    &--path {
+      background-color: rgba(255, 255, 255, 0.5);
+      border-color: rgba(255, 255, 255, 0.45);
+    }
+  }
+
+  // Dock — glass shell fits button row width
+  .uiHp__dock {
+    display: flex;
+    justify-content: center;
+    background: transparent;
+    border: none;
+    padding: 12px clamp(24px, 4vw, 40px);
+    padding-bottom: max(12px, env(safe-area-inset-bottom));
+  }
+
+  .uiHp__dockShell {
+    width: fit-content;
+    max-width: 100%;
+    margin: 0;
+    @include ui-glass(rgba($color-identity-tertiary, 0.5), rgba(255, 255, 255, 0.18));
+    overflow: visible;
+  }
+
+  .uiHp__dockInner {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: fit-content;
+    padding: 8px 10px;
+  }
+
+  .uiHp__dockShell .uiHp__btn--ghost {
+    border-color: rgba(255, 255, 255, 0.4);
+    color: rgba(255, 255, 255, 0.92);
+
+    &:hover {
+      color: var(--ui-accent);
+    }
+  }
+
+  .uiHp__dockShell .uiHp__btn--primary:hover,
+  .uiHp__dockShell .uiHp__btn--soft:hover {
+    color: var(--ui-accent);
+  }
+
+  .uiHp__field input {
+    @include ui-glass(rgba(255, 255, 255, 0.65), rgba(255, 255, 255, 0.45));
+  }
+
+  .uiHp__trustItem {
+    font-size: 15px;
+  }
+
+  .uiHp__card--service {
+    min-height: auto;
+    padding: 28px 22px;
+  }
+
+  .uiHp__label {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--ui-accent-bright);
+    margin-bottom: 8px;
+  }
+
+  .uiHp__tag {
+    color: var(--ui-accent);
+    font-size: 11px;
+  }
+
+  .uiHp__sectionCta {
+    margin-top: 36px;
+  }
+
+  .uiHp__flow {
+    gap: 16px;
+    margin: 32px 0;
+  }
+
+  .uiHp__flowStep {
+    padding: 24px;
+    border-radius: var(--ui-radius);
+  }
+
+  .uiHp__forwardGrid {
+    gap: 40px;
+  }
+
+  .uiHp__section--lead {
+    .uiHp__leadGrid {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: clamp(28px, 4vw, 40px);
+      max-width: 560px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .uiHp__leadIntro {
+      max-width: 42ch;
+
+      .uiHp__h2 {
+        margin-bottom: 16px;
+      }
+
+      .uiHp__body {
+        margin: 0;
+      }
+    }
+
+    .uiHp__leadCard {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      text-align: left;
+    }
+
+    .uiHp__form {
+      @include ui-glass(rgba(255, 255, 255, 0.58), rgba(255, 255, 255, 0.5));
+      padding: 28px;
+      margin-top: 0;
+      gap: 14px;
+    }
+
+    .uiHp__card--phone {
+      text-align: center;
+      padding: 24px;
+    }
+  }
+
+  .uiHp__field input {
+    border-radius: var(--ui-radius-sm);
+  }
+
+  // Footer
+  .uiHp__dockInner {
+    gap: 8px;
+  }
+
+  .uiHp__footer {
+    background: var(--ui-text);
+    padding: clamp(96px, 14vw, 160px) 0 clamp(72px, 10vw, 120px);
+    margin-top: 0;
+    border-radius: 0 0 max(24px, 1.25vw) max(24px, 1.25vw);
+    overflow: hidden;
+  }
+
+  .uiHp__footerGrid {
+    gap: 48px 32px;
+    padding-bottom: clamp(48px, 6vw, 72px);
+  }
+
+  .uiHp__footerTitle {
+    font-size: 14px;
+    margin-bottom: 20px;
+  }
+
+  .uiHp__footerList {
+    gap: 12px;
+
+    a {
+      font-size: 17px;
+    }
+  }
+
+  .uiHp__footerBottom {
+    padding-top: clamp(32px, 4vw, 48px);
+    gap: 24px;
+  }
+
+  .uiHp__footerSocial a {
+    font-size: 16px;
+  }
+
+  .uiHp__footerLegal a {
+    font-size: 15px;
+  }
+
+  .uiHp__footerAside {
+    font-size: 14px;
+  }
+
+  .uiHp__footerList a:hover,
+  .uiHp__footerSocial a:hover {
+    color: var(--ui-accent-bright);
+  }
+}
+
+@keyframes uiHp-gradient-drift {
+  0% {
+    background-position: 0% 40%;
+  }
+
+  100% {
+    background-position: 100% 60%;
+  }
 }
 
 .uiHp__container {
@@ -40,49 +600,197 @@
 // Nav
 .uiHp__nav {
   position: sticky;
-  top: 36px;
+  top: $presentation-bar-height;
   z-index: 50;
-  background: rgba(255, 255, 255, 0.92);
-  backdrop-filter: blur(8px);
-  border-bottom: 1px solid var(--ui-border);
+  padding: 12px clamp(16px, 3vw, 28px) 0;
+  background: transparent;
+  border-bottom: none;
+}
+
+.uiHp__navShell {
+  position: relative;
+  width: 100%;
+  max-width: min(920px, 100%);
+  margin: 0 auto;
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+  background-color: #ffffff80;
+  border-radius: max(12px, 0.625vw);
+  border: 1px solid rgba(255, 255, 255, 0.65);
+  box-shadow: 0 8px 32px rgba(30, 57, 65, 0.06);
+  overflow: visible;
 }
 
 .uiHp__navInner {
   display: grid;
   grid-template-columns: auto 1fr auto;
   align-items: center;
-  gap: 24px;
-  padding-block: 14px;
-  white-space: nowrap;
+  gap: 20px;
+  padding: 10px 16px;
 }
 
 .uiHp__logo {
-  font-weight: 700;
-  font-size: 15px;
-  letter-spacing: -0.02em;
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  color: inherit;
+  line-height: 0;
+}
+
+.uiHp__logoImg {
+  display: block;
+  width: auto;
+  height: 28px;
+  max-width: 148px;
+  object-fit: contain;
 }
 
 .uiHp__navLinks {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 28px;
+  gap: clamp(14px, 2vw, 24px);
+  flex-wrap: nowrap;
+  min-width: 0;
 }
 
-.uiHp__navLink {
+.uiHp__navLink,
+.uiHp__navTrigger {
+  white-space: nowrap;
   font-size: 14px;
-  color: var(--ui-text);
+  color: var(--ui-muted);
   text-decoration: none;
+  transition: color $transition-fast;
 
   &:hover {
-    color: var(--ui-accent);
+    color: var(--ui-text);
+  }
+
+  &--tarf {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 600;
+    color: var(--ui-text);
+  }
+}
+
+.uiHp__navTrigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--ui-muted);
+  background: none;
+  border: none;
+  cursor: default;
+  outline: none;
+  transition: color $transition-fast;
+
+  &:hover,
+  .uiHp__navDropdown:hover &,
+  .uiHp__navDropdown:focus-within & {
+    color: var(--ui-text);
+  }
+}
+
+.uiHp__navCaret {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  border-radius: 999px;
+  background: rgba($color-identity-grey-dark-blue, 0.06);
+  transition: transform $transition-fast, background $transition-fast;
+
+  &::after {
+    content: '';
+    width: 5px;
+    height: 5px;
+    border-right: 1.5px solid currentColor;
+    border-bottom: 1.5px solid currentColor;
+    border-radius: 1px;
+    transform: rotate(45deg) translate(-1px, -1px);
+    transition: transform $transition-fast;
+  }
+}
+
+.uiHp__navTrigger--open .uiHp__navCaret,
+.uiHp__navDropdown--open .uiHp__navCaret,
+.uiHp__navDropdown:hover .uiHp__navCaret,
+.uiHp__dropdown--open .uiHp__navCaret,
+.uiHp__dropdown:hover .uiHp__navCaret {
+  background: rgba($color-identity-primary, 0.15);
+
+  &::after {
+    transform: rotate(225deg) translate(-1px, -1px);
+  }
+}
+
+.uiHp__navDropdown {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.uiHp__navDropdownPanel {
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 50%;
+  z-index: 70;
+  display: none;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 240px;
+  padding: 8px;
+  white-space: normal;
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+  background-color: #ffffff80;
+  border: 1px solid rgba(255, 255, 255, 0.65);
+  border-radius: max(12px, 0.625vw);
+  box-shadow: 0 8px 32px rgba(30, 57, 65, 0.1);
+  transform: translateX(-50%);
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: -12px;
+    left: 0;
+    right: 0;
+    height: 12px;
+  }
+}
+
+.uiHp__navDropdownPanel--open,
+.uiHp__navDropdown--open .uiHp__navDropdownPanel {
+  display: flex;
+}
+
+.uiHp__navDropdownLink {
+  display: block;
+  width: 100%;
+  padding: 10px 14px;
+  font-size: 14px;
+  line-height: 1.35;
+  color: var(--ui-text);
+  text-decoration: none;
+  border-radius: max(10px, 0.5vw);
+  white-space: normal;
+  transition: background $transition-fast;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.55);
   }
 }
 
 .uiHp__navEnd {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 14px;
 }
 
 .uiHp__navMuted {
@@ -91,28 +799,180 @@
   text-decoration: none;
 }
 
-.uiHp__lang {
+.uiHp__navActions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: auto;
+}
+
+// Dropdown — locale (panel under trigger section)
+.uiHp__dropdown {
+  position: relative;
+}
+
+.uiHp__dropdownTrigger {
   display: inline-flex;
   align-items: center;
-  gap: 4px;
-  font-size: 13px;
-  border: 1px solid var(--ui-border);
-  border-radius: var(--ui-radius-sm);
+  gap: 6px;
   padding: 6px 10px;
-}
-
-.uiHp__langCurrent {
+  font-size: 13px;
   font-weight: 600;
+  font-family: inherit;
   color: var(--ui-text);
+  background: rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba($color-identity-grey-dark-blue, 0.08);
+  border-radius: max(12px, 0.625vw);
+  cursor: default;
+  user-select: none;
+  white-space: nowrap;
+  outline: none;
+  transition: border-color $transition-fast, background $transition-fast;
+
+  &:hover,
+  .uiHp__dropdown--open &,
+  .uiHp__dropdown:hover & {
+    border-color: var(--ui-accent-bright, var(--ui-accent));
+    background: rgba(255, 255, 255, 0.75);
+  }
 }
 
-.uiHp__langOption {
+.uiHp__dropdownPanel {
+  position: absolute;
+  top: calc(100% + 6px);
+  right: 0;
+  z-index: 60;
+  display: none;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 160px;
+  padding: 6px;
+  white-space: normal;
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+  background-color: #ffffff80;
+  border: 1px solid rgba(255, 255, 255, 0.65);
+  border-radius: max(12px, 0.625vw);
+  box-shadow: 0 8px 32px rgba(30, 57, 65, 0.1);
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: 0;
+    right: 0;
+    height: 10px;
+  }
+}
+
+.uiHp__dropdownPanel--open,
+.uiHp__dropdown--open .uiHp__dropdownPanel {
+  display: flex;
+}
+
+.uiHp__dropdown--locale .uiHp__dropdownPanel {
+  right: 0;
+  left: auto;
+}
+
+.uiHp__dropdownLink {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 12px;
+  font-size: 14px;
+  color: var(--ui-text);
+  text-decoration: none;
+  border-radius: var(--ui-radius-sm, 10px);
+  transition: background $transition-fast;
+
+  &:hover {
+    background: var(--ui-surface, #f4f7f7);
+  }
+
+  &--tarf {
+    font-weight: 600;
+  }
+}
+
+.uiHp__dropdownOption {
+  display: block;
+  width: 100%;
+  padding: 10px 12px;
+  font-size: 14px;
+  text-align: left;
+  white-space: normal;
+  color: var(--ui-muted);
   background: none;
   border: none;
-  padding: 0 4px;
-  font-size: 13px;
-  color: var(--ui-muted);
+  border-radius: var(--ui-radius-sm, 10px);
   cursor: default;
+
+  &:hover {
+    background: var(--ui-surface, #f4f7f7);
+    color: var(--ui-text);
+  }
+}
+
+.uiHp__novinka {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--ui-accent-bright, var(--ui-accent));
+  letter-spacing: 0.01em;
+}
+
+// Bottom dock — Investoři · CTA · ProStream
+.uiHp__dock {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 45;
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(16px);
+  border-top: 1px solid var(--ui-border);
+  padding: 10px 16px;
+  padding-bottom: max(10px, env(safe-area-inset-bottom));
+}
+
+.uiHp__dockInner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin: 0 auto;
+}
+
+.uiHp__dockLink {
+  padding: 10px 16px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--ui-muted);
+  text-decoration: none;
+  border-radius: var(--ui-radius-lg, 24px);
+  white-space: nowrap;
+  transition: color $transition-fast, background $transition-fast;
+
+  &:hover {
+    color: var(--ui-text);
+    background: var(--ui-surface, #f4f7f7);
+  }
+}
+
+.uiHp__dockCta {
+  padding: 10px 20px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #fff;
+  background: var(--ui-accent);
+  text-decoration: none;
+  border-radius: var(--ui-radius-lg, 24px);
+  white-space: nowrap;
+  transition: background $transition-fast;
+
+  &:hover {
+    background: var(--ui-accent-dark);
+  }
 }
 
 // Typografie
@@ -173,58 +1033,45 @@
   margin: 0 0 8px;
 }
 
-// Tlačítka
+// Tlačítka — 3 unified types (premium + fallback)
 .uiHp__btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 12px 22px;
-  font-size: 14px;
-  font-weight: 600;
-  border-radius: 999px;
-  border: 2px solid transparent;
-  text-decoration: none;
-  cursor: pointer;
-  transition: background 0.15s, color 0.15s, border-color 0.15s;
-  white-space: nowrap;
-}
-
-.uiHp__btn--primary {
-  background: var(--ui-accent);
-  color: #fff;
-
-  &:hover {
-    background: var(--ui-accent-dark);
-  }
+  @include ui-btn-base;
 }
 
 .uiHp__btn--ghost {
-  background: transparent;
-  color: var(--ui-text);
-  border-color: var(--ui-border);
-
-  &:hover {
-    border-color: var(--ui-accent);
-    color: var(--ui-accent);
-  }
+  @include ui-btn-outline;
 }
 
-.uiHp__btn--onAccent {
-  background: #fff;
-  color: var(--ui-accent);
+.uiHp__btn--primary {
+  @include ui-btn-fill;
+}
 
-  &:hover {
-    background: var(--ui-accent-soft);
-  }
+.uiHp__btn--onAccent,
+.uiHp__btn--soft {
+  @include ui-btn-soft;
 }
 
 .uiHp__btn--prostream {
-  background: #1a3a5c;
-  color: #fff;
+  @include ui-btn-fill;
+  background-color: #1a3a5c;
 
   &:hover {
-    background: #0f2840;
+    @include ui-btn-light-bg;
+    color: #1a3a5c;
   }
+}
+
+.uiHp__btn--sm {
+  padding: 8px 16px;
+  font-size: 13px;
+}
+
+.uiHp__label {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--ui-accent);
+  margin-bottom: 8px;
 }
 
 .uiHp__badge {
@@ -408,12 +1255,16 @@
   &--stack {
     grid-template-columns: 1fr;
   }
+
+  &--2.uiHp__grid--zigzag {
+    @include ui-grid-zigzag;
+  }
 }
 
 .uiHp__card {
   background: #fff;
   border: 1px solid var(--ui-border);
-  border-radius: var(--ui-radius);
+  border-radius: 0;
   padding: 24px;
   box-shadow: var(--ui-shadow);
   display: flex;
@@ -546,6 +1397,10 @@
   &--stack {
     grid-template-columns: 1fr;
   }
+
+  &.uiHp__grid--zigzag {
+    @include ui-grid-zigzag;
+  }
 }
 
 .uiHp__quote {
@@ -573,6 +1428,16 @@
   &--stack {
     grid-template-columns: 1fr;
   }
+}
+
+.uiHp__leadIntro {
+  display: grid;
+  gap: 12px;
+}
+
+.uiHp__leadCard {
+  display: grid;
+  gap: 16px;
 }
 
 .uiHp__form {
@@ -628,13 +1493,13 @@
 .uiHp__footer {
   background: #1a1f26;
   color: #fff;
-  padding: 56px 0 32px;
+  padding: clamp(80px, 12vw, 140px) 0 clamp(56px, 8vw, 100px);
 }
 
 .uiHp__footerGrid {
   display: grid;
-  gap: 32px 24px;
-  padding-bottom: 40px;
+  gap: 40px 28px;
+  padding-bottom: clamp(40px, 5vw, 64px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.12);
 
   @include lg {
@@ -647,11 +1512,11 @@
 }
 
 .uiHp__footerTitle {
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  margin: 0 0 14px;
+  margin: 0 0 18px;
   color: rgba(255, 255, 255, 0.5);
 }
 
@@ -660,10 +1525,10 @@
   margin: 0;
   padding: 0;
   display: grid;
-  gap: 8px;
+  gap: 10px;
 
   a {
-    font-size: 14px;
+    font-size: 16px;
     color: rgba(255, 255, 255, 0.85);
     text-decoration: none;
 
@@ -678,16 +1543,16 @@
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
-  gap: 16px;
-  padding-top: 24px;
+  gap: 20px;
+  padding-top: clamp(28px, 4vw, 40px);
 }
 
 .uiHp__footerSocial {
   display: flex;
-  gap: 20px;
+  gap: 24px;
 
   a {
-    font-size: 14px;
+    font-size: 16px;
     font-weight: 500;
     color: rgba(255, 255, 255, 0.85);
     text-decoration: none;
@@ -704,7 +1569,7 @@
   gap: 16px 24px;
 
   a {
-    font-size: 13px;
+    font-size: 14px;
     color: rgba(255, 255, 255, 0.55);
     text-decoration: none;
 
@@ -715,40 +1580,32 @@
 }
 
 .uiHp__footerAside {
-  font-size: 12px;
+  font-size: 13px;
   color: rgba(255, 255, 255, 0.45);
   margin: 0;
 }
 
-// Mobile
-.uiHp--mobile {
-  .uiHp__navInner {
-    grid-template-columns: 1fr;
-    white-space: normal;
-    gap: 12px;
-  }
-
-  .uiHp__navLinks {
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    gap: 12px 16px;
-  }
-
-  .uiHp__navEnd {
-    justify-content: space-between;
-    width: 100%;
-  }
-
-  .uiHp__footerGrid--stack {
-    grid-template-columns: 1fr;
-  }
+// Dekorativní logo pod footerem — jen na konci stránky při scrollu
+.uiHp__pageLogo {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: clamp(64px, 12vw, 140px) clamp(20px, 4vw, 32px) clamp(48px, 8vw, 96px);
+  pointer-events: none;
 }
 
-// V UiShell — bez vlastního toolbaru paddingu na canvasu
+.uiHp__pageLogoMark {
+  display: block;
+  width: 75%;
+  aspect-ratio: 307 / 57;
+  background-color: $color-identity-tertiary;
+  mask: url('/sab-logo.svg') center / contain no-repeat;
+  -webkit-mask: url('/sab-logo.svg') center / contain no-repeat;
+}
+
+// V UiShell
 .uiShell .uiHp {
   width: 100%;
-}
-
-.uiShell .uiHp__nav {
-  top: 0;
 }

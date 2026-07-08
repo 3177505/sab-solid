@@ -1,53 +1,52 @@
 import { UX_HOMEPAGE_CONTENT as C } from '@/content/ux/homepage'
+import UiNavBar from '@/components/pages/ui/UiNavBar'
+import UiScrollTones from '@/components/pages/ui/UiScrollTones'
+import LiquidGradient from '@/components/ui/LiquidGradient'
 
 type UiHomepageProps = {
   variant?: 'classic' | 'premium'
-  mobile?: boolean
 }
 
-export default function UiHomepage({ variant = 'classic', mobile = false }: UiHomepageProps) {
+function sectionTone(variant: UiHomepageProps['variant'], tone: string) {
+  return variant === 'classic' ? { 'data-tone': tone } : {}
+}
+
+export default function UiHomepage({ variant = 'classic' }: UiHomepageProps) {
   return (
-    <div className={`uiHp uiHp--${variant}${mobile ? ' uiHp--mobile' : ''}`}>
+    <div className={`uiHp uiHp--${variant}${variant === 'classic' ? ' uiHp--tone-0' : ''}`}>
+      {variant === 'classic' && (
+        <>
+          <UiScrollTones />
+          <LiquidGradient className="uiHp__liquidBg" />
+        </>
+      )}
       <header className="uiHp__nav">
-        <div className="uiHp__container uiHp__navInner">
-          <span className="uiHp__logo">{C.nav.logo}</span>
-          <nav className="uiHp__navLinks" aria-label="Hlavní navigace">
-            <a href={C.nav.tarf.href} className="uiHp__navLink uiHp__navLink--tarf">
-              <span className="uiHp__badge">{C.nav.tarf.badge}</span>
-              {C.nav.tarf.label}
-            </a>
-            {C.nav.links.map((link) => (
-              <a key={link} href="#" className="uiHp__navLink">
-                {link}
-              </a>
-            ))}
-          </nav>
-          <div className="uiHp__navEnd">
-            <a href="#" className="uiHp__navMuted">
-              {C.nav.aside}
-            </a>
-            <a href="#" className="uiHp__btn uiHp__btn--primary">
-              {C.nav.cta}
-            </a>
-            <a href={C.nav.prostream.href} className="uiHp__btn uiHp__btn--prostream">
-              {C.nav.prostream.label}
-            </a>
-            <nav className="uiHp__lang" aria-label="Jazyk">
-              <span className="uiHp__langCurrent">{C.nav.lang.current}</span>
-              {C.nav.lang.options
-                .filter((l) => l !== C.nav.lang.current)
-                .map((l) => (
-                  <button key={l} type="button" className="uiHp__langOption" disabled>
-                    {l}
-                  </button>
-                ))}
-            </nav>
-          </div>
-        </div>
+        <UiNavBar variant={variant} />
       </header>
 
-      <section className="uiHp__section uiHp__hero">
-        <div className={`uiHp__container uiHp__heroGrid${mobile ? ' uiHp__heroGrid--stack' : ''}`}>
+      {variant === 'classic' && (
+        <nav className="uiHp__dock" aria-label="Rychlé akce">
+          <div className="uiHp__dockShell">
+            <div className="uiHp__dockInner">
+              <a href="#" className="uiHp__btn uiHp__btn--ghost uiHp__btn--sm">
+                {C.nav.aside}
+              </a>
+              <a href="#" className="uiHp__btn uiHp__btn--primary uiHp__btn--sm">
+                {C.nav.cta}
+              </a>
+              <a href={C.nav.prostream.href} className="uiHp__btn uiHp__btn--soft uiHp__btn--sm">
+                {C.nav.prostream.label}
+              </a>
+            </div>
+          </div>
+        </nav>
+      )}
+
+      <section
+        className={`uiHp__section uiHp__hero${variant !== 'classic' ? ' uiHp__hero--gradient' : ''}`}
+        {...sectionTone(variant, '0')}
+      >
+        <div className="uiHp__container uiHp__heroGrid">
           <div className="uiHp__heroCopy">
             <h1 className="uiHp__h1">{C.hero.headline}</h1>
             <p className="uiHp__lead">{C.hero.subheadline}</p>
@@ -73,12 +72,12 @@ export default function UiHomepage({ variant = 'classic', mobile = false }: UiHo
                 {C.hero.ratesNote}
               </a>
             </div>
-            {!mobile && <div className="uiHp__visual" aria-hidden="true" />}
+            {variant !== 'classic' && <div className="uiHp__visual" aria-hidden="true" />}
           </div>
         </div>
       </section>
 
-      <section className="uiHp__section uiHp__section--compact uiHp__trust">
+      <section className="uiHp__section uiHp__section--compact uiHp__trust" {...sectionTone(variant, '1')}>
         <div className="uiHp__container uiHp__trustRow">
           {C.trust.map((item) => (
             <span key={item} className="uiHp__trustItem">
@@ -88,10 +87,10 @@ export default function UiHomepage({ variant = 'classic', mobile = false }: UiHo
         </div>
       </section>
 
-      <section className="uiHp__section uiHp__section--surface">
+      <section className="uiHp__section uiHp__section--surface" {...sectionTone(variant, '2')}>
         <div className="uiHp__container">
           <h2 className="uiHp__h2">{C.problem.headline}</h2>
-          <div className={`uiHp__grid uiHp__grid--2${mobile ? ' uiHp__grid--stack' : ''}`}>
+          <div className="uiHp__grid uiHp__grid--2 uiHp__grid--zigzag">
             {C.problem.scenarios.map((s) => (
               <article key={s.tag} className="uiHp__card">
                 <span className="uiHp__tag">{s.tag}</span>
@@ -105,9 +104,9 @@ export default function UiHomepage({ variant = 'classic', mobile = false }: UiHo
         </div>
       </section>
 
-      <section className="uiHp__section">
+      <section className="uiHp__section" {...sectionTone(variant, '3')}>
         <div className="uiHp__container">
-          <div className={`uiHp__grid uiHp__grid--2${mobile ? ' uiHp__grid--stack' : ''}`}>
+          <div className="uiHp__grid uiHp__grid--2 uiHp__grid--zigzag">
             {C.paths.map((p) => (
               <article key={p.title} className="uiHp__card uiHp__card--path">
                 <h3 className="uiHp__h3">
@@ -123,11 +122,14 @@ export default function UiHomepage({ variant = 'classic', mobile = false }: UiHo
         </div>
       </section>
 
-      <section className="uiHp__section uiHp__section--accent uiHp__forwardFlow">
+      <section
+        className="uiHp__section uiHp__section--accent uiHp__forwardFlow"
+        {...sectionTone(variant, 'accent')}
+      >
         <div className="uiHp__container">
           <h2 className="uiHp__h2">{C.forwardFlow.headline}</h2>
           <p className="uiHp__body">{C.forwardFlow.lead}</p>
-          <div className={`uiHp__flow${mobile ? ' uiHp__flow--stack' : ''}`}>
+          <div className="uiHp__flow">
             {C.forwardFlow.steps.map((s) => (
               <div key={s.num} className="uiHp__flowStep">
                 <span className="uiHp__flowNum">{s.num}</span>
@@ -141,14 +143,14 @@ export default function UiHomepage({ variant = 'classic', mobile = false }: UiHo
               <li key={b}>{b}</li>
             ))}
           </ul>
-          <a href="#" className="uiHp__btn uiHp__btn--primary uiHp__btn--onAccent">
+          <a href="#" className="uiHp__btn uiHp__btn--onAccent">
             {C.forwardFlow.cta}
           </a>
         </div>
       </section>
 
-      <section className="uiHp__section uiHp__forward">
-        <div className={`uiHp__container uiHp__forwardGrid${mobile ? ' uiHp__forwardGrid--stack' : ''}`}>
+      <section className="uiHp__section uiHp__forward" {...sectionTone(variant, '4')}>
+        <div className="uiHp__container uiHp__forwardGrid uiHp__grid--zigzag">
           <div>
             <p className="uiHp__eyebrow">{C.forward.anchor}</p>
             <h2 className="uiHp__h2">{C.forward.headline}</h2>
@@ -169,10 +171,10 @@ export default function UiHomepage({ variant = 'classic', mobile = false }: UiHo
         </div>
       </section>
 
-      <section className="uiHp__section">
+      <section className="uiHp__section" {...sectionTone(variant, '0')}>
         <div className="uiHp__container">
           <h2 className="uiHp__h2 uiHp__h2--center">{C.why.headline}</h2>
-          <div className={`uiHp__grid uiHp__grid--3${mobile ? ' uiHp__grid--stack' : ''}`}>
+          <div className="uiHp__grid uiHp__grid--3">
             {C.why.items.map((w) => (
               <article key={w.title} className="uiHp__card uiHp__card--flat">
                 <h3 className="uiHp__h3">{w.title}</h3>
@@ -188,17 +190,17 @@ export default function UiHomepage({ variant = 'classic', mobile = false }: UiHo
         </div>
       </section>
 
-      <section className="uiHp__section uiHp__section--surface">
+      <section className="uiHp__section uiHp__section--surface" {...sectionTone(variant, '1')}>
         <div className="uiHp__container">
           <h2 className="uiHp__h2 uiHp__h2--center">{C.services.headline}</h2>
-          <div className={`uiHp__grid uiHp__grid--services${mobile ? ' uiHp__grid--stack' : ''}`}>
+          <div className="uiHp__grid uiHp__grid--services">
             {C.services.items.map((s) => (
               <article
                 key={s.title}
                 className={`uiHp__card uiHp__card--service${'featured' in s && s.featured ? ' uiHp__card--featured' : ''}`}
               >
                 {'badge' in s && s.badge ? (
-                  <span className="uiHp__badge">{s.badge}</span>
+                  <span className="uiHp__label">{s.badge}</span>
                 ) : null}
                 <h3 className="uiHp__h3">{s.title}</h3>
                 {'for' in s && s.for ? <p className="uiHp__body">{s.for}</p> : null}
@@ -218,10 +220,10 @@ export default function UiHomepage({ variant = 'classic', mobile = false }: UiHo
         </div>
       </section>
 
-      <section className="uiHp__section uiHp__section--surface">
+      <section className="uiHp__section uiHp__section--surface" {...sectionTone(variant, '2')}>
         <div className="uiHp__container">
           <h2 className="uiHp__h2 uiHp__h2--center">{C.process.headline}</h2>
-          <div className={`uiHp__grid uiHp__grid--3${mobile ? ' uiHp__grid--stack' : ''}`}>
+          <div className="uiHp__grid uiHp__grid--3">
             {C.process.steps.map((p) => (
               <article key={p.step} className="uiHp__card uiHp__card--step">
                 <span className="uiHp__step">{p.step}</span>
@@ -238,10 +240,10 @@ export default function UiHomepage({ variant = 'classic', mobile = false }: UiHo
         </div>
       </section>
 
-      <section className="uiHp__section">
+      <section className="uiHp__section" {...sectionTone(variant, '3')}>
         <div className="uiHp__container">
           <h2 className="uiHp__h2">{C.proof.headline}</h2>
-          <div className={`uiHp__grid uiHp__grid--3${mobile ? ' uiHp__grid--stack' : ''}`}>
+          <div className="uiHp__grid uiHp__grid--3">
             {C.proof.quotes.map((q) => (
               <figure key={q.company} className="uiHp__card uiHp__card--quote">
                 <span className="uiHp__tag">{q.tag}</span>
@@ -258,32 +260,36 @@ export default function UiHomepage({ variant = 'classic', mobile = false }: UiHo
         </div>
       </section>
 
-      <section className="uiHp__section uiHp__section--lead">
-        <div className={`uiHp__container uiHp__leadGrid${mobile ? ' uiHp__leadGrid--stack' : ''}`}>
-          <div>
-            <h2 className="uiHp__h2">{C.lead.headline}</h2>
-            <p className="uiHp__body">{C.lead.sub}</p>
-            <form className="uiHp__form">
-              {C.lead.fields.map((field) => (
-                <label key={field} className="uiHp__field">
-                  <span>{field}</span>
-                  <input type="text" placeholder={field} readOnly />
-                </label>
-              ))}
-              <button type="button" className="uiHp__btn uiHp__btn--primary">
-                {C.lead.cta}
-              </button>
-            </form>
+      <section className="uiHp__section uiHp__section--lead" {...sectionTone(variant, '4')}>
+        <div className="uiHp__container">
+          <div className="uiHp__leadGrid">
+            <div className="uiHp__leadIntro">
+              <h2 className="uiHp__h2">{C.lead.headline}</h2>
+              <p className="uiHp__body">{C.lead.sub}</p>
+            </div>
+            <div className="uiHp__leadCard">
+              <form className="uiHp__form">
+                {C.lead.fields.map((field) => (
+                  <label key={field} className="uiHp__field">
+                    <span>{field}</span>
+                    <input type="text" placeholder={field} readOnly />
+                  </label>
+                ))}
+                <button type="button" className="uiHp__btn uiHp__btn--primary">
+                  {C.lead.cta}
+                </button>
+              </form>
+              <aside className="uiHp__card uiHp__card--phone">
+                <p className="uiHp__phone">{C.lead.phone}</p>
+                <p className="uiHp__muted">{C.lead.phoneLabel}</p>
+              </aside>
+            </div>
           </div>
-          <aside className="uiHp__card uiHp__card--phone">
-            <p className="uiHp__phone">{C.lead.phone}</p>
-            <p className="uiHp__muted">{C.lead.phoneLabel}</p>
-          </aside>
         </div>
       </section>
 
-      <section className="uiHp__section uiHp__section--compact">
-        <div className={`uiHp__container uiHp__newsletter${mobile ? ' uiHp__newsletter--stack' : ''}`}>
+      <section className="uiHp__section uiHp__section--compact" {...sectionTone(variant, '0')}>
+        <div className="uiHp__container uiHp__newsletter">
           <div>
             <h3 className="uiHp__h3">{C.newsletter.headline}</h3>
             <p className="uiHp__body">{C.newsletter.body}</p>
@@ -296,7 +302,7 @@ export default function UiHomepage({ variant = 'classic', mobile = false }: UiHo
 
       <footer className="uiHp__footer">
         <div className="uiHp__container">
-          <div className={`uiHp__footerGrid${mobile ? ' uiHp__footerGrid--stack' : ''}`}>
+          <div className="uiHp__footerGrid">
             {C.footer.columns.map((col) => (
               <div key={col.title} className="uiHp__footerCol">
                 <h3 className="uiHp__footerTitle">{col.title}</h3>
@@ -329,6 +335,10 @@ export default function UiHomepage({ variant = 'classic', mobile = false }: UiHo
           </div>
         </div>
       </footer>
+
+      <div className="uiHp__pageLogo" aria-hidden="true">
+        <span className="uiHp__pageLogoMark" role="presentation" />
+      </div>
     </div>
   )
 }

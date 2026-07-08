@@ -15,7 +15,6 @@ export const dict: Dictionary = {
     tokens: 'Style guide',
     copy: 'UX Copywriting',
     mobileUx: 'UX Mobil',
-    mobileUi: 'UI Mobil',
     external: 'sab.cz',
     ariaLabel: 'Navigace',
   },
@@ -35,7 +34,6 @@ export const dict: Dictionary = {
       '05 · UI Jednoduchá varianta',
       '06 · UI Rozšířená varianta',
       '07 · UX Návrh — Mobil',
-      '08 · UI Jednoduchá varianta — Mobil',
     ],
   },
   analysis: {
@@ -249,21 +247,17 @@ export const dict: Dictionary = {
     groups: ['Barvy', 'Typografie', 'Spacing', 'Komponenty'],
   },
   mobileUx: {
-    title: 'Mobile UX',
-    intro: 'Stejná UX struktura jako desktop — sekce pod sebou, hamburger navigace, CTA vždy dostupné.',
+    title: 'UX Mobil',
+    intro:
+      'Mobilní wireframe stejné homepage — sekce pod sebou, zjednodušená navigace, CTA vždy dostupné. UI varianty zůstávají desktopové.',
     viewport: '390 × 844 px · iPhone 14 Pro',
     notesTitle: 'Mobilní principy',
     notes: [
-      'Hamburger + logo + CTA v jedné řádce — žádný dropdown v hlavní liště',
+      'Logo + menu + CTA v jedné řádce — bez desktopového dropdownu v hlavní liště',
       'Hero: headline, podtext, primární CTA, sekundární CTA — vše pod sebou',
       'Služby jako vertikální karty — forward první / zvýrazněný',
       'Formulář na plnou šířku — minimum polí nad foldem',
-      'Telefon jako sticky FAB nebo v patičce — jedna z více cest ke kontaktu',
+      'Telefon v kontaktní sekci — jedna z více cest ke kontaktu',
     ],
-  },
-  mobileUi: {
-    title: 'UI Mobile',
-    intro: 'Jednoduchá UI varianta v mobilním viewportu — stejná struktura jako desktop Classic.',
-    viewport: '390 × 844 px · iPhone 14 Pro',
   },
 }
