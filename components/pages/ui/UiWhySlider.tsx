@@ -13,7 +13,7 @@ type WhyItem = {
 }
 
 type UiWhySliderProps = {
-  items: WhyItem[]
+  items: readonly WhyItem[]
 }
 
 function ChevronIcon() {

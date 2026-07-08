@@ -1,13 +1,9 @@
 import UiHomepage from '@/components/pages/ui/UiHomepage'
 
-type UiShellProps = {
-  variant: 'classic' | 'premium'
-}
-
-export default function UiShell({ variant }: UiShellProps) {
+export default function UiShell() {
   return (
-    <article className={`uiShell uiShell--${variant} presentationPage--full`}>
-      <UiHomepage variant={variant} />
+    <article className="uiShell presentationPage--full">
+      <UiHomepage />
     </article>
   )
 }

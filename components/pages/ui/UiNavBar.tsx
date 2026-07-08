@@ -4,11 +4,7 @@ import { useRef, useState } from 'react'
 import { UX_HOMEPAGE_CONTENT as C } from '@/content/ux/homepage'
 import UiLocaleDropdown from '@/components/pages/ui/UiLocaleDropdown'
 
-type UiNavBarProps = {
-  variant: 'classic' | 'premium'
-}
-
-export default function UiNavBar({ variant }: UiNavBarProps) {
+export default function UiNavBar() {
   const [openMenu, setOpenMenu] = useState<string | null>(null)
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
 
@@ -75,19 +71,6 @@ export default function UiNavBar({ variant }: UiNavBarProps) {
         </nav>
 
         <div className="uiHp__navEnd">
-          {variant === 'premium' && (
-            <>
-              <a href="#" className="uiHp__navMuted">
-                {C.nav.aside}
-              </a>
-              <a href="#" className="uiHp__btn uiHp__btn--primary uiHp__btn--sm">
-                {C.nav.cta}
-              </a>
-              <a href={C.nav.prostream.href} className="uiHp__navMuted">
-                {C.nav.prostream.label}
-              </a>
-            </>
-          )}
           <UiLocaleDropdown />
         </div>
       </div>

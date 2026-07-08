@@ -3,52 +3,41 @@ import UiNavBar from '@/components/pages/ui/UiNavBar'
 import UiWhySlider from '@/components/pages/ui/UiWhySlider'
 import UiDockScroll from '@/components/pages/ui/UiDockScroll'
 import UiScrollTones from '@/components/pages/ui/UiScrollTones'
+import UiScrollReveal from '@/components/pages/ui/UiScrollReveal'
 import LiquidGradient from '@/components/ui/LiquidGradient'
 
-type UiHomepageProps = {
-  variant?: 'classic' | 'premium'
+function sectionTone(tone: string) {
+  return { 'data-tone': tone }
 }
 
-function sectionTone(variant: UiHomepageProps['variant'], tone: string) {
-  return variant === 'classic' ? { 'data-tone': tone } : {}
-}
-
-export default function UiHomepage({ variant = 'classic' }: UiHomepageProps) {
+export default function UiHomepage() {
   return (
-    <div className={`uiHp uiHp--${variant}${variant === 'classic' ? ' uiHp--tone-0' : ''}`}>
-      {variant === 'classic' && (
-        <>
-          <UiScrollTones />
-          <UiDockScroll />
-          <LiquidGradient className="uiHp__liquidBg" />
-        </>
-      )}
+    <div className="uiHp uiHp--classic uiHp--tone-0">
+      <UiScrollTones />
+      <UiScrollReveal />
+      <UiDockScroll />
+      <LiquidGradient className="uiHp__liquidBg" />
       <header className="uiHp__nav">
-        <UiNavBar variant={variant} />
+        <UiNavBar />
       </header>
 
-      {variant === 'classic' && (
-        <nav className="uiHp__dock" aria-label="Rychlé akce">
-          <div className="uiHp__dockShell">
-            <div className="uiHp__dockInner">
-              <a href="#" className="uiHp__btn uiHp__btn--ghost uiHp__btn--sm">
-                {C.nav.aside}
-              </a>
-              <a href="#" className="uiHp__btn uiHp__btn--primary uiHp__btn--sm">
-                {C.nav.cta}
-              </a>
-              <a href={C.nav.prostream.href} className="uiHp__btn uiHp__btn--soft uiHp__btn--sm">
-                {C.nav.prostream.label}
-              </a>
-            </div>
+      <nav className="uiHp__dock" aria-label="Rychlé akce">
+        <div className="uiHp__dockShell">
+          <div className="uiHp__dockInner">
+            <a href="#" className="uiHp__btn uiHp__btn--ghost uiHp__btn--sm">
+              {C.nav.aside}
+            </a>
+            <a href="#" className="uiHp__btn uiHp__btn--primary uiHp__btn--sm">
+              {C.nav.cta}
+            </a>
+            <a href={C.nav.prostream.href} className="uiHp__btn uiHp__btn--soft uiHp__btn--sm">
+              {C.nav.prostream.label}
+            </a>
           </div>
-        </nav>
-      )}
+        </div>
+      </nav>
 
-      <section
-        className={`uiHp__section uiHp__hero${variant !== 'classic' ? ' uiHp__hero--gradient' : ''}`}
-        {...sectionTone(variant, '0')}
-      >
+      <section className="uiHp__section uiHp__hero" {...sectionTone('0')}>
         <div className="uiHp__container uiHp__heroGrid">
           <div className="uiHp__heroCopy">
             <h1 className="uiHp__h1">{C.hero.headline}</h1>
@@ -75,12 +64,11 @@ export default function UiHomepage({ variant = 'classic' }: UiHomepageProps) {
                 {C.hero.ratesNote}
               </a>
             </div>
-            {variant !== 'classic' && <div className="uiHp__visual" aria-hidden="true" />}
           </div>
         </div>
       </section>
 
-      <section className="uiHp__section uiHp__section--compact uiHp__trust" {...sectionTone(variant, '1')}>
+      <section className="uiHp__section uiHp__section--compact uiHp__trust" {...sectionTone('1')}>
         <div className="uiHp__container uiHp__trustRow">
           {C.trust.map((item) => (
             <span key={item} className="uiHp__trustItem">
@@ -90,7 +78,7 @@ export default function UiHomepage({ variant = 'classic' }: UiHomepageProps) {
         </div>
       </section>
 
-      <section className="uiHp__section uiHp__section--surface" {...sectionTone(variant, '2')}>
+      <section className="uiHp__section uiHp__section--surface" {...sectionTone('2')}>
         <div className="uiHp__container">
           <h2 className="uiHp__h2">{C.problem.headline}</h2>
           <div className="uiHp__grid uiHp__grid--2 uiHp__grid--zigzag">
@@ -107,7 +95,7 @@ export default function UiHomepage({ variant = 'classic' }: UiHomepageProps) {
         </div>
       </section>
 
-      <section className="uiHp__section" {...sectionTone(variant, '3')}>
+      <section className="uiHp__section" {...sectionTone('3')}>
         <div className="uiHp__container">
           <div className="uiHp__grid uiHp__grid--2 uiHp__grid--zigzag">
             {C.paths.map((p) => (
@@ -127,7 +115,7 @@ export default function UiHomepage({ variant = 'classic' }: UiHomepageProps) {
 
       <section
         className="uiHp__section uiHp__section--accent uiHp__forwardFlow"
-        {...sectionTone(variant, 'accent')}
+        {...sectionTone('accent')}
       >
         <div className="uiHp__container">
           <h2 className="uiHp__h2">{C.forwardFlow.headline}</h2>
@@ -152,7 +140,7 @@ export default function UiHomepage({ variant = 'classic' }: UiHomepageProps) {
         </div>
       </section>
 
-      <section className="uiHp__section uiHp__forward" {...sectionTone(variant, '4')}>
+      <section className="uiHp__section uiHp__forward" {...sectionTone('4')}>
         <div className="uiHp__container uiHp__forwardGrid uiHp__grid--zigzag">
           <div>
             <p className="uiHp__eyebrow">{C.forward.anchor}</p>
@@ -174,7 +162,7 @@ export default function UiHomepage({ variant = 'classic' }: UiHomepageProps) {
         </div>
       </section>
 
-      <section className="uiHp__section" {...sectionTone(variant, '0')}>
+      <section className="uiHp__section" {...sectionTone('0')}>
         <div className="uiHp__container">
           <h2 className="uiHp__h2 uiHp__h2--center">{C.why.headline}</h2>
           <UiWhySlider items={C.why.items} />
@@ -186,7 +174,7 @@ export default function UiHomepage({ variant = 'classic' }: UiHomepageProps) {
         </div>
       </section>
 
-      <section className="uiHp__section uiHp__section--surface" {...sectionTone(variant, '1')}>
+      <section className="uiHp__section uiHp__section--surface" {...sectionTone('1')}>
         <div className="uiHp__container">
           <h2 className="uiHp__h2 uiHp__h2--center">{C.services.headline}</h2>
           <div className="uiHp__grid uiHp__grid--services">
@@ -216,7 +204,7 @@ export default function UiHomepage({ variant = 'classic' }: UiHomepageProps) {
         </div>
       </section>
 
-      <section className="uiHp__section uiHp__section--surface" {...sectionTone(variant, '2')}>
+      <section className="uiHp__section uiHp__section--surface" {...sectionTone('2')}>
         <div className="uiHp__container">
           <h2 className="uiHp__h2 uiHp__h2--center">{C.process.headline}</h2>
           <div className="uiHp__grid uiHp__grid--3">
@@ -236,7 +224,7 @@ export default function UiHomepage({ variant = 'classic' }: UiHomepageProps) {
         </div>
       </section>
 
-      <section className="uiHp__section" {...sectionTone(variant, '3')}>
+      <section className="uiHp__section" {...sectionTone('3')}>
         <div className="uiHp__container">
           <h2 className="uiHp__h2">{C.proof.headline}</h2>
           <div className="uiHp__grid uiHp__grid--3">
@@ -256,7 +244,7 @@ export default function UiHomepage({ variant = 'classic' }: UiHomepageProps) {
         </div>
       </section>
 
-      <section className="uiHp__section uiHp__section--lead" {...sectionTone(variant, '4')}>
+      <section className="uiHp__section uiHp__section--lead" {...sectionTone('4')}>
         <div className="uiHp__container">
           <div className="uiHp__leadGrid">
             <div className="uiHp__leadIntro">
@@ -284,7 +272,7 @@ export default function UiHomepage({ variant = 'classic' }: UiHomepageProps) {
         </div>
       </section>
 
-      <section className="uiHp__section uiHp__section--compact" {...sectionTone(variant, '0')}>
+      <section className="uiHp__section uiHp__section--compact" {...sectionTone('0')}>
         <div className="uiHp__container uiHp__newsletter">
           <div>
             <h3 className="uiHp__h3">{C.newsletter.headline}</h3>

@@ -8,8 +8,6 @@ export type Dictionary = {
     analysis: string
     ux: string
     ui: string
-    uiClassic: string
-    uiPremium: string
     tokens: string
     copy: string
     mobileUx: string
@@ -61,9 +59,8 @@ export type Dictionary = {
     }
   }
   ui: {
-    classic: { title: string; desc: string }
-    premium: { title: string; desc: string }
-    switchLabel: string
+    title: string
+    desc: string
   }
   tokens: {
     title: string

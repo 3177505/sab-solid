@@ -6,13 +6,5 @@
   width: 100%;
   min-height: calc(100vh - #{$header-height});
   font-family: $font-ui;
-}
-
-.uiShell--classic {
   background: $color-white;
-}
-
-.uiShell--premium {
-  background: $color-white;
-  font-family: $font-ui-premium;
 }

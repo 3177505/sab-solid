@@ -10,8 +10,6 @@ export const dict: Dictionary = {
     analysis: 'Audit',
     ux: 'UX',
     ui: 'UI',
-    uiClassic: 'UI Jednoduchá varianta',
-    uiPremium: 'UI Rozšířená varianta',
     tokens: 'Style guide',
     copy: 'UX Copywriting',
     mobileUx: 'UX Mobil',
@@ -31,9 +29,8 @@ export const dict: Dictionary = {
       '02 · UX Copywriting',
       '03 · UX Návrh',
       '04 · UI Style guide',
-      '05 · UI Jednoduchá varianta',
-      '06 · UI Rozšířená varianta',
-      '07 · UX Návrh — Mobil',
+      '05 · UI',
+      '06 · UX Návrh — Mobil',
     ],
   },
   analysis: {
@@ -202,7 +199,7 @@ export const dict: Dictionary = {
             text: 'Oddělit publika — firemní klient a investor dostanou každý svou cestu, homepage slouží obchodu.',
           },
           {
-            text: 'Založit designový systém — style guide, ze kterého vychází obě UI varianty i další materiály firmy.',
+            text: 'Založit designový systém — style guide, ze kterého vychází UI i další materiály firmy.',
           },
         ],
       },
@@ -230,26 +227,19 @@ export const dict: Dictionary = {
     },
   },
   ui: {
-    classic: {
-      title: 'UI — Classic',
-      desc: 'Světlá varianta. Základní styling — teal akcent, zaoblené CTA, karty se stínem.',
-    },
-    premium: {
-      title: 'UI — Premium',
-      desc: 'Stejná struktura, světlejší teal akcent. Vizuál a motion doplníme později.',
-    },
-    switchLabel: 'Varianta',
+    title: 'UI',
+    desc: 'Světlá homepage — teal akcent, zaoblené CTA, karty se stínem a scroll motion.',
   },
   tokens: {
     title: 'Style guide',
     intro:
-      'Souhrn všech designových proměnných — barvy, typografie, spacing a komponenty. Jeden přehled, ze kterého vycházejí obě UI varianty.',
+      'Souhrn všech designových proměnných — barvy, typografie, spacing a komponenty. Jeden přehled, ze kterého vychází UI i další materiály.',
     groups: ['Barvy', 'Typografie', 'Spacing', 'Komponenty'],
   },
   mobileUx: {
     title: 'UX Mobil',
     intro:
-      'Mobilní wireframe stejné homepage — sekce pod sebou, zjednodušená navigace, CTA vždy dostupné. UI varianty zůstávají desktopové.',
+      'Mobilní wireframe stejné homepage — sekce pod sebou, zjednodušená navigace, CTA vždy dostupné. UI zůstává desktopové.',
     viewport: '390 × 844 px · iPhone 14 Pro',
     notesTitle: 'Mobilní principy',
     notes: [
