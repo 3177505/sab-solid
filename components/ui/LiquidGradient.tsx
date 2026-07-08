@@ -10,6 +10,7 @@ type BlobTone =
   | 'primary'
   | 'secondary'
   | 'tertiary'
+  | 'white'
   | 'grey-mid'
   | 'grey-light'
   | 'grey-lighter'
@@ -32,8 +33,8 @@ const BLOB_TONES: BlobTone[] = [
   'primary',
   'secondary',
   'tertiary',
-  'grey-mid',
-  'grey-light',
+  'white',
+  'grey-lighter',
 ]
 
 function rand(min: number, max: number) {
@@ -131,9 +132,9 @@ export default function LiquidGradient({ className = '' }: LiquidGradientProps) 
         className="liquidGradient__container"
         style={{ filter: `url(#${filterId}) blur(68px)` }}
       >
-        {blobs?.map((blob) => (
+        {blobs?.map((blob, index) => (
           <div
-            key={blob.tone}
+            key={`${blob.tone}-${index}`}
             className={`liquidGradient__blob liquidGradient__blob--${blob.tone}`}
             style={{
               top: `${blob.top}%`,

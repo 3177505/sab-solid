@@ -1,5 +1,7 @@
 import { UX_HOMEPAGE_CONTENT as C } from '@/content/ux/homepage'
 import UiNavBar from '@/components/pages/ui/UiNavBar'
+import UiWhySlider from '@/components/pages/ui/UiWhySlider'
+import UiDockScroll from '@/components/pages/ui/UiDockScroll'
 import UiScrollTones from '@/components/pages/ui/UiScrollTones'
 import LiquidGradient from '@/components/ui/LiquidGradient'
 
@@ -17,6 +19,7 @@ export default function UiHomepage({ variant = 'classic' }: UiHomepageProps) {
       {variant === 'classic' && (
         <>
           <UiScrollTones />
+          <UiDockScroll />
           <LiquidGradient className="uiHp__liquidBg" />
         </>
       )}
@@ -174,14 +177,7 @@ export default function UiHomepage({ variant = 'classic' }: UiHomepageProps) {
       <section className="uiHp__section" {...sectionTone(variant, '0')}>
         <div className="uiHp__container">
           <h2 className="uiHp__h2 uiHp__h2--center">{C.why.headline}</h2>
-          <div className="uiHp__grid uiHp__grid--3">
-            {C.why.items.map((w) => (
-              <article key={w.title} className="uiHp__card uiHp__card--flat">
-                <h3 className="uiHp__h3">{w.title}</h3>
-                {'body' in w && w.body ? <p className="uiHp__body">{w.body}</p> : null}
-              </article>
-            ))}
-          </div>
+          <UiWhySlider items={C.why.items} />
           <div className="uiHp__sectionCta">
             <a href="#" className="uiHp__btn uiHp__btn--primary">
               {C.why.cta}
@@ -337,7 +333,7 @@ export default function UiHomepage({ variant = 'classic' }: UiHomepageProps) {
       </footer>
 
       <div className="uiHp__pageLogo" aria-hidden="true">
-        <span className="uiHp__pageLogoMark" role="presentation" />
+        <img src="/sab-logo.svg" alt="" className="uiHp__pageLogoImg" width={307} height={57} />
       </div>
     </div>
   )

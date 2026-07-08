@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import { UX_HOMEPAGE_CONTENT as C } from '@/content/ux/homepage'
 import UiLocaleDropdown from '@/components/pages/ui/UiLocaleDropdown'
 
@@ -10,9 +10,31 @@ type UiNavBarProps = {
 
 export default function UiNavBar({ variant }: UiNavBarProps) {
   const [openMenu, setOpenMenu] = useState<string | null>(null)
+  const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
+
+  const clearCloseTimer = () => {
+    if (closeTimer.current) {
+      clearTimeout(closeTimer.current)
+      closeTimer.current = null
+    }
+  }
+
+  const open = (label: string) => {
+    clearCloseTimer()
+    setOpenMenu(label)
+  }
+
+  const scheduleClose = () => {
+    clearCloseTimer()
+    closeTimer.current = setTimeout(() => setOpenMenu(null), 140)
+  }
 
   return (
-    <div className={`uiHp__navShell${openMenu ? ' uiHp__navShell--open' : ''}`}>
+    <div
+      className={`uiHp__navShell${openMenu ? ' uiHp__navShell--open' : ''}`}
+      onMouseLeave={scheduleClose}
+      onMouseEnter={clearCloseTimer}
+    >
       <div className="uiHp__navInner">
         <a href="/" className="uiHp__logo">
           <img src="/sab-logo.svg" alt={C.nav.logo} className="uiHp__logoImg" width={148} height={28} />
@@ -32,25 +54,21 @@ export default function UiNavBar({ variant }: UiNavBarProps) {
               <div
                 key={menu.label}
                 className={`uiHp__navDropdown${openMenu === menu.label ? ' uiHp__navDropdown--open' : ''}`}
-                onMouseEnter={() => setOpenMenu(menu.label)}
-                onMouseLeave={() => setOpenMenu(null)}
+                onMouseEnter={() => open(menu.label)}
               >
                 <span className="uiHp__navTrigger">
                   {menu.label}
                   <span className="uiHp__navCaret" aria-hidden="true" />
                 </span>
-                <div
-                  className={`uiHp__navDropdownPanel${openMenu === menu.label ? ' uiHp__navDropdownPanel--open' : ''}`}
-                  role="region"
-                  aria-label={menu.label}
-                  aria-hidden={openMenu !== menu.label}
-                >
-                  {menu.items.map((item) => (
-                    <a key={item.label} href={item.href} className="uiHp__navDropdownLink">
-                      {item.label}
-                    </a>
-                  ))}
-                </div>
+                {openMenu === menu.label ? (
+                  <div className="uiHp__navDropdownPanel" role="region" aria-label={menu.label}>
+                    {menu.items.map((item) => (
+                      <a key={item.label} href={item.href} className="uiHp__navDropdownLink">
+                        {item.label}
+                      </a>
+                    ))}
+                  </div>
+                ) : null}
               </div>
             ),
           )}

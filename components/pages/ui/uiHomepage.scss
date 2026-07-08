@@ -57,30 +57,61 @@
   cursor: pointer;
   white-space: nowrap;
   box-shadow: none;
-  transition: background-color $transition-fast, border-color $transition-fast, color $transition-fast;
+  transition:
+    background-color 0.28s cubic-bezier(0.4, 0, 0.2, 1),
+    border-color 0.28s cubic-bezier(0.4, 0, 0.2, 1),
+    color 0.28s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.22s cubic-bezier(0.4, 0, 0.2, 1),
+    backdrop-filter 0.28s ease,
+    -webkit-backdrop-filter 0.28s ease;
+
+  &:hover {
+    transform: translateY(-1px);
+  }
+
+  &:active {
+    transform: translateY(0) scale(0.98);
+    transition-duration: 0.12s;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    transition:
+      background-color $transition-fast,
+      border-color $transition-fast,
+      color $transition-fast;
+
+    &:hover,
+    &:active {
+      transform: none;
+    }
+  }
 }
 
-@mixin ui-btn-light-bg {
-  background-color: rgba(255, 255, 255, 0.45);
+@mixin ui-btn-glass-surface($opacity: 0.58) {
+  background-color: rgba(255, 255, 255, $opacity);
   -webkit-backdrop-filter: blur(20px);
   backdrop-filter: blur(20px);
 }
 
-// Type 1 — light outline, transparent; hover light glass
+@mixin ui-btn-hover-surface {
+  @include ui-btn-glass-surface(0.88);
+  border-color: rgba(255, 255, 255, 0.78);
+  color: $color-identity-grey-dark-blue;
+}
+
+// Type 1 — light outline, transparent; hover frosted light surface
 @mixin ui-btn-outline {
   @include ui-btn-base;
   background-color: transparent;
-  border-color: rgba($color-identity-grey-light, 0.95);
-  color: var(--ui-text);
+  border-color: rgba($color-identity-grey-light, 0.9);
+  color: $color-identity-grey-dark-blue;
 
   &:hover {
-    @include ui-btn-light-bg;
-    border-color: rgba(255, 255, 255, 0.55);
-    color: var(--ui-text);
+    @include ui-btn-hover-surface;
   }
 }
 
-// Type 2 — filled identity color; hover light glass
+// Type 2 — filled identity color; hover frosted light surface
 @mixin ui-btn-fill {
   @include ui-btn-base;
   background-color: $color-identity-tertiary;
@@ -88,23 +119,23 @@
   color: #fff;
 
   &:hover {
-    @include ui-btn-light-bg;
-    border-color: rgba(255, 255, 255, 0.55);
-    color: var(--ui-accent);
+    @include ui-btn-hover-surface;
   }
 }
 
 // Type 3 — light glass; hover filled color
 @mixin ui-btn-soft {
   @include ui-btn-base;
-  @include ui-btn-light-bg;
-  border-color: rgba(255, 255, 255, 0.45);
-  color: var(--ui-accent);
+  @include ui-btn-glass-surface(0.58);
+  border-color: rgba(255, 255, 255, 0.52);
+  color: $color-identity-tertiary;
 
   &:hover {
     background-color: $color-identity-tertiary;
     border-color: transparent;
     color: #fff;
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
   }
 }
 
@@ -141,7 +172,8 @@
   --ui-radius-lg: 24px;
   --ui-max: 1080px;
   --ui-section-py: clamp(96px, 14vh, 160px);
-  --ui-dock-h: 80px;
+  --ui-dock-bottom: clamp(20px, 3vh, 32px);
+  --ui-dock-h: calc(88px + var(--ui-dock-bottom));
 
   position: relative;
   background-color: transparent;
@@ -208,11 +240,13 @@
     backdrop-filter: none;
     border-bottom: none;
     box-shadow: none;
+    overflow: visible;
   }
 
   .uiHp__navShell {
     width: 100%;
     max-width: var(--ui-max);
+    overflow: visible;
   }
 
   .uiHp__h1 {
@@ -313,6 +347,17 @@
         background: #fff;
         color: var(--ui-accent);
       }
+
+      .uiHp__btn--onAccent,
+      .uiHp__btn--soft {
+        @include ui-btn-glass-surface(0.22);
+        color: #fff;
+        border-color: rgba(255, 255, 255, 0.38);
+
+        &:hover {
+          @include ui-btn-hover-surface;
+        }
+      }
     }
   }
 
@@ -321,21 +366,28 @@
     @include ui-grid-zigzag;
   }
 
-  .uiHp__nav {
-    position: sticky;
-    top: $presentation-bar-height;
-    z-index: 60;
-  }
-
   .uiHp__footer {
     position: relative;
     z-index: 3;
   }
 
   // Hero — liquid gradient + scroll tones
+  .uiHp__hero {
+    position: relative;
+  }
+
   .uiHp__heroGrid {
+    grid-template-columns: 1fr;
     gap: 48px;
-    align-items: center;
+    align-items: start;
+  }
+
+  .uiHp__heroAside {
+    position: absolute;
+    right: clamp(24px, 4vw, 40px);
+    bottom: calc(var(--ui-dock-h) + clamp(16px, 3vh, 32px));
+    width: min(300px, 34vw);
+    z-index: 4;
   }
 
   .uiHp__rates {
@@ -372,14 +424,63 @@
 
   // Karty — ploché, zaoblené, bez stínů
   .uiHp__grid {
-    gap: 20px;
+    gap: clamp(28px, 4vw, 48px);
   }
 
   .uiHp__card {
     @include ui-glass(rgba(255, 255, 255, 0.58), rgba(255, 255, 255, 0.5));
-    padding: 32px;
+    padding: clamp(48px, 6vw, 80px);
+    gap: clamp(20px, 2.5vw, 32px);
     border-radius: 0;
     box-shadow: none;
+
+    .uiHp__h3 {
+      font-size: clamp(28px, 3.5vw, 42px);
+      line-height: 1.2;
+      margin-bottom: clamp(12px, 1.5vw, 20px);
+    }
+
+    .uiHp__body {
+      font-size: clamp(20px, 2.5vw, 28px);
+      line-height: 1.55;
+      margin-bottom: clamp(12px, 1.5vw, 20px);
+    }
+
+    .uiHp__tag {
+      font-size: clamp(14px, 1.6vw, 18px);
+      margin-bottom: 4px;
+    }
+
+    .uiHp__label {
+      font-size: clamp(13px, 1.4vw, 16px);
+      margin-bottom: 12px;
+    }
+
+    .uiHp__link {
+      font-size: clamp(18px, 2vw, 22px);
+    }
+
+    .uiHp__steps {
+      font-size: clamp(18px, 2.2vw, 24px);
+      margin-bottom: clamp(12px, 1.5vw, 20px);
+
+      li {
+        margin-bottom: 10px;
+      }
+    }
+
+    .uiHp__quote p {
+      font-size: clamp(20px, 2.5vw, 28px);
+      line-height: 1.55;
+    }
+
+    .uiHp__muted {
+      font-size: clamp(16px, 1.8vw, 20px);
+    }
+
+    .uiHp__phone {
+      font-size: clamp(28px, 3.5vw, 40px);
+    }
 
     &--featured {
       border-color: rgba($color-identity-primary, 0.55);
@@ -391,16 +492,45 @@
       background-color: rgba(255, 255, 255, 0.5);
       border-color: rgba(255, 255, 255, 0.45);
     }
+
+    &--step {
+      padding-top: clamp(72px, 8vw, 96px);
+
+      .uiHp__step {
+        top: clamp(28px, 3.5vw, 40px);
+        left: clamp(40px, 5vw, 56px);
+        font-size: clamp(16px, 1.8vw, 22px);
+      }
+    }
   }
 
   // Dock — glass shell fits button row width
   .uiHp__dock {
+    bottom: var(--ui-dock-bottom);
     display: flex;
     justify-content: center;
     background: transparent;
     border: none;
     padding: 12px clamp(24px, 4vw, 40px);
     padding-bottom: max(12px, env(safe-area-inset-bottom));
+    transform: translateY(0);
+    transition:
+      transform 0.42s cubic-bezier(0.4, 0, 0.2, 1),
+      opacity 0.42s cubic-bezier(0.4, 0, 0.2, 1);
+
+    &--hidden {
+      transform: translateY(calc(100% + var(--ui-dock-bottom) + env(safe-area-inset-bottom, 0px)));
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      transition: opacity 0.2s ease;
+
+      &--hidden {
+        transform: none;
+      }
+    }
   }
 
   .uiHp__dockShell {
@@ -409,6 +539,35 @@
     margin: 0;
     @include ui-glass(rgba($color-identity-tertiary, 0.5), rgba(255, 255, 255, 0.18));
     overflow: visible;
+
+    .uiHp__btn--ghost {
+      border-color: rgba(255, 255, 255, 0.45);
+      color: rgba(255, 255, 255, 0.96);
+
+      &:hover {
+        @include ui-btn-hover-surface;
+      }
+    }
+
+    .uiHp__btn--primary {
+      &:hover {
+        @include ui-btn-hover-surface;
+      }
+    }
+
+    .uiHp__btn--soft {
+      @include ui-btn-glass-surface(0.2);
+      border-color: rgba(255, 255, 255, 0.35);
+      color: rgba(255, 255, 255, 0.96);
+
+      &:hover {
+        background-color: rgba(255, 255, 255, 0.9);
+        border-color: rgba(255, 255, 255, 0.78);
+        color: $color-identity-grey-dark-blue;
+        -webkit-backdrop-filter: blur(20px);
+        backdrop-filter: blur(20px);
+      }
+    }
   }
 
   .uiHp__dockInner {
@@ -420,20 +579,6 @@
     padding: 8px 10px;
   }
 
-  .uiHp__dockShell .uiHp__btn--ghost {
-    border-color: rgba(255, 255, 255, 0.4);
-    color: rgba(255, 255, 255, 0.92);
-
-    &:hover {
-      color: var(--ui-accent);
-    }
-  }
-
-  .uiHp__dockShell .uiHp__btn--primary:hover,
-  .uiHp__dockShell .uiHp__btn--soft:hover {
-    color: var(--ui-accent);
-  }
-
   .uiHp__field input {
     @include ui-glass(rgba(255, 255, 255, 0.65), rgba(255, 255, 255, 0.45));
   }
@@ -443,8 +588,8 @@
   }
 
   .uiHp__card--service {
-    min-height: auto;
-    padding: 28px 22px;
+    min-height: clamp(160px, 18vw, 220px);
+    padding: clamp(40px, 5vw, 64px) clamp(32px, 4vw, 48px);
   }
 
   .uiHp__label {
@@ -605,6 +750,7 @@
   padding: 12px clamp(16px, 3vw, 28px) 0;
   background: transparent;
   border-bottom: none;
+  overflow: visible;
 }
 
 .uiHp__navShell {
@@ -619,6 +765,10 @@
   border: 1px solid rgba(255, 255, 255, 0.65);
   box-shadow: 0 8px 32px rgba(30, 57, 65, 0.06);
   overflow: visible;
+
+  &--open {
+    z-index: 70;
+  }
 }
 
 .uiHp__navInner {
@@ -627,6 +777,7 @@
   align-items: center;
   gap: 20px;
   padding: 10px 16px;
+  overflow: visible;
 }
 
 .uiHp__logo {
@@ -652,6 +803,7 @@
   gap: clamp(14px, 2vw, 24px);
   flex-wrap: nowrap;
   min-width: 0;
+  overflow: visible;
 }
 
 .uiHp__navLink,
@@ -734,46 +886,46 @@
 .uiHp__navDropdown {
   position: relative;
   flex-shrink: 0;
-}
 
-.uiHp__navDropdownPanel {
-  position: absolute;
-  top: calc(100% + 10px);
-  left: 50%;
-  z-index: 70;
-  display: none;
-  flex-direction: column;
-  gap: 2px;
-  min-width: 240px;
-  padding: 8px;
-  white-space: normal;
-  -webkit-backdrop-filter: blur(20px);
-  backdrop-filter: blur(20px);
-  background-color: #ffffff80;
-  border: 1px solid rgba(255, 255, 255, 0.65);
-  border-radius: max(12px, 0.625vw);
-  box-shadow: 0 8px 32px rgba(30, 57, 65, 0.1);
-  transform: translateX(-50%);
-
-  &::before {
+  &--open::after {
     content: '';
     position: absolute;
-    top: -12px;
+    top: 100%;
     left: 0;
     right: 0;
     height: 12px;
   }
 }
 
-.uiHp__navDropdownPanel--open,
-.uiHp__navDropdown--open .uiHp__navDropdownPanel {
+.uiHp__navDropdownPanel {
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 0;
+  z-index: 80;
   display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: max(200px, 100%);
+  padding: 6px;
+  white-space: normal;
+  background-color: rgba(255, 255, 255, 0.94);
+  border: 1px solid rgba(255, 255, 255, 0.75);
+  border-radius: max(12px, 0.625vw);
+  box-shadow: 0 8px 32px rgba(30, 57, 65, 0.12);
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: 0;
+    right: 0;
+    height: 10px;
+  }
 }
 
 .uiHp__navDropdownLink {
   display: block;
-  width: 100%;
-  padding: 10px 14px;
+  padding: 10px 12px;
   font-size: 14px;
   line-height: 1.35;
   color: var(--ui-text);
@@ -783,7 +935,7 @@
   transition: background $transition-fast;
 
   &:hover {
-    background: rgba(255, 255, 255, 0.55);
+    background: var(--ui-surface, #f4f7f7);
   }
 }
 
@@ -791,6 +943,7 @@
   display: flex;
   align-items: center;
   gap: 14px;
+  overflow: visible;
 }
 
 .uiHp__navMuted {
@@ -806,54 +959,54 @@
   margin-left: auto;
 }
 
-// Dropdown — locale (panel under trigger section)
+// Dropdown — locale (panel under trigger)
 .uiHp__dropdown {
   position: relative;
+  z-index: 1;
+
+  &--open {
+    z-index: 80;
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      height: 12px;
+    }
+  }
 }
 
 .uiHp__dropdownTrigger {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 6px 10px;
+  @include ui-btn-outline;
+  padding: 8px 12px;
   font-size: 13px;
-  font-weight: 600;
-  font-family: inherit;
-  color: var(--ui-text);
-  background: rgba(255, 255, 255, 0.5);
-  border: 1px solid rgba($color-identity-grey-dark-blue, 0.08);
-  border-radius: max(12px, 0.625vw);
   cursor: default;
   user-select: none;
-  white-space: nowrap;
   outline: none;
-  transition: border-color $transition-fast, background $transition-fast;
 
-  &:hover,
   .uiHp__dropdown--open &,
   .uiHp__dropdown:hover & {
-    border-color: var(--ui-accent-bright, var(--ui-accent));
-    background: rgba(255, 255, 255, 0.75);
+    @include ui-btn-hover-surface;
   }
 }
 
 .uiHp__dropdownPanel {
   position: absolute;
-  top: calc(100% + 6px);
+  top: calc(100% + 10px);
   right: 0;
-  z-index: 60;
+  z-index: 80;
   display: none;
   flex-direction: column;
   gap: 2px;
   min-width: 160px;
   padding: 6px;
   white-space: normal;
-  -webkit-backdrop-filter: blur(20px);
-  backdrop-filter: blur(20px);
-  background-color: #ffffff80;
-  border: 1px solid rgba(255, 255, 255, 0.65);
+  background-color: rgba(255, 255, 255, 0.94);
+  border: 1px solid rgba(255, 255, 255, 0.75);
   border-radius: max(12px, 0.625vw);
-  box-shadow: 0 8px 32px rgba(30, 57, 65, 0.1);
+  box-shadow: 0 8px 32px rgba(30, 57, 65, 0.12);
 
   &::before {
     content: '';
@@ -862,6 +1015,11 @@
     left: 0;
     right: 0;
     height: 10px;
+  }
+
+  &--left {
+    right: auto;
+    left: 0;
   }
 }
 
@@ -921,58 +1079,31 @@
   letter-spacing: 0.01em;
 }
 
-// Bottom dock — Investoři · CTA · ProStream
+// Bottom dock — classic uses uiHp__btn inside dockShell
 .uiHp__dock {
+  --ui-dock-bottom: clamp(20px, 3vh, 32px);
+
   position: fixed;
-  bottom: 0;
+  bottom: var(--ui-dock-bottom);
   left: 0;
   right: 0;
   z-index: 45;
-  background: rgba(255, 255, 255, 0.94);
-  backdrop-filter: blur(16px);
-  border-top: 1px solid var(--ui-border);
+  display: flex;
+  justify-content: center;
+  background: transparent;
+  border: none;
   padding: 10px 16px;
   padding-bottom: max(10px, env(safe-area-inset-bottom));
+  transform: translateY(0);
+  will-change: transform;
 }
 
 .uiHp__dockInner {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
-  margin: 0 auto;
-}
-
-.uiHp__dockLink {
-  padding: 10px 16px;
-  font-size: 13px;
-  font-weight: 500;
-  color: var(--ui-muted);
-  text-decoration: none;
-  border-radius: var(--ui-radius-lg, 24px);
-  white-space: nowrap;
-  transition: color $transition-fast, background $transition-fast;
-
-  &:hover {
-    color: var(--ui-text);
-    background: var(--ui-surface, #f4f7f7);
-  }
-}
-
-.uiHp__dockCta {
-  padding: 10px 20px;
-  font-size: 13px;
-  font-weight: 600;
-  color: #fff;
-  background: var(--ui-accent);
-  text-decoration: none;
-  border-radius: var(--ui-radius-lg, 24px);
-  white-space: nowrap;
-  transition: background $transition-fast;
-
-  &:hover {
-    background: var(--ui-accent-dark);
-  }
+  width: fit-content;
 }
 
 // Typografie
@@ -1056,8 +1187,7 @@
   background-color: #1a3a5c;
 
   &:hover {
-    @include ui-btn-light-bg;
-    color: #1a3a5c;
+    @include ui-btn-hover-surface;
   }
 }
 
@@ -1226,7 +1356,7 @@
 // Grid & karty
 .uiHp__grid {
   display: grid;
-  gap: 20px;
+  gap: clamp(24px, 3.5vw, 40px);
 
   &--2 {
     @include lg {
@@ -1265,11 +1395,59 @@
   background: #fff;
   border: 1px solid var(--ui-border);
   border-radius: 0;
-  padding: 24px;
+  padding: clamp(40px, 5vw, 64px);
   box-shadow: var(--ui-shadow);
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: clamp(16px, 2vw, 24px);
+
+  .uiHp__h3 {
+    font-size: clamp(24px, 3vw, 34px);
+    line-height: 1.2;
+    margin-bottom: clamp(10px, 1.2vw, 16px);
+  }
+
+  .uiHp__body {
+    font-size: clamp(18px, 2.2vw, 24px);
+    line-height: 1.6;
+    margin-bottom: clamp(10px, 1.2vw, 16px);
+  }
+
+  .uiHp__tag {
+    font-size: clamp(13px, 1.5vw, 16px);
+    margin-bottom: 4px;
+  }
+
+  .uiHp__label {
+    font-size: clamp(12px, 1.3vw, 15px);
+    margin-bottom: 10px;
+  }
+
+  .uiHp__link {
+    font-size: clamp(16px, 1.8vw, 20px);
+  }
+
+  .uiHp__steps {
+    font-size: clamp(16px, 2vw, 22px);
+    margin-bottom: clamp(10px, 1.2vw, 16px);
+
+    li {
+      margin-bottom: 8px;
+    }
+  }
+
+  .uiHp__quote p {
+    font-size: clamp(18px, 2.2vw, 24px);
+    line-height: 1.55;
+  }
+
+  .uiHp__muted {
+    font-size: clamp(15px, 1.6vw, 18px);
+  }
+
+  .uiHp__phone {
+    font-size: clamp(24px, 3vw, 34px);
+  }
 
   &--featured {
     border-color: var(--ui-accent);
@@ -1288,7 +1466,13 @@
 
   &--step {
     position: relative;
-    padding-top: 36px;
+    padding-top: clamp(64px, 7vw, 88px);
+
+    .uiHp__step {
+      top: clamp(24px, 3vw, 36px);
+      left: clamp(32px, 4vw, 48px);
+      font-size: clamp(14px, 1.6vw, 18px);
+    }
   }
 
   &--quote {
@@ -1303,8 +1487,9 @@
 
   &--service {
     text-align: center;
-    min-height: 100px;
+    min-height: clamp(140px, 16vw, 200px);
     justify-content: center;
+    padding: clamp(36px, 4.5vw, 56px) clamp(28px, 3.5vw, 40px);
   }
 }
 
@@ -1312,6 +1497,185 @@
   display: flex;
   justify-content: center;
   margin-top: 28px;
+}
+
+// Horizontal card slider — why section (Swiper, trailer-style)
+.uiHp__cardSliderWrap {
+  position: relative;
+  width: 100%;
+  margin-top: 8px;
+  margin-inline: calc(-1 * clamp(20px, 4vw, 32px));
+  padding-inline: clamp(20px, 4vw, 32px);
+  z-index: 1;
+}
+
+.uiHp__cardSlider {
+  width: 100%;
+  overflow: visible;
+  cursor: grab;
+
+  &:active {
+    cursor: grabbing;
+  }
+
+  .swiper,
+  .swiper-wrapper {
+    overflow: visible;
+  }
+
+  .swiper-wrapper {
+    display: flex;
+    align-items: stretch;
+  }
+
+  &__slide {
+    width: min(320px, 84vw);
+    height: auto;
+    flex-shrink: 0;
+    box-sizing: border-box;
+
+    @include lg {
+      width: min(360px, calc((100% - 16px) / 2.15));
+    }
+
+    .uiHp__card {
+      height: 100%;
+      min-height: 220px;
+      padding: 28px 24px;
+      gap: 12px;
+
+      .uiHp__h3 {
+        font-size: clamp(20px, 2.2vw, 24px);
+        line-height: 1.25;
+        margin-bottom: 10px;
+      }
+
+      .uiHp__body {
+        font-size: clamp(15px, 1.6vw, 17px);
+        line-height: 1.55;
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  &__arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    margin: 0;
+    border: 1px solid var(--ui-border);
+    border-radius: var(--ui-radius-sm);
+    background: var(--ui-text);
+    color: #fff;
+    cursor: pointer;
+    pointer-events: auto;
+    opacity: 0;
+    animation: uiHp-slider-arrow-in 0.28s ease forwards;
+    transition:
+      background-color 0.22s ease,
+      border-color 0.22s ease,
+      transform 0.18s ease;
+
+    &:hover {
+      background: var(--ui-accent);
+      border-color: var(--ui-accent);
+    }
+
+    &:active {
+      transform: translateY(-50%) scale(0.96);
+    }
+
+    &--left {
+      left: clamp(8px, 1.5vw, 16px);
+
+      svg {
+        transform: rotate(180deg);
+      }
+    }
+
+    &--right {
+      right: clamp(8px, 1.5vw, 16px);
+    }
+  }
+
+  &__dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: clamp(20px, 3vw, 28px);
+  }
+
+  &__dot {
+    width: 8px;
+    height: 8px;
+    padding: 0;
+    border: none;
+    border-radius: 999px;
+    background: var(--ui-border);
+    cursor: pointer;
+    transition:
+      background-color 0.22s ease,
+      transform 0.22s ease,
+      width 0.22s ease;
+
+    &.is-active {
+      width: 24px;
+      background: var(--ui-accent);
+    }
+  }
+}
+
+@keyframes uiHp-slider-arrow-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.uiHp--classic {
+  .uiHp__cardSliderWrap {
+    margin-inline: calc(-1 * clamp(24px, 4vw, 40px));
+    padding-inline: clamp(24px, 4vw, 40px);
+  }
+
+  .uiHp__cardSlider__slide .uiHp__card {
+    @include ui-glass(rgba(255, 255, 255, 0.58), rgba(255, 255, 255, 0.5));
+    box-shadow: none;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-color: rgba(255, 255, 255, 0.45);
+    min-height: clamp(220px, 28vh, 280px);
+    padding: clamp(28px, 3.5vw, 36px) clamp(24px, 3vw, 32px);
+
+    .uiHp__h3 {
+      font-size: clamp(22px, 2.4vw, 28px);
+    }
+
+    .uiHp__body {
+      font-size: clamp(16px, 1.8vw, 19px);
+    }
+  }
+
+  .uiHp__cardSlider__arrow {
+    @include ui-glass(rgba($color-identity-grey-dark-blue, 0.92), rgba(255, 255, 255, 0.12));
+    color: #fff;
+    border-color: rgba(255, 255, 255, 0.18);
+
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.92);
+      border-color: rgba(255, 255, 255, 0.78);
+      color: $color-identity-grey-dark-blue;
+    }
+  }
 }
 
 .uiHp__flow {
@@ -1590,19 +1954,21 @@
   position: relative;
   z-index: 2;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   width: 100%;
   padding: clamp(64px, 12vw, 140px) clamp(20px, 4vw, 32px) clamp(48px, 8vw, 96px);
   pointer-events: none;
 }
 
-.uiHp__pageLogoMark {
+.uiHp__pageLogoImg {
   display: block;
-  width: 75%;
-  aspect-ratio: 307 / 57;
-  background-color: $color-identity-tertiary;
-  mask: url('/sab-logo.svg') center / contain no-repeat;
-  -webkit-mask: url('/sab-logo.svg') center / contain no-repeat;
+  width: 60%;
+  height: auto;
+  object-fit: contain;
+}
+
+.uiHp--classic .uiHp__pageLogo {
+  padding-inline: clamp(24px, 4vw, 40px);
 }
 
 // V UiShell

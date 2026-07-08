@@ -1,7 +1,7 @@
 @import '../_setup/vars.scss';
 
 .liquidGradient {
-  --liquid-blending: hard-light;
+  --liquid-blending: overlay;
 
   position: absolute;
   inset: 0;
@@ -34,8 +34,8 @@
 .liquidGradient__blob--primary {
   background-image: radial-gradient(
     ellipse 88% 72% at 50% 50%,
-    rgba($color-identity-primary, 0.52) 0%,
-    rgba($color-identity-primary, 0.18) 42%,
+    rgba($color-identity-primary, 0.42) 0%,
+    rgba($color-identity-primary, 0.15) 42%,
     rgba($color-identity-primary, 0) 72%
   );
 }
@@ -43,8 +43,8 @@
 .liquidGradient__blob--secondary {
   background-image: radial-gradient(
     ellipse 82% 68% at 48% 52%,
-    rgba($color-identity-secondary, 0.58) 0%,
-    rgba($color-identity-secondary, 0.2) 44%,
+    rgba($color-identity-secondary, 0.46) 0%,
+    rgba($color-identity-secondary, 0.16) 44%,
     rgba($color-identity-secondary, 0) 74%
   );
 }
@@ -52,9 +52,18 @@
 .liquidGradient__blob--tertiary {
   background-image: radial-gradient(
     ellipse 90% 74% at 52% 48%,
-    rgba($color-identity-tertiary, 0.38) 0%,
-    rgba($color-identity-tertiary, 0.14) 40%,
+    rgba($color-identity-tertiary, 0.3) 0%,
+    rgba($color-identity-tertiary, 0.11) 40%,
     rgba($color-identity-tertiary, 0) 70%
+  );
+}
+
+.liquidGradient__blob--white {
+  background-image: radial-gradient(
+    ellipse 94% 80% at 50% 50%,
+    rgba($color-white, 0.72) 0%,
+    rgba($color-white, 0.3) 46%,
+    rgba($color-white, 0) 76%
   );
 }
 
@@ -79,8 +88,8 @@
 .liquidGradient__blob--grey-lighter {
   background-image: radial-gradient(
     ellipse 80% 66% at 51% 49%,
-    rgba($color-identity-grey-lighter, 0.55) 0%,
-    rgba($color-identity-grey-lighter, 0.18) 46%,
+    rgba($color-identity-grey-lighter, 0.58) 0%,
+    rgba($color-identity-grey-lighter, 0.2) 46%,
     rgba($color-identity-grey-lighter, 0) 76%
   );
 }
@@ -96,13 +105,13 @@
   transition: opacity 0.8s ease;
   background-image: radial-gradient(
     ellipse 90% 74% at 50% 50%,
-    rgba($color-identity-primary, 0.62) 0%,
-    rgba($color-identity-primary, 0.24) 40%,
+    rgba($color-identity-primary, 0.5) 0%,
+    rgba($color-identity-primary, 0.18) 40%,
     rgba($color-identity-primary, 0) 72%
   );
 
   &.is-active {
-    opacity: 0.6;
+    opacity: 0.52;
   }
 }
 
