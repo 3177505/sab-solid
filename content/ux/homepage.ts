@@ -5,90 +5,97 @@ export type UxHomeSection = {
   label: string
   hint: string
   role?: UxBlockRole
-  variant: 'nav' | 'hero' | 'strip' | 'split' | 'cards' | 'wide' | 'form' | 'footer'
+  variant: 'nav' | 'hero' | 'strip' | 'split' | 'cards' | 'wide' | 'form' | 'footer' | 'flow'
 }
 
 export const UX_HOMEPAGE_SECTIONS: UxHomeSection[] = [
   {
     id: 'nav',
     label: '01 · Navigace',
-    hint: 'Klientská cesta oddělená od investorů. CTA „Nezávazná poptávka" trvale viditelné. Služby v dropdownu podle řešení, ne pod „Pro klienty".',
+    hint: 'SAB TARF (Novinka) + ProStream + přepínač jazyka. CTA „Nezávazná poptávka" trvale viditelné. Investoři mimo hlavní cestu.',
     variant: 'nav',
   },
   {
     id: 'hero',
     label: '02 · Hero',
-    hint: 'Headline + CTA + widget kurzů vpravo (zadání: prvek s kurzy). Důvěra pod textem.',
+    hint: 'Headline + CTA + widget kurzů vpravo. Důvěra přesunuta do samostatného pásu pod hero — bez opakování čísel zde.',
     role: 'visual',
     variant: 'hero',
   },
   {
     id: 'trust',
     label: '03 · Důvěra',
-    hint: 'Licence, roky, počet klientů — skenovatelné za 2 sekundy. CFO hledá licenci, majitel jistotu instituce.',
+    hint: 'Licence, roky, počet klientů — skenovatelné za 2 sekundy. Rozšiřuje jednu větu pod hero, neopakuje ji.',
     variant: 'strip',
   },
   {
     id: 'problem',
     label: '04 · Problém klienta',
-    hint: 'Nová sekce — dnes na sab.cz chybí. Importér a exportér se poznají ve scénáři dřív, než uslyší slovo forward.',
+    hint: 'Nová sekce — dnes na sab.cz chybí. Importér a exportér se poznají dřív, než uslyší slovo forward. Před rychlým výběrem cesty.',
     variant: 'split',
   },
   {
     id: 'paths',
-    label: '05 · Dvě rychlé cesty',
-    hint: 'Dva vstupy podle situace: mám fakturu v cizí měně vs. potřebuji kurz teď. Nahrazuje abstraktní boxy „Vsaďte na jistotu / Směňte hned".',
+    label: '05 · Dva vstupy',
+    hint: 'Dva vstupy po problému — scénáře z copy návrhů, ne sab.cz slogany. CTA s účelem, ne telefon.',
     variant: 'split',
   },
   {
+    id: 'forwardFlow',
+    label: '06 · Forward — jak to funguje',
+    hint: 'Mechanismus forwardu — 3 kroky ze sab.cz, copy z návrhů. Žargon až po scénáři, CTA „Chci fixní kurz".',
+    role: 'standout',
+    variant: 'flow',
+  },
+  {
     id: 'forward',
-    label: '06 · Forward — klíčový produkt',
-    hint: 'Největší diferenciátor SAB. Konkrétní příklad v korunách, pak teprve termín forward. Sekce musí vyniknout.',
+    label: '07 · Forward — příklad v Kč',
+    hint: 'Rozšíření flow — konkrétní čísla pro importéra. CFO dostane koruny, majitel scénář. Navazuje na předchozí sekci.',
     role: 'standout',
     variant: 'wide',
   },
   {
-    id: 'services',
-    label: '07 · Služby',
-    hint: 'Ze 7 položek na sab.cz → 4 vstupy. Každá karta: pro koho, kdy, vlastní CTA. Forward jako první a zvýrazněný.',
+    id: 'why',
+    label: '08 · Proč SAB',
+    hint: '6 výhod — témata ze sab.cz, formulace z copy návrhů. Konkrétní přínos, ne superlativy.',
     variant: 'cards',
   },
   {
-    id: 'why',
-    label: '08 · Proč SAB',
-    hint: 'Stávající výhody z sab.cz — konkrétnější formulace. Srovnání s bankou, licence, osobní dealer.',
+    id: 'services',
+    label: '09 · Služby',
+    hint: '7 služeb ze sab.cz — názvy a CTA z copy návrhů, každá s „pro koho". Forward zvýrazněný.',
     variant: 'cards',
   },
   {
     id: 'process',
-    label: '09 · Jak to funguje',
-    hint: 'Úvodní hovor jako první krok — snižuje bariéru. Rámcová smlouva až po domluvě, ne jako krok 1.',
+    label: '10 · Jak s námi obchodovat',
+    hint: '3 kroky — úvodní hovor první (copy návrhy), ne sab.cz „smlouva jako krok 1". Snižuje bariéru.',
     variant: 'cards',
   },
   {
     id: 'proof',
-    label: '10 · Reference',
+    label: '11 · Reference',
     hint: 'Citace zůstávají — Becherovka, LASSELSBERGER, APM. Přidat tag import/export u každé firmy.',
     variant: 'split',
   },
   {
     id: 'lead',
-    label: '11 · Kontaktní formulář',
+    label: '12 · Kontaktní formulář',
     hint: 'Před-kvalifikace: firma, měnový pár, objem, směr obchodu. Obchodník dostane kontext před hovorem. Telefon vedle formuláře.',
     role: 'standout',
     variant: 'form',
   },
   {
     id: 'newsletter',
-    label: '12 · Newsletter',
+    label: '13 · Newsletter',
     hint: 'Sekundární konverze pro CFO — kurzový přehled místo generických novinek.',
     role: 'muted',
     variant: 'wide',
   },
   {
     id: 'footer',
-    label: '13 · Patička',
-    hint: 'Investoři mimo hlavní cestu. Mapa celého webu: služby, segmenty, firma, kontakt, legal.',
+    label: '14 · Patička',
+    hint: 'Mapa webu + LinkedIn a Facebook. Investoři v patičce, ne v hlavní cestě.',
     variant: 'footer',
   },
 ]
@@ -96,9 +103,22 @@ export const UX_HOMEPAGE_SECTIONS: UxHomeSection[] = [
 export const UX_HOMEPAGE_CONTENT = {
   nav: {
     logo: 'SAB Finance',
+    tarf: {
+      label: 'SAB TARF',
+      badge: 'Novinka',
+      href: 'https://sabtarf.sab.cz/',
+    },
     links: ['Služby', 'Pro koho', 'Jak to funguje', 'O nás'],
     cta: 'Nezávazná poptávka',
+    prostream: {
+      label: 'ProStream',
+      href: 'https://www.prostream.cz/',
+    },
     aside: 'Investoři',
+    lang: {
+      current: 'CZ',
+      options: ['CZ', 'EN', 'DE'],
+    },
   },
   hero: {
     headline: 'Víte dopředu, kolik zaplatíte — nebo dostanete — v cizí měně.',
@@ -106,7 +126,6 @@ export const UX_HOMEPAGE_CONTENT = {
       'Devizové služby pro firmy, které importují, exportují nebo pravidelně platí do zahraničí. Směna, platby a fixní kurz na budoucí fakturu.',
     primaryCta: 'Nezávazná konzultace',
     secondaryCta: 'Zjistit aktuální kurz',
-    supporting: 'Licencovaná platební instituce · 20 let · 20 000 firemních klientů',
     rates: [
       { pair: 'EUR/CZK', value: '25,18' },
       { pair: 'USD/CZK', value: '23,42' },
@@ -120,6 +139,18 @@ export const UX_HOMEPAGE_CONTENT = {
     '20 000 firemních klientů',
     '1,74 mil. vypořádaných obchodů',
     'Obchod po telefonu do minut',
+  ],
+  paths: [
+    {
+      title: 'Máte fakturu v cizí měně?',
+      body: 'Sjednejte fixní kurz dnes — ať víte, kolik za 30, 60 nebo 90 dní zaplatíte nebo inkasujete.',
+      cta: 'Chci fixní kurz na fakturu',
+    },
+    {
+      title: 'Potřebujete směnit teď?',
+      body: 'Aktuální kurz bez skrytých poplatků. Obchod po telefonu, vypořádání během hodin.',
+      cta: 'Zjistit kurz',
+    },
   ],
   problem: {
     headline: 'Platíte nebo inkasujete v cizí měně?',
@@ -136,18 +167,20 @@ export const UX_HOMEPAGE_CONTENT = {
       },
     ],
   },
-  paths: [
-    {
-      title: 'Máte fakturu v cizí měně?',
-      body: 'Sjednejte fixní kurz dnes — ať víte, kolik za 30, 60 nebo 90 dní zaplatíte nebo inkasujete.',
-      cta: 'Chci fixní kurz na fakturu',
-    },
-    {
-      title: 'Potřebujete směnit teď?',
-      body: 'Aktuální kurz bez skrytých poplatků. Obchod po telefonu, vypořádání během hodin.',
-      cta: 'Zjistit kurz',
-    },
-  ],
+  forwardFlow: {
+    headline: 'Fixní kurz na fakturu — jak to proběhne',
+    lead: 'Dohodnete kurz dnes. Směna proběhne v den, kdy vás to skutečně zajímá — třeba za 3 měsíce.',
+    steps: [
+      { num: '1', label: 'Objednávka u dodavatele nebo u partnera' },
+      { num: '2', label: 'Sjednání forwardu za dohodnutý kurz', note: '1 týden až 2 roky dopředu' },
+      { num: '3', label: 'Vypořádání v den splatnosti' },
+    ],
+    bullets: [
+      'Čeká vás inkaso faktury a chcete přesně vědět, kolik korun na účet přijde?',
+      'Platíte za zboží nebo služby v cizí měně a chcete mít jistotu, že neproděláte?',
+    ],
+    cta: 'Chci fixní kurz — nezávazně',
+  },
   forward: {
     headline: 'Fixní kurz na fakturu — měnový forward jednoduše',
     lead: 'Dohodnete kurz dnes. Směna proběhne v den, kdy vás to skutečně zajímá — třeba za 3 měsíce.',
@@ -160,64 +193,100 @@ export const UX_HOMEPAGE_CONTENT = {
     cta: 'Chci fixní kurz — nezávazně',
     anchor: 'Ukotvíme váš kurz',
   },
-  services: [
-    {
-      title: 'Fixní kurz na fakturu',
-      for: 'Víte o budoucí platbě nebo inkasu',
-      cta: 'Více o forwardu',
-      featured: true,
-    },
-    {
-      title: 'Směna měn',
-      for: 'Potřebujete EUR, USD, GBP… dnes',
-      cta: 'Zjistit kurz',
-    },
-    {
-      title: 'Zahraniční platby',
-      for: 'Pošlete fakturu dodavateli nebo přijměte inkaso',
-      cta: 'Jak platíme do zahraničí',
-    },
-    {
-      title: 'Hlídání kurzů',
-      for: 'Upozornění, když je kurz pro vás výhodný',
-      cta: 'Nastavit alert',
-    },
-  ],
-  why: [
-    {
-      title: 'Kurz, který dává smysl',
-      body: 'Srovnatelné nebo lepší sazby než u banky — bez poplatků, které nikdo nečeká.',
-    },
-    {
-      title: 'Obchod do minut',
-      body: 'Zavoláte, specialisté dealingu potvrdí kurz emailem, vypořádání bez zbytečného čekání.',
-    },
-    {
-      title: 'Licence ČNB',
-      body: 'Jsme platební instituce — vaše peníze a obchody pod dohledem regulátora.',
-    },
-    {
-      title: 'Osobní dealer na telefonu',
-      body: '20 let na trhu, 20 000 firem — známe vaše měnové páry a reagujeme, když se kurz hne.',
-    },
-  ],
-  process: [
-    {
-      step: '01',
-      title: 'Krátký úvodní hovor',
-      body: 'Projdeme vaše měny, objemy a zda dává smysl forward nebo spot.',
-    },
-    {
-      step: '02',
-      title: 'Rámcová smlouva',
-      body: 'Připraví ji regionální ředitel — jednorázově, pak už jen obchody.',
-    },
-    {
-      step: '03',
-      title: 'Obchod a vypořádání',
-      body: 'Telefonicky s dealingem, potvrzení emailem, peníze na cestě.',
-    },
-  ],
+  services: {
+    headline: 'Služby pro vaši firmu',
+    items: [
+      {
+        title: 'Fixní kurz na fakturu',
+        for: 'Víte o budoucí platbě nebo inkasu',
+        badge: 'Novinka',
+        featured: true,
+        cta: 'Více o forwardu',
+      },
+      {
+        title: 'Směna měn',
+        for: 'Potřebujete EUR, USD, GBP… dnes',
+        cta: 'Zjistit kurz',
+      },
+      {
+        title: 'Zahraniční platby',
+        for: 'Pošlete fakturu dodavateli nebo přijměte inkaso',
+        cta: 'Jak platíme do zahraničí',
+      },
+      {
+        title: 'Inkaso od obchodních partnerů',
+        for: 'Příjem plateb v cizí měně na váš účet',
+        cta: 'Zjistit více',
+      },
+      {
+        title: 'Evropské i světové měnové páry',
+        for: 'Páry podle potřeby vaší firmy',
+        cta: 'Zjistit více',
+      },
+      {
+        title: 'Hlídání kurzů',
+        for: 'Upozornění, když je kurz pro vás výhodný',
+        cta: 'Nastavit alert',
+      },
+      {
+        title: 'Devizové poradenství',
+        for: 'Přehled trhu a tipy pro rozhodování',
+        cta: 'Chci přehled',
+      },
+    ],
+    cta: 'Všechny služby',
+  },
+  why: {
+    headline: 'Proč firmy volí SAB Finance',
+    items: [
+      {
+        title: 'Kurz, který dává smysl',
+        body: 'Srovnatelné nebo lepší sazby než u banky — bez poplatků, které nikdo nečeká.',
+      },
+      {
+        title: 'Obchod do minut',
+        body: 'Specialista dealingu potvrdí kurz emailem, vypořádání bez zbytečného čekání.',
+      },
+      {
+        title: 'Transparentní podmínky',
+        body: 'Víte dopředu, co platí — žádné překvapení v poplatcích ani kurzu.',
+      },
+      {
+        title: 'Licence ČNB',
+        body: 'Platební instituce — vaše peníze a obchody pod dohledem regulátora.',
+      },
+      {
+        title: 'Evropské i světové páry',
+        body: 'EUR, USD, GBP a další měny pro vaše obchody.',
+      },
+      {
+        title: '20 let a 20 000 firem',
+        body: 'Osobní dealer na telefonu, zná vaše měnové páry a reaguje, když se kurz hne.',
+      },
+    ],
+    cta: 'Více o spolupráci',
+  },
+  process: {
+    headline: 'Jak s námi obchodovat',
+    steps: [
+      {
+        step: '1',
+        title: 'Krátký úvodní hovor',
+        body: 'Projdeme vaše měny, objemy a zda dává smysl forward nebo spot.',
+      },
+      {
+        step: '2',
+        title: 'Rámcová smlouva',
+        body: 'Připraví ji regionální ředitel — jednorázově, pak už jen obchody.',
+      },
+      {
+        step: '3',
+        title: 'Obchod a vypořádání',
+        body: 'Telefonicky s dealingem, potvrzení emailem, peníze na cestě.',
+      },
+    ],
+    cta: 'Jak začít spolupráci',
+  },
   proof: {
     headline: 'Firmy, které s námi řeší devizy denně',
     quotes: [
@@ -297,6 +366,10 @@ export const UX_HOMEPAGE_CONTENT = {
           'Nezávazná poptávka',
         ],
       },
+    ],
+    social: [
+      { label: 'LinkedIn', href: 'https://www.linkedin.com/company/sabfinanceas' },
+      { label: 'Facebook', href: 'https://www.facebook.com/sabfinanceas/' },
     ],
     legal: ['Ochrana osobních údajů', 'Cookies', 'Whistleblowing'],
     aside: 'SAB Finance a.s. · IČ: 24717444 · DIČ: CZ699003130',

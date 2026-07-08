@@ -14,7 +14,22 @@ $color-note: #c8d45e;
 $color-note-warm: #dcc96a;
 $color-copy: #d79ae0;
 
+
+$color-identity-primary: #6dc4de;
+$color-identity-secondary: #c8e7f8;
+$color-identity-tertiary: #285865;
+$color-identity-gradient-primary: linear-gradient(to top, #6dc4de, #c8e7f8);
+$color-identity-gradient-secondary: linear-gradient(to top, #285865, #6dc4de);
+
+// Greys aligned with identity (blue-teal hue from tertiary)
+$color-identity-grey-dark-blue: #1e3941;
+$color-identity-grey-dark: #3d5560;
+$color-identity-grey-mid: #7a9199;
+$color-identity-grey-light: #c8d8de;
+$color-identity-grey-lighter: #eef3f6;
+
 $font-base: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+$font-ui: var(--font-carlito), 'Carlito', system-ui, sans-serif;
 $font-mono: ui-monospace, 'SF Mono', Menlo, monospace;
 
 $font-weight-regular: 400;

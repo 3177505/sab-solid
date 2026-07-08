@@ -219,8 +219,9 @@ export const dict: Dictionary = {
       hero: { label: 'Hero', hint: '' },
       trust: { label: 'Důvěra', hint: '' },
       problem: { label: 'Problém', hint: '' },
-      paths: { label: 'Dvě cesty', hint: '' },
-      forward: { label: 'Forward', hint: '' },
+      paths: { label: 'Dva vstupy', hint: '' },
+      forwardFlow: { label: 'Forward flow', hint: '' },
+      forward: { label: 'Forward příklad', hint: '' },
       services: { label: 'Služby', hint: '' },
       why: { label: 'Proč SAB', hint: '' },
       process: { label: 'Proces', hint: '' },
@@ -233,11 +234,11 @@ export const dict: Dictionary = {
   ui: {
     classic: {
       title: 'UI — Classic',
-      desc: 'Světlejší, klidnější varianta. Důraz na čitelnost a důvěru. UI design doplníme v dalším kroku.',
+      desc: 'Světlá varianta. Základní styling — teal akcent, zaoblené CTA, karty se stínem.',
     },
     premium: {
       title: 'UI — Premium',
-      desc: 'Tmavší, animovanější varianta. Gradienty, counters, motion. UI design doplníme v dalším kroku.',
+      desc: 'Stejná struktura, světlejší teal akcent. Vizuál a motion doplníme později.',
     },
     switchLabel: 'Varianta',
   },

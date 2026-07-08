@@ -50,6 +50,7 @@ export type Dictionary = {
       trust: { label: string; hint: string }
       problem: { label: string; hint: string }
       paths: { label: string; hint: string }
+      forwardFlow: { label: string; hint: string }
       forward: { label: string; hint: string }
       services: { label: string; hint: string }
       why: { label: string; hint: string }

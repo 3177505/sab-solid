@@ -86,6 +86,10 @@ function UxSectionBody({ section, mobile }: { section: UxHomeSection; mobile?: b
         <div className="uxBlock uxBlock--nav">
           <span className="uxBlock__logo">{C.nav.logo}</span>
           <nav className="uxBlock__navLinks" aria-label="Hlavní navigace">
+            <span className="uxBlock__navItem uxBlock__navItem--tarf">
+              <span className="uxBlock__badge">{C.nav.tarf.badge}</span>
+              {C.nav.tarf.label}
+            </span>
             {C.nav.links.map((link) => (
               <span key={link} className="uxBlock__navItem">
                 {link}
@@ -93,8 +97,19 @@ function UxSectionBody({ section, mobile }: { section: UxHomeSection; mobile?: b
             ))}
           </nav>
           <div className="uxBlock__navEnd">
-            <span className="uxBlock__muted">{C.nav.aside}</span>
+            <span className="uxBlock__link">{C.nav.aside}</span>
             <span className="uxBlock__cta">{C.nav.cta}</span>
+            <span className="uxBlock__cta uxBlock__cta--prostream">{C.nav.prostream.label}</span>
+            <span className="uxBlock__lang" aria-label="Jazyk">
+              <span className="uxBlock__langCurrent">{C.nav.lang.current}</span>
+              {C.nav.lang.options
+                .filter((l) => l !== C.nav.lang.current)
+                .map((l) => (
+                  <span key={l} className="uxBlock__langOption">
+                    {l}
+                  </span>
+                ))}
+            </span>
           </div>
         </div>
       )
@@ -109,7 +124,6 @@ function UxSectionBody({ section, mobile }: { section: UxHomeSection; mobile?: b
               <span className="uxBlock__cta">{C.hero.primaryCta}</span>
               <span className="uxBlock__cta">{C.hero.secondaryCta}</span>
             </div>
-            <p className="uxBlock__muted">{C.hero.supporting}</p>
           </div>
           <div className="uxBlock__heroAside">
             <div className="uxBlock__rates">
@@ -171,6 +185,31 @@ function UxSectionBody({ section, mobile }: { section: UxHomeSection; mobile?: b
         </div>
       )
 
+    case 'forwardFlow':
+      return (
+        <div className="uxBlock">
+          <h2 className="uxBlock__sectionTitle">{C.forwardFlow.headline}</h2>
+          <p className="uxBlock__body">{C.forwardFlow.lead}</p>
+          <div className={`uxBlock__flow${mobile ? ' uxBlock__flow--stack' : ''}`}>
+            {C.forwardFlow.steps.map((s) => (
+              <div key={s.num} className="uxBlock__flowStep">
+                <span className="uxBlock__flowNum">{s.num}</span>
+                <span className="uxBlock__body">{s.label}</span>
+                {'note' in s && s.note ? (
+                  <span className="uxBlock__muted">{s.note}</span>
+                ) : null}
+              </div>
+            ))}
+          </div>
+          <ul className="uxBlock__bullets">
+            {C.forwardFlow.bullets.map((b) => (
+              <li key={b}>{b}</li>
+            ))}
+          </ul>
+          <span className="uxBlock__cta">{C.forwardFlow.cta}</span>
+        </div>
+      )
+
     case 'forward':
       return (
         <div className={`uxBlock uxBlock--forward${mobile ? '' : ' uxBlock--split'}`}>
@@ -194,41 +233,59 @@ function UxSectionBody({ section, mobile }: { section: UxHomeSection; mobile?: b
 
     case 'services':
       return (
-        <div
-          className={`uxBlock__grid uxBlock__grid--services${mobile ? ' uxBlock__grid--stack' : ''}`}
-        >
-          {C.services.map((s) => (
-            <div key={s.title} className="uxBlock__card">
-              <h3 className="uxBlock__cardTitle">{s.title}</h3>
-              <p className="uxBlock__body">{s.for}</p>
-              <span className="uxBlock__cta">{s.cta}</span>
-            </div>
-          ))}
+        <div className="uxBlock">
+          <h2 className="uxBlock__sectionTitle">{C.services.headline}</h2>
+          <div
+            className={`uxBlock__grid uxBlock__grid--services${mobile ? ' uxBlock__grid--stack' : ''}`}
+          >
+            {C.services.items.map((s) => (
+              <div
+                key={s.title}
+                className={`uxBlock__card${'featured' in s && s.featured ? ' uxBlock__card--featured' : ''}`}
+              >
+                {'badge' in s && s.badge ? (
+                  <span className="uxBlock__badge">{s.badge}</span>
+                ) : null}
+                <h3 className="uxBlock__cardTitle">{s.title}</h3>
+                {'for' in s && s.for ? <p className="uxBlock__body">{s.for}</p> : null}
+                {'cta' in s && s.cta ? <span className="uxBlock__cta">{s.cta}</span> : null}
+              </div>
+            ))}
+          </div>
+          <span className="uxBlock__cta">{C.services.cta}</span>
         </div>
       )
 
     case 'why':
       return (
-        <div className={`uxBlock__grid uxBlock__grid--4${mobile ? ' uxBlock__grid--stack' : ''}`}>
-          {C.why.map((w) => (
-            <div key={w.title} className="uxBlock__card">
-              <h3 className="uxBlock__cardTitle">{w.title}</h3>
-              <p className="uxBlock__body">{w.body}</p>
-            </div>
-          ))}
+        <div className="uxBlock">
+          <h2 className="uxBlock__sectionTitle">{C.why.headline}</h2>
+          <div className={`uxBlock__grid uxBlock__grid--3${mobile ? ' uxBlock__grid--stack' : ''}`}>
+            {C.why.items.map((w) => (
+              <div key={w.title} className="uxBlock__card">
+                <h3 className="uxBlock__cardTitle">{w.title}</h3>
+                {'body' in w && w.body ? <p className="uxBlock__body">{w.body}</p> : null}
+              </div>
+            ))}
+          </div>
+          <span className="uxBlock__cta">{C.why.cta}</span>
         </div>
       )
 
     case 'process':
       return (
-        <div className={`uxBlock__grid uxBlock__grid--3${mobile ? ' uxBlock__grid--stack' : ''}`}>
-          {C.process.map((p) => (
-            <div key={p.step} className="uxBlock__card">
-              <span className="uxBlock__muted">{p.step}</span>
-              <h3 className="uxBlock__cardTitle">{p.title}</h3>
-              <p className="uxBlock__body">{p.body}</p>
-            </div>
-          ))}
+        <div className="uxBlock">
+          <h2 className="uxBlock__sectionTitle">{C.process.headline}</h2>
+          <div className={`uxBlock__grid uxBlock__grid--3${mobile ? ' uxBlock__grid--stack' : ''}`}>
+            {C.process.steps.map((p) => (
+              <div key={p.step} className="uxBlock__card">
+                <span className="uxBlock__muted">{p.step}</span>
+                <h3 className="uxBlock__cardTitle">{p.title}</h3>
+                <p className="uxBlock__body">{p.body}</p>
+              </div>
+            ))}
+          </div>
+          <span className="uxBlock__cta">{C.process.cta}</span>
         </div>
       )
 
@@ -304,6 +361,11 @@ function UxSectionBody({ section, mobile }: { section: UxHomeSection; mobile?: b
             ))}
           </div>
           <div className="uxBlock__footerBottom">
+            <div className="uxBlock__footerSocial">
+              {C.footer.social.map((s) => (
+                <span key={s.label}>{s.label}</span>
+              ))}
+            </div>
             <div className="uxBlock__footerLegal">
               {C.footer.legal.map((l) => (
                 <span key={l}>{l}</span>

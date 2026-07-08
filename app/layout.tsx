@@ -1,7 +1,15 @@
 import type { Metadata } from 'next'
+import { Carlito } from 'next/font/google'
 import PresentationBar from '@/components/layout/PresentationBar'
 import { getCopy } from '@/content/copy'
 import './globals.scss'
+
+const carlito = Carlito({
+  subsets: ['latin', 'latin-ext'],
+  weight: ['400', '700'],
+  variable: '--font-carlito',
+  display: 'swap',
+})
 
 const copy = getCopy()
 
@@ -21,7 +29,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="cs" data-scroll-behavior="smooth">
-      <body>
+      <body className={carlito.variable}>
         <PresentationBar />
         <main className="presentationMain">{children}</main>
       </body>

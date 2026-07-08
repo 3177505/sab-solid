@@ -1,35 +1,11 @@
 @import '../../_setup/vars.scss';
-@import '../../languageSwitcher/languageSwitcher.scss';
 
 .uiShell {
   display: flex;
   flex-direction: column;
   width: 100%;
   min-height: calc(100vh - #{$header-height});
-}
-
-.uiShell__toolbar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: $spacing-md;
-  padding: $spacing-sm clamp(1rem, 3vw, 2rem);
-  border-bottom: $border-width solid $border-color;
-  background: $color-white;
-}
-
-.uiShell__canvas {
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 400px;
-}
-
-.uiShell__placeholder {
-  @include font-caption;
-  color: $color-gray;
-  font-style: italic;
+  font-family: $font-ui;
 }
 
 .uiShell--classic {
@@ -37,54 +13,5 @@
 }
 
 .uiShell--premium {
-  background: $color-dark;
-
-  .uiShell__toolbar {
-    background: $color-dark;
-    border-color: rgba($color-white, 0.12);
-    color: $color-white;
-  }
-
-  .uiShell__placeholder {
-    color: $color-light-gray;
-  }
-}
-
-.uiVariantSwitch {
-  display: inline-flex;
-  align-items: center;
-  gap: $spacing-xs;
-  padding: $spacing-xxs;
-  border: $border-width solid $border-color;
-  border-radius: $radius-md;
-}
-
-.uiVariantSwitch__label {
-  @include font-mono-label;
-  padding-inline: $spacing-xs;
-  color: $color-gray;
-}
-
-.uiVariantSwitch__btn {
-  @include font-caption;
-  padding: $spacing-xxs $spacing-sm;
-  border-radius: $radius-sm;
-  transition: background $transition-fast, color $transition-fast;
-
-  &.active {
-    background: $color-accent;
-    color: $color-white;
-  }
-
-  &:hover:not(.active) {
-    background: rgba($color-black, 0.05);
-  }
-}
-
-.uiShell--premium .uiVariantSwitch {
-  border-color: rgba($color-white, 0.15);
-}
-
-.uiShell--premium .uiVariantSwitch__label {
-  color: $color-light-gray;
+  background: $color-white;
 }

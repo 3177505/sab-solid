@@ -1,0 +1,754 @@
+@import '../../_setup/breakpoints.scss';
+@import '../../_setup/vars.scss';
+
+// Základní UI — inspirace fintech (N26): čisté plochy, zaoblení, teal akcent
+
+.uiHp {
+  --ui-bg: #ffffff;
+  --ui-surface: #f4f7f7;
+  --ui-text: #1a1f26;
+  --ui-muted: #5c6670;
+  --ui-accent: #0d6e6e;
+  --ui-accent-dark: #0a5555;
+  --ui-accent-soft: #e6f3f3;
+  --ui-border: #e2e8e8;
+  --ui-radius: 16px;
+  --ui-radius-sm: 10px;
+  --ui-shadow: 0 4px 24px rgba(26, 31, 38, 0.06);
+  --ui-max: 1100px;
+  --ui-section-py: clamp(48px, 8vw, 80px);
+
+  background: var(--ui-bg);
+  color: var(--ui-text);
+  font-family: $font-ui;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.uiHp--premium {
+  --ui-accent: #14a3a3;
+  --ui-accent-dark: #0d6e6e;
+}
+
+.uiHp__container {
+  width: 100%;
+  max-width: var(--ui-max);
+  margin: 0 auto;
+  padding-inline: clamp(20px, 4vw, 32px);
+}
+
+// Nav
+.uiHp__nav {
+  position: sticky;
+  top: 36px;
+  z-index: 50;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--ui-border);
+}
+
+.uiHp__navInner {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 24px;
+  padding-block: 14px;
+  white-space: nowrap;
+}
+
+.uiHp__logo {
+  font-weight: 700;
+  font-size: 15px;
+  letter-spacing: -0.02em;
+}
+
+.uiHp__navLinks {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 28px;
+}
+
+.uiHp__navLink {
+  font-size: 14px;
+  color: var(--ui-text);
+  text-decoration: none;
+
+  &:hover {
+    color: var(--ui-accent);
+  }
+}
+
+.uiHp__navEnd {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.uiHp__navMuted {
+  font-size: 13px;
+  color: var(--ui-muted);
+  text-decoration: none;
+}
+
+.uiHp__lang {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 13px;
+  border: 1px solid var(--ui-border);
+  border-radius: var(--ui-radius-sm);
+  padding: 6px 10px;
+}
+
+.uiHp__langCurrent {
+  font-weight: 600;
+  color: var(--ui-text);
+}
+
+.uiHp__langOption {
+  background: none;
+  border: none;
+  padding: 0 4px;
+  font-size: 13px;
+  color: var(--ui-muted);
+  cursor: default;
+}
+
+// Typografie
+.uiHp__h1 {
+  font-size: clamp(28px, 4.5vw, 42px);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  margin: 0 0 16px;
+}
+
+.uiHp__h2 {
+  font-size: clamp(22px, 3vw, 30px);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  margin: 0 0 28px;
+
+  &--center {
+    text-align: center;
+  }
+}
+
+.uiHp__h3 {
+  font-size: 17px;
+  font-weight: 600;
+  margin: 0 0 8px;
+}
+
+.uiHp__lead {
+  font-size: 17px;
+  color: var(--ui-muted);
+  margin: 0 0 24px;
+  max-width: 52ch;
+}
+
+.uiHp__body {
+  font-size: 15px;
+  color: var(--ui-muted);
+  margin: 0 0 12px;
+
+  &--emphasis {
+    color: var(--ui-text);
+    font-weight: 500;
+  }
+}
+
+.uiHp__muted {
+  font-size: 13px;
+  color: var(--ui-muted);
+  margin: 0;
+}
+
+.uiHp__eyebrow {
+  font-size: 13px;
+  font-style: italic;
+  color: var(--ui-accent);
+  margin: 0 0 8px;
+}
+
+// Tlačítka
+.uiHp__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 22px;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 999px;
+  border: 2px solid transparent;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+  white-space: nowrap;
+}
+
+.uiHp__btn--primary {
+  background: var(--ui-accent);
+  color: #fff;
+
+  &:hover {
+    background: var(--ui-accent-dark);
+  }
+}
+
+.uiHp__btn--ghost {
+  background: transparent;
+  color: var(--ui-text);
+  border-color: var(--ui-border);
+
+  &:hover {
+    border-color: var(--ui-accent);
+    color: var(--ui-accent);
+  }
+}
+
+.uiHp__btn--onAccent {
+  background: #fff;
+  color: var(--ui-accent);
+
+  &:hover {
+    background: var(--ui-accent-soft);
+  }
+}
+
+.uiHp__btn--prostream {
+  background: #1a3a5c;
+  color: #fff;
+
+  &:hover {
+    background: #0f2840;
+  }
+}
+
+.uiHp__badge {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  background: #e30613;
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 999px;
+  margin-bottom: 8px;
+
+  &--inline {
+    margin-bottom: 0;
+    margin-left: 8px;
+    vertical-align: middle;
+  }
+}
+
+.uiHp__btnRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.uiHp__link {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--ui-accent);
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+// Sekce
+.uiHp__section {
+  padding-block: var(--ui-section-py);
+
+  &--compact {
+    padding-block: 28px;
+  }
+
+  &--surface {
+    background: var(--ui-surface);
+  }
+
+  &--accent {
+    background: var(--ui-accent);
+    color: #fff;
+
+    .uiHp__h2,
+    .uiHp__body,
+    .uiHp__body--emphasis {
+      color: #fff;
+    }
+
+    .uiHp__eyebrow {
+      color: rgba(255, 255, 255, 0.85);
+    }
+
+    .uiHp__card {
+      background: #fff;
+      color: var(--ui-text);
+
+      .uiHp__h3,
+      .uiHp__body {
+        color: var(--ui-muted);
+      }
+
+      .uiHp__body--emphasis {
+        color: var(--ui-text);
+      }
+    }
+  }
+
+  &--lead {
+    background: var(--ui-accent-soft);
+  }
+}
+
+// Hero
+.uiHp__heroGrid {
+  display: grid;
+  gap: 40px;
+  align-items: start;
+
+  @include lg {
+    grid-template-columns: 1.1fr 0.9fr;
+  }
+
+  &--stack {
+    grid-template-columns: 1fr;
+  }
+}
+
+.uiHp__heroAside {
+  display: grid;
+  gap: 16px;
+}
+
+.uiHp__rates {
+  background: #fff;
+  border: 1px solid var(--ui-border);
+  border-radius: var(--ui-radius);
+  padding: 20px;
+  box-shadow: var(--ui-shadow);
+}
+
+.uiHp__rateRow {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--ui-border);
+  font-size: 15px;
+
+  &:last-of-type {
+    border-bottom: none;
+    margin-bottom: 8px;
+  }
+
+  strong {
+    font-weight: 600;
+    color: var(--ui-text);
+  }
+}
+
+.uiHp__visual {
+  min-height: 120px;
+  border-radius: var(--ui-radius);
+  background: linear-gradient(135deg, var(--ui-accent-soft) 0%, #c5e8e8 50%, var(--ui-accent) 100%);
+  opacity: 0.7;
+}
+
+// Trust
+.uiHp__trustRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px 32px;
+  justify-content: space-between;
+}
+
+.uiHp__trustItem {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+// Grid & karty
+.uiHp__grid {
+  display: grid;
+  gap: 20px;
+
+  &--2 {
+    @include lg {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  &--3 {
+    @include lg {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  &--4 {
+    @include lg {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  &--services {
+    @include lg {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  &--stack {
+    grid-template-columns: 1fr;
+  }
+}
+
+.uiHp__card {
+  background: #fff;
+  border: 1px solid var(--ui-border);
+  border-radius: var(--ui-radius);
+  padding: 24px;
+  box-shadow: var(--ui-shadow);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  &--featured {
+    border-color: var(--ui-accent);
+    box-shadow: 0 8px 32px rgba(13, 110, 110, 0.12);
+  }
+
+  &--flat {
+    box-shadow: none;
+    background: var(--ui-surface);
+  }
+
+  &--path {
+    background: var(--ui-accent-soft);
+    border-color: transparent;
+  }
+
+  &--step {
+    position: relative;
+    padding-top: 36px;
+  }
+
+  &--quote {
+    margin: 0;
+  }
+
+  &--phone {
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  &--service {
+    text-align: center;
+    min-height: 100px;
+    justify-content: center;
+  }
+}
+
+.uiHp__sectionCta {
+  display: flex;
+  justify-content: center;
+  margin-top: 28px;
+}
+
+.uiHp__flow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin: 28px 0;
+
+  &--stack {
+    flex-direction: column;
+  }
+}
+
+.uiHp__flowStep {
+  flex: 1;
+  min-width: 160px;
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: var(--ui-radius);
+  padding: 20px;
+}
+
+.uiHp__flowNum {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #fff;
+  color: var(--ui-accent);
+  font-size: 13px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.uiHp__bullets {
+  margin: 0 0 24px;
+  padding-left: 20px;
+  font-size: 15px;
+
+  li {
+    margin-bottom: 8px;
+  }
+}
+
+.uiHp__tag {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--ui-accent);
+}
+
+.uiHp__step {
+  position: absolute;
+  top: 20px;
+  left: 24px;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--ui-accent);
+}
+
+.uiHp__steps {
+  margin: 0;
+  padding-left: 20px;
+  font-size: 14px;
+  color: var(--ui-muted);
+
+  li {
+    margin-bottom: 6px;
+  }
+}
+
+.uiHp__forwardGrid {
+  display: grid;
+  gap: 32px;
+  align-items: start;
+
+  @include lg {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  &--stack {
+    grid-template-columns: 1fr;
+  }
+}
+
+.uiHp__quote {
+  margin: 8px 0;
+
+  p {
+    margin: 0;
+    font-size: 15px;
+    font-style: italic;
+    color: var(--ui-text);
+    line-height: 1.5;
+  }
+}
+
+// Formulář
+.uiHp__leadGrid {
+  display: grid;
+  gap: 32px;
+  align-items: start;
+
+  @include lg {
+    grid-template-columns: 1.4fr 0.6fr;
+  }
+
+  &--stack {
+    grid-template-columns: 1fr;
+  }
+}
+
+.uiHp__form {
+  display: grid;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.uiHp__field {
+  display: grid;
+  gap: 4px;
+
+  span {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--ui-muted);
+  }
+
+  input {
+    padding: 12px 14px;
+    border: 1px solid var(--ui-border);
+    border-radius: var(--ui-radius-sm);
+    font-size: 15px;
+    background: #fff;
+
+    &:focus {
+      outline: 2px solid var(--ui-accent);
+      outline-offset: 1px;
+    }
+  }
+}
+
+.uiHp__phone {
+  font-size: 22px;
+  font-weight: 700;
+  margin: 0 0 4px;
+}
+
+// Newsletter
+.uiHp__newsletter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+
+  &--stack {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+// Footer
+.uiHp__footer {
+  background: #1a1f26;
+  color: #fff;
+  padding: 56px 0 32px;
+}
+
+.uiHp__footerGrid {
+  display: grid;
+  gap: 32px 24px;
+  padding-bottom: 40px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+
+  @include lg {
+    grid-template-columns: repeat(5, 1fr);
+  }
+
+  &--stack {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.uiHp__footerTitle {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin: 0 0 14px;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.uiHp__footerList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 8px;
+
+  a {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.85);
+    text-decoration: none;
+
+    &:hover {
+      color: #fff;
+    }
+  }
+}
+
+.uiHp__footerBottom {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding-top: 24px;
+}
+
+.uiHp__footerSocial {
+  display: flex;
+  gap: 20px;
+
+  a {
+    font-size: 14px;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.85);
+    text-decoration: none;
+
+    &:hover {
+      color: #fff;
+    }
+  }
+}
+
+.uiHp__footerLegal {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px 24px;
+
+  a {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.55);
+    text-decoration: none;
+
+    &:hover {
+      color: #fff;
+    }
+  }
+}
+
+.uiHp__footerAside {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.45);
+  margin: 0;
+}
+
+// Mobile
+.uiHp--mobile {
+  .uiHp__navInner {
+    grid-template-columns: 1fr;
+    white-space: normal;
+    gap: 12px;
+  }
+
+  .uiHp__navLinks {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 12px 16px;
+  }
+
+  .uiHp__navEnd {
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .uiHp__footerGrid--stack {
+    grid-template-columns: 1fr;
+  }
+}
+
+// V UiShell — bez vlastního toolbaru paddingu na canvasu
+.uiShell .uiHp {
+  width: 100%;
+}
+
+.uiShell .uiHp__nav {
+  top: 0;
+}
