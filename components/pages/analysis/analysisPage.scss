@@ -6,20 +6,22 @@
 }
 
 .analysisPage__intro {
-  max-width: 52rem;
-  margin-bottom: $spacing-xl;
+  @include font-h3;
+  font-weight: $font-weight-regular;
+  color: rgba($color-white, 0.65);
+  margin-bottom: $spacing-xxl;
   padding-bottom: $spacing-lg;
-  border-bottom: 1px solid rgba($color-white, 0.1);
+  border-bottom: 1px solid rgba($color-white, 0.12);
 }
 
 .analysisPage__grid {
   display: grid;
-  gap: $spacing-lg;
+  gap: $spacing-xxl;
   grid-template-columns: 1fr;
 
   @include lg {
     grid-template-columns: repeat(2, 1fr);
-    gap: $spacing-lg clamp(1.5rem, 3vw, 2.5rem);
+    gap: $spacing-xxl clamp(2rem, 4vw, 4rem);
   }
 }
 
@@ -32,37 +34,30 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: $spacing-md 0;
+  padding: $spacing-lg 0;
 }
 
 .analysisDivider--line {
   &::before {
     content: '';
     width: 100%;
-    max-width: 10rem;
+    max-width: 12rem;
     height: 1px;
-    background: rgba($color-identity-primary, 0.35);
+    background: rgba($color-white, 0.12);
   }
 }
 
 .analysisDivider--arrow {
-  padding: $spacing-lg 0;
+  padding: $spacing-xl 0;
 
   .analysisDivider__arrow {
-    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    font-size: clamp(2rem, 5vw, 3rem);
     line-height: 1;
-    color: rgba($color-identity-primary, 0.45);
+    color: rgba($color-note, 0.25);
   }
 }
 
 .analysisSection {
-  padding: $spacing-md;
-  border-radius: $radius-md;
-  background: $color-white;
-  color: $color-identity-grey-dark-blue;
-  border: 1px solid rgba($color-identity-grey-light, 0.85);
-  box-shadow: 0 8px 32px rgba($color-identity-grey-dark-blue, 0.06);
-
   &--full,
   &--row {
     @include lg {
@@ -74,71 +69,66 @@
 .analysisSection__title {
   @include font-h2;
   font-weight: $font-weight-bold;
-  color: $color-identity-grey-dark-blue;
+  color: $color-white;
   margin-bottom: $spacing-md;
 }
 
 .analysisSection--note {
-  border-color: rgba($color-identity-primary, 0.35);
-
   .analysisSection__title {
-    color: $color-identity-tertiary;
+    color: rgba($color-note, 0.95);
   }
 
   .analysisPoint {
-    border-color: rgba($color-identity-primary, 0.35);
-    background: rgba($color-identity-secondary, 0.45);
+    border-color: rgba($color-note, 0.25);
+    background: rgba($color-note, 0.05);
   }
 
   .analysisPoint__label {
-    color: $color-identity-tertiary;
+    color: rgba($color-note, 0.95);
   }
 
   .analysisPoint__body {
-    color: $color-identity-grey-dark;
+    color: rgba($color-white, 0.7);
   }
 }
 
 .analysisSection--muted {
-  background: rgba($color-white, 0.92);
-
   .analysisSection__title {
     @include font-h3;
     font-weight: $font-weight-medium;
-    color: $color-identity-grey-mid;
+    color: rgba($color-white, 0.45);
     margin-bottom: $spacing-sm;
   }
 
   .analysisPoint {
     padding: $spacing-sm $spacing-md;
     background: transparent;
-    border-color: rgba($color-identity-grey-light, 0.8);
-    box-shadow: none;
+    border-color: rgba($color-white, 0.08);
   }
 
   .analysisPoint__label,
   .analysisPoint__body {
     @include font-body;
-    color: $color-identity-grey-mid;
+    color: rgba($color-white, 0.4);
   }
 }
 
 .analysisSection__summary {
   @include font-h3;
   font-weight: $font-weight-regular;
-  color: $color-identity-tertiary;
-  margin: 0 0 $spacing-md;
-  line-height: 1.45;
+  color: $color-note;
+  margin: 0 0 $spacing-lg;
+  line-height: 1.4;
 }
 
 .analysisSection__aside {
   @include font-body;
   margin-top: $spacing-md;
   padding-top: $spacing-md;
-  border-top: 1px solid rgba($color-identity-primary, 0.25);
-  color: $color-identity-grey-mid;
+  border-top: 1px solid rgba($color-note, 0.15);
+  color: rgba($color-note, 0.65);
   font-style: italic;
-  line-height: 1.55;
+  line-height: 1.5;
 }
 
 .analysisSection__list {
@@ -147,12 +137,8 @@
 }
 
 .analysisSection__list--grid2 {
-  grid-template-columns: 1fr;
-  gap: $spacing-sm;
-
-  @include md {
-    grid-template-columns: repeat(2, 1fr);
-  }
+  grid-template-columns: repeat(2, 1fr);
+  gap: $spacing-md;
 
   .analysisPoint {
     display: flex;
@@ -166,47 +152,47 @@
 .analysisSection__list--cols2 {
   @include lg {
     grid-template-columns: repeat(2, 1fr);
-    gap: $spacing-sm;
+    gap: $spacing-md;
   }
 }
 
 .analysisSection--row .analysisSection__list {
   @include lg {
     grid-template-columns: repeat(3, 1fr);
-    gap: $spacing-sm;
+    gap: $spacing-md;
   }
 }
 
 .analysisPoint {
   padding: $spacing-md;
-  border-radius: $radius-sm;
-  background: $color-identity-grey-lighter;
-  border: 1px solid rgba($color-identity-grey-light, 0.9);
+  border-radius: $radius-md;
+  background: rgba($color-white, 0.04);
+  border: 1px solid rgba($color-white, 0.14);
   display: grid;
   gap: $spacing-xxs;
 }
 
 .analysisPoint--emphasis {
-  border-color: rgba($color-identity-tertiary, 0.35);
-  background: rgba($color-identity-secondary, 0.35);
+  border-color: rgba($color-note, 0.35);
+  background: rgba($color-note, 0.06);
 
   .analysisPoint__label {
-    color: $color-identity-tertiary;
+    color: rgba($color-note, 0.95);
   }
 }
 
 .analysisPoint__label {
   @include font-h3;
   font-weight: $font-weight-medium;
-  color: $color-identity-grey-dark-blue;
+  color: $color-white;
 }
 
 .analysisPoint__body {
   @include font-body;
-  color: $color-identity-grey-dark;
-  line-height: 1.55;
+  color: rgba($color-white, 0.6);
+  line-height: 1.5;
 }
 
 .analysisPoint--emphasis .analysisPoint__body {
-  color: $color-identity-grey-dark-blue;
+  color: rgba($color-white, 0.72);
 }
