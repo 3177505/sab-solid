@@ -17,6 +17,7 @@ $ui-radius-sm: 4px;
 $ui-radius-btn: 4px;
 $ui-shadow: 0 4px 24px rgba(26, 31, 38, 0.06);
 $ui-max: 1080px;
+$ui-nav-max: 920px;
 $ui-section-py: clamp(88px, 14vh, 152px);
 $ui-container-pad: clamp(24px, 4vw, 40px);
 $ui-card-pad: clamp(22px, 2.8vw, 32px);
@@ -25,7 +26,8 @@ $ui-card-title: clamp(20px, 2.2vw, 24px);
 $ui-card-body: clamp(16px, 1.6vw, 18px);
 $ui-dock-bottom: clamp(20px, 3vh, 32px);
 $ui-dock-h: calc(88px + #{$ui-dock-bottom});
-$ui-paths-edge: max(#{$ui-container-pad}, calc((100vw - #{$ui-max}) / 2 + #{$ui-container-pad}));
+$ui-paths-edge: max(#{$ui-container-pad}, calc((100vw - #{$ui-nav-max}) / 2));
+$ui-paths-edge-classic: max(#{$ui-container-pad}, calc((100vw - #{$ui-max}) / 2));
 $ui-slider-edge-pad: 0px;
 
 // Premium accent overrides

@@ -316,6 +316,24 @@ span.uiHp--premium {
     overflow: visible;
   }
 
+  .uiHp__pathsCell {
+    max-width: $ui-max;
+  }
+
+  @include lg {
+    .uiHp__card--path:nth-child(odd) .uiHp__pathsCell {
+      padding-left: $ui-paths-edge-classic;
+      padding-right: clamp(20px, 3vw, 32px);
+      margin-right: auto;
+    }
+
+    .uiHp__card--path:nth-child(even) .uiHp__pathsCell {
+      padding-right: $ui-paths-edge-classic;
+      padding-left: clamp(20px, 3vw, 32px);
+      margin-left: auto;
+    }
+  }
+
   .uiHp__h1 {
     font-size: clamp(36px, 5.5vw, 58px);
     letter-spacing: -0.035em;
@@ -874,7 +892,6 @@ span.uiHp--premium {
       transform 0.28s cubic-bezier(0.4, 0, 0.2, 1),
       box-shadow 0.28s ease,
       border-color 0.28s ease,
-      background 0.28s ease,
       -webkit-backdrop-filter 0.28s ease,
       backdrop-filter 0.28s ease;
 
@@ -900,12 +917,6 @@ span.uiHp--premium {
       transform: translateY(-3px);
       -webkit-backdrop-filter: blur(24px);
       backdrop-filter: blur(24px);
-      background: linear-gradient(
-        135deg,
-        rgba($color-identity-primary, 0.55) 0%,
-        rgba($color-identity-secondary, 0.78) 48%,
-        rgba(255, 255, 255, 0.92) 100%
-      );
       border-color: rgba($color-identity-primary, 0.65);
       box-shadow: 0 14px 48px rgba($color-identity-tertiary, 0.16);
     }
@@ -921,7 +932,6 @@ span.uiHp--premium {
       transition:
         box-shadow $transition-fast,
         border-color $transition-fast,
-        background $transition-fast,
         backdrop-filter $transition-fast,
         -webkit-backdrop-filter $transition-fast;
 
@@ -1238,7 +1248,7 @@ span.uiHp--premium {
 .uiHp__navShell {
   position: relative;
   width: 100%;
-  max-width: min(920px, 100%);
+  max-width: min($ui-nav-max, 100%);
   margin: 0 auto;
   -webkit-backdrop-filter: blur(20px);
   backdrop-filter: blur(20px);
@@ -2034,13 +2044,9 @@ span.uiHp--premium {
   align-items: flex-start;
   gap: clamp(12px, 1.6vw, 18px);
   width: 100%;
-  max-width: $ui-max;
+  max-width: min($ui-nav-max, 100%);
   margin-inline: auto;
   padding: clamp(28px, 5vw, 48px) $ui-container-pad;
-
-  @include lg {
-    max-width: calc(#{$ui-max} / 2);
-  }
 
   .uiHp__h3 {
     margin-bottom: 0;
@@ -2136,6 +2142,14 @@ span.uiHp--premium {
 
     &:nth-child(even) {
       background: $ui-surface;
+
+      @include lg {
+        .uiHp__pathsCell {
+          padding-right: $ui-paths-edge;
+          padding-left: clamp(20px, 3vw, 32px);
+          margin-left: auto;
+        }
+      }
     }
 
     &:nth-child(odd) {
@@ -2144,16 +2158,6 @@ span.uiHp--premium {
           padding-left: $ui-paths-edge;
           padding-right: clamp(20px, 3vw, 32px);
           margin-right: auto;
-        }
-      }
-    }
-
-    &:nth-child(even) {
-      @include lg {
-        .uiHp__pathsCell {
-          padding-right: $ui-paths-edge;
-          padding-left: clamp(20px, 3vw, 32px);
-          margin-left: auto;
         }
       }
     }
@@ -2248,7 +2252,6 @@ span.uiHp--premium {
       transform 0.28s cubic-bezier(0.4, 0, 0.2, 1),
       box-shadow 0.28s ease,
       border-color 0.28s ease,
-      background 0.28s ease,
       -webkit-backdrop-filter 0.28s ease,
       backdrop-filter 0.28s ease;
 
@@ -2274,12 +2277,6 @@ span.uiHp--premium {
       transform: translateY(-3px);
       -webkit-backdrop-filter: blur(24px);
       backdrop-filter: blur(24px);
-      background: linear-gradient(
-        135deg,
-        rgba($color-identity-primary, 0.55) 0%,
-        rgba($color-identity-secondary, 0.78) 48%,
-        rgba(255, 255, 255, 0.92) 100%
-      );
       border-color: rgba($color-identity-primary, 0.65);
       box-shadow: 0 14px 48px rgba($color-identity-tertiary, 0.16);
     }
@@ -2295,7 +2292,6 @@ span.uiHp--premium {
       transition:
         box-shadow $transition-fast,
         border-color $transition-fast,
-        background $transition-fast,
         backdrop-filter $transition-fast,
         -webkit-backdrop-filter $transition-fast;
 
