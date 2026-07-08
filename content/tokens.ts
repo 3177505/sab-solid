@@ -107,36 +107,13 @@ export const LAYOUT_TOKENS = [
   { name: 'Card radius', value: '4px' },
 ]
 
-export const CSS_VARIABLES = `:root {
-  /* Identity */
-  --color-primary:   #6dc4de;
-  --color-secondary: #c8e7f8;
-  --color-tertiary:  #285865;
-
-  /* UI semantic */
-  --ui-bg:           #ffffff;
-  --ui-surface:      #eef3f6;
-  --ui-text:         #1e3941;
-  --ui-muted:        #7a9199;
-  --ui-accent:       #285865;
-  --ui-accent-soft:  #c8e7f8;
-  --ui-accent-bright:#6dc4de;
-  --ui-border:       #c8d8de;
-
-  /* Spacing */
-  --space-1: 4px;
-  --space-2: 8px;
-  --space-3: 12px;
-  --space-4: 20px;
-  --space-5: 32px;
-  --space-6: 48px;
-  --space-7: 72px;
-
-  /* Radius */
-  --radius-sm: 4px;
-  --radius-md: 8px;
-  --radius-lg: 12px;
-
-  /* Typography */
-  --font-ui: 'Carlito', system-ui, sans-serif;
-}`
+export const SCSS_UI_TOKENS = `// components/_setup/uiTokens.scss
+$ui-bg:           $color-white;
+$ui-surface:      $color-identity-grey-lighter;
+$ui-text:         $color-identity-grey-dark-blue;
+$ui-muted:        $color-identity-grey-mid;
+$ui-accent:       $color-identity-tertiary;
+$ui-accent-soft:  $color-identity-secondary;
+$ui-accent-bright:$color-identity-primary;
+$ui-border:       $color-identity-grey-light;
+`

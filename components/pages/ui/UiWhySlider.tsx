@@ -5,7 +5,8 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import type { Swiper as SwiperInstance } from 'swiper'
 import 'swiper/css'
 
-const MOBILE_BREAKPOINT = 780
+const MOBILE_BREAKPOINT = 640
+const DESKTOP_BREAKPOINT = 1025
 
 type WhyItem = {
   title: string
@@ -30,6 +31,12 @@ function ChevronIcon() {
   )
 }
 
+function getSlidesVisible(width: number) {
+  if (width >= DESKTOP_BREAKPOINT) return 2.75
+  if (width >= MOBILE_BREAKPOINT) return 2.15
+  return 1.35
+}
+
 export default function UiWhySlider({ items }: UiWhySliderProps) {
   const totalItems = items.length
   const [currentIndex, setCurrentIndex] = useState(0)
@@ -38,18 +45,21 @@ export default function UiWhySlider({ items }: UiWhySliderProps) {
   const [isHovered, setIsHovered] = useState(false)
   const [mouseX, setMouseX] = useState(0)
   const [isMobile, setIsMobile] = useState(false)
+  const [slidesVisible, setSlidesVisible] = useState(1.35)
   const containerRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    const mql = window.matchMedia(`(max-width: ${MOBILE_BREAKPOINT}px)`)
-    const update = () => setIsMobile(mql.matches)
+    const update = () => {
+      const width = window.innerWidth
+      setIsMobile(width < MOBILE_BREAKPOINT)
+      setSlidesVisible(getSlidesVisible(width))
+    }
     update()
-    mql.addEventListener('change', update)
-    return () => mql.removeEventListener('change', update)
+    window.addEventListener('resize', update)
+    return () => window.removeEventListener('resize', update)
   }, [])
 
-  const slidesVisible = isMobile ? 1 : 2
-  const lastIndex = Math.max(0, totalItems - slidesVisible)
+  const lastIndex = Math.max(0, totalItems - Math.floor(slidesVisible))
   const canGoPrev = currentIndex > 0
   const canGoNext = currentIndex < lastIndex
 
@@ -139,7 +149,7 @@ export default function UiWhySlider({ items }: UiWhySliderProps) {
         touchEventsTarget="container"
         breakpoints={{
           0: { spaceBetween: 12 },
-          781: { spaceBetween: 16 },
+          641: { spaceBetween: 16 },
         }}
         onSwiper={(swiper) => {
           setSwiperInstance(swiper)

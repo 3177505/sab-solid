@@ -1,6 +1,6 @@
 import type { Dictionary } from '@/content/copy'
 import {
-  CSS_VARIABLES,
+  SCSS_UI_TOKENS,
   GREY_COLORS,
   IDENTITY_COLORS,
   LAYOUT_TOKENS,
@@ -155,8 +155,8 @@ export default function TokensPage({ dict }: TokensPageProps) {
       </div>
 
       <section className="tokensPage__css">
-        <h2>Proměnné</h2>
-        <pre className="tokensPage__code">{CSS_VARIABLES}</pre>
+        <h2>SCSS tokeny</h2>
+        <pre className="tokensPage__code">{SCSS_UI_TOKENS}</pre>
       </section>
     </article>
   )

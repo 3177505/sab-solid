@@ -19,7 +19,7 @@ Každý text musí odpovědět: *Co z toho má moje firma?*
 | | Text |
 |---|------|
 | **Dnes** | Jsme jedničkou v moři devizových obchodů! |
-| **Návrh** | Víte dopředu, kolik zaplatíte — nebo dostanete — v cizí měně. |
+| **Návrh** | Víte dopředu, kolik zaplatíte nebo inkasujete v cizí měně. |
 | **Podheadline** | Devizové služby pro firmy, které importují, exportují nebo pravidelně platí do zahraničí. |
 
 **CTA dnes:** Zavolejte nám  

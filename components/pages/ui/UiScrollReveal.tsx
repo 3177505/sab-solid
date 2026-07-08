@@ -2,9 +2,14 @@
 
 import { useEffect } from 'react'
 
+function isSectionInView(section: HTMLElement) {
+  const rect = section.getBoundingClientRect()
+  return rect.top < window.innerHeight * 0.88 && rect.bottom > 0
+}
+
 export default function UiScrollReveal() {
   useEffect(() => {
-    const root = document.querySelector<HTMLElement>('.uiHp--classic')
+    const root = document.querySelector<HTMLElement>('.uiHp')
     if (!root) return
 
     const sections = Array.from(root.querySelectorAll<HTMLElement>('.uiHp__section'))
@@ -15,24 +20,40 @@ export default function UiScrollReveal() {
       return
     }
 
+    root.classList.add('uiHp--motion-ready')
+
+    const reveal = (section: HTMLElement) => {
+      section.classList.add('uiHp__section--revealed')
+    }
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (!entry.isIntersecting) return
-          entry.target.classList.add('uiHp__section--revealed')
+          reveal(entry.target as HTMLElement)
           observer.unobserve(entry.target)
         })
       },
       {
         root: null,
-        rootMargin: '0px 0px -10% 0px',
-        threshold: 0.1,
+        rootMargin: '0px 0px -8% 0px',
+        threshold: 0.08,
       },
     )
 
-    sections.forEach((section) => observer.observe(section))
+    sections.forEach((section) => {
+      if (section.classList.contains('uiHp__hero') || isSectionInView(section)) {
+        reveal(section)
+        return
+      }
 
-    return () => observer.disconnect()
+      observer.observe(section)
+    })
+
+    return () => {
+      observer.disconnect()
+      root.classList.remove('uiHp--motion-ready')
+    }
   }, [])
 
   return null

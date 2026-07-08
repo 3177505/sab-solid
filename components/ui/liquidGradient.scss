@@ -1,7 +1,7 @@
 @import '../_setup/vars.scss';
 
 .liquidGradient {
-  --liquid-blending: overlay;
+  --liquid-blending: hard-light;
 
   position: absolute;
   inset: 0;
@@ -24,116 +24,115 @@
 .liquidGradient__blob {
   position: absolute;
   mix-blend-mode: var(--liquid-blending);
-  transform-origin: center center;
-  will-change: transform;
-  animation: liquidGradient-drift ease-in-out infinite;
   background-repeat: no-repeat;
-  background-size: 100% 100%;
 }
 
-.liquidGradient__blob--primary {
+.liquidGradient__blob--g1 {
   background-image: radial-gradient(
-    ellipse 88% 72% at 50% 50%,
-    rgba($color-identity-primary, 0.42) 0%,
-    rgba($color-identity-primary, 0.15) 42%,
-    rgba($color-identity-primary, 0) 72%
+    circle at center,
+    rgba($color-identity-primary, 0.8) 0%,
+    rgba($color-identity-primary, 0) 50%
   );
 }
 
-.liquidGradient__blob--secondary {
+.liquidGradient__blob--g2 {
   background-image: radial-gradient(
-    ellipse 82% 68% at 48% 52%,
-    rgba($color-identity-secondary, 0.46) 0%,
-    rgba($color-identity-secondary, 0.16) 44%,
-    rgba($color-identity-secondary, 0) 74%
+    circle at center,
+    rgba($color-identity-secondary, 0.8) 0%,
+    rgba($color-identity-secondary, 0) 50%
   );
 }
 
-.liquidGradient__blob--tertiary {
+.liquidGradient__blob--g3 {
   background-image: radial-gradient(
-    ellipse 90% 74% at 52% 48%,
-    rgba($color-identity-tertiary, 0.3) 0%,
-    rgba($color-identity-tertiary, 0.11) 40%,
-    rgba($color-identity-tertiary, 0) 70%
+    circle at center,
+    rgba($color-identity-tertiary, 0.65) 0%,
+    rgba($color-identity-tertiary, 0) 50%
   );
 }
 
-.liquidGradient__blob--white {
+.liquidGradient__blob--g4 {
   background-image: radial-gradient(
-    ellipse 94% 80% at 50% 50%,
-    rgba($color-white, 0.72) 0%,
-    rgba($color-white, 0.3) 46%,
-    rgba($color-white, 0) 76%
+    circle at center,
+    rgba($color-identity-primary, 0.55) 0%,
+    rgba($color-identity-primary, 0) 50%
   );
 }
 
-.liquidGradient__blob--grey-mid {
+.liquidGradient__blob--g5 {
   background-image: radial-gradient(
-    ellipse 86% 70% at 50% 50%,
-    rgba($color-identity-grey-mid, 0.32) 0%,
-    rgba($color-identity-grey-mid, 0.12) 42%,
-    rgba($color-identity-grey-mid, 0) 72%
+    circle at center,
+    rgba($color-identity-grey-light, 0.75) 0%,
+    rgba($color-identity-grey-light, 0) 50%
   );
 }
 
-.liquidGradient__blob--grey-light {
-  background-image: radial-gradient(
-    ellipse 84% 76% at 49% 51%,
-    rgba($color-identity-grey-light, 0.45) 0%,
-    rgba($color-identity-grey-light, 0.16) 44%,
-    rgba($color-identity-grey-light, 0) 74%
-  );
+.liquidGradient__blob--vertical {
+  animation: liquidGradient-moveVertical ease infinite;
 }
 
-.liquidGradient__blob--grey-lighter {
-  background-image: radial-gradient(
-    ellipse 80% 66% at 51% 49%,
-    rgba($color-identity-grey-lighter, 0.58) 0%,
-    rgba($color-identity-grey-lighter, 0.2) 46%,
-    rgba($color-identity-grey-lighter, 0) 76%
-  );
+.liquidGradient__blob--circle {
+  animation: liquidGradient-moveInCircle linear infinite;
+}
+
+.liquidGradient__blob--horizontal {
+  animation: liquidGradient-moveHorizontal ease infinite;
 }
 
 .liquidGradient__blob--interactive {
-  width: 125%;
-  height: 118%;
-  top: -59%;
-  left: -62%;
-  opacity: 0;
-  animation: none !important;
-  will-change: transform, opacity;
-  transition: opacity 0.8s ease;
   background-image: radial-gradient(
-    ellipse 90% 74% at 50% 50%,
-    rgba($color-identity-primary, 0.5) 0%,
-    rgba($color-identity-primary, 0.18) 40%,
-    rgba($color-identity-primary, 0) 72%
+    circle at center,
+    rgba($color-identity-primary, 0.8) 0%,
+    rgba($color-identity-primary, 0) 50%
   );
+  width: 100%;
+  height: 100%;
+  top: -50%;
+  left: -50%;
+  opacity: 0.7;
+  animation: none !important;
+  will-change: transform;
+}
 
-  &.is-active {
-    opacity: 0.52;
+@keyframes liquidGradient-moveInCircle {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  50% {
+    transform: rotate(180deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
   }
 }
 
-@keyframes liquidGradient-drift {
-  0%,
+@keyframes liquidGradient-moveVertical {
+  0% {
+    transform: translateY(-50%);
+  }
+
+  50% {
+    transform: translateY(50%);
+  }
+
   100% {
-    transform: translate3d(0, 0, 0) rotate(0deg) scale(1);
+    transform: translateY(-50%);
+  }
+}
+
+@keyframes liquidGradient-moveHorizontal {
+  0% {
+    transform: translateX(-50%) translateY(-10%);
   }
 
-  20% {
-    transform: translate3d(var(--drift-x), calc(var(--drift-y) * 0.45), 0)
-      rotate(calc(var(--drift-rotate) * 0.6)) scale(1.06);
+  50% {
+    transform: translateX(50%) translateY(10%);
   }
 
-  45% {
-    transform: translate3d(calc(var(--drift-x) * -0.55), var(--drift-y), 0)
-      rotate(calc(var(--drift-rotate) * -0.85)) scale(0.96);
-  }
-
-  70% {
-    transform: translate3d(calc(var(--drift-x) * 0.75), calc(var(--drift-y) * -0.7), 0)
-      rotate(calc(var(--drift-rotate) * 0.45)) scale(1.04);
+  100% {
+    transform: translateX(-50%) translateY(-10%);
   }
 }
 

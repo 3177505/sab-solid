@@ -3,8 +3,6 @@
 .languageSwitcher {
   display: inline-flex;
   gap: 2px;
-  border: $border-width solid $border-color;
-  border-radius: $radius-md;
   overflow: hidden;
 }
 

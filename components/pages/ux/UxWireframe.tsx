@@ -1,6 +1,7 @@
 'use client'
 
 import { useUxCompare } from '@/components/pages/ux/useUxCompare'
+import UxMobileNav from '@/components/pages/ux/UxMobileNav'
 import { UxSectionWrap } from '@/components/pages/ux/UxSectionWrap'
 import {
   UX_HOMEPAGE_CONTENT as C,
@@ -82,6 +83,10 @@ function UxSection({
 function UxSectionBody({ section, mobile }: { section: UxHomeSection; mobile?: boolean }) {
   switch (section.id) {
     case 'nav':
+      if (mobile) {
+        return <UxMobileNav />
+      }
+
       return (
         <div className="uxBlock uxBlock--nav">
           <span className="uxBlock__logo">{C.nav.logo}</span>
@@ -334,7 +339,7 @@ function UxSectionBody({ section, mobile }: { section: UxHomeSection; mobile?: b
 
     case 'newsletter':
       return (
-        <div className="uxBlock uxBlock--row">
+        <div className={`uxBlock uxBlock--row${mobile ? ' uxBlock--rowStack' : ''}`}>
           <div>
             <h3 className="uxBlock__cardTitle">{C.newsletter.headline}</h3>
             <p className="uxBlock__body">{C.newsletter.body}</p>

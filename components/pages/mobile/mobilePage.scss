@@ -1,17 +1,85 @@
+@import '../../_setup/breakpoints.scss';
 @import '../../_setup/vars.scss';
 
 .mobilePage {
   width: 100%;
-  min-height: calc(100vh - #{$header-height});
+  min-height: calc(100vh - #{$presentation-bar-height});
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
+  align-items: flex-start;
+  gap: 32px;
+  padding: 24px;
   background: #f0f0f0;
 }
 
+.mobilePage__aside {
+  flex: 1 1 240px;
+  max-width: 320px;
+  display: grid;
+  gap: 12px;
+  padding-top: 8px;
+}
+
+.mobilePage__lead {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.5;
+  color: $color-identity-grey-dark;
+}
+
+.mobilePage__viewportLabel {
+  margin: 0;
+  font-family: $font-mono;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: $color-identity-tertiary;
+}
+
+.mobilePage__notesTitle {
+  margin: 8px 0 0;
+  font-size: 13px;
+  font-weight: 700;
+  color: $color-identity-grey-dark-blue;
+}
+
+.mobilePage__notes {
+  margin: 0;
+  padding-left: 18px;
+  font-size: 13px;
+  line-height: 1.45;
+  color: $color-identity-grey-dark;
+
+  li {
+    margin-bottom: 6px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
 .mobilePage__viewport {
+  position: relative;
+  flex: 0 0 auto;
   width: 100%;
   max-width: 390px;
-  min-height: calc(100vh - #{$header-height});
+  min-height: calc(100vh - #{$presentation-bar-height} - 48px);
   background: #fafafa;
-  box-shadow: 0 0 0 1px rgba($color-black, 0.06);
+  box-shadow: 0 0 0 1px rgba($color-black, 0.06), 0 16px 48px rgba($color-black, 0.08);
+  overflow-x: hidden;
+}
+
+@include lg {
+  .mobilePage {
+    flex-wrap: nowrap;
+    justify-content: center;
+    padding: 32px 48px;
+  }
+
+  .mobilePage__aside {
+    padding-top: 24px;
+  }
 }

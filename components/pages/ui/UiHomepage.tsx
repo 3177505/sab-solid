@@ -3,7 +3,9 @@ import UiNavBar from '@/components/pages/ui/UiNavBar'
 import UiWhySlider from '@/components/pages/ui/UiWhySlider'
 import UiDockScroll from '@/components/pages/ui/UiDockScroll'
 import UiScrollTones from '@/components/pages/ui/UiScrollTones'
+import UiPathsColorSwap from '@/components/pages/ui/UiPathsColorSwap'
 import UiScrollReveal from '@/components/pages/ui/UiScrollReveal'
+import UiTrustSection from '@/components/pages/ui/UiTrustSection'
 import LiquidGradient from '@/components/ui/LiquidGradient'
 
 type UiHomepageProps = {
@@ -14,15 +16,25 @@ function sectionTone(variant: UiHomepageProps['variant'], tone: string) {
   return variant === 'classic' ? { 'data-tone': tone } : {}
 }
 
+function scenarioPathClass(tag: string) {
+  if (tag === 'Importér') return 'uiHp__card--pathImporter'
+  if (tag === 'Exportér') return 'uiHp__card--pathExporter'
+  return ''
+}
+
+const footerLinkColumns = C.footer.columns.slice(0, -1)
+const footerContactColumn = C.footer.columns[C.footer.columns.length - 1]
+
 export default function UiHomepage({ variant = 'classic' }: UiHomepageProps) {
   return (
     <div className={`uiHp uiHp--${variant}${variant === 'classic' ? ' uiHp--tone-0' : ''}`}>
+      {variant === 'classic' && <div className="uiHp__scrollBg" aria-hidden="true" />}
+      <UiScrollReveal />
       {variant === 'classic' && (
         <>
           <UiScrollTones />
-          <UiScrollReveal />
+          <UiPathsColorSwap />
           <UiDockScroll />
-          <LiquidGradient className="uiHp__liquidBg" />
         </>
       )}
       <header className="uiHp__nav">
@@ -51,6 +63,7 @@ export default function UiHomepage({ variant = 'classic' }: UiHomepageProps) {
         className={`uiHp__section uiHp__hero${variant !== 'classic' ? ' uiHp__hero--gradient' : ''}`}
         {...sectionTone(variant, '0')}
       >
+        {variant === 'classic' && <LiquidGradient className="uiHp__heroLiquid" />}
         <div className="uiHp__container uiHp__heroGrid">
           <div className="uiHp__heroCopy">
             <h1 className="uiHp__h1">{C.hero.headline}</h1>
@@ -82,48 +95,46 @@ export default function UiHomepage({ variant = 'classic' }: UiHomepageProps) {
         </div>
       </section>
 
-      <section className="uiHp__section uiHp__section--compact uiHp__trust" {...sectionTone(variant, '1')}>
-        <div className="uiHp__container uiHp__trustRow">
-          {C.trust.map((item) => (
-            <span key={item} className="uiHp__trustItem">
-              {item}
-            </span>
+      <UiTrustSection items={C.trust} toneProps={sectionTone(variant, '1')} />
+
+      <section
+        className="uiHp__section uiHp__section--paths uiHp__section--pathsScenarios"
+        {...sectionTone(variant, '2')}
+      >
+        <div className="uiHp__pathsIntro">
+          <h2 className="uiHp__h2">{C.problem.headline}</h2>
+        </div>
+        <div className="uiHp__pathsGrid uiHp__pathsGrid--scenarios">
+          {C.problem.scenarios.map((s) => (
+            <article
+              key={s.tag}
+              className={`uiHp__card uiHp__card--path ${scenarioPathClass(s.tag)}`}
+            >
+              <div className="uiHp__pathsCell">
+                <span className="uiHp__tag">{s.tag}</span>
+                <p className="uiHp__body">{s.text}</p>
+                <a href="#" className="uiHp__btn uiHp__btn--ghost">
+                  {s.cta}
+                </a>
+              </div>
+            </article>
           ))}
         </div>
       </section>
 
-      <section className="uiHp__section uiHp__section--surface" {...sectionTone(variant, '2')}>
-        <div className="uiHp__container">
-          <h2 className="uiHp__h2">{C.problem.headline}</h2>
-          <div className="uiHp__grid uiHp__grid--2">
-            {C.problem.scenarios.map((s) => (
-              <article key={s.tag} className="uiHp__card">
-                <span className="uiHp__tag">{s.tag}</span>
-                <p className="uiHp__body">{s.text}</p>
-                <a href="#" className="uiHp__link">
-                  {s.cta}
-                </a>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="uiHp__section" {...sectionTone(variant, '3')}>
-        <div className="uiHp__container">
-          <div className="uiHp__grid uiHp__grid--2">
-            {C.paths.map((p) => (
-              <article key={p.title} className="uiHp__card uiHp__card--path">
-                <h3 className="uiHp__h3">
-                  {p.title}
-                </h3>
+      <section className="uiHp__section uiHp__section--paths" {...sectionTone(variant, '3')}>
+        <div className="uiHp__pathsGrid">
+          {C.paths.map((p) => (
+            <article key={p.title} className="uiHp__card uiHp__card--path">
+              <div className="uiHp__pathsCell">
+                <h3 className="uiHp__h3">{p.title}</h3>
                 <p className="uiHp__body">{p.body}</p>
                 <a href="#" className="uiHp__btn uiHp__btn--ghost">
                   {p.cta}
                 </a>
-              </article>
-            ))}
-          </div>
+              </div>
+            </article>
+          ))}
         </div>
       </section>
 
@@ -260,6 +271,9 @@ export default function UiHomepage({ variant = 'classic' }: UiHomepageProps) {
 
       <section className="uiHp__section uiHp__section--lead" {...sectionTone(variant, '4')}>
         <div className="uiHp__container">
+          <div className="uiHp__leadWideImage" aria-hidden="true">
+            <img src="/ui/trust-wide.png" alt="" decoding="async" />
+          </div>
           <div className="uiHp__leadGrid">
             <div className="uiHp__leadIntro">
               <h2 className="uiHp__h2">{C.lead.headline}</h2>
@@ -277,10 +291,10 @@ export default function UiHomepage({ variant = 'classic' }: UiHomepageProps) {
                   {C.lead.cta}
                 </button>
               </form>
-              <aside className="uiHp__card uiHp__card--phone">
+              {/* <aside className="uiHp__card uiHp__card--phone">
                 <p className="uiHp__phone">{C.lead.phone}</p>
                 <p className="uiHp__muted">{C.lead.phoneLabel}</p>
-              </aside>
+              </aside> */}
             </div>
           </div>
         </div>
@@ -301,7 +315,7 @@ export default function UiHomepage({ variant = 'classic' }: UiHomepageProps) {
       <footer className="uiHp__footer">
         <div className="uiHp__container">
           <div className="uiHp__footerGrid">
-            {C.footer.columns.map((col) => (
+            {footerLinkColumns.map((col) => (
               <div key={col.title} className="uiHp__footerCol">
                 <h3 className="uiHp__footerTitle">{col.title}</h3>
                 <ul className="uiHp__footerList">
@@ -313,6 +327,16 @@ export default function UiHomepage({ variant = 'classic' }: UiHomepageProps) {
                 </ul>
               </div>
             ))}
+          </div>
+          <div className="uiHp__footerContact">
+            <h2 className="uiHp__footerContactTitle">{footerContactColumn.title}</h2>
+            <ul className="uiHp__footerContactList">
+              {footerContactColumn.links.map((link) => (
+                <li key={link}>
+                  <a href="#">{link}</a>
+                </li>
+              ))}
+            </ul>
           </div>
           <div className="uiHp__footerBottom">
             <div className="uiHp__footerSocial">
@@ -335,7 +359,7 @@ export default function UiHomepage({ variant = 'classic' }: UiHomepageProps) {
       </footer>
 
       <div className="uiHp__pageLogo" aria-hidden="true">
-        <img src="/sab-logo.svg" alt="" className="uiHp__pageLogoImg" width={307} height={57} />
+        <span className="uiHp__pageLogoMark" />
       </div>
     </div>
   )

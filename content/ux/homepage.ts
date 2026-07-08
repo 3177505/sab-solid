@@ -166,7 +166,7 @@ export const UX_HOMEPAGE_CONTENT = {
     },
   },
   hero: {
-    headline: 'Víte dopředu, kolik zaplatíte — nebo dostanete — v cizí měně.',
+    headline: 'Víte dopředu, kolik zaplatíte nebo inkasujete v cizí měně.',
     subheadline:
       'Devizové služby pro firmy, které importují, exportují nebo pravidelně platí do zahraničí. Směna, platby a fixní kurz na budoucí fakturu.',
     primaryCta: 'Nezávazná konzultace',

@@ -2,21 +2,34 @@
 
 import { useEffect } from 'react'
 
-const SCROLL_DELTA = 10
-const TOP_REVEAL = 48
 const BOTTOM_MARGIN = 160
+const HERO_ASIDE_RELEASE_VIEWPORT_RATIO = 0.35
 
 export default function UiDockScroll() {
   useEffect(() => {
-    const rates = document.querySelector<HTMLElement>('.uiHp__rates')
+    const ratesAside = document.querySelector<HTMLElement>('.uiHp__heroAside')
+    const dock = document.querySelector<HTMLElement>('.uiHp__dock')
     const footer = document.querySelector<HTMLElement>('.uiHp__footer')
-    if (!rates) return
+    const hero = document.querySelector<HTMLElement>('.uiHp__hero')
+    if (!ratesAside && !dock) return
 
-    let lastY = window.scrollY
     let frame = 0
 
-    const setHidden = (hidden: boolean) => {
-      rates.classList.toggle('uiHp__rates--hidden', hidden)
+    const setRatesHidden = (hidden: boolean) => {
+      ratesAside?.classList.toggle('uiHp__heroAside--hidden', hidden)
+    }
+
+    const setDockHidden = (hidden: boolean) => {
+      dock?.classList.toggle('uiHp__dock--hidden', hidden)
+    }
+
+    const isInHeroSection = () => {
+      if (!hero) return true
+      const rect = hero.getBoundingClientRect()
+      const viewH = window.innerHeight
+      // Release the floating aside before hero fully leaves viewport.
+      const releaseLine = viewH * HERO_ASIDE_RELEASE_VIEWPORT_RATIO
+      return rect.bottom > releaseLine && rect.top < viewH
     }
 
     const update = () => {
@@ -24,6 +37,7 @@ export default function UiDockScroll() {
       const viewH = window.innerHeight
       const docH = document.documentElement.scrollHeight
       const nearPageEnd = y + viewH >= docH - BOTTOM_MARGIN
+      const hasStartedScrolling = y > 0
 
       let footerVisible = false
       if (footer) {
@@ -31,17 +45,9 @@ export default function UiDockScroll() {
         footerVisible = rect.top < viewH - 80
       }
 
-      if (y <= TOP_REVEAL) {
-        setHidden(false)
-      } else if (nearPageEnd || footerVisible) {
-        setHidden(true)
-      } else if (y > lastY + SCROLL_DELTA) {
-        setHidden(true)
-      } else if (y < lastY - SCROLL_DELTA) {
-        setHidden(false)
-      }
-
-      lastY = y
+      const beforeFooter = nearPageEnd || footerVisible
+      setDockHidden(beforeFooter)
+      setRatesHidden(hasStartedScrolling || beforeFooter || !isInHeroSection())
     }
 
     const onScroll = () => {

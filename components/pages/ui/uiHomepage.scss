@@ -1,31 +1,12 @@
 @import '../../_setup/breakpoints.scss';
 @import '../../_setup/vars.scss';
+@import '../../_setup/uiTokens.scss';
 
 // Základní UI — inspirace fintech (N26): čisté plochy, zaoblení, teal akcent
 
 .uiHp {
-  --ui-bg: #ffffff;
-  --ui-surface: #f4f7f7;
-  --ui-text: #1a1f26;
-  --ui-muted: #5c6670;
-  --ui-accent: #0d6e6e;
-  --ui-accent-dark: #0a5555;
-  --ui-accent-soft: #e6f3f3;
-  --ui-accent-bright: #14a3a3;
-  --ui-border: #e2e8e8;
-  --ui-radius: 4px;
-  --ui-radius-sm: 4px;
-  --ui-radius-btn: 8px;
-  --ui-shadow: 0 4px 24px rgba(26, 31, 38, 0.06);
-  --ui-max: 1100px;
-  --ui-section-py: clamp(48px, 8vw, 80px);
-  --ui-card-pad: clamp(20px, 2.5vw, 28px);
-  --ui-card-gap: clamp(8px, 1vw, 12px);
-  --ui-card-title: clamp(18px, 2vw, 22px);
-  --ui-card-body: clamp(15px, 1.5vw, 17px);
-
-  background: var(--ui-bg);
-  color: var(--ui-text);
+  background: $ui-bg;
+  color: $ui-text;
   font-family: $font-ui;
   font-size: 16px;
   line-height: 1.5;
@@ -33,9 +14,27 @@
 }
 
 .uiHp--premium {
-  --ui-accent: #14a3a3;
-  --ui-accent-dark: #0d6e6e;
   font-family: $font-ui-premium;
+
+  .uiHp__link,
+  .uiHp__novinka,
+  .uiHp__tag,
+  .uiHp__step,
+  .uiHp__sliderDot--active,
+  .uiHp__footerLink:hover {
+    color: $ui-premium-accent;
+  }
+
+  .uiHp__btn--primary,
+  .uiHp__cardSlider__arrow:hover,
+  .uiHp__cardSlider__arrow:focus-visible {
+    background: $ui-premium-accent;
+    border-color: $ui-premium-accent;
+  }
+
+  .uiHp__card--featured {
+    border-color: $ui-premium-accent;
+  }
 }
 
 // Classic — scroll tones, glass, vzdušné sekce
@@ -44,7 +43,7 @@
   backdrop-filter: blur(20px);
   background-color: $bg;
   border: 1px solid $border;
-  border-radius: var(--ui-radius, 4px);
+  border-radius: $ui-radius;
   box-shadow: 0 8px 32px rgba(30, 57, 65, 0.08);
 }
 
@@ -57,7 +56,7 @@
   font-weight: 600;
   font-family: inherit;
   line-height: 1.2;
-  border-radius: var(--ui-radius-btn, 8px);
+  border-radius: $ui-radius-btn;
   border: 1px solid transparent;
   text-decoration: none;
   cursor: pointer;
@@ -147,6 +146,9 @@
 
 @mixin ui-grid-zigzag {
   @include lg {
+    row-gap: clamp(28px, 4vw, 48px);
+    column-gap: clamp(24px, 4vw, 40px);
+
     > *:nth-child(odd) {
       grid-column: 1;
     }
@@ -163,77 +165,119 @@
   }
 }
 
-.uiHp--classic {
-  --ui-bg: #{$color-white};
-  --ui-surface: #{$color-identity-grey-lighter};
-  --ui-text: #{$color-identity-grey-dark-blue};
-  --ui-muted: #{$color-identity-grey-mid};
-  --ui-accent: #{$color-identity-tertiary};
-  --ui-accent-dark: #{$color-identity-grey-dark-blue};
-  --ui-accent-soft: #{$color-identity-secondary};
-  --ui-accent-bright: #{$color-identity-primary};
-  --ui-border: #{$color-identity-grey-light};
-  --ui-radius: 4px;
-  --ui-radius-sm: 4px;
-  --ui-radius-btn: 8px;
-  --ui-max: 1080px;
-  --ui-section-py: clamp(64px, 10vh, 112px);
-  --ui-dock-bottom: clamp(20px, 3vh, 32px);
-  --ui-dock-h: calc(88px + var(--ui-dock-bottom));
-  --ui-card-pad: clamp(22px, 2.8vw, 32px);
-  --ui-card-gap: clamp(10px, 1.2vw, 16px);
-  --ui-card-title: clamp(20px, 2.2vw, 24px);
-  --ui-card-body: clamp(16px, 1.6vw, 18px);
+@mixin ui-zigzag-cards {
+  .uiHp__card {
+    aspect-ratio: 3 / 2;
+    justify-content: flex-end;
 
+    &:nth-child(odd) {
+      background-color: rgba(255, 255, 255, 0.5);
+      border-color: rgba(255, 255, 255, 0.42);
+    }
+
+    &:nth-child(even) {
+      background-color: rgba(255, 255, 255, 0.68);
+      border-color: rgba(255, 255, 255, 0.55);
+    }
+  }
+}
+
+.uiHp--classic {
   position: relative;
   overflow-x: clip;
   background-color: transparent;
-  color: var(--ui-text);
+  color: $ui-text;
   font-size: 18px;
   transition: background-color 0.55s ease-in-out;
   will-change: background-color;
 
-  &::before {
-    content: '';
+  .uiHp__scrollBg {
     position: fixed;
     inset: 0;
     z-index: 0;
-    background-color: $color-white;
-    transition: background-color 0.55s ease-in-out;
+    background-color: $ui-tone-0-bg;
+    transition: background-color 1.35s cubic-bezier(0.45, 0, 0.55, 1);
     pointer-events: none;
   }
 
-  .uiHp__liquidBg {
-    position: fixed;
-    inset: 0;
-    z-index: 1;
-    width: 100vw;
-    height: 100vh;
-    overflow: hidden;
+  &.uiHp--tone-0 .uiHp__scrollBg {
+    background-color: $ui-tone-0-bg;
   }
 
-  &.uiHp--tone-0::before {
-    background-color: $color-white;
+  &.uiHp--tone-1 .uiHp__scrollBg {
+    background-color: $ui-tone-1-bg;
   }
 
-  &.uiHp--tone-1::before {
-    background-color: $color-identity-secondary;
+  &.uiHp--tone-2 .uiHp__scrollBg {
+    background-color: $ui-tone-2-bg;
   }
 
-  &.uiHp--tone-2::before {
-    background-color: $color-identity-grey-lighter;
+  &.uiHp--tone-3 .uiHp__scrollBg {
+    background-color: $ui-tone-3-bg;
   }
 
-  &.uiHp--tone-3::before {
-    background-color: $color-identity-grey-light;
+  &.uiHp--tone-4 .uiHp__scrollBg {
+    background-color: $ui-tone-4-bg;
   }
 
-  &.uiHp--tone-4::before {
-    background-color: mix($color-identity-grey-mid, $color-identity-grey-light, 40%);
+  &.uiHp--tone-accent .uiHp__scrollBg {
+    background-color: $ui-tone-accent-bg;
   }
 
-  &.uiHp--tone-accent::before {
-    background-color: $color-identity-tertiary;
+  &.uiHp--tone-1,
+  &.uiHp--tone-2 {
+    .uiHp__navLink,
+    .uiHp__navTrigger,
+    .uiHp__eyebrow,
+    .uiHp__footerLink,
+    .uiHp__footerMeta,
+    .uiHp__caption,
+    .uiHp__muted {
+      color: $ui-muted-tone-light;
+    }
+  }
+
+  &.uiHp--tone-3,
+  &.uiHp--tone-4 {
+    .uiHp__navLink,
+    .uiHp__navTrigger,
+    .uiHp__eyebrow,
+    .uiHp__footerLink,
+    .uiHp__footerMeta,
+    .uiHp__caption,
+    .uiHp__muted {
+      color: $ui-muted-tone-dark;
+    }
+  }
+  .uiHp__heroLiquid {
+    position: absolute;
+    top: -22vh;
+    left: 0;
+    right: 0;
+    height: calc(100% + 32vh);
+    z-index: 0;
+    pointer-events: none;
+    -webkit-mask-image: linear-gradient(
+      to bottom,
+      #000 0%,
+      #000 58%,
+      rgba(0, 0, 0, 0.72) 78%,
+      transparent 100%
+    );
+    mask-image: linear-gradient(
+      to bottom,
+      #000 0%,
+      #000 58%,
+      rgba(0, 0, 0, 0.72) 78%,
+      transparent 100%
+    );
+  }
+
+  &.uiHp--tone-3,
+  &.uiHp--tone-4 {
+    .uiHp__card:not(.uiHp__card--flat):not(.uiHp__card--path):not(.uiHp__card--step):not(.uiHp__card--quote):not(.uiHp__card--example) {
+      @include ui-glass(rgba(255, 255, 255, 0.84), rgba(255, 255, 255, 0.68));
+    }
   }
 
   .uiHp__container {
@@ -255,7 +299,7 @@
 
   .uiHp__navShell {
     width: 100%;
-    max-width: var(--ui-max);
+    max-width: $ui-max;
     overflow: visible;
   }
 
@@ -320,73 +364,115 @@
     gap: 14px;
   }
 
-  // Sekce — plná výška, průhledné (barvu řídí scroll na .uiHp)
+  // Sekce — hero fullscreen, ostatní průhledné (barvu řídí scroll)
   .uiHp__section {
     position: relative;
     z-index: 2;
-    min-height: 100svh;
+    min-height: auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding-block: var(--ui-section-py);
+    padding-block: $ui-section-py;
     background: transparent !important;
-    opacity: 0;
-    transform: translateY(28px);
-    transition:
-      opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
-      transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
-
-    &--revealed {
-      opacity: 1;
-      transform: translateY(0);
-    }
 
     > .uiHp__container {
       width: 100%;
     }
 
-    &--compact {
-      min-height: auto;
-      padding-block: clamp(40px, 6vh, 72px);
+    &.uiHp__hero {
+      min-height: calc(100svh - #{$presentation-bar-height});
     }
 
-    &:has(.uiHp__grid--services),
-    &:has(.uiHp__grid--3),
-    &:has(.uiHp__cardSliderWrap),
-    &:has(.uiHp__forwardFlow) {
-      min-height: auto;
-      padding-block: clamp(72px, 10vh, 120px);
+    &--compact {
+      padding-block: clamp(48px, 8vh, 80px);
+    }
+
+    &--paths {
+      padding-block: 0;
     }
 
     &--accent {
+      color: inherit;
+    }
+  }
+
+  &.uiHp--tone-accent .uiHp__section--accent {
+    color: #fff;
+
+    .uiHp__h2,
+    .uiHp__body,
+    .uiHp__body--emphasis,
+    .uiHp__muted {
       color: #fff;
+    }
 
-      .uiHp__h2,
-      .uiHp__body,
-      .uiHp__body--emphasis,
-      .uiHp__muted {
-        color: #fff;
+    .uiHp__flowStep {
+      @include ui-glass(rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0.22));
+    }
+
+    .uiHp__flowNum {
+      background: #fff;
+      color: $ui-accent;
+    }
+
+    .uiHp__btn--onAccent,
+    .uiHp__btn--soft {
+      @include ui-btn-glass-surface(0.22);
+      color: #fff;
+      border-color: rgba(255, 255, 255, 0.38);
+
+      &:hover {
+        @include ui-btn-hover-surface;
       }
+    }
+  }
 
-      .uiHp__flowStep {
-        @include ui-glass(rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0.22));
-      }
+  .uiHp__grid--2.uiHp__grid--zigzag,
+  .uiHp__forwardGrid.uiHp__grid--zigzag {
+    @include ui-grid-zigzag;
+    @include ui-zigzag-cards;
 
-      .uiHp__flowNum {
-        background: #fff;
-        color: var(--ui-accent);
-      }
+    .uiHp__card {
+      opacity: 0;
+      transform: translateY(28px);
+      transition:
+        opacity 0.75s cubic-bezier(0.22, 1, 0.36, 1),
+        transform 0.75s cubic-bezier(0.22, 1, 0.36, 1),
+        background-color 0.55s ease-in-out,
+        border-color 0.55s ease-in-out;
 
-      .uiHp__btn--onAccent,
-      .uiHp__btn--soft {
-        @include ui-btn-glass-surface(0.22);
-        color: #fff;
-        border-color: rgba(255, 255, 255, 0.38);
-
-        &:hover {
-          @include ui-btn-hover-surface;
+      @for $i from 1 through 8 {
+        &:nth-child(#{$i}) {
+          transition-delay: #{0.08 + ($i - 1) * 0.14}s;
         }
       }
+
+      @media (prefers-reduced-motion: reduce) {
+        opacity: 1;
+        transform: none;
+        transition: none;
+      }
+    }
+  }
+
+  .uiHp__section--revealed .uiHp__grid--zigzag .uiHp__card {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .uiHp__pathsGrid .uiHp__card--path {
+    opacity: 0;
+    transform: translateY(28px);
+    transition:
+      opacity 0.75s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+
+    &:nth-child(1) {
+      transition-delay: 0.08s;
+    }
+
+    &:nth-child(2) {
+      transition-delay: 0.22s;
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -396,9 +482,9 @@
     }
   }
 
-  .uiHp__grid--2.uiHp__grid--zigzag,
-  .uiHp__forwardGrid.uiHp__grid--zigzag {
-    @include ui-grid-zigzag;
+  .uiHp__section--revealed .uiHp__pathsGrid .uiHp__card--path {
+    opacity: 1;
+    transform: translateY(0);
   }
 
   .uiHp__footer {
@@ -409,13 +495,17 @@
   // Hero — liquid gradient + scroll tones
   .uiHp__hero {
     position: relative;
+    isolation: isolate;
+    overflow: visible;
   }
 
   .uiHp__heroGrid {
+    position: relative;
+    z-index: 1;
     grid-template-columns: 1fr;
     gap: clamp(28px, 4vw, 48px);
     align-items: start;
-    min-height: calc(100svh - var(--ui-section-py) * 2 - #{$presentation-bar-height});
+    min-height: calc(100svh - #{$ui-section-py} * 2 - #{$presentation-bar-height});
   }
 
   .uiHp__heroCopy {
@@ -424,11 +514,31 @@
   }
 
   .uiHp__heroAside {
-    position: absolute;
+    position: fixed;
     right: clamp(24px, 4vw, 40px);
-    bottom: calc(var(--ui-dock-h) + clamp(16px, 3vh, 32px));
+    bottom: $ui-dock-h;
     width: min(280px, 32vw);
-    z-index: 4;
+    z-index: 44;
+    transform: translateY(0);
+    opacity: 1;
+    will-change: transform, opacity;
+    transition:
+      transform 0.16s cubic-bezier(0.4, 0, 1, 1),
+      opacity 0.12s cubic-bezier(0.4, 0, 1, 1);
+
+    &--hidden {
+      transform: translateY(calc(-100% - 16px));
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      transition: opacity 0.2s ease;
+
+      &--hidden {
+        transform: none;
+      }
+    }
   }
 
   @include md {
@@ -445,6 +555,16 @@
       width: 100%;
       max-width: 360px;
       margin-inline: auto;
+      transform: none;
+      opacity: 1;
+      pointer-events: auto;
+      transition: none;
+
+      &--hidden {
+        transform: none;
+        opacity: 1;
+        pointer-events: auto;
+      }
     }
   }
 
@@ -452,25 +572,6 @@
     @include ui-glass(rgba(255, 255, 255, 0.72), rgba(255, 255, 255, 0.55));
     padding: 28px;
     box-shadow: none;
-    transform: translateY(0);
-    opacity: 1;
-    transition:
-      transform 0.42s cubic-bezier(0.4, 0, 0.2, 1),
-      opacity 0.42s cubic-bezier(0.4, 0, 0.2, 1);
-
-    &--hidden {
-      transform: translateY(16px);
-      opacity: 0;
-      pointer-events: none;
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      transition: opacity 0.2s ease;
-
-      &--hidden {
-        transform: none;
-      }
-    }
 
     .uiHp__h3 {
       margin-bottom: 12px;
@@ -478,25 +579,67 @@
       font-weight: 600;
       text-transform: uppercase;
       letter-spacing: 0.05em;
-      color: var(--ui-muted);
+      color: $ui-muted;
     }
   }
 
   .uiHp__rateRow {
     padding: 10px 0;
     font-size: 15px;
-    border-bottom-color: var(--ui-border);
+    border-bottom-color: $ui-border;
   }
 
-  // Trust — jednoduchý pás
-  .uiHp__trustRow {
-    gap: 20px 40px;
-    justify-content: center;
+  // Trust — wide image with text overlay
+  .uiHp__trust {
+    padding-block: 0;
+    min-height: 0;
+
+    &.uiHp__section--compact {
+      padding-block: 0;
+    }
+  }
+
+  .uiHp__trustMedia {
+    position: relative;
+    width: 100%;
+    height: 40vh;
+    min-height: 220px;
+    overflow: hidden;
+    z-index: 0;
+  }
+
+  .uiHp__trustImage {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    opacity: 1;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .uiHp__trustOverlay {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    display: flex;
+    align-items: flex-end;
+    padding-bottom: clamp(24px, 5vh, 48px);
+  }
+
+  .uiHp__trustGrid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: clamp(16px, 3vw, 32px);
+    width: 100%;
   }
 
   .uiHp__trustItem {
     font-size: 13px;
-    color: var(--ui-muted);
+    line-height: 1.45;
+    color: $ui-muted;
   }
 
   // Karty — ploché, zaoblené, bez stínů
@@ -505,20 +648,20 @@
   }
 
   .uiHp__card {
-    @include ui-glass(rgba(255, 255, 255, 0.58), rgba(255, 255, 255, 0.5));
-    padding: var(--ui-card-pad);
-    gap: var(--ui-card-gap);
-    border-radius: var(--ui-radius);
+    @include ui-glass(rgba(255, 255, 255, 0.72), rgba(255, 255, 255, 0.58));
+    padding: $ui-card-pad;
+    gap: $ui-card-gap;
+    border-radius: $ui-radius;
     box-shadow: none;
 
     .uiHp__h3 {
-      font-size: var(--ui-card-title);
+      font-size: $ui-card-title;
       line-height: 1.25;
       margin-bottom: 8px;
     }
 
     .uiHp__body {
-      font-size: var(--ui-card-body);
+      font-size: $ui-card-body;
       line-height: 1.55;
       margin-bottom: 8px;
     }
@@ -538,7 +681,7 @@
     }
 
     .uiHp__steps {
-      font-size: var(--ui-card-body);
+      font-size: $ui-card-body;
       margin-bottom: 10px;
 
       li {
@@ -547,7 +690,7 @@
     }
 
     .uiHp__quote p {
-      font-size: var(--ui-card-body);
+      font-size: $ui-card-body;
       line-height: 1.55;
     }
 
@@ -570,54 +713,112 @@
       border-color: rgba(255, 255, 255, 0.45);
     }
 
+    &--pathImporter {
+      background-color: $color-identity-primary;
+      border-color: rgba($color-identity-primary, 0.55);
+
+      &:nth-child(odd),
+      &:nth-child(even) {
+        background-color: $color-identity-primary;
+        border-color: rgba($color-identity-primary, 0.55);
+      }
+    }
+
+    &--pathExporter {
+      background-color: $color-identity-secondary;
+      border-color: rgba($color-identity-secondary, 0.65);
+
+      &:nth-child(odd),
+      &:nth-child(even) {
+        background-color: $color-identity-secondary;
+        border-color: rgba($color-identity-secondary, 0.65);
+      }
+    }
+
     &--step {
-      padding-top: calc(var(--ui-card-pad) + 24px);
+      padding-top: calc(#{$ui-card-pad} + 24px);
 
       .uiHp__step {
-        top: var(--ui-card-pad);
-        left: var(--ui-card-pad);
+        top: $ui-card-pad;
+        left: $ui-card-pad;
         font-size: 12px;
       }
     }
   }
 
+  .uiHp__pathsGrid--scenarios {
+    --paths-swap-importer: 0;
+    --paths-swap-exporter: 0;
+
+    .uiHp__card--pathImporter,
+    .uiHp__card--pathImporter:nth-child(odd),
+    .uiHp__card--pathImporter:nth-child(even) {
+      background-color: color-mix(
+        in srgb,
+        $color-identity-primary calc((1 - var(--paths-swap-importer, 0)) * 100%),
+        $color-identity-secondary
+      ) !important;
+    }
+
+    .uiHp__card--pathExporter,
+    .uiHp__card--pathExporter:nth-child(odd),
+    .uiHp__card--pathExporter:nth-child(even) {
+      background-color: color-mix(
+        in srgb,
+        $color-identity-secondary calc((1 - var(--paths-swap-exporter, 0)) * 100%),
+        $color-identity-primary
+      ) !important;
+    }
+  }
+
   // Dock — glass shell fits button row width
   .uiHp__dock {
-    bottom: var(--ui-dock-bottom);
+    bottom: $ui-dock-bottom;
     display: flex;
     justify-content: center;
     background: transparent;
     border: none;
     padding: 12px clamp(24px, 4vw, 40px);
-    padding-bottom: max(12px, env(safe-area-inset-bottom));
   }
 
   .uiHp__dockShell {
     width: fit-content;
     max-width: 100%;
     margin: 0;
-    @include ui-glass(rgba($color-identity-tertiary, 0.5), rgba(255, 255, 255, 0.18));
     overflow: visible;
 
     .uiHp__btn--ghost {
-      border-color: rgba(255, 255, 255, 0.45);
-      color: rgba(255, 255, 255, 0.96);
+      @include ui-btn-glass-surface(0.2);
+      border-color: rgba(255, 255, 255, 0.35);
+      color: rgba($color-identity-grey-dark-blue, 0.92);
 
       &:hover {
-        @include ui-btn-hover-surface;
-      }
+        background-color: rgba(255, 255, 255, 0.9);
+        border-color: rgba(255, 255, 255, 0.78);
+        color: $color-identity-grey-dark-blue;
+        -webkit-backdrop-filter: blur(20px);
+        backdrop-filter: blur(20px);
     }
+  }
 
     .uiHp__btn--primary {
+      @include ui-btn-glass-surface(0.2);
+      border-color: rgba(255, 255, 255, 0.35);
+      color: rgba($color-identity-grey-dark-blue, 0.92);
+
       &:hover {
-        @include ui-btn-hover-surface;
+        background-color: rgba(255, 255, 255, 0.9);
+        border-color: rgba(255, 255, 255, 0.78);
+        color: $color-identity-grey-dark-blue;
+        -webkit-backdrop-filter: blur(20px);
+        backdrop-filter: blur(20px);
       }
     }
 
     .uiHp__btn--soft {
       @include ui-btn-glass-surface(0.2);
       border-color: rgba(255, 255, 255, 0.35);
-      color: rgba(255, 255, 255, 0.96);
+      color: rgba($color-identity-grey-dark-blue, 0.92);
 
       &:hover {
         background-color: rgba(255, 255, 255, 0.9);
@@ -648,7 +849,7 @@
   }
 
   .uiHp__field input {
-    border-radius: var(--ui-radius-sm);
+    border-radius: $ui-radius-sm;
   }
 
   .uiHp__trustItem {
@@ -657,19 +858,81 @@
 
   .uiHp__card--service {
     min-height: auto;
-    padding: var(--ui-card-pad);
+    padding: $ui-card-pad;
+
+    &:nth-child(4n + 1) {
+      background: rgba($color-white, 0.92);
+    }
+
+    &:nth-child(4n + 2) {
+      background: rgba($color-identity-secondary, 0.72);
+      border-color: rgba(255, 255, 255, 0.45);
+    }
+
+    &:nth-child(4n + 3) {
+      background: rgba($color-identity-grey-lighter, 0.95);
+      border-color: rgba($color-identity-grey-light, 0.8);
+    }
+
+    &:nth-child(4n + 4) {
+      background: rgba($color-white, 0.82);
+    }
+  }
+
+  .uiHp__card--step {
+    &:nth-child(3n + 1) {
+      @include ui-glass(rgba($color-identity-secondary, 0.78), rgba(255, 255, 255, 0.42));
+    }
+
+    &:nth-child(3n + 2) {
+      @include ui-glass(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.62));
+    }
+
+    &:nth-child(3n + 3) {
+      @include ui-glass(rgba($color-identity-grey-lighter, 0.92), rgba($color-identity-grey-light, 0.55));
+    }
+  }
+
+  .uiHp__card--quote {
+    &:nth-child(3n + 1) {
+      @include ui-glass(rgba(255, 255, 255, 0.88), rgba(255, 255, 255, 0.62));
+    }
+
+    &:nth-child(3n + 2) {
+      @include ui-glass(rgba($color-identity-secondary, 0.72), rgba(255, 255, 255, 0.42));
+    }
+
+    &:nth-child(3n + 3) {
+      @include ui-glass(rgba($color-identity-grey-lighter, 0.95), rgba($color-identity-grey-light, 0.55));
+    }
+  }
+
+  .uiHp__card--example {
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    background: $color-black;
+    border-color: rgba(255, 255, 255, 0.12);
+    color: $color-white;
+
+    .uiHp__h3,
+    .uiHp__body,
+    .uiHp__body--emphasis,
+    .uiHp__steps,
+    .uiHp__steps li {
+      color: $color-white;
+    }
   }
 
   .uiHp__label {
     display: inline-block;
     font-size: 11px;
     font-weight: 500;
-    color: var(--ui-accent-bright);
+    color: $ui-accent-bright;
     margin-bottom: 8px;
   }
 
   .uiHp__tag {
-    color: var(--ui-accent);
+    color: $ui-accent;
     font-size: 11px;
   }
 
@@ -709,7 +972,7 @@
     .uiHp__leadGrid {
       display: grid;
       gap: clamp(32px, 5vw, 56px);
-      max-width: var(--ui-max);
+      max-width: $ui-max;
       margin: 0 auto;
       text-align: left;
       align-items: start;
@@ -739,8 +1002,8 @@
     }
 
     .uiHp__form {
-      @include ui-glass(rgba(255, 255, 255, 0.58), rgba(255, 255, 255, 0.5));
-      padding: clamp(24px, 3vw, 32px);
+      // @include ui-glass(rgba(255, 255, 255, 0.58), rgba(255, 255, 255, 0.5));
+    
       margin-top: 0;
       grid-template-columns: 1fr;
       gap: clamp(14px, 2vw, 18px);
@@ -767,7 +1030,7 @@
 
     .uiHp__card--phone {
       text-align: center;
-      padding: var(--ui-card-pad);
+      padding: $ui-card-pad;
     }
   }
 
@@ -780,11 +1043,11 @@
     min-height: 100svh;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    background: var(--ui-text);
+    justify-content: end;
+    background: $color-identity-gradient-secondary;
     padding: clamp(64px, 10vh, 96px) 0;
     margin-top: 0;
-    border-radius: 0 0 var(--ui-radius) var(--ui-radius);
+    border-radius: 0 0 calc(#{$ui-radius} * 8) calc(#{$ui-radius} * 8);
     overflow: hidden;
 
     > .uiHp__container {
@@ -800,6 +1063,53 @@
     padding-bottom: clamp(56px, 7vw, 80px);
   }
 
+  .uiHp__footerContact {
+    padding-top: clamp(40px, 5vw, 56px);
+    padding-bottom: clamp(40px, 5vw, 56px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  }
+
+  .uiHp__footerContactTitle {
+    font-size: clamp(28px, 3.5vw, 40px);
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.03em;
+    margin: 0 0 clamp(24px, 3vw, 32px);
+    color: #fff;
+
+  }
+
+  .uiHp__footerContactList {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: clamp(12px, 1.6vw, 18px);
+
+    @include lg {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 2px clamp(48px, 6vw, 72px);
+
+      li:nth-child(1),
+      li:nth-child(2) {
+        grid-column: 1 / 3;
+      }
+    }
+
+    a {
+      font-size: clamp(16px, 2vw, 16px);
+      font-weight: 500;
+      line-height: 1.35;
+      color: rgba(255, 255, 255, 0.9);
+      text-decoration: none;
+      transition: text-decoration-color $transition-fast;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
   .uiHp__footerTitle {
     font-size: 14px;
     margin-bottom: clamp(20px, 2.5vw, 28px);
@@ -810,6 +1120,12 @@
 
     a {
       font-size: 17px;
+      text-decoration: none;
+      transition: text-decoration-color $transition-fast;
+
+      &:hover {
+        text-decoration: underline;
+      }
     }
   }
 
@@ -830,9 +1146,9 @@
     font-size: 14px;
   }
 
-  .uiHp__footerList a:hover,
-  .uiHp__footerSocial a:hover {
-    color: var(--ui-accent-bright);
+  .uiHp__footerSocial a:hover,
+  .uiHp__footerLegal a:hover {
+    text-decoration: underline;
   }
 }
 
@@ -848,7 +1164,7 @@
 
 .uiHp__container {
   width: 100%;
-  max-width: var(--ui-max);
+  max-width: $ui-max;
   margin: 0 auto;
   padding-inline: clamp(20px, 4vw, 32px);
 }
@@ -872,13 +1188,15 @@
   -webkit-backdrop-filter: blur(20px);
   backdrop-filter: blur(20px);
   background-color: #ffffff80;
-  border-radius: var(--ui-radius);
+  border-radius: $ui-radius;
   border: 1px solid rgba(255, 255, 255, 0.65);
   box-shadow: 0 8px 32px rgba(30, 57, 65, 0.06);
   overflow: visible;
 
   &--open {
     z-index: 70;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
   }
 }
 
@@ -921,12 +1239,12 @@
 .uiHp__navTrigger {
   white-space: nowrap;
   font-size: 14px;
-  color: var(--ui-muted);
+  color: $ui-muted;
   text-decoration: none;
   transition: color $transition-fast;
 
   &:hover {
-    color: var(--ui-text);
+    color: $ui-text;
   }
 
   &--tarf {
@@ -934,7 +1252,7 @@
     align-items: center;
     gap: 6px;
     font-weight: 600;
-    color: var(--ui-text);
+    color: $ui-text;
   }
 }
 
@@ -946,7 +1264,7 @@
   font-family: inherit;
   font-size: 14px;
   font-weight: 500;
-  color: var(--ui-muted);
+  color: $ui-muted;
   background: none;
   border: none;
   cursor: default;
@@ -956,7 +1274,7 @@
   &:hover,
   .uiHp__navDropdown:hover &,
   .uiHp__navDropdown:focus-within & {
-    color: var(--ui-text);
+    color: $ui-text;
   }
 }
 
@@ -966,8 +1284,6 @@
   justify-content: center;
   width: 18px;
   height: 18px;
-  border-radius: var(--ui-radius-sm);
-  background: rgba($color-identity-grey-dark-blue, 0.06);
   transition: transform $transition-fast, background $transition-fast;
 
   &::after {
@@ -976,7 +1292,6 @@
     height: 5px;
     border-right: 1.5px solid currentColor;
     border-bottom: 1.5px solid currentColor;
-    border-radius: 1px;
     transform: rotate(45deg) translate(-1px, -1px);
     transition: transform $transition-fast;
   }
@@ -987,7 +1302,6 @@
 .uiHp__navDropdown:hover .uiHp__navCaret,
 .uiHp__dropdown--open .uiHp__navCaret,
 .uiHp__dropdown:hover .uiHp__navCaret {
-  background: rgba($color-identity-primary, 0.15);
 
   &::after {
     transform: rotate(225deg) translate(-1px, -1px);
@@ -997,57 +1311,56 @@
 .uiHp__navDropdown {
   position: relative;
   flex-shrink: 0;
-
-  &--open::after {
-    content: '';
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    height: 12px;
-  }
 }
 
 .uiHp__navDropdownPanel {
   position: absolute;
-  top: calc(100% + 10px);
+  top: 100%;
   left: 0;
+  right: 0;
   z-index: 80;
+  padding: 6px 0 8px;
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+  background-color: #ffffff80;
+  border: 1px solid rgba(255, 255, 255, 0.65);
+  border-top: none;
+  border-radius: 0 0 $ui-radius $ui-radius;
+  box-shadow: 0 8px 32px rgba(30, 57, 65, 0.06);
+}
+
+.uiHp__navDropdownPanelInner {
   display: flex;
   flex-direction: column;
   gap: 2px;
-  min-width: max(200px, 100%);
-  padding: 6px;
-  white-space: normal;
-  background-color: rgba(255, 255, 255, 0.94);
-  border: 1px solid rgba(255, 255, 255, 0.75);
-  border-radius: var(--ui-radius);
-  box-shadow: 0 8px 32px rgba(30, 57, 65, 0.12);
+  width: max-content;
+  margin-left: var(--nav-dropdown-offset, 0);
+}
 
-  &::before {
-    content: '';
-    position: absolute;
-    top: -10px;
-    left: 0;
-    right: 0;
-    height: 10px;
+.uiHp__navDropdownLink,
+.uiHp__navDropdownOption {
+  display: block;
+  padding: 10px 0;
+  font-size: 14px;
+  line-height: 1.35;
+  color: $ui-text;
+  text-decoration: none;
+  white-space: normal;
+  transition: transform $transition-fast;
+
+  &:hover:not(:disabled) {
+    transform: translateX(3px);
   }
 }
 
-.uiHp__navDropdownLink {
-  display: block;
-  padding: 10px 12px;
-  font-size: 14px;
-  line-height: 1.35;
-  color: var(--ui-text);
-  text-decoration: none;
-  border-radius: var(--ui-radius-sm);
-  white-space: normal;
-  transition: background $transition-fast;
-
-  &:hover {
-    background: var(--ui-surface, #f4f7f7);
-  }
+.uiHp__navDropdownOption {
+  width: 100%;
+  font-family: inherit;
+  text-align: left;
+  color: $ui-muted;
+  background: none;
+  border: none;
+  cursor: default;
 }
 
 .uiHp__navEnd {
@@ -1059,7 +1372,7 @@
 
 .uiHp__navMuted {
   font-size: 13px;
-  color: var(--ui-muted);
+  color: $ui-muted;
   text-decoration: none;
 }
 
@@ -1070,22 +1383,13 @@
   margin-left: auto;
 }
 
-// Dropdown — locale (panel under trigger)
+// Dropdown — locale (trigger only; panel uses uiHp__navDropdownPanel)
 .uiHp__dropdown {
   position: relative;
   z-index: 1;
 
   &--open {
     z-index: 80;
-
-    &::after {
-      content: '';
-      position: absolute;
-      top: 100%;
-      left: 0;
-      right: 0;
-      height: 12px;
-    }
   }
 }
 
@@ -1097,9 +1401,38 @@
   user-select: none;
   outline: none;
 
-  .uiHp__dropdown--open &,
-  .uiHp__dropdown:hover & {
+  .uiHp__dropdown--open:not(.uiHp__dropdown--locale) &,
+  .uiHp__dropdown:not(.uiHp__dropdown--locale):hover & {
     @include ui-btn-hover-surface;
+  }
+}
+
+.uiHp__dropdown--locale {
+  flex-shrink: 0;
+
+  .uiHp__dropdownTrigger {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 0;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 500;
+    color: $ui-muted;
+    background: none;
+    border: none;
+    border-radius: 0;
+    cursor: default;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    transition: color $transition-fast;
+
+    &:hover,
+    .uiHp__dropdown--open & {
+      color: $ui-text;
+      background: none;
+      border-color: transparent;
+    }
   }
 }
 
@@ -1116,7 +1449,7 @@
   white-space: normal;
   background-color: rgba(255, 255, 255, 0.94);
   border: 1px solid rgba(255, 255, 255, 0.75);
-  border-radius: var(--ui-radius);
+  border-radius: $ui-radius;
   box-shadow: 0 8px 32px rgba(30, 57, 65, 0.12);
 
   &::before {
@@ -1139,24 +1472,19 @@
   display: flex;
 }
 
-.uiHp__dropdown--locale .uiHp__dropdownPanel {
-  right: 0;
-  left: auto;
-}
-
 .uiHp__dropdownLink {
   display: flex;
   align-items: center;
   gap: 6px;
   padding: 10px 12px;
   font-size: 14px;
-  color: var(--ui-text);
+  color: $ui-text;
   text-decoration: none;
-  border-radius: var(--ui-radius-sm);
+  border-radius: $ui-radius-sm;
   transition: background $transition-fast;
 
   &:hover {
-    background: var(--ui-surface, #f4f7f7);
+    background: $ui-surface;
   }
 
   &--tarf {
@@ -1171,31 +1499,29 @@
   font-size: 14px;
   text-align: left;
   white-space: normal;
-  color: var(--ui-muted);
+  color: $ui-muted;
   background: none;
   border: none;
-  border-radius: var(--ui-radius-sm);
+  border-radius: $ui-radius-sm;
   cursor: default;
 
   &:hover {
-    background: var(--ui-surface, #f4f7f7);
-    color: var(--ui-text);
+    background: $ui-surface;
+    color: $ui-text;
   }
 }
 
 .uiHp__novinka {
   font-size: 11px;
   font-weight: 500;
-  color: var(--ui-accent-bright, var(--ui-accent));
+  color: $ui-accent-bright;
   letter-spacing: 0.01em;
 }
 
 // Bottom dock — classic uses uiHp__btn inside dockShell
 .uiHp__dock {
-  --ui-dock-bottom: clamp(20px, 3vh, 32px);
-
   position: fixed;
-  bottom: var(--ui-dock-bottom);
+  bottom: $ui-dock-bottom;
   left: 0;
   right: 0;
   z-index: 45;
@@ -1207,6 +1533,23 @@
   padding-bottom: max(10px, env(safe-area-inset-bottom));
   transform: translateY(0);
   will-change: transform;
+  transition:
+    transform 0.42s cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 0.42s cubic-bezier(0.4, 0, 0.2, 1);
+
+  &--hidden {
+    transform: translateY(calc(100% + #{$ui-dock-bottom} + env(safe-area-inset-bottom, 0px)));
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    transition: opacity 0.2s ease;
+
+    &--hidden {
+      transform: none;
+    }
+  }
 }
 
 .uiHp__dockInner {
@@ -1246,32 +1589,32 @@
 
 .uiHp__lead {
   font-size: 17px;
-  color: var(--ui-muted);
+  color: $ui-muted;
   margin: 0 0 24px;
   max-width: 52ch;
 }
 
 .uiHp__body {
   font-size: 15px;
-  color: var(--ui-muted);
+  color: $ui-muted;
   margin: 0 0 12px;
 
   &--emphasis {
-    color: var(--ui-text);
+    color: $ui-text;
     font-weight: 500;
   }
 }
 
 .uiHp__muted {
   font-size: 13px;
-  color: var(--ui-muted);
+  color: $ui-muted;
   margin: 0;
 }
 
 .uiHp__eyebrow {
   font-size: 13px;
   font-style: italic;
-  color: var(--ui-accent);
+  color: $ui-accent;
   margin: 0 0 8px;
 }
 
@@ -1311,7 +1654,7 @@
   display: inline-block;
   font-size: 11px;
   font-weight: 500;
-  color: var(--ui-accent);
+  color: $ui-accent;
   margin-bottom: 8px;
 }
 
@@ -1324,7 +1667,7 @@
   background: #e30613;
   color: #fff;
   padding: 3px 8px;
-  border-radius: var(--ui-radius-sm);
+  border-radius: $ui-radius-sm;
   margin-bottom: 8px;
 
   &--inline {
@@ -1344,7 +1687,7 @@
 .uiHp__link {
   font-size: 14px;
   font-weight: 500;
-  color: var(--ui-accent);
+  color: $ui-accent;
   text-decoration: none;
 
   &:hover {
@@ -1354,18 +1697,52 @@
 
 // Sekce
 .uiHp__section {
-  padding-block: var(--ui-section-py);
+  padding-block: $ui-section-py;
+
+  .uiHp--motion-ready & {
+    transition:
+      opacity 0.75s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+
+    &:not(.uiHp__section--revealed):not(.uiHp__hero) {
+      opacity: 0;
+      transform: translateY(22px);
+    }
+
+    &--paths:not(.uiHp__section--revealed),
+    &:has(.uiHp__grid--zigzag):not(.uiHp__section--revealed) {
+      transform: none;
+    }
+
+    &.uiHp__section--revealed {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    &--paths.uiHp__section--revealed,
+    &:has(.uiHp__grid--zigzag).uiHp__section--revealed {
+      transform: none;
+    }
+  }
 
   &--compact {
     padding-block: 28px;
   }
 
   &--surface {
-    background: var(--ui-surface);
+    background: $ui-surface;
+
+    &:has(.uiHp__grid--services) {
+      background: $color-white;
+    }
+
+    &:has(.uiHp__grid--3) {
+      background: rgba($color-identity-secondary, 0.35);
+    }
   }
 
   &--accent {
-    background: var(--ui-accent);
+    background: $ui-accent;
     color: #fff;
 
     .uiHp__h2,
@@ -1380,21 +1757,36 @@
 
     .uiHp__card {
       background: #fff;
-      color: var(--ui-text);
+      color: $ui-text;
 
       .uiHp__h3,
       .uiHp__body {
-        color: var(--ui-muted);
+        color: $ui-muted;
       }
 
       .uiHp__body--emphasis {
-        color: var(--ui-text);
+        color: $ui-text;
       }
     }
   }
 
   &--lead {
-    background: var(--ui-accent-soft);
+    background: $ui-accent-soft;
+  }
+
+  &.uiHp__section--revealed:not(.uiHp__hero):not(.uiHp__section--accent):not(.uiHp__section--lead) {
+    position: relative;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      width: min(920px, 100%);
+      border-top: 1px solid $ui-border;
+      transform: translateX(-50%);
+      pointer-events: none;
+    }
   }
 }
 
@@ -1420,17 +1812,17 @@
 
 .uiHp__rates {
   background: #fff;
-  border: 1px solid var(--ui-border);
-  border-radius: var(--ui-radius);
+  border: 1px solid $ui-border;
+  border-radius: $ui-radius;
   padding: 20px;
-  box-shadow: var(--ui-shadow);
+  box-shadow: $ui-shadow;
 }
 
 .uiHp__rateRow {
   display: flex;
   justify-content: space-between;
   padding: 8px 0;
-  border-bottom: 1px solid var(--ui-border);
+  border-bottom: 1px solid $ui-border;
   font-size: 15px;
 
   &:last-of-type {
@@ -1440,28 +1832,81 @@
 
   strong {
     font-weight: 600;
-    color: var(--ui-text);
+    color: $ui-text;
   }
 }
 
 .uiHp__visual {
   min-height: 120px;
-  border-radius: var(--ui-radius);
-  background: linear-gradient(135deg, var(--ui-accent-soft) 0%, #c5e8e8 50%, var(--ui-accent) 100%);
+  border-radius: $ui-radius;
+  background: linear-gradient(135deg, $ui-accent-soft 0%, #c5e8e8 50%, $ui-accent 100%);
   opacity: 0.7;
 }
 
-// Trust
-.uiHp__trustRow {
+// Trust — wide image with text overlay
+.uiHp__trust {
+  padding-block: 0;
+  min-height: 0;
+
+  &.uiHp__section--compact {
+    padding-block: 0;
+  }
+}
+
+.uiHp__trustMedia {
+  position: relative;
+  width: 100%;
+  height: 40vh;
+  min-height: 220px;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.uiHp__trustImage {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  opacity: 1;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.uiHp__trustOverlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
   display: flex;
-  flex-wrap: wrap;
-  gap: 16px 32px;
-  justify-content: space-between;
+  align-items: flex-end;
+  padding-bottom: clamp(24px, 5vh, 48px);
+}
+
+.uiHp__section.uiHp__section--revealed {
+  position: relative;
+  z-index: 2;
+}
+
+.uiHp__trustGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(16px, 3vw, 28px);
+  width: 100%;
+
+  @include lg {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
 }
 
 .uiHp__trustItem {
   font-size: 14px;
-  font-weight: 500;
+  font-weight: 700;
+  line-height: 1.45;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  padding: 14px 0 12px 0;
 }
 
 // Grid & karty
@@ -1503,28 +1948,78 @@
 
   &--2.uiHp__grid--zigzag {
     @include ui-grid-zigzag;
+    @include ui-zigzag-cards;
+  }
+}
+
+.uiHp__section--paths {
+  padding-block: 0;
+}
+
+.uiHp__pathsIntro {
+  width: 100%;
+  max-width: $ui-max;
+  margin-inline: auto;
+  padding: clamp(28px, 5vw, 48px) $ui-container-pad clamp(12px, 2vw, 24px);
+}
+
+.uiHp__pathsGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  width: 100%;
+
+  @include lg {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.uiHp__pathsCell {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: clamp(12px, 1.6vw, 18px);
+  width: 100%;
+  max-width: $ui-max;
+  margin-inline: auto;
+  padding: clamp(28px, 5vw, 48px) $ui-container-pad;
+
+  @include lg {
+    max-width: calc(#{$ui-max} / 2);
+  }
+
+  .uiHp__h3 {
+    margin-bottom: 0;
+  }
+
+  .uiHp__body {
+    margin-bottom: 0;
+  }
+
+  .uiHp__btn {
+    margin-top: clamp(8px, 1.2vw, 14px);
+    align-self: flex-start;
   }
 }
 
 .uiHp__card {
   background: #fff;
-  border: 1px solid var(--ui-border);
-  border-radius: var(--ui-radius);
-  padding: var(--ui-card-pad);
-  box-shadow: var(--ui-shadow);
+  border: 1px solid $ui-border;
+  border-radius: $ui-radius;
+  padding: $ui-card-pad;
+  box-shadow: $ui-shadow;
   display: flex;
   flex-direction: column;
-  gap: var(--ui-card-gap);
+  gap: $ui-card-gap;
   min-width: 0;
 
   .uiHp__h3 {
-    font-size: var(--ui-card-title);
+    font-size: $ui-card-title;
     line-height: 1.25;
     margin-bottom: 8px;
   }
 
   .uiHp__body {
-    font-size: var(--ui-card-body);
+    font-size: $ui-card-body;
     line-height: 1.55;
     margin-bottom: 8px;
   }
@@ -1544,7 +2039,7 @@
   }
 
   .uiHp__steps {
-    font-size: var(--ui-card-body);
+    font-size: $ui-card-body;
     margin-bottom: 10px;
 
     li {
@@ -1553,7 +2048,7 @@
   }
 
   .uiHp__quote p {
-    font-size: var(--ui-card-body);
+    font-size: $ui-card-body;
     line-height: 1.55;
   }
 
@@ -1566,33 +2061,127 @@
   }
 
   &--featured {
-    border-color: var(--ui-accent);
+    border-color: $ui-accent;
     box-shadow: 0 8px 32px rgba(13, 110, 110, 0.12);
   }
 
   &--flat {
     box-shadow: none;
-    background: var(--ui-surface);
+    background: $ui-surface;
   }
 
   &--path {
-    background: var(--ui-accent-soft);
-    border-color: transparent;
+    aspect-ratio: 1;
+    justify-content: flex-end;
+    padding: 0;
+    border-radius: 0;
+    box-shadow: none;
+    border: none;
+    background: $ui-accent-soft;
+
+    &:nth-child(even) {
+      background: $ui-surface;
+    }
+
+    &:nth-child(odd) {
+      @include lg {
+        .uiHp__pathsCell {
+          padding-left: $ui-paths-edge;
+          padding-right: clamp(20px, 3vw, 32px);
+          margin-right: auto;
+        }
+      }
+    }
+
+    &:nth-child(even) {
+      @include lg {
+        .uiHp__pathsCell {
+          padding-right: $ui-paths-edge;
+          padding-left: clamp(20px, 3vw, 32px);
+          margin-left: auto;
+        }
+      }
+    }
+  }
+
+  &--pathImporter {
+    background: $color-identity-primary;
+
+    &:nth-child(odd),
+    &:nth-child(even) {
+      background: $color-identity-primary;
+    }
+  }
+
+  &--pathExporter {
+    background: $color-identity-secondary;
+
+    &:nth-child(odd),
+    &:nth-child(even) {
+      background: $color-identity-secondary;
+    }
   }
 
   &--step {
     position: relative;
-    padding-top: calc(var(--ui-card-pad) + 22px);
+    padding-top: calc(#{$ui-card-pad} + 22px);
+    box-shadow: none;
+
+    &:nth-child(3n + 1) {
+      background: rgba($color-identity-secondary, 0.55);
+      border-color: rgba(255, 255, 255, 0.45);
+    }
+
+    &:nth-child(3n + 2) {
+      background: rgba($color-white, 0.96);
+    }
+
+    &:nth-child(3n + 3) {
+      background: rgba($color-identity-grey-lighter, 0.95);
+      border-color: rgba($color-identity-grey-light, 0.75);
+    }
 
     .uiHp__step {
-      top: var(--ui-card-pad);
-      left: var(--ui-card-pad);
+      top: $ui-card-pad;
+      left: $ui-card-pad;
       font-size: 12px;
     }
   }
 
   &--quote {
     margin: 0;
+    box-shadow: none;
+
+    &:nth-child(3n + 1) {
+      background: rgba($color-white, 0.96);
+    }
+
+    &:nth-child(3n + 2) {
+      background: rgba($color-identity-secondary, 0.5);
+      border-color: rgba(255, 255, 255, 0.42);
+    }
+
+    &:nth-child(3n + 3) {
+      background: rgba($color-identity-grey-lighter, 0.95);
+      border-color: rgba($color-identity-grey-light, 0.75);
+    }
+  }
+
+  &--example {
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    background: $color-black;
+    border-color: rgba(255, 255, 255, 0.12);
+    box-shadow: none;
+    color: $color-white;
+
+    .uiHp__h3,
+    .uiHp__body,
+    .uiHp__body--emphasis,
+    .uiHp__steps,
+    .uiHp__steps li {
+      color: $color-white;
+    }
   }
 
   &--phone {
@@ -1605,6 +2194,25 @@
     text-align: center;
     min-height: auto;
     justify-content: center;
+    box-shadow: none;
+
+    &:nth-child(4n + 1) {
+      background: rgba($color-white, 0.96);
+    }
+
+    &:nth-child(4n + 2) {
+      background: rgba($color-identity-secondary, 0.45);
+      border-color: rgba(255, 255, 255, 0.42);
+    }
+
+    &:nth-child(4n + 3) {
+      background: rgba($color-identity-grey-lighter, 0.95);
+      border-color: rgba($color-identity-grey-light, 0.75);
+    }
+
+    &:nth-child(4n + 4) {
+      background: rgba($color-white, 0.88);
+    }
   }
 }
 
@@ -1617,11 +2225,11 @@
 // Horizontal card slider — why section (Swiper, trailer-style)
 .uiHp__cardSliderWrap {
   position: relative;
-  width: 100%;
-  max-width: 100%;
-  margin-top: 8px;
-  margin-inline: calc(-1 * clamp(20px, 4vw, 32px));
-  padding-inline: clamp(20px, 4vw, 32px);
+  width: 100vw;
+  max-width: 100vw;
+  margin: 8px 0 0;
+  margin-inline: calc(50% - 50vw);
+  padding-inline: $ui-slider-edge-pad;
   z-index: 1;
   overflow: hidden;
 }
@@ -1650,30 +2258,37 @@
     align-items: stretch;
   }
 
-  &__slide {
-    width: min(300px, calc(100vw - clamp(40px, 8vw, 64px)));
+  // Swiper CSS sets `.swiper-slide { width: 100% }` — beat it with combined selector
+  .swiper-slide.uiHp__cardSlider__slide {
+    width: min(280px, calc((100% - 16px) / 1.35));
     height: auto;
     flex-shrink: 0;
     box-sizing: border-box;
 
-    @include lg {
-      width: min(320px, calc((100% - 16px) / 2.2));
+    @media (min-width: 640px) {
+      width: min(300px, calc((100% - 16px) / 2.15));
     }
 
+    @include lg {
+      width: min(320px, calc((100% - 16px) / 2.75));
+    }
+  }
+
+  &__slide {
     .uiHp__card {
       height: 100%;
       min-height: 180px;
-      padding: var(--ui-card-pad);
-      gap: var(--ui-card-gap);
+      padding: $ui-card-pad;
+      gap: $ui-card-gap;
 
       .uiHp__h3 {
-        font-size: var(--ui-card-title);
+        font-size: $ui-card-title;
         line-height: 1.25;
         margin-bottom: 8px;
       }
 
       .uiHp__body {
-        font-size: var(--ui-card-body);
+        font-size: $ui-card-body;
         line-height: 1.55;
         margin-bottom: 0;
       }
@@ -1692,9 +2307,9 @@
     height: 44px;
     padding: 0;
     margin: 0;
-    border: 1px solid var(--ui-border);
-    border-radius: var(--ui-radius-sm);
-    background: var(--ui-text);
+    border: 1px solid $ui-border;
+    border-radius: $ui-radius-sm;
+    background: $ui-text;
     color: #fff;
     cursor: pointer;
     pointer-events: auto;
@@ -1706,8 +2321,8 @@
       transform 0.18s ease;
 
     &:hover {
-      background: var(--ui-accent);
-      border-color: var(--ui-accent);
+      background: $ui-accent;
+      border-color: $ui-accent;
     }
 
     &:active {
@@ -1740,7 +2355,7 @@
     padding: 0;
     border: none;
     border-radius: 999px;
-    background: var(--ui-border);
+    background: $ui-border;
     cursor: pointer;
     transition:
       background-color 0.22s ease,
@@ -1749,7 +2364,7 @@
 
     &.is-active {
       width: 24px;
-      background: var(--ui-accent);
+      background: $ui-accent;
     }
   }
 }
@@ -1765,16 +2380,21 @@
 }
 
 .uiHp--classic {
+  .uiHp__section.uiHp__section--revealed:not(.uiHp__hero):not(.uiHp__section--accent):not(.uiHp__section--lead)::before {
+    width: min(#{$ui-max}, 100%);
+  }
+
   .uiHp__cardSliderWrap {
-    margin-inline: calc(-1 * clamp(24px, 4vw, 40px));
-    padding-inline: clamp(24px, 4vw, 40px);
+    margin: 8px 0 0;
+    margin-inline: calc(50% - 50vw);
+    padding-inline: $ui-slider-edge-pad;
   }
 
   .uiHp__cardSlider__slide .uiHp__card {
-    @include ui-glass(rgba(255, 255, 255, 0.58), rgba(255, 255, 255, 0.5));
+    @include ui-glass(rgba(255, 255, 255, 0.72), rgba(255, 255, 255, 0.58));
     box-shadow: none;
-    background-color: rgba(255, 255, 255, 0.5);
-    border-color: rgba(255, 255, 255, 0.45);
+    background-color: rgba(255, 255, 255, 0.72);
+    border-color: rgba(255, 255, 255, 0.55);
     min-height: 180px;
   }
 
@@ -1806,7 +2426,7 @@
   flex: 1;
   min-width: 160px;
   background: rgba(255, 255, 255, 0.12);
-  border-radius: var(--ui-radius);
+  border-radius: $ui-radius;
   padding: 20px;
 }
 
@@ -1818,7 +2438,7 @@
   height: 28px;
   border-radius: 50%;
   background: #fff;
-  color: var(--ui-accent);
+  color: $ui-accent;
   font-size: 13px;
   font-weight: 700;
   margin-bottom: 10px;
@@ -1839,7 +2459,7 @@
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.06em;
-  color: var(--ui-accent);
+  color: $ui-accent;
 }
 
 .uiHp__step {
@@ -1848,14 +2468,14 @@
   left: 24px;
   font-size: 12px;
   font-weight: 700;
-  color: var(--ui-accent);
+  color: $ui-accent;
 }
 
 .uiHp__steps {
   margin: 0;
   padding-left: 20px;
   font-size: 14px;
-  color: var(--ui-muted);
+  color: $ui-muted;
 
   li {
     margin-bottom: 6px;
@@ -1866,6 +2486,8 @@
   display: grid;
   gap: 32px;
   align-items: start;
+  min-height: 70vh;
+  align-items: center;
 
   @include lg {
     grid-template-columns: 1fr 1fr;
@@ -1887,7 +2509,7 @@
     margin: 0;
     font-size: 15px;
     font-style: italic;
-    color: var(--ui-text);
+    color: $ui-text;
     line-height: 1.5;
   }
 }
@@ -1915,6 +2537,35 @@
 .uiHp__leadCard {
   display: grid;
   gap: 16px;
+}
+
+.uiHp__leadWideImage {
+  margin-inline: calc(50% - 50vw);
+  width: 100vw;
+  height: clamp(220px, 40vh, 460px);
+  margin-bottom: clamp(28px, 4vh, 44px);
+  overflow: hidden;
+
+  img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+}
+
+.uiHp__leadLocations {
+  display: grid;
+  gap: 6px;
+  padding: 14px 16px;
+  border: 1px solid $ui-border;
+  border-radius: $ui-radius-sm;
+  background: rgba(255, 255, 255, 0.72);
+
+  .uiHp__muted {
+    margin: 0;
+  }
 }
 
 .uiHp__form {
@@ -1951,7 +2602,7 @@
   span {
     font-size: 13px;
     font-weight: 600;
-    color: var(--ui-muted);
+    color: $ui-muted;
     letter-spacing: 0.01em;
   }
 
@@ -1959,12 +2610,12 @@
     width: 100%;
     min-width: 0;
     padding: 14px 16px;
-    border: 1px solid var(--ui-border);
-    border-radius: var(--ui-radius-sm);
+    border: 1px solid $ui-border;
+    border-radius: $ui-radius-sm;
     font-size: 16px;
     font-family: inherit;
     line-height: 1.3;
-    color: var(--ui-text);
+    color: $ui-text;
     background: #fff;
     transition:
       border-color 0.2s ease,
@@ -1976,7 +2627,7 @@
 
     &:focus {
       outline: none;
-      border-color: var(--ui-accent);
+      border-color: $ui-accent;
       box-shadow: 0 0 0 3px rgba(13, 110, 110, 0.12);
     }
   }
@@ -2027,11 +2678,58 @@
   border-bottom: 1px solid rgba(255, 255, 255, 0.12);
 
   @include lg {
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(4, 1fr);
   }
 
   &--stack {
     grid-template-columns: 1fr 1fr;
+  }
+}
+
+.uiHp__footerContact {
+  padding-top: clamp(40px, 5vw, 56px);
+  padding-bottom: clamp(40px, 5vw, 56px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.uiHp__footerContactTitle {
+  font-size: clamp(22px, 3vw, 30px);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  margin: 0 0 clamp(24px, 3vw, 32px);
+  color: #fff;
+
+}
+
+.uiHp__footerContactList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: clamp(12px, 1.6vw, 18px);
+
+  @include lg {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: clamp(24px, 3vw, 36px) clamp(40px, 5vw, 56px);
+
+    li:nth-child(1),
+    li:nth-child(2) {
+      grid-column: 1 / 3;
+    }
+  }
+
+  a {
+    font-size: clamp(20px, 2.4vw, 26px);
+    font-weight: 500;
+    line-height: 1.35;
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: none;
+    transition: text-decoration-color $transition-fast;
+
+    &:hover {
+      text-decoration: underline;
+    }
   }
 }
 
@@ -2055,9 +2753,10 @@
     font-size: 16px;
     color: rgba(255, 255, 255, 0.85);
     text-decoration: none;
+    transition: text-decoration-color $transition-fast;
 
     &:hover {
-      color: #fff;
+      text-decoration: underline;
     }
   }
 }
@@ -2080,9 +2779,10 @@
     font-weight: 500;
     color: rgba(255, 255, 255, 0.85);
     text-decoration: none;
+    transition: text-decoration-color $transition-fast;
 
     &:hover {
-      color: #fff;
+      text-decoration: underline;
     }
   }
 }
@@ -2096,9 +2796,10 @@
     font-size: 14px;
     color: rgba(255, 255, 255, 0.55);
     text-decoration: none;
+    transition: text-decoration-color $transition-fast;
 
     &:hover {
-      color: #fff;
+      text-decoration: underline;
     }
   }
 }
@@ -2116,19 +2817,31 @@
   display: flex;
   justify-content: flex-start;
   width: 100%;
-  padding: clamp(64px, 12vw, 140px) clamp(20px, 4vw, 32px) clamp(48px, 8vw, 96px);
+  padding: clamp(24px, 4vw, 40px) !important;
+  padding-left: clamp(12px, 4vw, 20px) !important;
+  margin-top: clamp(24px, 4vw, 40px) !important;
   pointer-events: none;
 }
 
-.uiHp__pageLogoImg {
+.uiHp__pageLogoMark {
   display: block;
   width: min(60%, 480px);
-  height: auto;
-  object-fit: contain;
+  aspect-ratio: 307 / 57;
+  background-color: $color-identity-primary;
+  mask-image: url('/sab-logo.svg');
+  mask-repeat: no-repeat;
+  mask-size: contain;
+  mask-position: left center;
+  -webkit-mask-image: url('/sab-logo.svg');
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-size: contain;
+  -webkit-mask-position: left center;
 }
 
 .uiHp--classic .uiHp__pageLogo {
-  padding-inline: clamp(24px, 4vw, 40px);
+  padding-inline: 10px;
+  margin-top: calc(#{$ui-radius} * -8);
+  padding-top: calc(8px + #{$ui-radius} * 8);
 }
 
 // V UiShell
