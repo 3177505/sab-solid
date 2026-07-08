@@ -208,10 +208,10 @@ export default function UiHomepage({ variant = 'classic' }: UiHomepageProps) {
                 key={s.title}
                 className={`uiHp__card uiHp__card--service${'featured' in s && s.featured ? ' uiHp__card--featured' : ''}`}
               >
+                <h3 className="uiHp__h3">{s.title}</h3>
                 {'badge' in s && s.badge ? (
                   <span className="uiHp__label">{s.badge}</span>
                 ) : null}
-                <h3 className="uiHp__h3">{s.title}</h3>
                 {'for' in s && s.for ? <p className="uiHp__body">{s.for}</p> : null}
                 {'cta' in s && s.cta ? (
                   <a href="#" className="uiHp__link">

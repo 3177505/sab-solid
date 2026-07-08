@@ -29,7 +29,7 @@ export const dict: Dictionary = {
       '02 · UX Copywriting',
       '03 · UX Návrh',
       '04 · UI Style guide',
-      '05 · UI',
+      '05 · UI Návrh',
       '06 · UX Návrh — Mobil',
     ],
   },
@@ -228,12 +228,12 @@ export const dict: Dictionary = {
   },
   ui: {
     title: 'UI',
-    desc: 'Světlá homepage — teal akcent, zaoblené CTA, karty se stínem a scroll motion.',
+    desc: 'Classic homepage — scroll tóny, skleněné karty, Hedvig typografie, liquid gradient v hero a scroll motion.',
   },
   tokens: {
     title: 'Style guide',
     intro:
-      'Souhrn všech designových proměnných — barvy, typografie, spacing a komponenty. Jeden přehled, ze kterého vychází UI i další materiály.',
+      'Designové proměnné finálního UI — identita SAB, scroll tóny, typografie Hedvig, spacing a tři typy tlačítek. Vychází z homepage /ui/classic.',
     groups: ['Barvy', 'Typografie', 'Spacing', 'Komponenty'],
   },
   mobileUx: {
@@ -244,10 +244,11 @@ export const dict: Dictionary = {
     notesTitle: 'Mobilní principy',
     notes: [
       'Logo + menu + CTA v jedné řádce — bez desktopového dropdownu v hlavní liště',
-      'Hero: headline, podtext, primární CTA, sekundární CTA — vše pod sebou',
-      'Služby jako vertikální karty — forward první / zvýrazněný',
-      'Formulář na plnou šířku — minimum polí nad foldem',
-      'Telefon v kontaktní sekci — jedna z více cest ke kontaktu',
+      'Hero: headline, podtext, CTA, kurzy pod sebou — dock s rychlými akcemi dole',
+      'Proč SAB jako horizontální slider — jedna karta + náhled další',
+      'Služby jako řádkové karty — forward první / zvýrazněný',
+      'Reference v jednom panelu pod sebou, oddělené linkou',
+      'Formulář na plnou šířku — vizuál nahoře, kontakt v patičce',
     ],
   },
 }

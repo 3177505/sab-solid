@@ -569,6 +569,8 @@
 }
 
 .uxWireframe--mobile {
+  padding-bottom: 72px;
+
   .uxNav {
     position: sticky;
     top: 0;
@@ -577,7 +579,7 @@
 
   .uxSection {
     max-width: none;
-    padding: 20px 16px;
+    padding: 18px 16px;
   }
 
   .uxBlock--navMobile {
@@ -640,40 +642,173 @@
   }
 
   .uxBlock--hero {
-    gap: 16px;
+    gap: 14px;
   }
 
   .uxBlock__headline {
-    font-size: 22px;
+    font-size: 24px;
+    line-height: 1.12;
+  }
+
+  .uxBlock__sub {
+    font-size: 15px;
+  }
+
+  .uxBlock__rates {
+    width: 100%;
   }
 
   .uxBlock__ctaRow {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: stretch;
     gap: 10px;
+
+    .uxBlock__cta {
+      text-align: center;
+    }
   }
 
   .uxBlock--strip {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 8px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px 16px;
   }
 
   .uxBlock--rowStack {
     flex-direction: column;
     align-items: flex-start;
+    gap: 12px;
   }
 
-  .uxBlock--form.uxBlock--stack {
+  .uxBlock--form.uxBlock--stack,
+  .uxBlock--leadMobile {
+    display: grid;
+    gap: 16px;
+    grid-template-columns: 1fr;
+  }
+
+  .uxBlock__leadVisual {
+    border: 1px dashed rgba($color-identity-grey-mid, 0.65);
+    border-radius: $radius-sm;
+    min-height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    text-align: center;
+    background: rgba($color-identity-secondary, 0.2);
+  }
+
+  .uxBlock__fields--stack {
     grid-template-columns: 1fr;
   }
 
   .uxBlock__footerGrid--stack {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px 16px;
+  }
+
+  .uxBlock__footerContact {
+    padding: 20px 0 8px;
+    margin-top: 4px;
+    border-top: 1px solid rgba($color-identity-grey-light, 0.95);
   }
 
   .uxBlock__flowStep {
     min-width: 0;
+  }
+
+  .uxBlock__grid--serviceRows {
+    gap: 10px;
+  }
+
+  .uxBlock__card--serviceRow {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 14px 16px;
+
+    .uxBlock__cardTitle {
+      margin: 0;
+      font-size: 14px;
+      flex: 1;
+      min-width: 0;
+    }
+
+    .uxBlock__body,
+    .uxBlock__badge {
+      display: none;
+    }
+
+    .uxBlock__cta {
+      flex-shrink: 0;
+      margin: 0;
+      font-size: 13px;
+    }
+  }
+
+  .uxBlock__slider {
+    display: flex;
+    gap: 12px;
+    overflow-x: auto;
+    margin: 0 -16px;
+    padding: 4px 16px 8px;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  .uxBlock__sliderCard {
+    flex: 0 0 78%;
+    scroll-snap-align: start;
+    border: 1px solid rgba($color-identity-grey-light, 0.95);
+    border-radius: $radius-sm;
+    padding: 16px;
+    background: $color-white;
+    display: grid;
+    gap: 8px;
+  }
+
+  .uxBlock__sliderDots {
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+    margin: 4px 0 12px;
+  }
+
+  .uxBlock__sliderDot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: rgba($color-identity-grey-mid, 0.45);
+
+    &--active {
+      background: $color-identity-tertiary;
+    }
+  }
+
+  .uxBlock__quotePanel {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    padding: 8px 14px;
+    border: 1px solid rgba($color-identity-grey-light, 0.95);
+    border-radius: $radius-sm;
+    background: $color-white;
+  }
+
+  .uxBlock__quoteItem {
+    margin: 0;
+    padding: 20px 0;
+
+    &:not(:last-child) {
+      border-bottom: 1px solid rgba($color-identity-grey-light, 0.7);
+    }
   }
 }
 
@@ -789,5 +924,38 @@
 
   .uxBlock__lang {
     align-self: flex-start;
+  }
+}
+
+.uxMobileDock {
+  position: sticky;
+  bottom: 0;
+  z-index: 90;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: -72px;
+  padding: 10px 12px calc(10px + env(safe-area-inset-bottom, 0px));
+  border-top: 1px solid rgba($color-identity-grey-light, 0.95);
+  background: rgba($color-white, 0.96);
+  box-shadow: 0 -8px 24px rgba($color-identity-grey-dark-blue, 0.08);
+
+  .uxBlock__cta {
+    font-size: 12px;
+    padding: 6px 10px;
+    border: 1px solid rgba($color-identity-grey-light, 0.95);
+    border-radius: $radius-sm;
+    background: $color-identity-grey-lighter;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    white-space: nowrap;
+  }
+
+  .uxBlock__cta--dock {
+    font-weight: 700;
+    background: rgba($color-identity-secondary, 0.35);
+    border-color: rgba($color-identity-tertiary, 0.35);
   }
 }

@@ -13,13 +13,13 @@
   overflow-x: clip;
 }
 
-.uiHp--premium {
+
+span.uiHp--premium {
   font-family: $font-ui-premium;
 
   .uiHp__link,
   .uiHp__novinka,
   .uiHp__tag,
-  .uiHp__step,
   .uiHp__sliderDot--active,
   .uiHp__footerLink:hover {
     color: $ui-premium-accent;
@@ -28,8 +28,8 @@
   .uiHp__btn--primary,
   .uiHp__cardSlider__arrow:hover,
   .uiHp__cardSlider__arrow:focus-visible {
-    background: $ui-premium-accent;
-    border-color: $ui-premium-accent;
+    background: $ui-premium-accent-black;
+    border-color: $ui-premium-accent-black;
   }
 
   .uiHp__card--featured {
@@ -45,6 +45,19 @@
   border: 1px solid $border;
   border-radius: $ui-radius;
   box-shadow: 0 8px 32px rgba(30, 57, 65, 0.08);
+}
+
+@mixin ui-num-badge($bg: #fff, $color: $ui-accent) {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: $bg;
+  color: $color;
+  font-size: 13px;
+  font-weight: 700;
 }
 
 @mixin ui-btn-base {
@@ -119,7 +132,7 @@
 // Type 2 — filled identity color; hover frosted light surface
 @mixin ui-btn-fill {
   @include ui-btn-base;
-  background-color: $color-identity-tertiary;
+  background-color: $ui-premium-accent-black;
   border-color: transparent;
   color: #fff;
 
@@ -411,8 +424,7 @@
     }
 
     .uiHp__flowNum {
-      background: #fff;
-      color: $ui-accent;
+      @include ui-num-badge(#fff, $ui-accent);
     }
 
     .uiHp__btn--onAccent,
@@ -516,8 +528,8 @@
   .uiHp__heroAside {
     position: fixed;
     right: clamp(24px, 4vw, 40px);
-    bottom: $ui-dock-h;
-    width: min(280px, 32vw);
+    bottom: calc(#{$ui-dock-h} / 2.4);
+    width: min(380px, 32vw);
     z-index: 44;
     transform: translateY(0);
     opacity: 1;
@@ -672,8 +684,9 @@
     }
 
     .uiHp__label {
-      font-size: 11px;
-      margin-bottom: 8px;
+      font-size: 12px;
+      text-transform: uppercase;
+      font-weight: 700;
     }
 
     .uiHp__link {
@@ -736,13 +749,7 @@
     }
 
     &--step {
-      padding-top: calc(#{$ui-card-pad} + 24px);
-
-      .uiHp__step {
-        top: $ui-card-pad;
-        left: $ui-card-pad;
-        font-size: 12px;
-      }
+      padding-top: calc(#{$ui-card-pad} + 38px);
     }
   }
 
@@ -859,6 +866,17 @@
   .uiHp__card--service {
     min-height: auto;
     padding: $ui-card-pad;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    transition:
+      transform 0.28s cubic-bezier(0.4, 0, 0.2, 1),
+      box-shadow 0.28s ease,
+      border-color 0.28s ease,
+      background 0.28s ease,
+      -webkit-backdrop-filter 0.28s ease,
+      backdrop-filter 0.28s ease;
 
     &:nth-child(4n + 1) {
       background: rgba($color-white, 0.92);
@@ -877,19 +895,54 @@
     &:nth-child(4n + 4) {
       background: rgba($color-white, 0.82);
     }
+
+    &:hover {
+      transform: translateY(-3px);
+      -webkit-backdrop-filter: blur(24px);
+      backdrop-filter: blur(24px);
+      background: linear-gradient(
+        135deg,
+        rgba($color-identity-primary, 0.55) 0%,
+        rgba($color-identity-secondary, 0.78) 48%,
+        rgba(255, 255, 255, 0.92) 100%
+      );
+      border-color: rgba($color-identity-primary, 0.65);
+      box-shadow: 0 14px 48px rgba($color-identity-tertiary, 0.16);
+    }
+
+    &.uiHp__card--featured:hover {
+      border-color: rgba($color-identity-primary, 0.8);
+      box-shadow:
+        0 16px 52px rgba($color-identity-primary, 0.28),
+        0 4px 16px rgba($color-identity-tertiary, 0.12);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      transition:
+        box-shadow $transition-fast,
+        border-color $transition-fast,
+        background $transition-fast,
+        backdrop-filter $transition-fast,
+        -webkit-backdrop-filter $transition-fast;
+
+      &:hover {
+        transform: none;
+      }
+    }
   }
 
   .uiHp__card--step {
+    color: $color-white;
     &:nth-child(3n + 1) {
-      @include ui-glass(rgba($color-identity-secondary, 0.78), rgba(255, 255, 255, 0.42));
+      @include ui-glass(rgba($ui-premium-accent-black, 0.78), rgba(255, 255, 255, 0.42));
     }
 
     &:nth-child(3n + 2) {
-      @include ui-glass(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.62));
+      @include ui-glass(rgba($ui-premium-accent-black, 0.88), rgba(255, 255, 255, 0.62));
     }
 
     &:nth-child(3n + 3) {
-      @include ui-glass(rgba($color-identity-grey-lighter, 0.92), rgba($color-identity-grey-light, 0.55));
+      @include ui-glass(rgba($ui-premium-accent-black, 1), rgba($color-identity-grey-light, 0.55));
     }
   }
 
@@ -910,7 +963,7 @@
   .uiHp__card--example {
     -webkit-backdrop-filter: none;
     backdrop-filter: none;
-    background: $color-black;
+    background: $ui-premium-accent-black;
     border-color: rgba(255, 255, 255, 0.12);
     color: $color-white;
 
@@ -955,6 +1008,8 @@
   }
 
   .uiHp__grid--services {
+    display: flex !important;
+    flex-direction: column;
     @include lg {
       grid-template-columns: repeat(2, 1fr);
     }
@@ -2124,7 +2179,7 @@
 
   &--step {
     position: relative;
-    padding-top: calc(#{$ui-card-pad} + 22px);
+    padding-top: calc(#{$ui-card-pad} + 38px);
     box-shadow: none;
 
     &:nth-child(3n + 1) {
@@ -2139,12 +2194,6 @@
     &:nth-child(3n + 3) {
       background: rgba($color-identity-grey-lighter, 0.95);
       border-color: rgba($color-identity-grey-light, 0.75);
-    }
-
-    .uiHp__step {
-      top: $ui-card-pad;
-      left: $ui-card-pad;
-      font-size: 12px;
     }
   }
 
@@ -2170,7 +2219,7 @@
   &--example {
     -webkit-backdrop-filter: none;
     backdrop-filter: none;
-    background: $color-black;
+    background: $ui-premium-accent-black;
     border-color: rgba(255, 255, 255, 0.12);
     box-shadow: none;
     color: $color-white;
@@ -2195,6 +2244,13 @@
     min-height: auto;
     justify-content: center;
     box-shadow: none;
+    transition:
+      transform 0.28s cubic-bezier(0.4, 0, 0.2, 1),
+      box-shadow 0.28s ease,
+      border-color 0.28s ease,
+      background 0.28s ease,
+      -webkit-backdrop-filter 0.28s ease,
+      backdrop-filter 0.28s ease;
 
     &:nth-child(4n + 1) {
       background: rgba($color-white, 0.96);
@@ -2212,6 +2268,40 @@
 
     &:nth-child(4n + 4) {
       background: rgba($color-white, 0.88);
+    }
+
+    &:hover {
+      transform: translateY(-3px);
+      -webkit-backdrop-filter: blur(24px);
+      backdrop-filter: blur(24px);
+      background: linear-gradient(
+        135deg,
+        rgba($color-identity-primary, 0.55) 0%,
+        rgba($color-identity-secondary, 0.78) 48%,
+        rgba(255, 255, 255, 0.92) 100%
+      );
+      border-color: rgba($color-identity-primary, 0.65);
+      box-shadow: 0 14px 48px rgba($color-identity-tertiary, 0.16);
+    }
+
+    &.uiHp__card--featured:hover {
+      border-color: rgba($color-identity-primary, 0.8);
+      box-shadow:
+        0 16px 52px rgba($color-identity-primary, 0.28),
+        0 4px 16px rgba($color-identity-tertiary, 0.12);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      transition:
+        box-shadow $transition-fast,
+        border-color $transition-fast,
+        background $transition-fast,
+        backdrop-filter $transition-fast,
+        -webkit-backdrop-filter $transition-fast;
+
+      &:hover {
+        transform: none;
+      }
     }
   }
 }
@@ -2431,16 +2521,7 @@
 }
 
 .uiHp__flowNum {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 28px;
-  height: 28px;
-  border-radius: 50%;
-  background: #fff;
-  color: $ui-accent;
-  font-size: 13px;
-  font-weight: 700;
+  @include ui-num-badge(#fff, $ui-accent);
   margin-bottom: 10px;
 }
 
@@ -2463,12 +2544,10 @@
 }
 
 .uiHp__step {
+  @include ui-num-badge(#fff, $color-black);
   position: absolute;
-  top: 20px;
-  left: 24px;
-  font-size: 12px;
-  font-weight: 700;
-  color: $ui-accent;
+  top: $ui-card-pad;
+  left: $ui-card-pad;
 }
 
 .uiHp__steps {
@@ -2487,7 +2566,7 @@
   gap: 32px;
   align-items: start;
   min-height: 70vh;
-  align-items: center;
+  align-items: stretch;
 
   @include lg {
     grid-template-columns: 1fr 1fr;
@@ -2511,6 +2590,75 @@
     font-style: italic;
     color: $ui-text;
     line-height: 1.5;
+  }
+}
+
+// Proof — title + stacked quote list (menu-style glass)
+.uiHp__container:has(.uiHp__card--quote) {
+  display: grid;
+  gap: clamp(24px, 4vw, 40px);
+  align-items: start;
+
+  @include lg {
+    grid-template-columns: 1fr 1.5fr;
+  }
+
+  .uiHp__grid--3 {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    padding: clamp(16px, 2.5vw, 28px) clamp(16px, 2.5vw, 24px);
+    grid-template-columns: unset;
+    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px);
+    background-color: #ffffff80;
+    border: 1px solid rgba(255, 255, 255, 0.65);
+    border-radius: $ui-radius;
+    box-shadow: 0 8px 32px rgba(30, 57, 65, 0.06);
+  }
+
+  .uiHp__card--quote {
+    margin: 0;
+    padding: 0 0 clamp(28px, 4vw, 48px) 0;
+    background: none;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+
+    &:not(:last-child) {
+      border-bottom: 1px solid $ui-premium-accent-black;
+    }
+
+    &:nth-child(3n + 1),
+    &:nth-child(3n + 2),
+    &:nth-child(3n + 3) {
+      background: none;
+      border: none;
+      box-shadow: none;
+      -webkit-backdrop-filter: none;
+      backdrop-filter: none;
+    }
+  }
+}
+
+.uiHp--classic .uiHp__container:has(.uiHp__card--quote) .uiHp__card--quote {
+  border: none;
+
+  &:nth-child(3n + 1),
+  &:nth-child(3n + 2),
+  &:nth-child(3n + 3) {
+    background: none;
+    border: none;
+    box-shadow: none;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+
+  &:not(:first-child) {
+    border-top: 1px solid rgba($color-identity-grey-light, 0.7);
+    padding-top: clamp(28px, 4vw, 48px);
   }
 }
 
@@ -2827,7 +2975,7 @@
   display: block;
   width: min(60%, 480px);
   aspect-ratio: 307 / 57;
-  background-color: $color-identity-primary;
+  background-color: $color-black;
   mask-image: url('/sab-logo.svg');
   mask-repeat: no-repeat;
   mask-size: contain;

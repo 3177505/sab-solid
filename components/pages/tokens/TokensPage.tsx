@@ -7,6 +7,7 @@ import {
   SCROLL_TONES,
   SPACE_TOKENS,
   TYPE_TOKENS,
+  UI_FONT,
 } from '@/content/tokens'
 
 type TokensPageProps = {
@@ -64,7 +65,7 @@ export default function TokensPage({ dict }: TokensPageProps) {
           <h2>Typografie</h2>
           <div className="tokensPage__panel tokensPage__panel--type">
             <p className="tokensPage__fontNote">
-              UI homepage: <strong>Carlito</strong> · 400 / 700 · Google Fonts
+              UI homepage: <strong>{UI_FONT.family}</strong> · {UI_FONT.weights} · {UI_FONT.source}
             </p>
             <ul className="tokensPage__typeList">
               {TYPE_TOKENS.map((token) => (
@@ -122,6 +123,9 @@ export default function TokensPage({ dict }: TokensPageProps) {
           <h2>Komponenty</h2>
           <div className="tokensPage__panel tokensPage__panel--components">
             <h3 className="tokensPage__subheading">Tlačítka</h3>
+            <p className="tokensPage__componentNote">
+              Tři typy — ghost (outline), primary (fill), soft (sklo). Hover: jemný lift + frosted surface.
+            </p>
             <div className="tokensPage__buttons">
               <button type="button" className="tokensPage__btn tokensPage__btn--ghost">
                 Ghost
@@ -132,9 +136,15 @@ export default function TokensPage({ dict }: TokensPageProps) {
               <button type="button" className="tokensPage__btn tokensPage__btn--soft">
                 Soft
               </button>
+              <button type="button" className="tokensPage__btn tokensPage__btn--onAccent">
+                On accent
+              </button>
             </div>
 
             <h3 className="tokensPage__subheading">Karta</h3>
+            <p className="tokensPage__componentNote">
+              Classic varianta — skleněný panel s blur 20px, radius 4px.
+            </p>
             <article className="tokensPage__card">
               <span className="tokensPage__tag">Forward</span>
               <h4>Fixní kurz na známou fakturu</h4>

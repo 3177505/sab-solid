@@ -9,7 +9,7 @@ export const PRESENTATION_STEPS: PresentationStep[] = [
   { path: '/copy', title: 'UX Copywriting' },
   { path: '/ux', title: 'UX Návrh' },
   { path: '/tokens', title: 'Style guide' },
-  { path: '/ui', title: 'UI' },
+  { path: '/ui', title: 'UI Návrh' },
   { path: '/mobile/ux', title: 'UX Mobil' },
 ]
 

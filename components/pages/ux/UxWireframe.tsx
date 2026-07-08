@@ -14,6 +14,9 @@ type UxWireframeProps = {
   compareOpen?: boolean
 }
 
+const FOOTER_LINK_COLUMNS = C.footer.columns.slice(0, -1)
+const FOOTER_CONTACT_COLUMN = C.footer.columns[C.footer.columns.length - 1]
+
 export default function UxWireframe({ mobile = false, compareOpen: compareOpenProp }: UxWireframeProps) {
   const { compareOpen: compareOpenHook } = useUxCompare()
   const compareOpen = compareOpenProp ?? compareOpenHook
@@ -29,6 +32,13 @@ export default function UxWireframe({ mobile = false, compareOpen: compareOpenPr
           compareOpen={compareOpen}
         />
       ))}
+      {mobile ? (
+        <div className="uxMobileDock" aria-hidden="true">
+          <span className="uxBlock__cta">{C.nav.aside}</span>
+          <span className="uxBlock__cta uxBlock__cta--dock">{C.nav.cta}</span>
+          <span className="uxBlock__cta">{C.nav.prostream.label}</span>
+        </div>
+      ) : null}
     </div>
   )
 }
@@ -241,12 +251,18 @@ function UxSectionBody({ section, mobile }: { section: UxHomeSection; mobile?: b
         <div className="uxBlock">
           <h2 className="uxBlock__sectionTitle">{C.services.headline}</h2>
           <div
-            className={`uxBlock__grid uxBlock__grid--services${mobile ? ' uxBlock__grid--stack' : ''}`}
+            className={`uxBlock__grid uxBlock__grid--services${mobile ? ' uxBlock__grid--stack uxBlock__grid--serviceRows' : ''}`}
           >
             {C.services.items.map((s) => (
               <div
                 key={s.title}
-                className={`uxBlock__card${'featured' in s && s.featured ? ' uxBlock__card--featured' : ''}`}
+                className={[
+                  'uxBlock__card',
+                  mobile ? 'uxBlock__card--serviceRow' : '',
+                  'featured' in s && s.featured ? 'uxBlock__card--featured' : '',
+                ]
+                  .filter(Boolean)
+                  .join(' ')}
               >
                 {'badge' in s && s.badge ? (
                   <span className="uxBlock__badge">{s.badge}</span>
@@ -262,10 +278,35 @@ function UxSectionBody({ section, mobile }: { section: UxHomeSection; mobile?: b
       )
 
     case 'why':
+      if (mobile) {
+        return (
+          <div className="uxBlock">
+            <h2 className="uxBlock__sectionTitle">{C.why.headline}</h2>
+            <div className="uxBlock__slider">
+              {C.why.items.map((w) => (
+                <div key={w.title} className="uxBlock__sliderCard">
+                  <h3 className="uxBlock__cardTitle">{w.title}</h3>
+                  {'body' in w && w.body ? <p className="uxBlock__body">{w.body}</p> : null}
+                </div>
+              ))}
+            </div>
+            <div className="uxBlock__sliderDots" aria-hidden="true">
+              {C.why.items.map((w, index) => (
+                <span
+                  key={w.title}
+                  className={`uxBlock__sliderDot${index === 0 ? ' uxBlock__sliderDot--active' : ''}`}
+                />
+              ))}
+            </div>
+            <span className="uxBlock__cta">{C.why.cta}</span>
+          </div>
+        )
+      }
+
       return (
         <div className="uxBlock">
           <h2 className="uxBlock__sectionTitle">{C.why.headline}</h2>
-          <div className={`uxBlock__grid uxBlock__grid--3${mobile ? ' uxBlock__grid--stack' : ''}`}>
+          <div className="uxBlock__grid uxBlock__grid--3">
             {C.why.items.map((w) => (
               <div key={w.title} className="uxBlock__card">
                 <h3 className="uxBlock__cardTitle">{w.title}</h3>
@@ -295,10 +336,32 @@ function UxSectionBody({ section, mobile }: { section: UxHomeSection; mobile?: b
       )
 
     case 'proof':
+      if (mobile) {
+        return (
+          <div className="uxBlock">
+            <h2 className="uxBlock__sectionTitle">{C.proof.headline}</h2>
+            <div className="uxBlock__quotePanel">
+              {C.proof.quotes.map((q) => (
+                <figure key={q.company} className="uxBlock__quoteItem">
+                  <span className="uxBlock__tag">{q.tag}</span>
+                  <blockquote className="uxBlock__quoteText">
+                    <p>„{q.text}"</p>
+                  </blockquote>
+                  <figcaption className="uxBlock__muted">
+                    {q.author}
+                    {q.role ? `, ${q.role}` : ''} — {q.company}
+                  </figcaption>
+                </figure>
+              ))}
+            </div>
+          </div>
+        )
+      }
+
       return (
         <div className="uxBlock">
           <h2 className="uxBlock__sectionTitle">{C.proof.headline}</h2>
-          <div className={`uxBlock__grid${mobile ? ' uxBlock__grid--stack' : ''}`}>
+          <div className="uxBlock__grid">
             {C.proof.quotes.map((q) => (
               <figure key={q.company} className="uxBlock__card">
                 <span className="uxBlock__tag">{q.tag}</span>
@@ -316,8 +379,30 @@ function UxSectionBody({ section, mobile }: { section: UxHomeSection; mobile?: b
       )
 
     case 'lead':
+      if (mobile) {
+        return (
+          <div className="uxBlock uxBlock--leadMobile">
+            <div className="uxBlock__leadVisual">
+              <span className="uxBlock__muted">Široký vizuál / důvěra</span>
+            </div>
+            <div>
+              <h2 className="uxBlock__sectionTitle">{C.lead.headline}</h2>
+              <p className="uxBlock__body">{C.lead.sub}</p>
+              <div className="uxBlock__fields uxBlock__fields--stack">
+                {C.lead.fields.map((field) => (
+                  <span key={field} className="uxBlock__field">
+                    {field}
+                  </span>
+                ))}
+              </div>
+              <span className="uxBlock__cta">{C.lead.cta}</span>
+            </div>
+          </div>
+        )
+      }
+
       return (
-        <div className={`uxBlock uxBlock--form${mobile ? ' uxBlock--stack' : ''}`}>
+        <div className="uxBlock uxBlock--form">
           <div>
             <h2 className="uxBlock__sectionTitle">{C.lead.headline}</h2>
             <p className="uxBlock__body">{C.lead.sub}</p>
@@ -352,7 +437,7 @@ function UxSectionBody({ section, mobile }: { section: UxHomeSection; mobile?: b
       return (
         <footer className="uxBlock uxBlock--footer">
           <div className={`uxBlock__footerGrid${mobile ? ' uxBlock__footerGrid--stack' : ''}`}>
-            {C.footer.columns.map((col) => (
+            {(mobile ? FOOTER_LINK_COLUMNS : C.footer.columns).map((col) => (
               <div key={col.title} className="uxBlock__footerCol">
                 <h3 className="uxBlock__footerTitle">{col.title}</h3>
                 <ul className="uxBlock__footerList">
@@ -365,6 +450,18 @@ function UxSectionBody({ section, mobile }: { section: UxHomeSection; mobile?: b
               </div>
             ))}
           </div>
+          {mobile ? (
+            <div className="uxBlock__footerContact">
+              <h3 className="uxBlock__footerTitle">{FOOTER_CONTACT_COLUMN.title}</h3>
+              <ul className="uxBlock__footerList">
+                {FOOTER_CONTACT_COLUMN.links.map((link) => (
+                  <li key={link}>
+                    <span>{link}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ) : null}
           <div className="uxBlock__footerBottom">
             <div className="uxBlock__footerSocial">
               {C.footer.social.map((s) => (
