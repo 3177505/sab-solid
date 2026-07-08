@@ -18,7 +18,7 @@ export default function AnalysisPage({ dict }: AnalysisPageProps) {
 
   return (
     <article className="analysisPage presentationPage presentationPage--dark">
-      <p className="analysisPage__intro">{a.intro}</p>
+      <p className="presentationPage__lead analysisPage__intro">{a.intro}</p>
 
       <div className="analysisPage__grid">
         {a.sections.map((section) => {

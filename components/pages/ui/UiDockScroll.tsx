@@ -8,15 +8,15 @@ const BOTTOM_MARGIN = 160
 
 export default function UiDockScroll() {
   useEffect(() => {
-    const dock = document.querySelector<HTMLElement>('.uiHp__dock')
+    const rates = document.querySelector<HTMLElement>('.uiHp__rates')
     const footer = document.querySelector<HTMLElement>('.uiHp__footer')
-    if (!dock) return
+    if (!rates) return
 
     let lastY = window.scrollY
     let frame = 0
 
     const setHidden = (hidden: boolean) => {
-      dock.classList.toggle('uiHp__dock--hidden', hidden)
+      rates.classList.toggle('uiHp__rates--hidden', hidden)
     }
 
     const update = () => {

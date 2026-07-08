@@ -95,7 +95,7 @@ export default function UiHomepage({ variant = 'classic' }: UiHomepageProps) {
       <section className="uiHp__section uiHp__section--surface" {...sectionTone(variant, '2')}>
         <div className="uiHp__container">
           <h2 className="uiHp__h2">{C.problem.headline}</h2>
-          <div className="uiHp__grid uiHp__grid--2 uiHp__grid--zigzag">
+          <div className="uiHp__grid uiHp__grid--2">
             {C.problem.scenarios.map((s) => (
               <article key={s.tag} className="uiHp__card">
                 <span className="uiHp__tag">{s.tag}</span>
@@ -111,7 +111,7 @@ export default function UiHomepage({ variant = 'classic' }: UiHomepageProps) {
 
       <section className="uiHp__section" {...sectionTone(variant, '3')}>
         <div className="uiHp__container">
-          <div className="uiHp__grid uiHp__grid--2 uiHp__grid--zigzag">
+          <div className="uiHp__grid uiHp__grid--2">
             {C.paths.map((p) => (
               <article key={p.title} className="uiHp__card uiHp__card--path">
                 <h3 className="uiHp__h3">
@@ -155,7 +155,7 @@ export default function UiHomepage({ variant = 'classic' }: UiHomepageProps) {
       </section>
 
       <section className="uiHp__section uiHp__forward" {...sectionTone(variant, '4')}>
-        <div className="uiHp__container uiHp__forwardGrid uiHp__grid--zigzag">
+        <div className="uiHp__container uiHp__forwardGrid">
           <div>
             <p className="uiHp__eyebrow">{C.forward.anchor}</p>
             <h2 className="uiHp__h2">{C.forward.headline}</h2>
@@ -273,7 +273,7 @@ export default function UiHomepage({ variant = 'classic' }: UiHomepageProps) {
                     <input type="text" placeholder={field} readOnly />
                   </label>
                 ))}
-                <button type="button" className="uiHp__btn uiHp__btn--primary">
+                <button type="button" className="uiHp__btn uiHp__btn--primary uiHp__formSubmit">
                   {C.lead.cta}
                 </button>
               </form>
