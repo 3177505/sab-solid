@@ -68,6 +68,11 @@ export default function UiHomepage({ variant = 'classic' }: UiHomepageProps) {
           <div className="uiHp__heroCopy">
             <h1 className="uiHp__h1">{C.hero.headline}</h1>
             <p className="uiHp__lead">{C.hero.subheadline}</p>
+            <ul className="uiHp__heroHighlights">
+              {C.hero.highlights.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
             <div className="uiHp__btnRow">
               <a href="#" className="uiHp__btn uiHp__btn--primary">
                 {C.hero.primaryCta}
@@ -77,21 +82,35 @@ export default function UiHomepage({ variant = 'classic' }: UiHomepageProps) {
               </a>
             </div>
           </div>
-          <div className="uiHp__heroAside">
-            <div className="uiHp__rates">
-              <p className="uiHp__h3">Aktuální kurzy</p>
-              {C.hero.rates.map((r) => (
-                <div key={r.pair} className="uiHp__rateRow">
-                  <span>{r.pair}</span>
-                  <strong>{r.value}</strong>
-                </div>
-              ))}
-              <a href="#" className="uiHp__link">
-                {C.hero.ratesNote}
-              </a>
-            </div>
-            {variant !== 'classic' && <div className="uiHp__visual" aria-hidden="true" />}
+        </div>
+        <div className="uiHp__heroInfo uiHp__heroFloat">
+          <p className="uiHp__heroInfoTitle">{C.hero.infoPanel.title}</p>
+          <ul className="uiHp__heroInfoList">
+            {C.hero.infoPanel.items.map((item) => (
+              <li key={item.label}>
+                <strong>{item.label}</strong>
+                <span>{item.detail}</span>
+              </li>
+            ))}
+          </ul>
+          <a href="#" className="uiHp__heroInfoCta">
+            {C.hero.infoPanel.cta}
+          </a>
+        </div>
+        <div className="uiHp__heroAside uiHp__heroFloat">
+          <div className="uiHp__rates">
+            <p className="uiHp__h3">Aktuální kurzy</p>
+            {C.hero.rates.map((r) => (
+              <div key={r.pair} className="uiHp__rateRow">
+                <span>{r.pair}</span>
+                <strong>{r.value}</strong>
+              </div>
+            ))}
+            <a href="#" className="uiHp__link">
+              {C.hero.ratesNote}
+            </a>
           </div>
+          {variant !== 'classic' && <div className="uiHp__visual" aria-hidden="true" />}
         </div>
       </section>
 
@@ -117,6 +136,19 @@ export default function UiHomepage({ variant = 'classic' }: UiHomepageProps) {
                   {s.cta}
                 </a>
               </div>
+            </article>
+          ))}
+        </div>
+        <div className="uiHp__pathsGrid uiHp__pathsGrid--scenarios uiHp__pathsGrid--scenariosVisual">
+          {C.problem.visuals.map((v) => (
+            <article
+              key={`${v.tag}-visual`}
+              className={`uiHp__card uiHp__card--path uiHp__card--pathPhoto ${scenarioPathClass(v.tag)}`}
+            >
+              <div className="uiHp__pathsMedia" aria-hidden="true">
+                <img src={v.image} alt="" decoding="async" />
+              </div>
+              <div className="uiHp__pathsOverlay" aria-hidden="true" />
             </article>
           ))}
         </div>

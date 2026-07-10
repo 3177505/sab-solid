@@ -171,6 +171,20 @@ export const UX_HOMEPAGE_CONTENT = {
       'Devizové služby pro firmy, které importují, exportují nebo pravidelně platí do zahraničí. Směna, platby a fixní kurz na budoucí fakturu.',
     primaryCta: 'Nezávazná konzultace',
     secondaryCta: 'Zjistit aktuální kurz',
+    highlights: [
+      'Faktura v EUR za 60 dní? Kurz sjednáte dnes — platíte až ve splatnosti.',
+      'Forward od 30 dní dopředu, spot i zahraniční platby v jednom.',
+      'Osobní dealer na telefonu — kurz potvrdí emailem během minut.',
+    ],
+    infoPanel: {
+      title: 'Co řešíme nejčastěji',
+      items: [
+        { label: 'Fixní kurz na fakturu', detail: 'Forward 30–730 dní dopředu' },
+        { label: 'Směna a platby', detail: 'EUR, USD, GBP — vypořádání během hodin' },
+        { label: 'Hlídání kurzů', detail: 'Upozornění, když je kurz pro vás výhodný' },
+      ],
+      cta: 'Všechny služby',
+    },
     rates: [
       { pair: 'EUR/CZK', value: '25,18' },
       { pair: 'USD/CZK', value: '23,42' },
@@ -202,13 +216,23 @@ export const UX_HOMEPAGE_CONTENT = {
     scenarios: [
       {
         tag: 'Importér',
-        text: 'Za 60 dní platíte dodavateli 50 000 EUR. Kurz se mezitím může změnit — a s ním i vaše marže.',
+        text: 'Za 60 dní platíte dodavateli 50 000 EUR. Kurz se mezitím může změnit — a s ním i vaše marže. Bez zajistění nevíte, kolik korun skutečně odejde z účtu, a při posunu kurzu o 1 Kč zaplatíte o 50 000 Kč víc. Forward sjednáte jedním hovorem — kurz držíte od dneška až do splatnosti faktury.',
         cta: 'Jak se zajistit fixním kurzem',
       },
       {
         tag: 'Exportér',
-        text: 'Faktura v EUR, splatnost za 90 dní. Dnes nevíte, kolik korun na účet skutečně přijde.',
+        text: 'Faktura v EUR, splatnost za 90 dní. Dnes nevíte, kolik korun na účet skutečně přijde — a kurz se může hýbat celé měsíce. Při posunu o 1 Kč přijdete o desítky tisíc korun na marži. Fixní kurz vám dá jistotu inkasa ještě před odesláním zboží nebo dokončením zakázky.',
         cta: 'Spočítat dopad kurzu',
+      },
+    ],
+    visuals: [
+      {
+        tag: 'Importér',
+        image: '/sab-export/homepage/platba-faktur-vasim-partnerum-ad.webp',
+      },
+      {
+        tag: 'Exportér',
+        image: '/sab-export/homepage/inkaso-od-vasich-obchodnich-partneru-ad.webp',
       },
     ],
   },

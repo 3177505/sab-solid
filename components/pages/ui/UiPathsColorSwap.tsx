@@ -13,11 +13,8 @@ function swapAmount(progress: number, start: number, duration: number) {
 export default function UiPathsColorSwap() {
   useEffect(() => {
     const root = document.querySelector<HTMLElement>('.uiHp--classic')
-    const grid = root?.querySelector<HTMLElement>('.uiHp__pathsGrid--scenarios')
-    if (!root || !grid) return
-
-    const section = grid.closest<HTMLElement>('.uiHp__section--pathsScenarios')
-    if (!section) return
+    const section = root?.querySelector<HTMLElement>('.uiHp__section--pathsScenarios')
+    if (!root || !section) return
 
     let frame = 0
 
@@ -33,8 +30,8 @@ export default function UiPathsColorSwap() {
       const importerSwap = swapAmount(progress, 0, 0.52)
       const exporterSwap = swapAmount(progress, 0.48, 0.52)
 
-      grid.style.setProperty('--paths-swap-importer', importerSwap.toFixed(3))
-      grid.style.setProperty('--paths-swap-exporter', exporterSwap.toFixed(3))
+      section.style.setProperty('--paths-swap-importer', importerSwap.toFixed(3))
+      section.style.setProperty('--paths-swap-exporter', exporterSwap.toFixed(3))
     }
 
     const onScroll = () => {
@@ -53,8 +50,8 @@ export default function UiPathsColorSwap() {
       if (frame) window.cancelAnimationFrame(frame)
       window.removeEventListener('scroll', onScroll)
       window.removeEventListener('resize', update)
-      grid.style.removeProperty('--paths-swap-importer')
-      grid.style.removeProperty('--paths-swap-exporter')
+      section.style.removeProperty('--paths-swap-importer')
+      section.style.removeProperty('--paths-swap-exporter')
     }
   }, [])
 

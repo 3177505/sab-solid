@@ -7,16 +7,16 @@ const HERO_ASIDE_RELEASE_VIEWPORT_RATIO = 0.35
 
 export default function UiDockScroll() {
   useEffect(() => {
-    const ratesAside = document.querySelector<HTMLElement>('.uiHp__heroAside')
+    const heroFloaters = document.querySelectorAll<HTMLElement>('.uiHp__heroFloat')
     const dock = document.querySelector<HTMLElement>('.uiHp__dock')
     const footer = document.querySelector<HTMLElement>('.uiHp__footer')
     const hero = document.querySelector<HTMLElement>('.uiHp__hero')
-    if (!ratesAside && !dock) return
+    if (!heroFloaters.length && !dock) return
 
     let frame = 0
 
-    const setRatesHidden = (hidden: boolean) => {
-      ratesAside?.classList.toggle('uiHp__heroAside--hidden', hidden)
+    const setHeroFloatHidden = (hidden: boolean) => {
+      heroFloaters.forEach((el) => el.classList.toggle('uiHp__heroFloat--hidden', hidden))
     }
 
     const setDockHidden = (hidden: boolean) => {
@@ -47,7 +47,7 @@ export default function UiDockScroll() {
 
       const beforeFooter = nearPageEnd || footerVisible
       setDockHidden(beforeFooter)
-      setRatesHidden(hasStartedScrolling || beforeFooter || !isInHeroSection())
+      setHeroFloatHidden(hasStartedScrolling || beforeFooter || !isInHeroSection())
     }
 
     const onScroll = () => {

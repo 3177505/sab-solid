@@ -125,8 +125,8 @@ export default function TokensPage({ dict }: TokensPageProps) {
             <div className="tokensPage__uiScope uiHp uiHp--classic">
               <h3 className="tokensPage__subheading">Tlačítka</h3>
               <p className="tokensPage__componentNote">
-                Tři typy — ghost (outline), primary (fill), soft (sklo). Hover: jemný lift + frosted
-                surface.
+                Tři typy — ghost (outline), primary (fill), soft (sklo). Drop shadow pro kontrast,
+                hover: jemný lift + frosted surface.
               </p>
               <div className="uiHp__btnRow tokensPage__btnRow">
                 <button type="button" className="uiHp__btn uiHp__btn--ghost">
